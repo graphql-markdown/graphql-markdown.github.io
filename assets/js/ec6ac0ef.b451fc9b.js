@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocusaurus_2=self.webpackChunkdocusaurus_2||[]).push([[2566],{4237:e=>{e.exports=JSON.parse('{"title":"Mutations overview","slug":"/category/mutations","permalink":"/category/mutations","navigation":{"previous":{"title":"Course","permalink":"/category/course"},"next":{"title":"AddCourse","permalink":"/group-by/course/mutations/add-course"}}}')}}]);

@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocusaurus_2=self.webpackChunkdocusaurus_2||[]).push([[3921],{9741:e=>{e.exports=JSON.parse('{"title":"Mutations overview","slug":"/category/mutations-1","permalink":"/category/mutations-1","navigation":{"previous":{"title":"Grade","permalink":"/category/grade"},"next":{"title":"UpdateGPA","permalink":"/group-by/grade/mutations/update-gpa"}}}')}}]);

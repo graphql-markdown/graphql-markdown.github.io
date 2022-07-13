@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocusaurus_2=self.webpackChunkdocusaurus_2||[]).push([[116],{4728:e=>{e.exports=JSON.parse('{"title":"Common overview","slug":"/category/common","permalink":"/category/common","navigation":{"previous":{"title":"Schema Documentation","permalink":"/group-by"},"next":{"title":"Directives","permalink":"/category/directives"}}}')}}]);
