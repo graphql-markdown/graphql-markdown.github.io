@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_graphql_markdown_website=self.webpackChunk_graphql_markdown_website||[]).push([[1432],{820:e=>{e.exports=JSON.parse('{"title":"Common overview","slug":"/category/common","permalink":"/group-by/category/common","navigation":{"next":{"title":"Directives","permalink":"/group-by/category/directives"}}}')}}]);
