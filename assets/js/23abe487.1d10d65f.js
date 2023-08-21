@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_graphql_markdown_website=self.webpackChunk_graphql_markdown_website||[]).push([[9627],{5623:(e,t,n)=>{n.r(t),n.d(t,{default:()=>s});var l=n(7294),r=n(9962),a=n(9802),c=n(5123);function s(){const{siteConfig:e}=(0,r.Z)();return l.createElement(a.Z,null,l.createElement("h2",null,"Site config"),l.createElement(c.Z,{src:e,collapseDepth:3}))}}}]);

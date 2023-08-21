@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_graphql_markdown_website=self.webpackChunk_graphql_markdown_website||[]).push([[2963],{8403:(e,l,t)=>{t.r(l),t.d(l,{default:()=>s});var a=t(7294),n=t(1610),r=t(9802),c=t(5123);function s(){const e=(0,n.ZP)();return a.createElement(r.Z,null,a.createElement("h2",null,"Global data"),a.createElement(c.Z,{src:e,collapseDepth:3}))}}}]);
