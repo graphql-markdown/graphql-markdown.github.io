@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.5.2">
 <title data-rh="true">fs | GraphQL-Markdown</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://graphql-markdown.dev/api/utils/fs"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-api-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-api-current"><meta data-rh="true" property="og:title" content="fs | GraphQL-Markdown"><meta data-rh="true" name="description" content="Library of helper functions for handling files and folders."><meta data-rh="true" property="og:description" content="Library of helper functions for handling files and folders."><link data-rh="true" rel="icon" href="/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://graphql-markdown.dev/api/utils/fs"><link data-rh="true" rel="alternate" href="https://graphql-markdown.dev/api/utils/fs" hreflang="en"><link data-rh="true" rel="alternate" href="https://graphql-markdown.dev/api/utils/fs" hreflang="x-default"><link rel="stylesheet" href="/assets/css/styles.07294ec4.css">
-<script src="/assets/js/runtime~main.a6521af4.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.111e375a.js" defer="defer"></script>
 <script src="/assets/js/main.68d4e1ff.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard" data-theme="light">
@@ -13,9 +13,11 @@
 <div class="language-ts codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-ts codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token keyword" style="color:#00009f">function</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">ensureDir</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">location</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> options</span><span class="token operator" style="color:#393A34">?</span><span class="token punctuation" style="color:#393A34">)</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token builtin">Promise</span><span class="token operator" style="color:#393A34">&lt;</span><span class="token keyword" style="color:#00009f">void</span><span class="token operator" style="color:#393A34">&gt;</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
 <p>Asynchronously create a folder structure if it does not exist.</p>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="parameters">Parameters<a href="#parameters" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters">​</a></h3>
-<p>• <strong>location</strong>: <code>string</code></p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="location">location<a href="#location" class="hash-link" aria-label="Direct link to location" title="Direct link to location">​</a></h4>
+<p><code>string</code></p>
 <p>folder structure in path format.</p>
-<p>• <strong>options?</strong>: <code>EnsureDirOptions</code></p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="options">options?<a href="#options" class="hash-link" aria-label="Direct link to options?" title="Direct link to options?">​</a></h4>
+<p><code>EnsureDirOptions</code></p>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="returns">Returns<a href="#returns" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h3>
 <p><code>Promise</code>&lt;<code>void</code>&gt;</p>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="example">Example<a href="#example" class="hash-link" aria-label="Direct link to Example" title="Direct link to Example">​</a></h3>
@@ -27,7 +29,8 @@
 <div class="language-ts codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-ts codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token keyword" style="color:#00009f">function</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">fileExists</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">location</span><span class="token punctuation" style="color:#393A34">)</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token builtin">Promise</span><span class="token operator" style="color:#393A34">&lt;</span><span class="token builtin">boolean</span><span class="token operator" style="color:#393A34">&gt;</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
 <p>Asynchronously check if a file or folder exists at the path location.</p>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="parameters-1">Parameters<a href="#parameters-1" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters">​</a></h3>
-<p>• <strong>location</strong>: <code>string</code></p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="location-1">location<a href="#location-1" class="hash-link" aria-label="Direct link to location" title="Direct link to location">​</a></h4>
+<p><code>string</code></p>
 <p>file or folder location.</p>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="returns-1">Returns<a href="#returns-1" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h3>
 <p><code>Promise</code>&lt;<code>boolean</code>&gt;</p>
@@ -43,11 +46,14 @@
 Override the file content if the file already exists.
 The function calls <code>ensureDir(dirname(location))</code> to create the folder structure if missing.</p>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="parameters-2">Parameters<a href="#parameters-2" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters">​</a></h3>
-<p>• <strong>location</strong>: <code>string</code></p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="location-2">location<a href="#location-2" class="hash-link" aria-label="Direct link to location" title="Direct link to location">​</a></h4>
+<p><code>string</code></p>
 <p>file location.</p>
-<p>• <strong>content</strong>: <code>string</code></p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="content">content<a href="#content" class="hash-link" aria-label="Direct link to content" title="Direct link to content">​</a></h4>
+<p><code>string</code></p>
 <p>data to be written into the file (UTF-8 string).</p>
-<p>• <strong>prettify?</strong>: <code>PrettifyCallbackFunction</code></p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="prettify">prettify?<a href="#prettify" class="hash-link" aria-label="Direct link to prettify?" title="Direct link to prettify?">​</a></h4>
+<p><code>PrettifyCallbackFunction</code></p>
 <p>optional callback function for prettifying the content.</p>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="returns-2">Returns<a href="#returns-2" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h3>
 <p><code>Promise</code>&lt;<code>void</code>&gt;</p>

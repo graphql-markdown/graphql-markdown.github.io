@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.5.2">
 <title data-rh="true">loader | GraphQL-Markdown</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://graphql-markdown.dev/api/graphql/loader"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-api-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-api-current"><meta data-rh="true" property="og:title" content="loader | GraphQL-Markdown"><meta data-rh="true" name="description" content="Library for GraphQL schema loading and loaders config processing."><meta data-rh="true" property="og:description" content="Library for GraphQL schema loading and loaders config processing."><link data-rh="true" rel="icon" href="/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://graphql-markdown.dev/api/graphql/loader"><link data-rh="true" rel="alternate" href="https://graphql-markdown.dev/api/graphql/loader" hreflang="en"><link data-rh="true" rel="alternate" href="https://graphql-markdown.dev/api/graphql/loader" hreflang="x-default"><link rel="stylesheet" href="/assets/css/styles.07294ec4.css">
-<script src="/assets/js/runtime~main.a6521af4.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.111e375a.js" defer="defer"></script>
 <script src="/assets/js/main.68d4e1ff.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard" data-theme="light">
@@ -14,7 +14,8 @@
 <p>Asynchronously returns a valid loaders list for <a href="/api/graphql/loader#loadschema">loadSchema</a> based on the plugin config.
 Import each loader package, and instantiate a loader object.</p>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="parameters">Parameters<a href="#parameters" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters">​</a></h3>
-<p>• <strong>loadersList</strong>: <code>Maybe</code>&lt;<code>LoaderOption</code>&gt;</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="loaderslist">loadersList<a href="#loaderslist" class="hash-link" aria-label="Direct link to loadersList" title="Direct link to loadersList">​</a></h4>
+<p><code>Maybe</code>&lt;<code>LoaderOption</code>&gt;</p>
 <p>the list of loaders defined in the plugin config.</p>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="returns">Returns<a href="#returns" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h3>
 <p><code>Promise</code>&lt;<code>Maybe</code>&lt;<code>LoadSchemaOptions</code>&gt;&gt;</p>
@@ -32,9 +33,11 @@ Import each loader package, and instantiate a loader object.</p>
 The wrapper will load the schema using the loader declared in <code>options</code>.
 If <code>rootTypes</code> is set in the options, then the schema root types will be overridden to generate custom GraphQL schema.</p>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="parameters-1">Parameters<a href="#parameters-1" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters">​</a></h3>
-<p>• <strong>schemaLocation</strong>: <code>string</code></p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="schemalocation">schemaLocation<a href="#schemalocation" class="hash-link" aria-label="Direct link to schemaLocation" title="Direct link to schemaLocation">​</a></h4>
+<p><code>string</code></p>
 <p>the schema location pointer matching the loader.</p>
-<p>• <strong>options</strong>: <code>BuildSchemaOptions</code> &amp; <code>GraphQLParseOptions</code> &amp; <code>object</code> &amp; <code>object</code> &amp; <code>object</code> &amp; <code>Partial</code>&lt;<code>IExecutableSchemaDefinition</code>&lt;<code>any</code>&gt;&gt; &amp; <code>object</code> &amp; <code>object</code></p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="options">options<a href="#options" class="hash-link" aria-label="Direct link to options" title="Direct link to options">​</a></h4>
+<p><code>BuildSchemaOptions</code> &amp; <code>GraphQLParseOptions</code> &amp; <code>object</code> &amp; <code>object</code> &amp; <code>object</code> &amp; <code>Partial</code>&lt;<code>IExecutableSchemaDefinition</code>&lt;<code>any</code>&gt;&gt; &amp; <code>object</code> &amp; <code>object</code></p>
 <p>the schema <code>loaders</code>, and optional <code>rootTypes</code> override.</p>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="returns-1">Returns<a href="#returns-1" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h3>
 <p><code>Promise</code>&lt;<code>GraphQLSchema</code>&gt;</p>
