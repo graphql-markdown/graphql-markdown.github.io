@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_graphql_markdown_website=self.webpackChunk_graphql_markdown_website||[]).push([["4008"],{18599:function(e,r,t){t.d(r,{createArchitectureServices:function(){return c.i}});var c=t(19613);t(84583)}}]);
