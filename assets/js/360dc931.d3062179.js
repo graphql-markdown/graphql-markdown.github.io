@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunk_graphql_markdown_website=globalThis.webpackChunk_graphql_markdown_website||[]).push([[6600],{27146(a){a.exports=JSON.parse('{"name":"docusaurus-plugin-content-docs","id":"api"}')}}]);

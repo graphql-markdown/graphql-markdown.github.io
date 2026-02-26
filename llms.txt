@@ -1,0 +1,108 @@
+# GraphQL-Markdown Documentation
+
+> Human-friendly documentation for GraphQL-Markdown schemas and tooling.
+
+This index exposes the documentation set that powers graphql-markdown.dev so LLMs can discover sections without scraping HTML.
+
+## Table of Contents
+
+- [Introduction](https://graphql-markdown.dev/docs/intro): Generate human-friendly Markdown/MDX documentation from GraphQL schemas. Easy setup, customizable output, and seamless Docusaurus integration.
+- [Getting started](https://graphql-markdown.dev/docs/get-started): Quick start guide for installing and configuring GraphQL-Markdown with Docusaurus. Generate documentation from your GraphQL schema in minutes.
+- [Try it](https://graphql-markdown.dev/docs/try-it): Try GraphQL-Markdown instantly with interactive CodeSandbox demos for Docusaurus, Astro, Next.js, and other frameworks.
+- [How It Works](https://graphql-markdown.dev/docs/how-it-works): Understand how GraphQL-Markdown transforms your GraphQL schema into comprehensive Markdown documentation through parsing, rendering, and output.
+- [Configuration Cheat Sheet](https://graphql-markdown.dev/docs/configuration-cheatsheet): Quickly look up in the most frequently used CLI flag and renderer options for GraphQL-Markdown in one place without digging through the longer Sett...
+- [Configuration](https://graphql-markdown.dev/docs/configuration): Learn how to configure GraphQL-Markdown using GraphQL Config, Docusaurus plugin options, or CLI arguments. Supports multiple frameworks.
+- [Additional schemas](https://graphql-markdown.dev/docs/advanced/additional-schema): Configure multiple GraphQL schemas in a single project. Set up separate documentation instances for different APIs.
+- [Customize deprecated sections](https://graphql-markdown.dev/docs/advanced/custom-deprecated-section): Customize how deprecated fields and types are displayed in your GraphQL documentation using CSS styling.
+- [Custom schema directives handling](https://graphql-markdown.dev/docs/advanced/custom-directive): Handle custom GraphQL schema directives in your documentation. Configure which directives to render and customize their display.
+- [Custom root types](https://graphql-markdown.dev/docs/advanced/custom-root-types): Configure custom root types for Query, Mutation, and Subscription operations in your GraphQL schema documentation.
+- [Examples](https://graphql-markdown.dev/docs/advanced/examples): Add usage examples to your GraphQL type documentation using the @example directive. Show real-world usage patterns.
+- [Documentation categories](https://graphql-markdown.dev/docs/advanced/group-by-directive): Organize GraphQL documentation into categories using directives. Group queries, mutations, and types for better navigation.
+- [Homepage](https://graphql-markdown.dev/docs/advanced/homepage): Create a custom homepage for your generated GraphQL documentation with proper sidebar positioning and navigation.
+- [Hooks Recipes](https://graphql-markdown.dev/docs/advanced/hook-recipes): Customize GraphQL-Markdown with lifecycle hooks. Examples for modifying output, adding custom processing, and integrating with build pipelines.
+- [Integration with Frameworks](https://graphql-markdown.dev/docs/advanced/integration-with-frameworks): Integrate GraphQL-Markdown with Docusaurus, Astro, Next.js, VitePress, and other documentation frameworks. Complete setup guides and examples.
+- [Schema loading](https://graphql-markdown.dev/docs/advanced/schema-loading): Load GraphQL schemas from files, URLs, or introspection endpoints. Configure custom loaders for different schema sources.
+- [Settings](https://graphql-markdown.dev/docs/settings): Complete reference of all GraphQL-Markdown settings, CLI flags, and configuration options with default values and examples.
+- [Troubleshooting](https://graphql-markdown.dev/docs/troubleshooting): Solutions for common GraphQL-Markdown issues including duplicate graphql modules, missing type definitions, and configuration problems.
+- [introspection](https://graphql-markdown.dev/api/graphql/introspection): Library for introspecting a GraphQL schema.
+- [cli](https://graphql-markdown.dev/docs/api/cli/cli): This module provides the CLI functionality for generating documentation from GraphQL schemas.
+- [main](https://graphql-markdown.dev/api/cli/main): Entry point for the GraphQL Markdown CLI.
+- [config](https://graphql-markdown.dev/api/core/config): Configuration management for GraphQL Markdown.
+- [patterns](https://graphql-markdown.dev/api/core/const/patterns): Regular expressions and string patterns used throughout the core package.
+- [diff](https://graphql-markdown.dev/api/core/diff): Diff utilities for detecting schema changes between builds.
+- [normalize](https://graphql-markdown.dev/api/core/directives/normalize): Directive name normalization and processing utilities.
+- [validation](https://graphql-markdown.dev/api/core/directives/validation): Configuration validation utilities for directive and configuration options.
+- [event-emitter](https://graphql-markdown.dev/api/core/event-emitter): Defined in: event-emitter.ts:9
+- [event-handlers](https://graphql-markdown.dev/api/core/event-handlers): MDX event handler registration functionality.
+- [event-map](https://graphql-markdown.dev/api/core/event-map): Event callback mapping configuration.
+- [base](https://graphql-markdown.dev/api/core/events/base): Base event class and utilities for GraphQL-Markdown events.
+- [diff-check](https://graphql-markdown.dev/api/core/events/diff-check): Diff checking event class.
+- [diff-events](https://graphql-markdown.dev/api/core/events/diff-events): Diff checking event constants.
+- [generate-index-metafile-events](https://graphql-markdown.dev/api/core/events/generate-index-metafile-events): Generate index metafile event constants.
+- [generate-index-metafile](https://graphql-markdown.dev/api/core/events/generate-index-metafile): Generate index metafile event class.
+- [print-type-events](https://graphql-markdown.dev/api/core/events/print-type-events): Print type event constants.
+- [print-type](https://graphql-markdown.dev/api/core/events/print-type): Print type event classes.
+- [render-homepage-events](https://graphql-markdown.dev/api/core/events/render-homepage-events): Render homepage event constants.
+- [render-homepage](https://graphql-markdown.dev/api/core/events/render-homepage): Render homepage event class.
+- [render-root-types-events](https://graphql-markdown.dev/api/core/events/render-root-types-events): Render root types event constants.
+- [render-root-types](https://graphql-markdown.dev/api/core/events/render-root-types): Render root types event class.
+- [render-type-entities-events](https://graphql-markdown.dev/api/core/events/render-type-entities-events): Render type entities event constants.
+- [render-type-entities](https://graphql-markdown.dev/api/core/events/render-type-entities): Render type entities event class.
+- [schema-events](https://graphql-markdown.dev/api/core/events/schema-events): Schema loading event constants.
+- [schema-load](https://graphql-markdown.dev/api/core/events/schema-load): Schema loading event class.
+- [events](https://graphql-markdown.dev/api/core/events): Event system for GraphQL-Markdown.
+- [generator](https://graphql-markdown.dev/api/core/generator): Core generator functionality for GraphQL Markdown documentation.
+- [graphql-config](https://graphql-markdown.dev/api/core/graphql-config): GraphQL Markdown configuration utilities
+- [builder](https://graphql-markdown.dev/api/core/options/builder): Option builder for handling CLI/config/default option precedence.
+- [printer](https://graphql-markdown.dev/api/core/printer): Printer loader helpers for bootstrapping GraphQL-Markdown renderers.
+- [renderer](https://graphql-markdown.dev/api/core/renderer): Defined in: renderer.ts:335
+- [diff](https://graphql-markdown.dev/api/diff): Schema comparison module for GraphQL Markdown.
+- [index](https://graphql-markdown.dev/api/docusaurus): Docusaurus integration for running GraphQL-Markdown and wiring CLI commands.
+- [category](https://graphql-markdown.dev/api/docusaurus/mdx/category): ```ts
+- [components](https://graphql-markdown.dev/api/docusaurus/mdx/components): ```ts
+- [mdx](https://graphql-markdown.dev/api/docusaurus/mdx): ```ts
+- [directive](https://graphql-markdown.dev/api/graphql/directive): Library supporting `customDirective` for directive based customization.
+- [formatter](https://graphql-markdown.dev/api/graphql/formatter): Internal library of helpers for formatting GraphQL values.
+- [group](https://graphql-markdown.dev/api/graphql/group): Library supporting `groupByDirective` for grouping GraphQL schema entities.
+- [guard](https://graphql-markdown.dev/api/graphql/guard): Custom GraphQL type guards and property guards.
+- [loader](https://graphql-markdown.dev/api/graphql/loader): Library for GraphQL schema loading and `loaders` config processing.
+- [relation](https://graphql-markdown.dev/api/graphql/relation): Library supporting `relatedTypeSection` for displaying relations between GraphQL schema entities.
+- [descriptor](https://graphql-markdown.dev/api/helpers/directives/descriptor): Custom directive `descriptor` helper.
+- [tag](https://graphql-markdown.dev/api/helpers/directives/tag): Custom directive `tag` helper.
+- [interpolate](https://graphql-markdown.dev/api/helpers/utils/interpolate): Helpers utility functions library.
+- [API](https://graphql-markdown.dev/api): This section provides documentation of the GraphQL-Markdown API for NodeJS. For more details about each individual module, refer to the specific pa...
+- [logger](https://graphql-markdown.dev/api/logger): Logger singleton module.
+- [badge](https://graphql-markdown.dev/api/printer-legacy/badge): Module for handling GraphQL type badges in MDX documentation.
+- [code](https://graphql-markdown.dev/api/printer-legacy/code): Provides utility functions for generating code representations of GraphQL types
+- [common](https://graphql-markdown.dev/api/printer-legacy/common): Common printer utility functions for handling descriptions, directives, and warnings.
+- [options](https://graphql-markdown.dev/api/printer-legacy/const/options): Defined in: printer-legacy/src/const/options.ts:21
+- [strings](https://graphql-markdown.dev/api/printer-legacy/const/strings): String constants and helpers shared by the legacy printer when composing
+- [directive](https://graphql-markdown.dev/api/printer-legacy/directive): Provides utilities for handling and printing GraphQL directives in Markdown format
+- [example](https://graphql-markdown.dev/api/printer-legacy/example): Module providing utilities for handling GraphQL example directives and printing example values.
+- [format-helpers](https://graphql-markdown.dev/api/printer-legacy/format-helpers): Format event helpers for printer-legacy.
+- [formatter](https://graphql-markdown.dev/api/printer-legacy/formatter): Formatter factories for GraphQL documentation output.
+- [frontmatter](https://graphql-markdown.dev/api/printer-legacy/frontmatter): Module for handling frontmatter generation in Markdown documents.
+- [directive](https://graphql-markdown.dev/api/printer-legacy/graphql/directive): Module for handling GraphQL directive printing and formatting.
+- [enum](https://graphql-markdown.dev/api/printer-legacy/graphql/enum): Provides utilities for printing GraphQL enum types to Markdown/MDX format
+- [input](https://graphql-markdown.dev/api/printer-legacy/graphql/input): Legacy printer helpers for rendering GraphQL input types.
+- [interface](https://graphql-markdown.dev/api/printer-legacy/graphql/interface): Contains utilities for printing GraphQL interface types as Markdown documentation.
+- [object](https://graphql-markdown.dev/api/printer-legacy/graphql/object): GraphQL Object Type printing utilities
+- [operation](https://graphql-markdown.dev/api/printer-legacy/graphql/operation): Module for handling GraphQL operation printing functionality.
+- [scalar](https://graphql-markdown.dev/api/printer-legacy/graphql/scalar): Provides utility functions for handling GraphQL scalar types in markdown generation.
+- [union](https://graphql-markdown.dev/api/printer-legacy/graphql/union): Module for handling GraphQL Union type printing operations.
+- [graphql](https://graphql-markdown.dev/api/printer-legacy/graphql)
+- [group](https://graphql-markdown.dev/api/printer-legacy/group): Utility module for handling GraphQL schema entity grouping.
+- [link](https://graphql-markdown.dev/api/printer-legacy/link): Module for handling links and link-related operations in GraphQL Markdown printer.
+- [mdx](https://graphql-markdown.dev/api/printer-legacy/mdx): MDX formatting module for GraphQL-Markdown.
+- [printer](https://graphql-markdown.dev/api/printer-legacy/printer): GraphQL Schema Printer Module
+- [relation](https://graphql-markdown.dev/api/printer-legacy/relation): This module provides functionality to print relationships between GraphQL types,
+- [section](https://graphql-markdown.dev/api/printer-legacy/section): Module responsible for generating Markdown sections for GraphQL schema documentation.
+- [array](https://graphql-markdown.dev/api/utils/array): Internal library of helpers for manipulating array and list.
+- [frontmatter](https://graphql-markdown.dev/api/utils/frontmatter): Routines for serializing data structures into Markdown frontmatter blocks.
+- [fs](https://graphql-markdown.dev/api/utils/fs): Library of helper functions for handling files and folders.
+- [guards](https://graphql-markdown.dev/api/utils/guards): Type guard utilities for common validation patterns.
+- [markdown](https://graphql-markdown.dev/api/utils/markdown): Shared Markdown constants used across packages.
+- [object](https://graphql-markdown.dev/api/utils/object): Internal library of helpers for manipulating objects.
+- [prettier](https://graphql-markdown.dev/api/utils/prettier): Internal library for prettifying files using `prettier`.
+- [string](https://graphql-markdown.dev/api/utils/string): Library of helpers for formatting strings.
+- [url](https://graphql-markdown.dev/api/utils/url): Alias `path.posix` to normalize URL handling on Windows.

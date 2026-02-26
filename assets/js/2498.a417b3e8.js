@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunk_graphql_markdown_website=globalThis.webpackChunk_graphql_markdown_website||[]).push([[2498],{92498(e,a,r){r.d(a,{createArchitectureServices:()=>h.S});var h=r(73009);r(8901)}}]);
