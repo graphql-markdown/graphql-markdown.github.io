@@ -1659,15 +1659,17 @@ npm install @graphql-markdown/diff
 
 Use these options to tweak some of the static documentation generator features:
 
+- `categorySort`: control how categories are sorted in the sidebar. Can be `"natural"` for alphabetical sorting or a custom compare function. When enabled, folder names are automatically prefixed with zero-padded order numbers (e.g., `01-objects`, `02-queries`). When not set, the order depends on document generator folders sorting and no prefixes are added.
 - `frontMatter`: set custom front matter entries as key/value. If set to `false`, then it will disable the frontmatter and print a level 1 title as the page title.
 - `index`: enable/disable the index page for categories/groups, see [Docusaurus documentation](https://docusaurus.io/docs/sidebar/items#generated-index-page) &mdash; **ONLY FOR DOCUSAURUS**
-- `categorySort`: control how categories are sorted in the sidebar. Can be `"natural"` for alphabetical sorting or a custom compare function. When enabled, folder names are automatically prefixed with zero-padded order numbers (e.g., `01-objects`, `02-queries`). When not set, the order depends on document generator folders sorting and no prefixes are added.
+- `sectionHeaderId`: enable/disable the generation of custom header IDs for permalinks. Conceptually this uses the syntax `### Section {#ID}`, but the generated MDX will escape the braces as in `### Section \{#id\}` so that MDX does not treat `{...}` as an expression.
 
-| Setting                   | CLI flag        | Default |
-| ------------------------- | --------------- | ------- |
-| `docOptions.frontMatter`  | _not supported_ | `{}`    |
-| `docOptions.index`        | `--index`       | `false` |
-| `docOptions.categorySort` | _not supported_ | -       |
+| Setting                      | CLI flag        | Default |
+| ---------------------------- | --------------- | ------- |
+| `docOptions.categorySort`    | _not supported_ | -       |
+| `docOptions.frontMatter`     | _not supported_ | `{}`    |
+| `docOptions.index`           | `--index`       | `false` |
+| `docOptions.sectionHeaderId` | `--noSectionId` | `true`  |
 
 ```js title="docusaurus.config.js"
 plugins: [
@@ -1688,6 +1690,7 @@ plugins: [
           },
           index: true, // enable generated index pages, same as CLI flag --index
           categorySort: "natural", // sort categories alphabetically and prefix with order numbers (01-objects, 02-queries, etc.)
+          sectionHeaderId: false, // disable custom section header IDs (restores previous behavior)
         },
         // highlight-end
         loaders: {
@@ -3160,7 +3163,7 @@ Default package name used for temporary directory creation and identification.
 function buildConfig(configFileOpts, cliOpts?, id?): Promise<Options>;
 ```
 
-Defined in: config.ts:771
+Defined in: config.ts:778
 
 ### Parameters
 
@@ -3191,7 +3194,7 @@ function getCustomDirectives(
 ): Maybe<CustomDirective>;
 ```
 
-Defined in: config.ts:390
+Defined in: config.ts:391
 
 Processes custom directives, filtering out any that should be skipped.
 Validates that each custom directive has the correct format with required functions.
@@ -3254,7 +3257,7 @@ getCustomDirectives({ example: { invalid: true } }, []);
 function getDiffMethod(diff): TypeDiffMethod;
 ```
 
-Defined in: config.ts:445
+Defined in: config.ts:446
 
 ### Parameters
 
@@ -3274,7 +3277,7 @@ Defined in: config.ts:445
 function getDocDirective(name): DirectiveName;
 ```
 
-Defined in: config.ts:215
+Defined in: config.ts:216
 
 Retrieves a directive name from a string by parsing and validating the format.
 Directive names should be prefixed with '@' (e.g., '@example').
@@ -3315,7 +3318,7 @@ getDocDirective("example"); // Error: Invalid "example"
 function getDocOptions(cliOpts?, configOptions?): Required<ConfigDocOptions>;
 ```
 
-Defined in: config.ts:484
+Defined in: config.ts:485
 
 Builds the document options by merging CLI options, config file options, and defaults.
 Handles index generation flag and front matter configuration.
@@ -3362,7 +3365,7 @@ console.log(docOptions);
 function getForcedDiffMethod(): TypeDiffMethod;
 ```
 
-Defined in: config.ts:435
+Defined in: config.ts:436
 
 Returns FORCE as the diff method.
 This function is used when documentation should be forcefully regenerated.
@@ -3392,7 +3395,7 @@ console.log(method); // "FORCE"
 function getNormalizedDiffMethod(diff): TypeDiffMethod;
 ```
 
-Defined in: config.ts:439
+Defined in: config.ts:440
 
 ### Parameters
 
@@ -3412,7 +3415,7 @@ Defined in: config.ts:439
 function getOnlyDocDirectives(cliOpts, configFileOpts): DirectiveName[];
 ```
 
-Defined in: config.ts:246
+Defined in: config.ts:247
 
 Retrieves the list of "only" directives from CLI and config options.
 These directives specify which schema elements should be included in the documentation.
@@ -3462,7 +3465,7 @@ function getPrintTypeOptions(
 ): Required<ConfigPrintTypeOptions>;
 ```
 
-Defined in: config.ts:620
+Defined in: config.ts:627
 
 Builds the print type options by merging CLI options, config file options, and defaults.
 Handles various formatting options for type documentation.
@@ -3522,7 +3525,7 @@ console.log(printOptions);
 function getSkipDocDirectives(cliOpts, configFileOpts): DirectiveName[];
 ```
 
-Defined in: config.ts:281
+Defined in: config.ts:282
 
 Retrieves the list of "skip" directives from CLI and config options.
 These directives specify which schema elements should be excluded from the documentation.
@@ -3574,7 +3577,7 @@ function getTypeHierarchyOption(
 ): Maybe<Partial<Record<TypeHierarchyValueType, TypeHierarchyTypeOptions>>>;
 ```
 
-Defined in: config.ts:531
+Defined in: config.ts:538
 
 Resolves the type hierarchy configuration by merging CLI and config file options.
 Validates that CLI and config don't specify conflicting hierarchy types.
@@ -3633,7 +3636,7 @@ getTypeHierarchyOption("api", { entity: {} });
 function getVisibilityDirectives(cliOpts, configFileOpts): object;
 ```
 
-Defined in: config.ts:335
+Defined in: config.ts:336
 
 Combines and validates visibility directives (only and skip) from both CLI and config sources.
 Ensures that no directive appears in both "only" and "skip" lists simultaneously.
@@ -3706,7 +3709,7 @@ function parseDeprecatedDocOptions(
 ): Record<string, never>;
 ```
 
-Defined in: config.ts:457
+Defined in: config.ts:458
 
 Placeholder function for handling deprecated document options.
 Currently returns an empty object as these options are deprecated.
@@ -3742,7 +3745,7 @@ function parseDeprecatedPrintTypeOptions(
 ): Record<string, never>;
 ```
 
-Defined in: config.ts:583
+Defined in: config.ts:590
 
 Placeholder function for handling deprecated print type options.
 Currently returns an empty object as these options are deprecated.
@@ -3775,7 +3778,7 @@ An empty object
 function parseGroupByOption(groupOptions): Maybe<GroupByDirectiveOptions>;
 ```
 
-Defined in: config.ts:683
+Defined in: config.ts:690
 
 Parses and validates the groupByDirective option string format.
 The format should be @directive(field|=fallback) where:
@@ -3828,7 +3831,7 @@ parseGroupByOption("invalid-format");
 function parseHomepageOption(cliHomepage, configHomepage): Maybe<string>;
 ```
 
-Defined in: config.ts:703
+Defined in: config.ts:710
 
 ### Parameters
 
@@ -12722,7 +12725,7 @@ Provides utilities for creating, formatting, and managing links to GraphQL types
 const API_GROUPS: Required<ApiGroupOverrideType>;
 ```
 
-Defined in: printer-legacy/src/link.ts:48
+Defined in: printer-legacy/src/link.ts:53
 
 ---
 
@@ -12732,7 +12735,7 @@ Defined in: printer-legacy/src/link.ts:48
 function getCategoryLocale(type): Maybe<TypeLocale>;
 ```
 
-Defined in: printer-legacy/src/link.ts:99
+Defined in: printer-legacy/src/link.ts:104
 
 Gets the locale category for a given GraphQL type.
 
@@ -12758,7 +12761,7 @@ The locale category for the type, or `undefined` if not found
 function getLinkApiGroupFolder(type, groups?): string;
 ```
 
-Defined in: printer-legacy/src/link.ts:185
+Defined in: printer-legacy/src/link.ts:190
 
 Gets the folder name for an API group based on the GraphQL type and group options.
 
@@ -12790,7 +12793,7 @@ The folder name for the API group
 function getLinkCategoryFolder(type, operationLocale?): Maybe<string>;
 ```
 
-Defined in: printer-legacy/src/link.ts:128
+Defined in: printer-legacy/src/link.ts:133
 
 Gets the folder name for a link category based on the GraphQL type and operation locale.
 
@@ -12822,7 +12825,7 @@ The folder name for the link category, or `undefined` if not found
 function getLinkDeprecatedFolder(type, option): string;
 ```
 
-Defined in: printer-legacy/src/link.ts:203
+Defined in: printer-legacy/src/link.ts:208
 
 Gets the folder name for deprecated types based on the GraphQL type and deprecation option.
 
@@ -12854,7 +12857,7 @@ The folder name for deprecated types
 function getRelationLink(category, type, options): Maybe<TypeLink>;
 ```
 
-Defined in: printer-legacy/src/link.ts:306
+Defined in: printer-legacy/src/link.ts:317
 
 Gets the link for a relation based on the category, type, and options.
 
@@ -12892,7 +12895,7 @@ The link object for the relation, or `undefined` if not found
 function hasOptionParentType(options): boolean;
 ```
 
-Defined in: printer-legacy/src/link.ts:169
+Defined in: printer-legacy/src/link.ts:174
 
 Checks if the options include the `parentTypePrefix` attribute.
 
@@ -12918,7 +12921,7 @@ The options to check
 function hasOptionWithAttributes(options): boolean;
 ```
 
-Defined in: printer-legacy/src/link.ts:159
+Defined in: printer-legacy/src/link.ts:164
 
 Checks if the options include the `withAttributes` attribute.
 
@@ -12944,7 +12947,7 @@ The options to check
 function hasPrintableDirective(type, options?): boolean;
 ```
 
-Defined in: printer-legacy/src/link.ts:60
+Defined in: printer-legacy/src/link.ts:65
 
 Checks if a type has printable directives based on the provided options.
 
@@ -12973,20 +12976,24 @@ Configuration options for directive printing (`deprecated`, `onlyDocDirectives`,
 ## printLink() \{#printlink\}
 
 ```ts
-function printLink(type, options): string;
+function printLink<T>(arg, options): string;
 ```
 
-Defined in: printer-legacy/src/link.ts:359
+Defined in: printer-legacy/src/link.ts:388
 
 Prints a link for a GraphQL type based on the provided options.
 
+### Type Parameters
+
+#### T
+
+`T`
+
 ### Parameters
 
-#### type
+#### arg
 
-`unknown`
-
-The GraphQL type to print a link for
+`Maybe`&lt;`TypeLink`&gt; | `T`
 
 #### options
 
@@ -13008,7 +13015,7 @@ The formatted link as a string
 function printLinkAttributes(type, text?): string;
 ```
 
-Defined in: printer-legacy/src/link.ts:329
+Defined in: printer-legacy/src/link.ts:340
 
 Prints the attributes of a link based on the GraphQL type.
 
@@ -13040,7 +13047,7 @@ The text with appended attributes
 function printParentLink(type, options): string | MDXString;
 ```
 
-Defined in: printer-legacy/src/link.ts:391
+Defined in: printer-legacy/src/link.ts:432
 
 Prints a parent link for a GraphQL type based on the provided options.
 
@@ -13072,7 +13079,7 @@ The formatted parent link as a string or MDX string
 function toLink(type, name, operation, options): TypeLink;
 ```
 
-Defined in: printer-legacy/src/link.ts:226
+Defined in: printer-legacy/src/link.ts:231
 
 Converts a GraphQL type to a link object.
 
@@ -13170,7 +13177,7 @@ It includes utilities for handling various GraphQL types, custom directives, and
 
 ## Printer \{#printer\}
 
-Defined in: printer-legacy/src/printer.ts:118
+Defined in: printer-legacy/src/printer.ts:119
 
 The Printer class implements the core functionality for generating Markdown documentation
 from GraphQL schema types.
@@ -13216,7 +13223,7 @@ new Printer(): Printer;
 static eventEmitter: Maybe<PrinterEventEmitter>;
 ```
 
-Defined in: printer-legacy/src/printer.ts:129
+Defined in: printer-legacy/src/printer.ts:130
 
 Optional event emitter for print events.
 When set, the printer will emit events before/after printCode and printType,
@@ -13228,7 +13235,7 @@ allowing external code to intercept and modify the output.
 static mdxDeclaration: Readonly<Maybe<string>>;
 ```
 
-Defined in: printer-legacy/src/printer.ts:149
+Defined in: printer-legacy/src/printer.ts:150
 
 Prints mdx modules import declaration
 
@@ -13238,7 +13245,7 @@ Prints mdx modules import declaration
 static options: Readonly<Maybe<PrintTypeOptions>>;
 ```
 
-Defined in: printer-legacy/src/printer.ts:122
+Defined in: printer-legacy/src/printer.ts:123
 
 Global printer configuration options
 
@@ -13248,7 +13255,7 @@ Global printer configuration options
 readonly static printCustomDirectives: (type, options) => string;
 ```
 
-Defined in: printer-legacy/src/printer.ts:139
+Defined in: printer-legacy/src/printer.ts:140
 
 Prints custom directives
 
@@ -13280,7 +13287,7 @@ Markdown string containing all formatted directives
 readonly static printCustomTags: (type, options) => string | MDXString;
 ```
 
-Defined in: printer-legacy/src/printer.ts:144
+Defined in: printer-legacy/src/printer.ts:145
 
 Prints custom tags
 
@@ -13312,7 +13319,7 @@ Formatted Markdown string of badges or empty string
 readonly static printDescription: (type, options, noText?) => string | MDXString;
 ```
 
-Defined in: printer-legacy/src/printer.ts:134
+Defined in: printer-legacy/src/printer.ts:135
 
 Prints type descriptions
 
@@ -13359,7 +13366,7 @@ static init(
    eventEmitter?): Promise<void>;
 ```
 
-Defined in: printer-legacy/src/printer.ts:162
+Defined in: printer-legacy/src/printer.ts:163
 
 Initializes the printer with the given schema and configuration.
 
@@ -13415,6 +13422,10 @@ Configuration options for the printer
 
 `PrinterConfigPrintTypeOptions`
 
+###### sectionHeaderId?
+
+`boolean`
+
 ###### skipDocDirectives?
 
 `GraphQLDirective`[]
@@ -13447,7 +13458,7 @@ Optional event emitter for print events interception
 readonly static printCode(type, options): string;
 ```
 
-Defined in: printer-legacy/src/printer.ts:259
+Defined in: printer-legacy/src/printer.ts:263
 
 Prints the GraphQL type definition as code block
 
@@ -13480,7 +13491,7 @@ readonly static printCodeAsync(
    options): Promise<string>;
 ```
 
-Defined in: printer-legacy/src/printer.ts:319
+Defined in: printer-legacy/src/printer.ts:323
 
 Prints the GraphQL type definition as code block with event emission support.
 
@@ -13529,7 +13540,7 @@ Event handlers can:
 readonly static printExample(type, options): string;
 ```
 
-Defined in: printer-legacy/src/printer.ts:374
+Defined in: printer-legacy/src/printer.ts:378
 
 Prints example usage of the type if available
 
@@ -13562,7 +13573,7 @@ readonly static printHeader(
    options): string;
 ```
 
-Defined in: printer-legacy/src/printer.ts:238
+Defined in: printer-legacy/src/printer.ts:242
 
 Prints the header section of a type documentation
 
@@ -13598,7 +13609,7 @@ Formatted header string with optional frontmatter
 readonly static printMetaTags(_type, options): string | MDXString;
 ```
 
-Defined in: printer-legacy/src/printer.ts:456
+Defined in: printer-legacy/src/printer.ts:460
 
 Prints HTML meta tags for the documentation
 
@@ -13628,7 +13639,7 @@ Formatted HTML meta tags string
 readonly static printRelations(type, options): string | MDXString;
 ```
 
-Defined in: printer-legacy/src/printer.ts:439
+Defined in: printer-legacy/src/printer.ts:443
 
 Prints related type information
 
@@ -13661,7 +13672,7 @@ readonly static printType(
    options?): Promise<Maybe<MDXString>>;
 ```
 
-Defined in: printer-legacy/src/printer.ts:506
+Defined in: printer-legacy/src/printer.ts:510
 
 Main method to print complete documentation for a GraphQL type
 
@@ -13724,7 +13735,7 @@ When an event emitter is configured, emits events:
 readonly static printTypeMetadata(type, options): string | MDXString;
 ```
 
-Defined in: printer-legacy/src/printer.ts:403
+Defined in: printer-legacy/src/printer.ts:407
 
 Prints metadata information for a GraphQL type
 
@@ -13919,7 +13930,7 @@ function printMetadataSection<T, V>(
 ): string | MDXString;
 ```
 
-Defined in: printer-legacy/src/section.ts:170
+Defined in: printer-legacy/src/section.ts:193
 
 Prints a metadata section with special handling for deprecated items.
 
@@ -13977,7 +13988,7 @@ Formatted MDX string containing the metadata section
 function printSection<V>(values, section, options): string | MDXString;
 ```
 
-Defined in: printer-legacy/src/section.ts:119
+Defined in: printer-legacy/src/section.ts:142
 
 Prints a complete section with title and content.
 
@@ -14023,7 +14034,7 @@ Formatted MDX string containing the complete section
 function printSectionItem<T>(type, options): string | MDXString;
 ```
 
-Defined in: printer-legacy/src/section.ts:33
+Defined in: printer-legacy/src/section.ts:44
 
 Prints a single section item with its associated metadata.
 
@@ -14063,7 +14074,7 @@ Formatted MDX string containing the section item
 function printSectionItems<V>(values, options): string | MDXString;
 ```
 
-Defined in: printer-legacy/src/section.ts:83
+Defined in: printer-legacy/src/section.ts:106
 
 Prints an array of section items with consistent formatting.
 
