@@ -21,6 +21,7 @@ This index exposes the documentation set that powers graphql-markdown.dev so LLM
 - [Homepage](https://graphql-markdown.dev/docs/advanced/homepage): Create a custom homepage for your generated GraphQL documentation with proper sidebar positioning and navigation.
 - [Hooks Recipes](https://graphql-markdown.dev/docs/advanced/hook-recipes): Customize GraphQL-Markdown with lifecycle hooks. Examples for modifying output, adding custom processing, and integrating with build pipelines.
 - [Integration with Frameworks](https://graphql-markdown.dev/docs/advanced/integration-with-frameworks): Integrate GraphQL-Markdown with Docusaurus, Astro, Next.js, VitePress, and other documentation frameworks. Complete setup guides and examples.
+- [Namespaced operations](https://graphql-markdown.dev/docs/advanced/namespaced-operations): Documents namespaced GraphQL operations for nested query, mutation, and subscription fields.
 - [Schema loading](https://graphql-markdown.dev/docs/advanced/schema-loading): Load GraphQL schemas from files, URLs, or introspection endpoints. Configure custom loaders for different schema sources.
 - [Settings](https://graphql-markdown.dev/docs/settings): Complete reference of all GraphQL-Markdown settings, CLI flags, and configuration options with default values and examples.
 - [Troubleshooting](https://graphql-markdown.dev/docs/troubleshooting): Solutions for common GraphQL-Markdown issues including duplicate graphql modules, missing type definitions, and configuration problems.

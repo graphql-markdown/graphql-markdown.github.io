@@ -9,8 +9,8 @@
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#485e58">
 <link rel="apple-touch-icon" href="/img/graphql-markdown.png"><link rel="stylesheet" href="/assets/css/styles.69f42da2.css">
-<script src="/assets/js/runtime~main.9680203a.js" defer="defer"></script>
-<script src="/assets/js/main.c55497b2.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.4434dc53.js" defer="defer"></script>
+<script src="/assets/js/main.db1f977b.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
 <svg style="display: none;"><defs>
@@ -21,7 +21,7 @@
 <p><a href="https://graphql-markdown.dev/docs/settings#printtypeoptions" target="_blank" rel="noopener noreferrer" class="">Option <code>relatedTypeSection</code></a></p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="getrelationoffield">getRelationOfField<a href="#getrelationoffield" class="hash-link" aria-label="Direct link to getRelationOfField" title="Direct link to getRelationOfField" translate="no">​</a></h2>
 <div class="language-ts codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-ts codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token keyword" style="color:#00009f">const</span><span class="token plain"> getRelationOfField</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> IGetRelation</span><span class="token operator" style="color:#393A34">&lt;</span><span class="token plain">RelationOfField</span><span class="token operator" style="color:#393A34">&gt;</span><span class="token punctuation" style="color:#393A34">;</span><br></span></code></pre></div></div>
-<p>Defined in: packages/graphql/src/relation.ts:164</p>
+<p>Defined in: packages/graphql/src/relation.ts:169</p>
 <p>Returns a map of fields and arguments where the GraphQL schema type matches the type.</p>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="see-1">See<a href="#see-1" class="hash-link" aria-label="Direct link to See" title="Direct link to See" translate="no">​</a></h3>
 <p>mapRelationOf</p>
@@ -38,7 +38,7 @@
 <hr>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="getrelationofimplementation">getRelationOfImplementation<a href="#getrelationofimplementation" class="hash-link" aria-label="Direct link to getRelationOfImplementation" title="Direct link to getRelationOfImplementation" translate="no">​</a></h2>
 <div class="language-ts codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-ts codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token keyword" style="color:#00009f">const</span><span class="token plain"> getRelationOfImplementation</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> IGetRelation</span><span class="token operator" style="color:#393A34">&lt;</span><span class="token plain">RelationOfImplementation</span><span class="token operator" style="color:#393A34">&gt;</span><span class="token punctuation" style="color:#393A34">;</span><br></span></code></pre></div></div>
-<p>Defined in: packages/graphql/src/relation.ts:353</p>
+<p>Defined in: packages/graphql/src/relation.ts:371</p>
 <p>Returns a map of types (unions or interfaces) where the GraphQL schema type is implemented.</p>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="see-2">See<a href="#see-2" class="hash-link" aria-label="Direct link to See" title="Direct link to See" translate="no">​</a></h3>
 <p>mapRelationOf</p>
@@ -55,7 +55,7 @@
 <hr>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="getrelationofinterface">getRelationOfInterface<a href="#getrelationofinterface" class="hash-link" aria-label="Direct link to getRelationOfInterface" title="Direct link to getRelationOfInterface" translate="no">​</a></h2>
 <div class="language-ts codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-ts codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token keyword" style="color:#00009f">const</span><span class="token plain"> getRelationOfInterface</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> IGetRelation</span><span class="token operator" style="color:#393A34">&lt;</span><span class="token plain">RelationOfInterface</span><span class="token operator" style="color:#393A34">&gt;</span><span class="token punctuation" style="color:#393A34">;</span><br></span></code></pre></div></div>
-<p>Defined in: packages/graphql/src/relation.ts:296</p>
+<p>Defined in: packages/graphql/src/relation.ts:314</p>
 <p>Returns a map of interfaces where the GraphQL schema type is extended.</p>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="see-3">See<a href="#see-3" class="hash-link" aria-label="Direct link to See" title="Direct link to See" translate="no">​</a></h3>
 <p>mapRelationOf</p>
@@ -89,7 +89,7 @@
 <hr>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="getrelationofunion">getRelationOfUnion<a href="#getrelationofunion" class="hash-link" aria-label="Direct link to getRelationOfUnion" title="Direct link to getRelationOfUnion" translate="no">​</a></h2>
 <div class="language-ts codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-ts codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token keyword" style="color:#00009f">const</span><span class="token plain"> getRelationOfUnion</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> IGetRelation</span><span class="token operator" style="color:#393A34">&lt;</span><span class="token plain">GraphQLUnionType</span><span class="token operator" style="color:#393A34">&gt;</span><span class="token punctuation" style="color:#393A34">;</span><br></span></code></pre></div></div>
-<p>Defined in: packages/graphql/src/relation.ts:240</p>
+<p>Defined in: packages/graphql/src/relation.ts:258</p>
 <p>Returns a map of unions where the GraphQL schema type is part of it.</p>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="see-5">See<a href="#see-5" class="hash-link" aria-label="Direct link to See" title="Direct link to See" translate="no">​</a></h3>
 <p>mapRelationOf</p>

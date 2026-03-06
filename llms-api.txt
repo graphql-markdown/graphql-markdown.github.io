@@ -5795,7 +5795,7 @@ await renderer.generateIndexMetafile("docs/types", "Types", {
 preCollectCategories(rootTypeNames): void;
 ```
 
-Defined in: renderer.ts:705
+Defined in: renderer.ts:741
 
 Pre-collects all category names that will be generated during rendering.
 This allows the position manager to assign consistent positions before
@@ -5831,7 +5831,7 @@ Array of root type names from the schema
 renderHomepage(homepageLocation): Promise<void>;
 ```
 
-Defined in: renderer.ts:755
+Defined in: renderer.ts:791
 
 Renders the homepage for the documentation from a template file.
 Replaces placeholders in the template with actual values.
@@ -5901,7 +5901,7 @@ renderTypeEntities(
    type): Promise<Maybe<Category>>;
 ```
 
-Defined in: renderer.ts:586
+Defined in: renderer.ts:606
 
 Renders documentation for a specific type entity and saves it to a file.
 
@@ -6088,7 +6088,7 @@ function getRenderer(
 ): Promise<Renderer>;
 ```
 
-Defined in: renderer.ts:987
+Defined in: renderer.ts:1023
 
 Factory function to create and initialize a Renderer instance.
 Creates the output directory and returns a configured renderer.
@@ -7401,7 +7401,7 @@ The entry point method is [getSchemaMap](#getschemamap).
 
 ## IntrospectionError \{#introspectionerror\}
 
-Defined in: packages/graphql/src/introspection.ts:49
+Defined in: packages/graphql/src/introspection.ts:53
 
 ### Example
 
@@ -7483,7 +7483,7 @@ function _getFields<T, V>(
   | GraphQLObjectType<any, any>;
 ```
 
-Defined in: packages/graphql/src/introspection.ts:319
+Defined in: packages/graphql/src/introspection.ts:323
 
 **`Internal`**
 
@@ -7538,7 +7538,7 @@ a map of fields as k/v records, or `fallback` value if no fields available.
 function getDirective(entity, directives): GraphQLDirective[];
 ```
 
-Defined in: packages/graphql/src/introspection.ts:230
+Defined in: packages/graphql/src/introspection.ts:234
 
 Returns a schema entity's list of directives matching a defined set.
 
@@ -7570,7 +7570,7 @@ a list of GraphQL directives matching the set, else `false`.
 function getDirectiveLocationForASTPath(appliedTo): DirectiveLocation;
 ```
 
-Defined in: packages/graphql/src/introspection.ts:120
+Defined in: packages/graphql/src/introspection.ts:124
 
 ### Parameters
 
@@ -7590,7 +7590,7 @@ Defined in: packages/graphql/src/introspection.ts:120
 function getFields(type): unknown[];
 ```
 
-Defined in: packages/graphql/src/introspection.ts:386
+Defined in: packages/graphql/src/introspection.ts:576
 
 Returns fields map for a GraphQL schema type.
 
@@ -7615,10 +7615,13 @@ a list of fields of type object.
 ## getOperation() \{#getoperation\}
 
 ```ts
-function getOperation(operationType?): Record<string, GraphQLOperationType>;
+function getOperation(
+  operationType?,
+  operationKind?,
+): Record<string, GraphQLOperationType>;
 ```
 
-Defined in: packages/graphql/src/introspection.ts:364
+Defined in: packages/graphql/src/introspection.ts:540
 
 **`Internal`**
 
@@ -7634,6 +7637,10 @@ see [getSchemaMap](#getschemamap)
 
 the operation type to parse.
 
+#### operationKind?
+
+`Maybe`&lt;`OperationKind`&gt;
+
 ### Returns
 
 `Record`&lt;`string`, `GraphQLOperationType`&gt;
@@ -7648,7 +7655,7 @@ a map of fields as k/v records.
 function getSchemaMap(schema): SchemaMap;
 ```
 
-Defined in: packages/graphql/src/introspection.ts:492
+Defined in: packages/graphql/src/introspection.ts:654
 
 Returns an introspection map of the GraphQL schema.
 This is the entry point for GraphQL-Markdown schema parsing features.
@@ -7737,7 +7744,7 @@ function getTypeDirectiveArgValue(
 ): Maybe<string | Record<string, unknown>>;
 ```
 
-Defined in: packages/graphql/src/introspection.ts:291
+Defined in: packages/graphql/src/introspection.ts:295
 
 Returns one directive's argument's value linked to a GraphQL schema type.
 It calls [getTypeDirectiveValues](#gettypedirectivevalues) and returns a matching record.
@@ -7779,7 +7786,7 @@ function getTypeDirectiveValues(
 ): Maybe<Record<string, unknown>>;
 ```
 
-Defined in: packages/graphql/src/introspection.ts:260
+Defined in: packages/graphql/src/introspection.ts:264
 
 Returns all directive's arguments' values linked to a GraphQL schema type.
 
@@ -7811,7 +7818,7 @@ a record k/v with arguments' name as keys and arguments' value.
 function getTypeFromSchema<T>(schema, type): Maybe<Record<string, T>>;
 ```
 
-Defined in: packages/graphql/src/introspection.ts:65
+Defined in: packages/graphql/src/introspection.ts:69
 
 **`Internal`**
 
@@ -7856,7 +7863,7 @@ a map of GraphQL named types for the matching GraphQL type, or `undefined` if no
 function getTypeName(type, defaultName?): string;
 ```
 
-Defined in: packages/graphql/src/introspection.ts:405
+Defined in: packages/graphql/src/introspection.ts:389
 
 Resolves the name of a GraphQL schema type.
 
@@ -7888,7 +7895,7 @@ the type's name, or `defaultName`.
 function hasAstNode<T>(node): node is AstNodeType<T>;
 ```
 
-Defined in: packages/graphql/src/introspection.ts:113
+Defined in: packages/graphql/src/introspection.ts:117
 
 **`Internal`**
 
@@ -7922,7 +7929,7 @@ a GraphQL schema named type.
 function hasDirective(entity, directives, fallback?): boolean;
 ```
 
-Defined in: packages/graphql/src/introspection.ts:195
+Defined in: packages/graphql/src/introspection.ts:199
 
 Checks if a schema entity as a directive belonging to a defined set.
 
@@ -7960,7 +7967,7 @@ default value if the entity type is not a valid location for directives.
 function isValidDirectiveLocation(entity, directive): boolean;
 ```
 
-Defined in: packages/graphql/src/introspection.ts:174
+Defined in: packages/graphql/src/introspection.ts:178
 
 Check if a directive can be applied to specific schema entity location.
 
@@ -8048,7 +8055,7 @@ Library supporting `relatedTypeSection` for displaying relations between GraphQL
 const getRelationOfField: IGetRelation<RelationOfField>;
 ```
 
-Defined in: packages/graphql/src/relation.ts:164
+Defined in: packages/graphql/src/relation.ts:169
 
 Returns a map of fields and arguments where the GraphQL schema type matches the type.
 
@@ -8084,7 +8091,7 @@ a record map of fields and arguments relations.
 const getRelationOfImplementation: IGetRelation<RelationOfImplementation>;
 ```
 
-Defined in: packages/graphql/src/relation.ts:353
+Defined in: packages/graphql/src/relation.ts:371
 
 Returns a map of types (unions or interfaces) where the GraphQL schema type is implemented.
 
@@ -8120,7 +8127,7 @@ a record map of unions or interfaces relations.
 const getRelationOfInterface: IGetRelation<RelationOfInterface>;
 ```
 
-Defined in: packages/graphql/src/relation.ts:296
+Defined in: packages/graphql/src/relation.ts:314
 
 Returns a map of interfaces where the GraphQL schema type is extended.
 
@@ -8192,7 +8199,7 @@ a record map of operations relations.
 const getRelationOfUnion: IGetRelation<GraphQLUnionType>;
 ```
 
-Defined in: packages/graphql/src/relation.ts:240
+Defined in: packages/graphql/src/relation.ts:258
 
 Returns a map of unions where the GraphQL schema type is part of it.
 
@@ -10692,7 +10699,7 @@ The folder name for deprecated types
 function getRelationLink(category, type, options): Maybe<TypeLink>;
 ```
 
-Defined in: printer-legacy/src/link.ts:317
+Defined in: printer-legacy/src/link.ts:327
 
 Gets the link for a relation based on the category, type, and options.
 
@@ -10814,7 +10821,7 @@ Configuration options for directive printing (`deprecated`, `onlyDocDirectives`,
 function printLink<T>(arg, options): string;
 ```
 
-Defined in: printer-legacy/src/link.ts:388
+Defined in: printer-legacy/src/link.ts:398
 
 Prints a link for a GraphQL type based on the provided options.
 
@@ -10850,7 +10857,7 @@ The formatted link as a string
 function printLinkAttributes(type, text?): string;
 ```
 
-Defined in: printer-legacy/src/link.ts:340
+Defined in: printer-legacy/src/link.ts:350
 
 Prints the attributes of a link based on the GraphQL type.
 
@@ -10882,7 +10889,7 @@ The text with appended attributes
 function printParentLink(type, options): string | MDXString;
 ```
 
-Defined in: printer-legacy/src/link.ts:432
+Defined in: printer-legacy/src/link.ts:442
 
 Prints a parent link for a GraphQL type based on the provided options.
 

@@ -9,8 +9,8 @@
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#485e58">
 <link rel="apple-touch-icon" href="/img/graphql-markdown.png"><link rel="stylesheet" href="/assets/css/styles.69f42da2.css">
-<script src="/assets/js/runtime~main.9680203a.js" defer="defer"></script>
-<script src="/assets/js/main.c55497b2.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.4434dc53.js" defer="defer"></script>
+<script src="/assets/js/main.db1f977b.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
 <svg style="display: none;"><defs>
@@ -81,7 +81,7 @@ Provides utilities for creating, formatting, and managing links to GraphQL types
 <hr>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="getrelationlink">getRelationLink()<a href="#getrelationlink" class="hash-link" aria-label="Direct link to getRelationLink()" title="Direct link to getRelationLink()" translate="no">​</a></h2>
 <div class="language-ts codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-ts codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token keyword" style="color:#00009f">function</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">getRelationLink</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">category</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> type</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> options</span><span class="token punctuation" style="color:#393A34">)</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> Maybe</span><span class="token operator" style="color:#393A34">&lt;</span><span class="token plain">TypeLink</span><span class="token operator" style="color:#393A34">&gt;</span><span class="token punctuation" style="color:#393A34">;</span><br></span></code></pre></div></div>
-<p>Defined in: printer-legacy/src/link.ts:317</p>
+<p>Defined in: printer-legacy/src/link.ts:327</p>
 <p>Gets the link for a relation based on the category, type, and options.</p>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="parameters-4">Parameters<a href="#parameters-4" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h3>
 <h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="category">category<a href="#category" class="hash-link" aria-label="Direct link to category" title="Direct link to category" translate="no">​</a></h4>
@@ -138,7 +138,7 @@ Provides utilities for creating, formatting, and managing links to GraphQL types
 <hr>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="printlink">printLink()<a href="#printlink" class="hash-link" aria-label="Direct link to printLink()" title="Direct link to printLink()" translate="no">​</a></h2>
 <div class="language-ts codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-ts codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token keyword" style="color:#00009f">function</span><span class="token plain"> </span><span class="token generic-function function" style="color:#d73a49">printLink</span><span class="token generic-function generic class-name operator" style="color:#393A34">&lt;</span><span class="token generic-function generic class-name constant" style="color:#36acaa">T</span><span class="token generic-function generic class-name operator" style="color:#393A34">&gt;</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">arg</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> options</span><span class="token punctuation" style="color:#393A34">)</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token builtin">string</span><span class="token punctuation" style="color:#393A34">;</span><br></span></code></pre></div></div>
-<p>Defined in: printer-legacy/src/link.ts:388</p>
+<p>Defined in: printer-legacy/src/link.ts:398</p>
 <p>Prints a link for a GraphQL type based on the provided options.</p>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="type-parameters">Type Parameters<a href="#type-parameters" class="hash-link" aria-label="Direct link to Type Parameters" title="Direct link to Type Parameters" translate="no">​</a></h3>
 <h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="t">T<a href="#t" class="hash-link" aria-label="Direct link to T" title="Direct link to T" translate="no">​</a></h4>
@@ -155,7 +155,7 @@ Provides utilities for creating, formatting, and managing links to GraphQL types
 <hr>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="printlinkattributes">printLinkAttributes()<a href="#printlinkattributes" class="hash-link" aria-label="Direct link to printLinkAttributes()" title="Direct link to printLinkAttributes()" translate="no">​</a></h2>
 <div class="language-ts codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-ts codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token keyword" style="color:#00009f">function</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">printLinkAttributes</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">type</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> text</span><span class="token operator" style="color:#393A34">?</span><span class="token punctuation" style="color:#393A34">)</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token builtin">string</span><span class="token punctuation" style="color:#393A34">;</span><br></span></code></pre></div></div>
-<p>Defined in: printer-legacy/src/link.ts:340</p>
+<p>Defined in: printer-legacy/src/link.ts:350</p>
 <p>Prints the attributes of a link based on the GraphQL type.</p>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="parameters-9">Parameters<a href="#parameters-9" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h3>
 <h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="type-6">type<a href="#type-6" class="hash-link" aria-label="Direct link to type" title="Direct link to type" translate="no">​</a></h4>
@@ -170,7 +170,7 @@ Provides utilities for creating, formatting, and managing links to GraphQL types
 <hr>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="printparentlink">printParentLink()<a href="#printparentlink" class="hash-link" aria-label="Direct link to printParentLink()" title="Direct link to printParentLink()" translate="no">​</a></h2>
 <div class="language-ts codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-ts codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token keyword" style="color:#00009f">function</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">printParentLink</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">type</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> options</span><span class="token punctuation" style="color:#393A34">)</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token builtin">string</span><span class="token plain"> </span><span class="token operator" style="color:#393A34">|</span><span class="token plain"> MDXString</span><span class="token punctuation" style="color:#393A34">;</span><br></span></code></pre></div></div>
-<p>Defined in: printer-legacy/src/link.ts:432</p>
+<p>Defined in: printer-legacy/src/link.ts:442</p>
 <p>Prints a parent link for a GraphQL type based on the provided options.</p>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="parameters-10">Parameters<a href="#parameters-10" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters" translate="no">​</a></h3>
 <h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="type-7">type<a href="#type-7" class="hash-link" aria-label="Direct link to type" title="Direct link to type" translate="no">​</a></h4>
