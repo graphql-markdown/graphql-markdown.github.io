@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunk_graphql_markdown_website=globalThis.webpackChunk_graphql_markdown_website||[]).push([[5982],{25982(e,a,r){r.d(a,{createPacketServices:()=>s.$});var s=r(96527);r(11613)}}]);
