@@ -59,9 +59,9 @@ Optional logger module to use.
 
 #### customMdxParser?
 
-Optional MDX parser configuration.
+`string` \| `boolean`
 
-`string` | `boolean`
+Optional MDX parser configuration.
 
 ### Returns
 
@@ -135,7 +135,7 @@ Loads configuration from graphql-config and sets up command-line interface.
 const EXTENSION_NAME: "graphql-markdown";
 ```
 
-Defined in: main.ts:22
+Defined in: main.ts:24
 
 Name of the GraphQL Markdown extension for graphql-config
 
@@ -147,7 +147,7 @@ Name of the GraphQL Markdown extension for graphql-config
 const graphQLConfigExtension: GraphQLExtensionDeclaration;
 ```
 
-Defined in: main.ts:28
+Defined in: main.ts:30
 
 GraphQL config extension declaration for GraphQL Markdown
 
@@ -1663,9 +1663,9 @@ The configuration object to check
 
 #### property
 
-The property name to check ("descriptor" or "tag")
+`"descriptor"` \| `"tag"`
 
-`"descriptor"` | `"tag"`
+The property name to check ("descriptor" or "tag")
 
 ### Returns
 
@@ -2335,7 +2335,7 @@ Defined in: events/base.ts:39
 ##### cancellable? \{#cancellable\}
 
 ```ts
-optional cancellable: boolean;
+optional cancellable?: boolean;
 ```
 
 Defined in: events/base.ts:41
@@ -2343,7 +2343,7 @@ Defined in: events/base.ts:41
 ##### defaultAction? \{#defaultaction-1\}
 
 ```ts
-optional defaultAction: DefaultAction;
+optional defaultAction?: DefaultAction;
 ```
 
 Defined in: events/base.ts:40
@@ -2460,19 +2460,19 @@ Event data containing schema, output directory, and change status
 ###### outputDir?
 
 ```ts
-optional outputDir: string;
+optional outputDir?: string;
 ```
 
 ###### schema?
 
 ```ts
-optional schema: unknown;
+optional schema?: unknown;
 ```
 
 ###### schemaHasChanges?
 
 ```ts
-optional schemaHasChanges: boolean;
+optional schemaHasChanges?: boolean;
 ```
 
 #### Accessors
@@ -2776,7 +2776,7 @@ dirPath: string;
 ###### options?
 
 ```ts
-optional options: Record<string, unknown>;
+optional options?: Record<string, unknown>;
 ```
 
 #### Accessors
@@ -4431,19 +4431,19 @@ Event data containing schema location, schema, and root types
 ###### rootTypes?
 
 ```ts
-optional rootTypes: Maybe<SchemaMap>;
+optional rootTypes?: Maybe<SchemaMap>;
 ```
 
 ###### schema?
 
 ```ts
-optional schema: Maybe<GraphQLSchema>;
+optional schema?: Maybe<GraphQLSchema>;
 ```
 
 ###### schemaLocation?
 
 ```ts
-optional schemaLocation: string;
+optional schemaLocation?: string;
 ```
 
 #### Accessors
@@ -5964,7 +5964,7 @@ const options: CategoryMetafileOptions = {
 #### collapsed? \{#collapsed\}
 
 ```ts
-optional collapsed: boolean;
+optional collapsed?: boolean;
 ```
 
 Defined in: renderer.ts:221
@@ -5974,7 +5974,7 @@ Whether the category should be initially collapsed
 #### collapsible? \{#collapsible\}
 
 ```ts
-optional collapsible: boolean;
+optional collapsible?: boolean;
 ```
 
 Defined in: renderer.ts:220
@@ -5984,7 +5984,7 @@ Whether the category should be collapsible in the sidebar
 #### sidebarPosition? \{#sidebarposition\}
 
 ```ts
-optional sidebarPosition: number;
+optional sidebarPosition?: number;
 ```
 
 Defined in: renderer.ts:222
@@ -5994,7 +5994,7 @@ Custom position in the sidebar (lower numbers appear first)
 #### styleClass? \{#styleclass\}
 
 ```ts
-optional styleClass: string;
+optional styleClass?: string;
 ```
 
 Defined in: renderer.ts:223
@@ -7401,7 +7401,7 @@ The entry point method is [getSchemaMap](#getschemamap).
 
 ## IntrospectionError \{#introspectionerror\}
 
-Defined in: packages/graphql/src/introspection.ts:53
+Defined in: packages/graphql/src/introspection.ts:51
 
 ### Example
 
@@ -7476,14 +7476,10 @@ function _getFields<T, V>(
   type,
   processor?,
   fallback?,
-):
-  | GraphQLFieldMap<unknown, unknown>
-  | GraphQLInputFieldMap
-  | V
-  | GraphQLObjectType<any, any>;
+): Record<string, unknown> | V;
 ```
 
-Defined in: packages/graphql/src/introspection.ts:323
+Defined in: packages/graphql/src/introspection.ts:312
 
 **`Internal`**
 
@@ -7523,10 +7519,7 @@ optional fallback value, `undefined` if not set.
 
 ### Returns
 
-\| `GraphQLFieldMap`&lt;`unknown`, `unknown`&gt;
-\| `GraphQLInputFieldMap`
-\| `V`
-\| `GraphQLObjectType`&lt;`any`, `any`&gt;
+`Record`&lt;`string`, `unknown`&gt; \| `V`
 
 a map of fields as k/v records, or `fallback` value if no fields available.
 
@@ -7538,7 +7531,7 @@ a map of fields as k/v records, or `fallback` value if no fields available.
 function getDirective(entity, directives): GraphQLDirective[];
 ```
 
-Defined in: packages/graphql/src/introspection.ts:234
+Defined in: packages/graphql/src/introspection.ts:223
 
 Returns a schema entity's list of directives matching a defined set.
 
@@ -7570,7 +7563,7 @@ a list of GraphQL directives matching the set, else `false`.
 function getDirectiveLocationForASTPath(appliedTo): DirectiveLocation;
 ```
 
-Defined in: packages/graphql/src/introspection.ts:124
+Defined in: packages/graphql/src/introspection.ts:122
 
 ### Parameters
 
@@ -7590,7 +7583,7 @@ Defined in: packages/graphql/src/introspection.ts:124
 function getFields(type): unknown[];
 ```
 
-Defined in: packages/graphql/src/introspection.ts:576
+Defined in: packages/graphql/src/introspection.ts:561
 
 Returns fields map for a GraphQL schema type.
 
@@ -7621,7 +7614,7 @@ function getOperation(
 ): Record<string, GraphQLOperationType>;
 ```
 
-Defined in: packages/graphql/src/introspection.ts:540
+Defined in: packages/graphql/src/introspection.ts:525
 
 **`Internal`**
 
@@ -7655,7 +7648,7 @@ a map of fields as k/v records.
 function getSchemaMap(schema): SchemaMap;
 ```
 
-Defined in: packages/graphql/src/introspection.ts:654
+Defined in: packages/graphql/src/introspection.ts:639
 
 Returns an introspection map of the GraphQL schema.
 This is the entry point for GraphQL-Markdown schema parsing features.
@@ -7744,7 +7737,7 @@ function getTypeDirectiveArgValue(
 ): Maybe<string | Record<string, unknown>>;
 ```
 
-Defined in: packages/graphql/src/introspection.ts:295
+Defined in: packages/graphql/src/introspection.ts:284
 
 Returns one directive's argument's value linked to a GraphQL schema type.
 It calls [getTypeDirectiveValues](#gettypedirectivevalues) and returns a matching record.
@@ -7786,7 +7779,7 @@ function getTypeDirectiveValues(
 ): Maybe<Record<string, unknown>>;
 ```
 
-Defined in: packages/graphql/src/introspection.ts:264
+Defined in: packages/graphql/src/introspection.ts:253
 
 Returns all directive's arguments' values linked to a GraphQL schema type.
 
@@ -7818,7 +7811,7 @@ a record k/v with arguments' name as keys and arguments' value.
 function getTypeFromSchema<T>(schema, type): Maybe<Record<string, T>>;
 ```
 
-Defined in: packages/graphql/src/introspection.ts:69
+Defined in: packages/graphql/src/introspection.ts:67
 
 **`Internal`**
 
@@ -7863,7 +7856,7 @@ a map of GraphQL named types for the matching GraphQL type, or `undefined` if no
 function getTypeName(type, defaultName?): string;
 ```
 
-Defined in: packages/graphql/src/introspection.ts:389
+Defined in: packages/graphql/src/introspection.ts:374
 
 Resolves the name of a GraphQL schema type.
 
@@ -7895,7 +7888,7 @@ the type's name, or `defaultName`.
 function hasAstNode<T>(node): node is AstNodeType<T>;
 ```
 
-Defined in: packages/graphql/src/introspection.ts:117
+Defined in: packages/graphql/src/introspection.ts:115
 
 **`Internal`**
 
@@ -7929,7 +7922,7 @@ a GraphQL schema named type.
 function hasDirective(entity, directives, fallback?): boolean;
 ```
 
-Defined in: packages/graphql/src/introspection.ts:199
+Defined in: packages/graphql/src/introspection.ts:188
 
 Checks if a schema entity as a directive belonging to a defined set.
 
@@ -7967,7 +7960,7 @@ default value if the entity type is not a valid location for directives.
 function isValidDirectiveLocation(entity, directive): boolean;
 ```
 
-Defined in: packages/graphql/src/introspection.ts:178
+Defined in: packages/graphql/src/introspection.ts:167
 
 Check if a directive can be applied to specific schema entity location.
 
@@ -8659,9 +8652,15 @@ a string to be logged.
 
 #### level?
 
-optional log level, `"info"` by default.
+\| `"debug"`
+\| `"error"`
+\| `"info"`
+\| `"log"`
+\| `"success"`
+\| `"warn"`
+\| [`LogLevel`](#loglevel)
 
-`"debug"` | `"error"` | `"info"` | `"log"` | `"success"` | `"warn"` | [`LogLevel`](#loglevel)
+optional log level, `"info"` by default.
 
 ### Returns
 
@@ -9643,7 +9642,7 @@ The directive example configuration if valid, otherwise `undefined`
 function printExample(type, options): Maybe<string>;
 ```
 
-Defined in: printer-legacy/src/example.ts:247
+Defined in: printer-legacy/src/example.ts:252
 
 Prints an example value for a given GraphQL type or operation.
 
@@ -10567,7 +10566,7 @@ Provides utilities for creating, formatting, and managing links to GraphQL types
 const API_GROUPS: Required<ApiGroupOverrideType>;
 ```
 
-Defined in: printer-legacy/src/link.ts:53
+Defined in: printer-legacy/src/link.ts:52
 
 ---
 
@@ -10577,7 +10576,7 @@ Defined in: printer-legacy/src/link.ts:53
 function getCategoryLocale(type): Maybe<TypeLocale>;
 ```
 
-Defined in: printer-legacy/src/link.ts:104
+Defined in: printer-legacy/src/link.ts:103
 
 Gets the locale category for a given GraphQL type.
 
@@ -10603,7 +10602,7 @@ The locale category for the type, or `undefined` if not found
 function getLinkApiGroupFolder(type, groups?): string;
 ```
 
-Defined in: printer-legacy/src/link.ts:190
+Defined in: printer-legacy/src/link.ts:189
 
 Gets the folder name for an API group based on the GraphQL type and group options.
 
@@ -10635,7 +10634,7 @@ The folder name for the API group
 function getLinkCategoryFolder(type, operationLocale?): Maybe<string>;
 ```
 
-Defined in: printer-legacy/src/link.ts:133
+Defined in: printer-legacy/src/link.ts:132
 
 Gets the folder name for a link category based on the GraphQL type and operation locale.
 
@@ -10667,7 +10666,7 @@ The folder name for the link category, or `undefined` if not found
 function getLinkDeprecatedFolder(type, option): string;
 ```
 
-Defined in: printer-legacy/src/link.ts:208
+Defined in: printer-legacy/src/link.ts:207
 
 Gets the folder name for deprecated types based on the GraphQL type and deprecation option.
 
@@ -10737,7 +10736,7 @@ The link object for the relation, or `undefined` if not found
 function hasOptionParentType(options): boolean;
 ```
 
-Defined in: printer-legacy/src/link.ts:174
+Defined in: printer-legacy/src/link.ts:173
 
 Checks if the options include the `parentTypePrefix` attribute.
 
@@ -10763,7 +10762,7 @@ The options to check
 function hasOptionWithAttributes(options): boolean;
 ```
 
-Defined in: printer-legacy/src/link.ts:164
+Defined in: printer-legacy/src/link.ts:163
 
 Checks if the options include the `withAttributes` attribute.
 
@@ -10789,7 +10788,7 @@ The options to check
 function hasPrintableDirective(type, options?): boolean;
 ```
 
-Defined in: printer-legacy/src/link.ts:65
+Defined in: printer-legacy/src/link.ts:64
 
 Checks if a type has printable directives based on the provided options.
 
@@ -10835,7 +10834,7 @@ Prints a link for a GraphQL type based on the provided options.
 
 #### arg
 
-`Maybe`&lt;`TypeLink`&gt; | `T`
+`Maybe`&lt;`TypeLink`&gt; \| `T`
 
 #### options
 
@@ -10921,7 +10920,7 @@ The formatted parent link as a string or MDX string
 function toLink(type, name, operation, options): TypeLink;
 ```
 
-Defined in: printer-legacy/src/link.ts:231
+Defined in: printer-legacy/src/link.ts:230
 
 Converts a GraphQL type to a link object.
 
@@ -11091,7 +11090,7 @@ Defined in: printer-legacy/src/printer.ts:123
 
 Global printer configuration options
 
-#### printCustomDirectives() \{#printcustomdirectives\}
+#### printCustomDirectives \{#printcustomdirectives\}
 
 ```ts
 readonly static printCustomDirectives: (type, options) => string;
@@ -11123,7 +11122,7 @@ General printing options
 
 Markdown string containing all formatted directives
 
-#### printCustomTags() \{#printcustomtags\}
+#### printCustomTags \{#printcustomtags\}
 
 ```ts
 readonly static printCustomTags: (type, options) => string | MDXString;
@@ -11155,7 +11154,7 @@ General printing options
 
 Formatted Markdown string of badges or empty string
 
-#### printDescription() \{#printdescription\}
+#### printDescription \{#printdescription\}
 
 ```ts
 readonly static printDescription: (type, options, noText?) => string | MDXString;
@@ -11800,9 +11799,9 @@ The parent type containing the metadata
 
 #### values
 
-Values to include in the metadata section
+`V` \| `V`[] \| readonly `V`[]
 
-`V` | `V`[] | readonly `V`[]
+Values to include in the metadata section
 
 #### section
 
@@ -11846,9 +11845,9 @@ Type of the values being printed
 
 #### values
 
-Array of values to include in the section
+`V`[] \| readonly `V`[]
 
-`V`[] | readonly `V`[]
+Array of values to include in the section
 
 #### section
 
@@ -11932,9 +11931,9 @@ Type of the values being printed
 
 #### values
 
-Single value or array of values to print as section items
+`V` \| `V`[]
 
-`V` | `V`[]
+Single value or array of values to print as section items
 
 #### options
 
@@ -13121,7 +13120,7 @@ Same as `prettify(content, "mdx")`.
 
 Library of helpers for formatting strings.
 
-## slugify() \{#slugify\}
+## slugify \{#slugify\}
 
 ```ts
 const slugify: (str) => string = kebabCase;
@@ -13472,9 +13471,9 @@ optional character separator for word-based transformation.
 
 #### splitter?
 
-optional regex or string rule for splitting string into word.
+`string` \| `RegExp`
 
-`string` | `RegExp`
+optional regex or string rule for splitting string into word.
 
 ### Returns
 
