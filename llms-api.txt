@@ -177,7 +177,7 @@ The configuration follows this precedence (highest to lowest):
 
 ## DeprecatedOption \{#deprecatedoption\}
 
-Defined in: config.ts:101
+Defined in: core/src/config.ts:102
 
 Options for handling deprecated items in the schema.
 
@@ -199,7 +199,7 @@ const deprecatedHandling = DeprecatedOption.GROUP;
 DEFAULT: "default";
 ```
 
-Defined in: config.ts:102
+Defined in: core/src/config.ts:103
 
 #### GROUP \{#group\}
 
@@ -207,7 +207,7 @@ Defined in: config.ts:102
 GROUP: "group";
 ```
 
-Defined in: config.ts:103
+Defined in: core/src/config.ts:104
 
 #### SKIP \{#skip\}
 
@@ -215,13 +215,13 @@ Defined in: config.ts:103
 SKIP: "skip";
 ```
 
-Defined in: config.ts:104
+Defined in: core/src/config.ts:105
 
 ---
 
 ## DiffMethod \{#diffmethod\}
 
-Defined in: config.ts:83
+Defined in: core/src/config.ts:84
 
 Diff methods used to determine how schema changes are processed.
 
@@ -242,7 +242,7 @@ const diffMethod = DiffMethod.FORCE;
 FORCE: "FORCE";
 ```
 
-Defined in: config.ts:85
+Defined in: core/src/config.ts:86
 
 #### NONE \{#none\}
 
@@ -250,13 +250,13 @@ Defined in: config.ts:85
 NONE: "NONE";
 ```
 
-Defined in: config.ts:84
+Defined in: core/src/config.ts:85
 
 ---
 
 ## TypeHierarchy \{#typehierarchy\}
 
-Defined in: config.ts:65
+Defined in: core/src/config.ts:66
 
 Type hierarchy options for organizing schema documentation.
 
@@ -278,7 +278,7 @@ const hierarchy = TypeHierarchy.API;
 API: "api";
 ```
 
-Defined in: config.ts:66
+Defined in: core/src/config.ts:67
 
 #### ENTITY \{#entity\}
 
@@ -286,7 +286,7 @@ Defined in: config.ts:66
 ENTITY: "entity";
 ```
 
-Defined in: config.ts:67
+Defined in: core/src/config.ts:68
 
 #### FLAT \{#flat\}
 
@@ -294,7 +294,7 @@ Defined in: config.ts:67
 FLAT: "flat";
 ```
 
-Defined in: config.ts:68
+Defined in: core/src/config.ts:69
 
 ---
 
@@ -304,7 +304,7 @@ Defined in: config.ts:68
 const ASSET_HOMEPAGE_LOCATION: string;
 ```
 
-Defined in: config.ts:122
+Defined in: core/src/config.ts:123
 
 Location of the default homepage template.
 
@@ -316,7 +316,7 @@ Location of the default homepage template.
 const DEFAULT_HIERARCHY: object;
 ```
 
-Defined in: config.ts:133
+Defined in: core/src/config.ts:134
 
 Default hierarchy configuration using the API hierarchy type.
 
@@ -349,7 +349,7 @@ const DEFAULT_OPTIONS: Readonly<
   object;
 ```
 
-Defined in: config.ts:142
+Defined in: core/src/config.ts:143
 
 Default configuration options used when no user options are provided.
 These values serve as fallbacks for any missing configuration.
@@ -382,7 +382,7 @@ Options for the complete configuration interface
 const DOCS_URL: "https://graphql-markdown.dev/docs";
 ```
 
-Defined in: config.ts:111
+Defined in: core/src/config.ts:112
 
 Documentation website URL for reference in error messages and help text.
 
@@ -394,7 +394,7 @@ Documentation website URL for reference in error messages and help text.
 const PACKAGE_NAME: "@graphql-markdown/docusaurus";
 ```
 
-Defined in: config.ts:117
+Defined in: core/src/config.ts:118
 
 Default package name used for temporary directory creation and identification.
 
@@ -406,7 +406,7 @@ Default package name used for temporary directory creation and identification.
 function buildConfig(configFileOpts, cliOpts?, id?): Promise<Options>;
 ```
 
-Defined in: config.ts:778
+Defined in: core/src/config.ts:820
 
 ### Parameters
 
@@ -437,7 +437,7 @@ function getCustomDirectives(
 ): Maybe<CustomDirective>;
 ```
 
-Defined in: config.ts:391
+Defined in: core/src/config.ts:392
 
 Processes custom directives, filtering out any that should be skipped.
 Validates that each custom directive has the correct format with required functions.
@@ -500,7 +500,7 @@ getCustomDirectives({ example: { invalid: true } }, []);
 function getDiffMethod(diff): TypeDiffMethod;
 ```
 
-Defined in: config.ts:446
+Defined in: core/src/config.ts:447
 
 ### Parameters
 
@@ -520,7 +520,7 @@ Defined in: config.ts:446
 function getDocDirective(name): DirectiveName;
 ```
 
-Defined in: config.ts:216
+Defined in: core/src/config.ts:217
 
 Retrieves a directive name from a string by parsing and validating the format.
 Directive names should be prefixed with '@' (e.g., '@example').
@@ -561,7 +561,7 @@ getDocDirective("example"); // Error: Invalid "example"
 function getDocOptions(cliOpts?, configOptions?): Required<ConfigDocOptions>;
 ```
 
-Defined in: config.ts:485
+Defined in: core/src/config.ts:486
 
 Builds the document options by merging CLI options, config file options, and defaults.
 Handles index generation flag and front matter configuration.
@@ -608,7 +608,7 @@ console.log(docOptions);
 function getForcedDiffMethod(): TypeDiffMethod;
 ```
 
-Defined in: config.ts:436
+Defined in: core/src/config.ts:437
 
 Returns FORCE as the diff method.
 This function is used when documentation should be forcefully regenerated.
@@ -638,7 +638,7 @@ console.log(method); // "FORCE"
 function getNormalizedDiffMethod(diff): TypeDiffMethod;
 ```
 
-Defined in: config.ts:440
+Defined in: core/src/config.ts:441
 
 ### Parameters
 
@@ -658,7 +658,7 @@ Defined in: config.ts:440
 function getOnlyDocDirectives(cliOpts, configFileOpts): DirectiveName[];
 ```
 
-Defined in: config.ts:247
+Defined in: core/src/config.ts:248
 
 Retrieves the list of "only" directives from CLI and config options.
 These directives specify which schema elements should be included in the documentation.
@@ -708,7 +708,7 @@ function getPrintTypeOptions(
 ): Required<ConfigPrintTypeOptions>;
 ```
 
-Defined in: config.ts:627
+Defined in: core/src/config.ts:671
 
 Builds the print type options by merging CLI options, config file options, and defaults.
 Handles various formatting options for type documentation.
@@ -768,7 +768,7 @@ console.log(printOptions);
 function getSkipDocDirectives(cliOpts, configFileOpts): DirectiveName[];
 ```
 
-Defined in: config.ts:282
+Defined in: core/src/config.ts:283
 
 Retrieves the list of "skip" directives from CLI and config options.
 These directives specify which schema elements should be excluded from the documentation.
@@ -820,7 +820,7 @@ function getTypeHierarchyOption(
 ): Maybe<Partial<Record<TypeHierarchyValueType, TypeHierarchyTypeOptions>>>;
 ```
 
-Defined in: config.ts:538
+Defined in: core/src/config.ts:539
 
 Resolves the type hierarchy configuration by merging CLI and config file options.
 Validates that CLI and config don't specify conflicting hierarchy types.
@@ -879,7 +879,7 @@ getTypeHierarchyOption("api", { entity: {} });
 function getVisibilityDirectives(cliOpts, configFileOpts): object;
 ```
 
-Defined in: config.ts:336
+Defined in: core/src/config.ts:337
 
 Combines and validates visibility directives (only and skip) from both CLI and config sources.
 Ensures that no directive appears in both "only" and "skip" lists simultaneously.
@@ -952,7 +952,7 @@ function parseDeprecatedDocOptions(
 ): Record<string, never>;
 ```
 
-Defined in: config.ts:458
+Defined in: core/src/config.ts:459
 
 Placeholder function for handling deprecated document options.
 Currently returns an empty object as these options are deprecated.
@@ -983,35 +983,37 @@ An empty object
 
 ```ts
 function parseDeprecatedPrintTypeOptions(
-  _cliOpts,
-  _configOptions,
+  cliOpts,
+  configOptions,
 ): Record<string, never>;
 ```
 
-Defined in: config.ts:590
+Defined in: core/src/config.ts:593
 
-Placeholder function for handling deprecated print type options.
-Currently returns an empty object as these options are deprecated.
+Handles deprecated print type options.
+
+Emits deprecation warnings when legacy section toggle options are detected
+from CLI flags or config file values.
 
 ### Parameters
 
-#### \_cliOpts
+#### cliOpts
 
-`Maybe`&lt;`Omit`&lt;`DeprecatedCliOptions`, `"never"`&gt;&gt;
+`Maybe`&lt;`Pick`&lt;`CliOptions`, `"noCode"` \| `"noExample"` \| `"noRelatedType"`&gt;&gt;
 
-Deprecated CLI options (unused)
+CLI options containing deprecated print type flags
 
-#### \_configOptions
+#### configOptions
 
-`Maybe`&lt;`Omit`&lt;`DeprecatedConfigPrintTypeOptions`, `"never"`&gt;&gt;
+`Maybe`&lt;`Pick`&lt;`ConfigPrintTypeOptions`, `"codeSection"` \| `"exampleSection"` \| `"relatedTypeSection"`&gt;&gt;
 
-Deprecated config options (unused)
+Config options containing deprecated print type settings
 
 ### Returns
 
 `Record`&lt;`string`, `never`&gt;
 
-An empty object
+An empty object reserved for backward compatibility
 
 ---
 
@@ -1021,7 +1023,7 @@ An empty object
 function parseGroupByOption(groupOptions): Maybe<GroupByDirectiveOptions>;
 ```
 
-Defined in: config.ts:690
+Defined in: core/src/config.ts:732
 
 Parses and validates the groupByDirective option string format.
 The format should be @directive(field|=fallback) where:
@@ -1074,7 +1076,7 @@ parseGroupByOption("invalid-format");
 function parseHomepageOption(cliHomepage, configHomepage): Maybe<string>;
 ```
 
-Defined in: config.ts:710
+Defined in: core/src/config.ts:752
 
 ### Parameters
 
@@ -1105,7 +1107,7 @@ and simplify maintenance when patterns need to be updated.
 const CONFIG_CONSTANTS: object;
 ```
 
-Defined in: const/patterns.ts:115
+Defined in: core/src/const/patterns.ts:115
 
 String constants used for configuration parsing and defaults.
 
@@ -1128,7 +1130,7 @@ Items without the grouping directive are assigned to this group.
 const PATTERNS: object;
 ```
 
-Defined in: const/patterns.ts:20
+Defined in: core/src/const/patterns.ts:20
 
 Central repository of regex patterns used for configuration parsing and string transformation.
 
@@ -1187,7 +1189,7 @@ Captures the directive name after the @ symbol.
 
 ##### Pattern
 
-`^@(?<directive>\w+)$`
+`^\@(?<directive>\w+)$`
 
 ##### Example
 
@@ -1209,7 +1211,7 @@ Groups: (1) directive name, (2) field name, (3) optional fallback
 
 ##### Pattern
 
-`^@(\w+)\((\w+)(?:\|=(\w+))?\)$`
+`^\@(\w+)\((\w+)(?:\|=(\w+))?\)$`
 
 ##### Example
 
@@ -1303,7 +1305,7 @@ Diff utilities for detecting schema changes between builds.
 function hasChanges(schema, tmpDir, diffMethod, diffModule?): Promise<boolean>;
 ```
 
-Defined in: diff.ts:67
+Defined in: core/src/diff.ts:67
 
 Determines if there are changes in the GraphQL schema by using a specified diff method and module.
 
@@ -1393,7 +1395,7 @@ the application.
 function combineDirectiveNames(...sources): DirectiveName[];
 ```
 
-Defined in: directives/normalize.ts:92
+Defined in: core/src/directives/normalize.ts:94
 
 Combines and deduplicates directive names from multiple sources in one step.
 
@@ -1434,7 +1436,7 @@ const all = combineDirectiveNames(cliDirectives, configDirectives);
 function normalizeDirectiveNames(...sources): DirectiveName[];
 ```
 
-Defined in: directives/normalize.ts:42
+Defined in: core/src/directives/normalize.ts:42
 
 Normalizes directive names from multiple sources into a single flattened array.
 
@@ -1488,7 +1490,7 @@ const safe = normalizeDirectiveNames(
 function uniqueDirectiveNames(directives): DirectiveName[];
 ```
 
-Defined in: directives/normalize.ts:65
+Defined in: core/src/directives/normalize.ts:67
 
 Removes duplicate directive names from an array while preserving order.
 
@@ -1532,7 +1534,7 @@ function hasDescriptor(
 ): config is Record<"descriptor", (args: unknown[]) => unknown>;
 ```
 
-Defined in: directives/validation.ts:39
+Defined in: core/src/directives/validation.ts:39
 
 Type guard to check if an object has a `descriptor` function property.
 
@@ -1569,7 +1571,7 @@ if (hasDescriptor(option)) {
 function hasTag(config): config is Record<"tag", (args: unknown[]) => unknown>;
 ```
 
-Defined in: directives/validation.ts:65
+Defined in: core/src/directives/validation.ts:65
 
 Type guard to check if an object has a `tag` function property.
 
@@ -1606,7 +1608,7 @@ if (hasTag(option)) {
 function isGroupsObject(groups): groups is Record<string, string>;
 ```
 
-Defined in: directives/validation.ts:153
+Defined in: core/src/directives/validation.ts:153
 
 Type guard to check if a value is a configuration group object.
 
@@ -1646,7 +1648,7 @@ function isInvalidFunctionProperty(
 ): config is Record<string, unknown>;
 ```
 
-Defined in: directives/validation.ts:196
+Defined in: core/src/directives/validation.ts:196
 
 Type guard to check if a descriptor or tag property is NOT a function.
 
@@ -1689,7 +1691,7 @@ if (isInvalidFunctionProperty(option, "descriptor")) {
 function isLoaderString(loader): loader is string;
 ```
 
-Defined in: directives/validation.ts:175
+Defined in: core/src/directives/validation.ts:175
 
 Type guard to check if a value is a loader module name (string).
 
@@ -1726,7 +1728,7 @@ if (isLoaderString(loaders[name])) {
 function isPath(path): path is string;
 ```
 
-Defined in: directives/validation.ts:133
+Defined in: core/src/directives/validation.ts:133
 
 Type guard to check if a value is a valid non-empty path string.
 
@@ -1763,7 +1765,7 @@ if (isPath(folderPath)) {
 function isSchemaObject(schema): schema is Record<string, unknown>;
 ```
 
-Defined in: directives/validation.ts:111
+Defined in: core/src/directives/validation.ts:111
 
 Type guard to check if a value is a schema object (key-value mapping).
 
@@ -1800,7 +1802,7 @@ if (isSchemaObject(projectConfig.schema)) {
 function isSchemaString(schema): schema is string;
 ```
 
-Defined in: directives/validation.ts:91
+Defined in: core/src/directives/validation.ts:91
 
 Type guard to check if a value is a schema string.
 
@@ -1837,7 +1839,7 @@ if (isSchemaString(config.schema)) {
 
 ### EmitResult \{#emitresult\}
 
-Defined in: event-emitter.ts:9
+Defined in: core/src/event-emitter.ts:9
 
 Result object returned when emitting a cancellable event.
 
@@ -1849,7 +1851,7 @@ Result object returned when emitting a cancellable event.
 defaultPrevented: boolean;
 ```
 
-Defined in: event-emitter.ts:20
+Defined in: core/src/event-emitter.ts:20
 
 Whether any handler called preventDefault() on the event.
 Only applicable if the event is cancellable.
@@ -1860,7 +1862,7 @@ Only applicable if the event is cancellable.
 errors: Error[];
 ```
 
-Defined in: event-emitter.ts:14
+Defined in: core/src/event-emitter.ts:14
 
 Array of errors that occurred during handler execution.
 Handlers continue executing even if previous handlers throw errors.
@@ -1873,7 +1875,7 @@ Handlers continue executing even if previous handlers throw errors.
 function getEvents(): CancellableEventEmitter;
 ```
 
-Defined in: event-emitter.ts:149
+Defined in: core/src/event-emitter.ts:172
 
 Get the singleton event emitter instance.
 
@@ -1906,7 +1908,7 @@ await events.emitAsync("beforeLoadSchema", event);
 function resetEvents(): void;
 ```
 
-Defined in: event-emitter.ts:173
+Defined in: core/src/event-emitter.ts:196
 
 Reset the event emitter singleton.
 
@@ -1945,7 +1947,7 @@ automatically detects and registers matching callbacks from MDX modules.
 function registerMDXEventHandlers(mdxModule): void;
 ```
 
-Defined in: event-handlers.ts:35
+Defined in: core/src/event-handlers.ts:35
 
 Registers MDX module lifecycle event handlers with the event emitter.
 
@@ -1996,7 +1998,7 @@ callback names in MDX modules. Kept separate to avoid circular dependencies.
 const EVENT_CALLBACK_MAP: object;
 ```
 
-Defined in: event-map.ts:24
+Defined in: core/src/event-map.ts:24
 
 Event callback mapping configuration.
 Maps event names to their corresponding callback names in mdxModule.
@@ -2028,6 +2030,12 @@ readonly print:afterPrintCode: "afterPrintCodeHook" = "afterPrintCodeHook";
 
 ```ts
 readonly print:afterPrintType: "afterPrintTypeHook" = "afterPrintTypeHook";
+```
+
+#### print:beforeComposePageType \{#printbeforecomposepagetype\}
+
+```ts
+readonly print:beforeComposePageType: "beforeComposePageTypeHook" = "beforeComposePageTypeHook";
 ```
 
 #### print:beforePrintCode \{#printbeforeprintcode\}
@@ -2104,293 +2112,6 @@ readonly schema:beforeLoad: "beforeLoadSchemaHook" = "beforeLoadSchemaHook";
 
 ---
 
-## base
-
-Base event class and utilities for GraphQL-Markdown events.
-
-## Events
-
-### `abstract` CancellableEvent \{#abstract-cancellableevent\}
-
-Defined in: events/base.ts:55
-
-Base class for all cancellable events in GraphQL-Markdown.
-
-Provides common functionality:
-
-- preventDefault() to cancel default actions
-- stopPropagation() to halt handler chain
-- Configurable cancellability
-- Optional default action function
-
-#### Extended by
-
-- [`DiffCheckEvent`](diff-check.md#diffcheckevent)
-- [`GenerateIndexMetafileEvent`](generate-index-metafile.md#generateindexmetafileevent)
-- [`PrintCodeEvent`](print-type.md#printcodeevent)
-- [`PrintTypeEvent`](print-type.md#printtypeevent)
-- [`RenderHomepageEvent`](render-homepage.md#renderhomepageevent)
-- [`RenderRootTypesEvent`](render-root-types.md#renderroottypesevent)
-- [`RenderTypeEntitiesEvent`](render-type-entities.md#rendertypeentitiesevent)
-- [`SchemaEvent`](schema-load.md#schemaevent)
-
-#### Implements
-
-- `ICancellableEvent`
-
-#### Constructors
-
-##### Constructor
-
-```ts
-new CancellableEvent(options?): CancellableEvent;
-```
-
-Defined in: events/base.ts:87
-
-Creates a new CancellableEvent.
-
-###### Parameters
-
-###### options?
-
-[`CancellableEventOptions`](#cancellableeventoptions)
-
-Configuration options for the event
-
-###### Returns
-
-[`CancellableEvent`](#abstract-cancellableevent)
-
-#### Accessors
-
-##### defaultAction \{#defaultaction\}
-
-###### Get Signature
-
-```ts
-get defaultAction(): DefaultAction | undefined;
-```
-
-Defined in: events/base.ts:109
-
-Gets the default action function if one was provided.
-
-###### Returns
-
-`DefaultAction` \| `undefined`
-
-###### Implementation of
-
-```ts
-ICancellableEvent.defaultAction;
-```
-
-##### defaultPrevented \{#defaultprevented\}
-
-###### Get Signature
-
-```ts
-get defaultPrevented(): boolean;
-```
-
-Defined in: events/base.ts:95
-
-Gets whether the default action has been prevented.
-
-###### Returns
-
-`boolean`
-
-###### Implementation of
-
-```ts
-ICancellableEvent.defaultPrevented;
-```
-
-##### propagationStopped \{#propagationstopped\}
-
-###### Get Signature
-
-```ts
-get propagationStopped(): boolean;
-```
-
-Defined in: events/base.ts:102
-
-Gets whether propagation has been stopped.
-
-###### Returns
-
-`boolean`
-
-###### Implementation of
-
-```ts
-ICancellableEvent.propagationStopped;
-```
-
-#### Methods
-
-##### preventDefault() \{#preventdefault\}
-
-```ts
-preventDefault(): void;
-```
-
-Defined in: events/base.ts:127
-
-Prevents the default action from executing.
-Only works if the event is cancellable.
-
-###### Returns
-
-`void`
-
-###### Example
-
-```typescript
-events.on("beforeLoadSchema", (event) => {
-  if (shouldUseCustomLoader) {
-    event.preventDefault(); // Stops default schema loading
-    // Custom logic here
-  }
-});
-```
-
-###### Implementation of
-
-```ts
-ICancellableEvent.preventDefault;
-```
-
-##### runDefaultAction() \{#rundefaultaction\}
-
-```ts
-runDefaultAction(): Promise<void>;
-```
-
-Defined in: events/base.ts:160
-
-Executes the default action for an event if it hasn't been prevented.
-
-###### Returns
-
-`Promise`&lt;`void`&gt;
-
-A promise that resolves when the default action completes, or void if the action was prevented or no default action is defined
-
-###### Remarks
-
-This method will only execute the `_defaultAction` if:
-
-- The event's default has not been prevented (`_defaultPrevented` is false)
-- A default action function has been defined (`_defaultAction` is a function)
-
-###### Implementation of
-
-```ts
-ICancellableEvent.runDefaultAction;
-```
-
-##### stopPropagation() \{#stoppropagation\}
-
-```ts
-stopPropagation(): void;
-```
-
-Defined in: events/base.ts:146
-
-Stops propagation to remaining event handlers.
-Handlers registered after the current one will not execute.
-
-###### Returns
-
-`void`
-
-###### Example
-
-```typescript
-events.on("beforeLoadSchema", (event) => {
-  if (criticalError) {
-    event.stopPropagation(); // No more handlers run
-  }
-});
-```
-
-###### Implementation of
-
-```ts
-ICancellableEvent.stopPropagation;
-```
-
-## Other
-
-### CancellableEventOptions \{#cancellableeventoptions\}
-
-Defined in: events/base.ts:39
-
-#### Properties
-
-##### cancellable? \{#cancellable\}
-
-```ts
-optional cancellable?: boolean;
-```
-
-Defined in: events/base.ts:41
-
-##### defaultAction? \{#defaultaction-1\}
-
-```ts
-optional defaultAction?: DefaultAction;
-```
-
-Defined in: events/base.ts:40
-
----
-
-### deepFreeze() \{#deepfreeze\}
-
-```ts
-function deepFreeze<T>(obj): T;
-```
-
-Defined in: events/base.ts:23
-
-Deep freezes an object to make it immutable at runtime.
-Recursively freezes all nested objects and arrays.
-
-#### Type Parameters
-
-##### T
-
-`T` _extends_ `Record`&lt;`PropertyKey`, `any`&gt;
-
-#### Parameters
-
-##### obj
-
-`T`
-
-The object to freeze
-
-#### Returns
-
-`T`
-
-The frozen object (same reference)
-
-#### Example
-
-```typescript
-const data = { user: { name: "John" } };
-deepFreeze(data);
-data.user.name = "Jane"; // Throws error in strict mode
-```
-
----
-
 ## diff-check
 
 Diff checking event class.
@@ -2399,13 +2120,17 @@ Diff checking event class.
 
 ### DiffCheckEvent \{#diffcheckevent\}
 
-Defined in: events/diff-check.ts:15
+Defined in: core/src/events/diff-check.ts:15
 
 Event emitted before/after checking schema differences.
 
 #### Extends
 
-- [`CancellableEvent`](base.md#abstract-cancellableevent)
+- [`DataEvent`](../../utils/events.md#abstract-dataevent)&lt;\{
+  `outputDir?`: `string`;
+  `schema?`: `unknown`;
+  `schemaHasChanges?`: `boolean`;
+  \}&gt;
 
 #### Constructors
 
@@ -2415,7 +2140,7 @@ Event emitted before/after checking schema differences.
 new DiffCheckEvent(data, options?): DiffCheckEvent;
 ```
 
-Defined in: events/diff-check.ts:23
+Defined in: core/src/events/diff-check.ts:20
 
 ###### Parameters
 
@@ -2435,7 +2160,7 @@ Defined in: events/diff-check.ts:23
 
 ###### options?
 
-[`CancellableEventOptions`](base.md#cancellableeventoptions)
+[`CancellableEventOptions`](../../utils/events.md#cancellableeventoptions)
 
 ###### Returns
 
@@ -2443,7 +2168,7 @@ Defined in: events/diff-check.ts:23
 
 ###### Overrides
 
-[`CancellableEvent`](base.md#abstract-cancellableevent).[`constructor`](base.md#constructor)
+[`DataEvent`](../../utils/events.md#abstract-dataevent).[`constructor`](../../utils/events.md#constructor-1)
 
 #### Properties
 
@@ -2453,9 +2178,9 @@ Defined in: events/diff-check.ts:23
 readonly data: object;
 ```
 
-Defined in: events/diff-check.ts:17
+Defined in: utils/dist/events.d.ts:111
 
-Event data containing schema, output directory, and change status
+Read-only event data payload.
 
 ###### outputDir?
 
@@ -2475,6 +2200,10 @@ optional schema?: unknown;
 optional schemaHasChanges?: boolean;
 ```
 
+###### Inherited from
+
+[`DataEvent`](../../utils/events.md#abstract-dataevent).[`data`](../../utils/events.md#data)
+
 #### Accessors
 
 ##### defaultAction \{#defaultaction\}
@@ -2485,7 +2214,7 @@ optional schemaHasChanges?: boolean;
 get defaultAction(): DefaultAction | undefined;
 ```
 
-Defined in: events/base.ts:109
+Defined in: utils/dist/events.d.ts:78
 
 Gets the default action function if one was provided.
 
@@ -2495,7 +2224,7 @@ Gets the default action function if one was provided.
 
 ###### Inherited from
 
-[`CancellableEvent`](base.md#abstract-cancellableevent).[`defaultAction`](base.md#defaultaction)
+[`DataEvent`](../../utils/events.md#abstract-dataevent).[`defaultAction`](../../utils/events.md#defaultaction-1)
 
 ##### defaultPrevented \{#defaultprevented\}
 
@@ -2505,7 +2234,7 @@ Gets the default action function if one was provided.
 get defaultPrevented(): boolean;
 ```
 
-Defined in: events/base.ts:95
+Defined in: utils/dist/events.d.ts:70
 
 Gets whether the default action has been prevented.
 
@@ -2513,9 +2242,29 @@ Gets whether the default action has been prevented.
 
 `boolean`
 
+###### Set Signature
+
+```ts
+set defaultPrevented(value): void;
+```
+
+Defined in: utils/dist/events.d.ts:82
+
+Allows setting defaultPrevented to true directly.
+
+###### Parameters
+
+###### value
+
+`boolean`
+
+###### Returns
+
+`void`
+
 ###### Inherited from
 
-[`CancellableEvent`](base.md#abstract-cancellableevent).[`defaultPrevented`](base.md#defaultprevented)
+[`DataEvent`](../../utils/events.md#abstract-dataevent).[`defaultPrevented`](../../utils/events.md#defaultprevented-1)
 
 ##### propagationStopped \{#propagationstopped\}
 
@@ -2525,7 +2274,7 @@ Gets whether the default action has been prevented.
 get propagationStopped(): boolean;
 ```
 
-Defined in: events/base.ts:102
+Defined in: utils/dist/events.d.ts:74
 
 Gets whether propagation has been stopped.
 
@@ -2533,9 +2282,29 @@ Gets whether propagation has been stopped.
 
 `boolean`
 
+###### Set Signature
+
+```ts
+set propagationStopped(value): void;
+```
+
+Defined in: utils/dist/events.d.ts:86
+
+Allows setting propagationStopped to true directly.
+
+###### Parameters
+
+###### value
+
+`boolean`
+
+###### Returns
+
+`void`
+
 ###### Inherited from
 
-[`CancellableEvent`](base.md#abstract-cancellableevent).[`propagationStopped`](base.md#propagationstopped)
+[`DataEvent`](../../utils/events.md#abstract-dataevent).[`propagationStopped`](../../utils/events.md#propagationstopped-1)
 
 #### Methods
 
@@ -2545,7 +2314,7 @@ Gets whether propagation has been stopped.
 preventDefault(): void;
 ```
 
-Defined in: events/base.ts:127
+Defined in: utils/dist/events.d.ts:91
 
 Prevents the default action from executing.
 Only works if the event is cancellable.
@@ -2554,20 +2323,9 @@ Only works if the event is cancellable.
 
 `void`
 
-###### Example
-
-```typescript
-events.on("beforeLoadSchema", (event) => {
-  if (shouldUseCustomLoader) {
-    event.preventDefault(); // Stops default schema loading
-    // Custom logic here
-  }
-});
-```
-
 ###### Inherited from
 
-[`CancellableEvent`](base.md#abstract-cancellableevent).[`preventDefault`](base.md#preventdefault)
+[`DataEvent`](../../utils/events.md#abstract-dataevent).[`preventDefault`](../../utils/events.md#preventdefault-1)
 
 ##### runDefaultAction() \{#rundefaultaction\}
 
@@ -2575,7 +2333,7 @@ events.on("beforeLoadSchema", (event) => {
 runDefaultAction(): Promise<void>;
 ```
 
-Defined in: events/base.ts:160
+Defined in: utils/dist/events.d.ts:100
 
 Executes the default action for an event if it hasn't been prevented.
 
@@ -2583,18 +2341,9 @@ Executes the default action for an event if it hasn't been prevented.
 
 `Promise`&lt;`void`&gt;
 
-A promise that resolves when the default action completes, or void if the action was prevented or no default action is defined
-
-###### Remarks
-
-This method will only execute the `_defaultAction` if:
-
-- The event's default has not been prevented (`_defaultPrevented` is false)
-- A default action function has been defined (`_defaultAction` is a function)
-
 ###### Inherited from
 
-[`CancellableEvent`](base.md#abstract-cancellableevent).[`runDefaultAction`](base.md#rundefaultaction)
+[`DataEvent`](../../utils/events.md#abstract-dataevent).[`runDefaultAction`](../../utils/events.md#rundefaultaction-1)
 
 ##### stopPropagation() \{#stoppropagation\}
 
@@ -2602,7 +2351,7 @@ This method will only execute the `_defaultAction` if:
 stopPropagation(): void;
 ```
 
-Defined in: events/base.ts:146
+Defined in: utils/dist/events.d.ts:96
 
 Stops propagation to remaining event handlers.
 Handlers registered after the current one will not execute.
@@ -2611,19 +2360,9 @@ Handlers registered after the current one will not execute.
 
 `void`
 
-###### Example
-
-```typescript
-events.on("beforeLoadSchema", (event) => {
-  if (criticalError) {
-    event.stopPropagation(); // No more handlers run
-  }
-});
-```
-
 ###### Inherited from
 
-[`CancellableEvent`](base.md#abstract-cancellableevent).[`stopPropagation`](base.md#stoppropagation)
+[`DataEvent`](../../utils/events.md#abstract-dataevent).[`stopPropagation`](../../utils/events.md#stoppropagation-1)
 
 ---
 
@@ -2637,7 +2376,7 @@ Diff checking event constants.
 const DiffEvents: object;
 ```
 
-Defined in: events/diff-events.ts:10
+Defined in: core/src/events/diff-events.ts:10
 
 Event names for diff checking lifecycle.
 
@@ -2671,7 +2410,7 @@ Generate index metafile event constants.
 const GenerateIndexMetafileEvents: object;
 ```
 
-Defined in: events/generate-index-metafile-events.ts:10
+Defined in: core/src/events/generate-index-metafile-events.ts:10
 
 Event names for generating index metafile.
 
@@ -2703,13 +2442,17 @@ Generate index metafile event class.
 
 ### GenerateIndexMetafileEvent \{#generateindexmetafileevent\}
 
-Defined in: events/generate-index-metafile.ts:14
+Defined in: core/src/events/generate-index-metafile.ts:15
 
 Event emitted before/after generating index metafile.
 
 #### Extends
 
-- [`CancellableEvent`](base.md#abstract-cancellableevent)
+- [`DataEvent`](../../utils/events.md#abstract-dataevent)&lt;\{
+  `category`: `string`;
+  `dirPath`: `string`;
+  `options?`: `Record`&lt;`string`, `unknown`&gt;;
+  \}&gt;
 
 #### Constructors
 
@@ -2719,7 +2462,7 @@ Event emitted before/after generating index metafile.
 new GenerateIndexMetafileEvent(data, options?): GenerateIndexMetafileEvent;
 ```
 
-Defined in: events/generate-index-metafile.ts:22
+Defined in: core/src/events/generate-index-metafile.ts:20
 
 ###### Parameters
 
@@ -2739,7 +2482,7 @@ Defined in: events/generate-index-metafile.ts:22
 
 ###### options?
 
-[`CancellableEventOptions`](base.md#cancellableeventoptions)
+[`CancellableEventOptions`](../../utils/events.md#cancellableeventoptions)
 
 ###### Returns
 
@@ -2747,7 +2490,7 @@ Defined in: events/generate-index-metafile.ts:22
 
 ###### Overrides
 
-[`CancellableEvent`](base.md#abstract-cancellableevent).[`constructor`](base.md#constructor)
+[`DataEvent`](../../utils/events.md#abstract-dataevent).[`constructor`](../../utils/events.md#constructor-1)
 
 #### Properties
 
@@ -2757,9 +2500,9 @@ Defined in: events/generate-index-metafile.ts:22
 readonly data: object;
 ```
 
-Defined in: events/generate-index-metafile.ts:16
+Defined in: utils/dist/events.d.ts:111
 
-Event data containing directory path, category, and options
+Read-only event data payload.
 
 ###### category
 
@@ -2779,6 +2522,10 @@ dirPath: string;
 optional options?: Record<string, unknown>;
 ```
 
+###### Inherited from
+
+[`DataEvent`](../../utils/events.md#abstract-dataevent).[`data`](../../utils/events.md#data)
+
 #### Accessors
 
 ##### defaultAction \{#defaultaction\}
@@ -2789,7 +2536,7 @@ optional options?: Record<string, unknown>;
 get defaultAction(): DefaultAction | undefined;
 ```
 
-Defined in: events/base.ts:109
+Defined in: utils/dist/events.d.ts:78
 
 Gets the default action function if one was provided.
 
@@ -2799,7 +2546,7 @@ Gets the default action function if one was provided.
 
 ###### Inherited from
 
-[`CancellableEvent`](base.md#abstract-cancellableevent).[`defaultAction`](base.md#defaultaction)
+[`DataEvent`](../../utils/events.md#abstract-dataevent).[`defaultAction`](../../utils/events.md#defaultaction-1)
 
 ##### defaultPrevented \{#defaultprevented\}
 
@@ -2809,7 +2556,7 @@ Gets the default action function if one was provided.
 get defaultPrevented(): boolean;
 ```
 
-Defined in: events/base.ts:95
+Defined in: utils/dist/events.d.ts:70
 
 Gets whether the default action has been prevented.
 
@@ -2817,9 +2564,29 @@ Gets whether the default action has been prevented.
 
 `boolean`
 
+###### Set Signature
+
+```ts
+set defaultPrevented(value): void;
+```
+
+Defined in: utils/dist/events.d.ts:82
+
+Allows setting defaultPrevented to true directly.
+
+###### Parameters
+
+###### value
+
+`boolean`
+
+###### Returns
+
+`void`
+
 ###### Inherited from
 
-[`CancellableEvent`](base.md#abstract-cancellableevent).[`defaultPrevented`](base.md#defaultprevented)
+[`DataEvent`](../../utils/events.md#abstract-dataevent).[`defaultPrevented`](../../utils/events.md#defaultprevented-1)
 
 ##### propagationStopped \{#propagationstopped\}
 
@@ -2829,7 +2596,7 @@ Gets whether the default action has been prevented.
 get propagationStopped(): boolean;
 ```
 
-Defined in: events/base.ts:102
+Defined in: utils/dist/events.d.ts:74
 
 Gets whether propagation has been stopped.
 
@@ -2837,9 +2604,29 @@ Gets whether propagation has been stopped.
 
 `boolean`
 
+###### Set Signature
+
+```ts
+set propagationStopped(value): void;
+```
+
+Defined in: utils/dist/events.d.ts:86
+
+Allows setting propagationStopped to true directly.
+
+###### Parameters
+
+###### value
+
+`boolean`
+
+###### Returns
+
+`void`
+
 ###### Inherited from
 
-[`CancellableEvent`](base.md#abstract-cancellableevent).[`propagationStopped`](base.md#propagationstopped)
+[`DataEvent`](../../utils/events.md#abstract-dataevent).[`propagationStopped`](../../utils/events.md#propagationstopped-1)
 
 #### Methods
 
@@ -2849,7 +2636,7 @@ Gets whether propagation has been stopped.
 preventDefault(): void;
 ```
 
-Defined in: events/base.ts:127
+Defined in: utils/dist/events.d.ts:91
 
 Prevents the default action from executing.
 Only works if the event is cancellable.
@@ -2858,20 +2645,9 @@ Only works if the event is cancellable.
 
 `void`
 
-###### Example
-
-```typescript
-events.on("beforeLoadSchema", (event) => {
-  if (shouldUseCustomLoader) {
-    event.preventDefault(); // Stops default schema loading
-    // Custom logic here
-  }
-});
-```
-
 ###### Inherited from
 
-[`CancellableEvent`](base.md#abstract-cancellableevent).[`preventDefault`](base.md#preventdefault)
+[`DataEvent`](../../utils/events.md#abstract-dataevent).[`preventDefault`](../../utils/events.md#preventdefault-1)
 
 ##### runDefaultAction() \{#rundefaultaction\}
 
@@ -2879,7 +2655,7 @@ events.on("beforeLoadSchema", (event) => {
 runDefaultAction(): Promise<void>;
 ```
 
-Defined in: events/base.ts:160
+Defined in: utils/dist/events.d.ts:100
 
 Executes the default action for an event if it hasn't been prevented.
 
@@ -2887,18 +2663,9 @@ Executes the default action for an event if it hasn't been prevented.
 
 `Promise`&lt;`void`&gt;
 
-A promise that resolves when the default action completes, or void if the action was prevented or no default action is defined
-
-###### Remarks
-
-This method will only execute the `_defaultAction` if:
-
-- The event's default has not been prevented (`_defaultPrevented` is false)
-- A default action function has been defined (`_defaultAction` is a function)
-
 ###### Inherited from
 
-[`CancellableEvent`](base.md#abstract-cancellableevent).[`runDefaultAction`](base.md#rundefaultaction)
+[`DataEvent`](../../utils/events.md#abstract-dataevent).[`runDefaultAction`](../../utils/events.md#rundefaultaction-1)
 
 ##### stopPropagation() \{#stoppropagation\}
 
@@ -2906,7 +2673,7 @@ This method will only execute the `_defaultAction` if:
 stopPropagation(): void;
 ```
 
-Defined in: events/base.ts:146
+Defined in: utils/dist/events.d.ts:96
 
 Stops propagation to remaining event handlers.
 Handlers registered after the current one will not execute.
@@ -2915,19 +2682,9 @@ Handlers registered after the current one will not execute.
 
 `void`
 
-###### Example
-
-```typescript
-events.on("beforeLoadSchema", (event) => {
-  if (criticalError) {
-    event.stopPropagation(); // No more handlers run
-  }
-});
-```
-
 ###### Inherited from
 
-[`CancellableEvent`](base.md#abstract-cancellableevent).[`stopPropagation`](base.md#stoppropagation)
+[`DataEvent`](../../utils/events.md#abstract-dataevent).[`stopPropagation`](../../utils/events.md#stoppropagation-1)
 
 ---
 
@@ -2944,7 +2701,7 @@ These events allow interception and modification of the generated code output.
 const PrintTypeEvents: object;
 ```
 
-Defined in: events/print-type-events.ts:24
+Defined in: core/src/events/print-type-events.ts:25
 
 Event names for printing type documentation.
 
@@ -2966,6 +2723,14 @@ readonly AFTER_PRINT_TYPE: "print:afterPrintType" = "print:afterPrintType";
 
 Emitted after generating the full type documentation (output can be modified)
 
+#### BEFORE_COMPOSE_PAGE_TYPE \{#before_compose_page_type\}
+
+```ts
+readonly BEFORE_COMPOSE_PAGE_TYPE: "print:beforeComposePageType" = "print:beforeComposePageType";
+```
+
+Emitted before composing page sections (can modify section content)
+
 #### BEFORE_PRINT_CODE \{#before_print_code\}
 
 ```ts
@@ -2986,13 +2751,8 @@ Emitted before generating the full type documentation
 
 ```typescript
 
-  getEvents,
-  PrintTypeEvents,
-  PrintTypeEvent,
-} from "@graphql-markdown/core";
-
 const events = getEvents();
-events.on(PrintTypeEvents.AFTER_PRINT_CODE, (event: PrintTypeEvent) => {
+events.on(PrintTypeEvents.AFTER_PRINT_CODE, (event: PrintCodeEvent) => {
   // Modify the generated code
   event.output = event.output.toUpperCase();
 });
@@ -3002,553 +2762,10 @@ events.on(PrintTypeEvents.AFTER_PRINT_CODE, (event: PrintTypeEvent) => {
 
 ## print-type
 
-Print type event classes.
+Print type interfaces — re-exported from @graphql-markdown/types.
 
-Event classes for print operations that allow handlers to modify the generated output.
-
-## Events
-
-### PrintCodeEvent \{#printcodeevent\}
-
-Defined in: events/print-type.ts:45
-
-Event emitted before/after generating the code block for a GraphQL type.
-
-The `output` property is mutable, allowing event handlers to modify
-the generated code before it's included in the documentation.
-
-#### Example
-
-```typescript
-events.on(PrintTypeEvents.AFTER_PRINT_CODE, (event: PrintCodeEvent) => {
-  // Add a comment to all generated code
-  event.output = `# Auto-generated\n${event.output}`;
-});
-```
-
-#### Extends
-
-- [`CancellableEvent`](base.md#abstract-cancellableevent)
-
-#### Constructors
-
-##### Constructor
-
-```ts
-new PrintCodeEvent(
-   data,
-   initialOutput,
-   options?): PrintCodeEvent;
-```
-
-Defined in: events/print-type.ts:55
-
-###### Parameters
-
-###### data
-
-[`PrintCodeEventData`](#printcodeeventdata-1)
-
-###### initialOutput
-
-`string`
-
-###### options?
-
-[`CancellableEventOptions`](base.md#cancellableeventoptions)
-
-###### Returns
-
-[`PrintCodeEvent`](#printcodeevent)
-
-###### Overrides
-
-[`CancellableEvent`](base.md#abstract-cancellableevent).[`constructor`](base.md#constructor)
-
-#### Properties
-
-##### data \{#data\}
-
-```ts
-readonly data: PrintCodeEventData;
-```
-
-Defined in: events/print-type.ts:47
-
-Read-only event data
-
-##### output \{#output\}
-
-```ts
-output: string;
-```
-
-Defined in: events/print-type.ts:53
-
-The generated code output.
-Handlers can modify this property to change the final output.
-
-#### Accessors
-
-##### defaultAction \{#defaultaction\}
-
-###### Get Signature
-
-```ts
-get defaultAction(): DefaultAction | undefined;
-```
-
-Defined in: events/base.ts:109
-
-Gets the default action function if one was provided.
-
-###### Returns
-
-`DefaultAction` \| `undefined`
-
-###### Inherited from
-
-[`CancellableEvent`](base.md#abstract-cancellableevent).[`defaultAction`](base.md#defaultaction)
-
-##### defaultPrevented \{#defaultprevented\}
-
-###### Get Signature
-
-```ts
-get defaultPrevented(): boolean;
-```
-
-Defined in: events/base.ts:95
-
-Gets whether the default action has been prevented.
-
-###### Returns
-
-`boolean`
-
-###### Inherited from
-
-[`CancellableEvent`](base.md#abstract-cancellableevent).[`defaultPrevented`](base.md#defaultprevented)
-
-##### propagationStopped \{#propagationstopped\}
-
-###### Get Signature
-
-```ts
-get propagationStopped(): boolean;
-```
-
-Defined in: events/base.ts:102
-
-Gets whether propagation has been stopped.
-
-###### Returns
-
-`boolean`
-
-###### Inherited from
-
-[`CancellableEvent`](base.md#abstract-cancellableevent).[`propagationStopped`](base.md#propagationstopped)
-
-#### Methods
-
-##### preventDefault() \{#preventdefault\}
-
-```ts
-preventDefault(): void;
-```
-
-Defined in: events/base.ts:127
-
-Prevents the default action from executing.
-Only works if the event is cancellable.
-
-###### Returns
-
-`void`
-
-###### Example
-
-```typescript
-events.on("beforeLoadSchema", (event) => {
-  if (shouldUseCustomLoader) {
-    event.preventDefault(); // Stops default schema loading
-    // Custom logic here
-  }
-});
-```
-
-###### Inherited from
-
-[`CancellableEvent`](base.md#abstract-cancellableevent).[`preventDefault`](base.md#preventdefault)
-
-##### runDefaultAction() \{#rundefaultaction\}
-
-```ts
-runDefaultAction(): Promise<void>;
-```
-
-Defined in: events/base.ts:160
-
-Executes the default action for an event if it hasn't been prevented.
-
-###### Returns
-
-`Promise`&lt;`void`&gt;
-
-A promise that resolves when the default action completes, or void if the action was prevented or no default action is defined
-
-###### Remarks
-
-This method will only execute the `_defaultAction` if:
-
-- The event's default has not been prevented (`_defaultPrevented` is false)
-- A default action function has been defined (`_defaultAction` is a function)
-
-###### Inherited from
-
-[`CancellableEvent`](base.md#abstract-cancellableevent).[`runDefaultAction`](base.md#rundefaultaction)
-
-##### stopPropagation() \{#stoppropagation\}
-
-```ts
-stopPropagation(): void;
-```
-
-Defined in: events/base.ts:146
-
-Stops propagation to remaining event handlers.
-Handlers registered after the current one will not execute.
-
-###### Returns
-
-`void`
-
-###### Example
-
-```typescript
-events.on("beforeLoadSchema", (event) => {
-  if (criticalError) {
-    event.stopPropagation(); // No more handlers run
-  }
-});
-```
-
-###### Inherited from
-
-[`CancellableEvent`](base.md#abstract-cancellableevent).[`stopPropagation`](base.md#stoppropagation)
-
----
-
-### PrintTypeEvent \{#printtypeevent\}
-
-Defined in: events/print-type.ts:94
-
-Event emitted before/after generating the full documentation for a GraphQL type.
-
-The `output` property is mutable, allowing event handlers to modify
-the complete generated documentation.
-
-#### Example
-
-```typescript
-events.on(PrintTypeEvents.AFTER_PRINT_TYPE, (event: PrintTypeEvent) => {
-  // Add a footer to all type documentation
-  event.output = `${event.output}\n\n---\nGenerated by GraphQL-Markdown`;
-});
-```
-
-#### Extends
-
-- [`CancellableEvent`](base.md#abstract-cancellableevent)
-
-#### Constructors
-
-##### Constructor
-
-```ts
-new PrintTypeEvent(
-   data,
-   initialOutput,
-   options?): PrintTypeEvent;
-```
-
-Defined in: events/print-type.ts:104
-
-###### Parameters
-
-###### data
-
-[`PrintTypeEventData`](#printtypeeventdata-1)
-
-###### initialOutput
-
-`Maybe`&lt;`MDXString`&gt;
-
-###### options?
-
-[`CancellableEventOptions`](base.md#cancellableeventoptions)
-
-###### Returns
-
-[`PrintTypeEvent`](#printtypeevent)
-
-###### Overrides
-
-[`CancellableEvent`](base.md#abstract-cancellableevent).[`constructor`](base.md#constructor)
-
-#### Properties
-
-##### data \{#data-1\}
-
-```ts
-readonly data: PrintTypeEventData;
-```
-
-Defined in: events/print-type.ts:96
-
-Read-only event data
-
-##### output \{#output-1\}
-
-```ts
-output: Maybe<MDXString>;
-```
-
-Defined in: events/print-type.ts:102
-
-The generated documentation output.
-Handlers can modify this property to change the final output.
-
-#### Accessors
-
-##### defaultAction \{#defaultaction-1\}
-
-###### Get Signature
-
-```ts
-get defaultAction(): DefaultAction | undefined;
-```
-
-Defined in: events/base.ts:109
-
-Gets the default action function if one was provided.
-
-###### Returns
-
-`DefaultAction` \| `undefined`
-
-###### Inherited from
-
-[`CancellableEvent`](base.md#abstract-cancellableevent).[`defaultAction`](base.md#defaultaction)
-
-##### defaultPrevented \{#defaultprevented-1\}
-
-###### Get Signature
-
-```ts
-get defaultPrevented(): boolean;
-```
-
-Defined in: events/base.ts:95
-
-Gets whether the default action has been prevented.
-
-###### Returns
-
-`boolean`
-
-###### Inherited from
-
-[`CancellableEvent`](base.md#abstract-cancellableevent).[`defaultPrevented`](base.md#defaultprevented)
-
-##### propagationStopped \{#propagationstopped-1\}
-
-###### Get Signature
-
-```ts
-get propagationStopped(): boolean;
-```
-
-Defined in: events/base.ts:102
-
-Gets whether propagation has been stopped.
-
-###### Returns
-
-`boolean`
-
-###### Inherited from
-
-[`CancellableEvent`](base.md#abstract-cancellableevent).[`propagationStopped`](base.md#propagationstopped)
-
-#### Methods
-
-##### preventDefault() \{#preventdefault-1\}
-
-```ts
-preventDefault(): void;
-```
-
-Defined in: events/base.ts:127
-
-Prevents the default action from executing.
-Only works if the event is cancellable.
-
-###### Returns
-
-`void`
-
-###### Example
-
-```typescript
-events.on("beforeLoadSchema", (event) => {
-  if (shouldUseCustomLoader) {
-    event.preventDefault(); // Stops default schema loading
-    // Custom logic here
-  }
-});
-```
-
-###### Inherited from
-
-[`CancellableEvent`](base.md#abstract-cancellableevent).[`preventDefault`](base.md#preventdefault)
-
-##### runDefaultAction() \{#rundefaultaction-1\}
-
-```ts
-runDefaultAction(): Promise<void>;
-```
-
-Defined in: events/base.ts:160
-
-Executes the default action for an event if it hasn't been prevented.
-
-###### Returns
-
-`Promise`&lt;`void`&gt;
-
-A promise that resolves when the default action completes, or void if the action was prevented or no default action is defined
-
-###### Remarks
-
-This method will only execute the `_defaultAction` if:
-
-- The event's default has not been prevented (`_defaultPrevented` is false)
-- A default action function has been defined (`_defaultAction` is a function)
-
-###### Inherited from
-
-[`CancellableEvent`](base.md#abstract-cancellableevent).[`runDefaultAction`](base.md#rundefaultaction)
-
-##### stopPropagation() \{#stoppropagation-1\}
-
-```ts
-stopPropagation(): void;
-```
-
-Defined in: events/base.ts:146
-
-Stops propagation to remaining event handlers.
-Handlers registered after the current one will not execute.
-
-###### Returns
-
-`void`
-
-###### Example
-
-```typescript
-events.on("beforeLoadSchema", (event) => {
-  if (criticalError) {
-    event.stopPropagation(); // No more handlers run
-  }
-});
-```
-
-###### Inherited from
-
-[`CancellableEvent`](base.md#abstract-cancellableevent).[`stopPropagation`](base.md#stoppropagation)
-
-## Other
-
-### PrintCodeEventData \{#printcodeeventdata-1\}
-
-Defined in: events/print-type.ts:20
-
-Data payload for print code events.
-
-#### Properties
-
-##### options \{#options\}
-
-```ts
-readonly options: PrintTypeOptions;
-```
-
-Defined in: events/print-type.ts:26
-
-The print options in effect
-
-##### type \{#type\}
-
-```ts
-readonly type: unknown;
-```
-
-Defined in: events/print-type.ts:22
-
-The GraphQL type being printed
-
-##### typeName \{#typename\}
-
-```ts
-readonly typeName: string;
-```
-
-Defined in: events/print-type.ts:24
-
-The name of the type
-
----
-
-### PrintTypeEventData \{#printtypeeventdata-1\}
-
-Defined in: events/print-type.ts:69
-
-Data payload for print type events.
-
-#### Properties
-
-##### name \{#name\}
-
-```ts
-readonly name: Maybe<string>;
-```
-
-Defined in: events/print-type.ts:73
-
-The name identifier for the type
-
-##### options \{#options-1\}
-
-```ts
-readonly options: PrintTypeOptions;
-```
-
-Defined in: events/print-type.ts:75
-
-The print options in effect
-
-##### type \{#type-1\}
-
-```ts
-readonly type: unknown;
-```
-
-Defined in: events/print-type.ts:71
-
-The GraphQL type being printed
+Event class implementations (PrintCodeEvent, PrintTypeEvent, etc.) live in
+@graphql-markdown/printer-legacy, which is the package that emits the events.
 
 ---
 
@@ -3562,7 +2779,7 @@ Render homepage event constants.
 const RenderHomepageEvents: object;
 ```
 
-Defined in: events/render-homepage-events.ts:10
+Defined in: core/src/events/render-homepage-events.ts:10
 
 Event names for rendering homepage.
 
@@ -3594,13 +2811,15 @@ Render homepage event class.
 
 ### RenderHomepageEvent \{#renderhomepageevent\}
 
-Defined in: events/render-homepage.ts:14
+Defined in: core/src/events/render-homepage.ts:15
 
 Event emitted before/after rendering homepage.
 
 #### Extends
 
-- [`CancellableEvent`](base.md#abstract-cancellableevent)
+- [`DataEvent`](../../utils/events.md#abstract-dataevent)&lt;\{
+  `outputDir`: `string`;
+  \}&gt;
 
 #### Constructors
 
@@ -3610,7 +2829,7 @@ Event emitted before/after rendering homepage.
 new RenderHomepageEvent(data, options?): RenderHomepageEvent;
 ```
 
-Defined in: events/render-homepage.ts:20
+Defined in: core/src/events/render-homepage.ts:18
 
 ###### Parameters
 
@@ -3622,7 +2841,7 @@ Defined in: events/render-homepage.ts:20
 
 ###### options?
 
-[`CancellableEventOptions`](base.md#cancellableeventoptions)
+[`CancellableEventOptions`](../../utils/events.md#cancellableeventoptions)
 
 ###### Returns
 
@@ -3630,7 +2849,7 @@ Defined in: events/render-homepage.ts:20
 
 ###### Overrides
 
-[`CancellableEvent`](base.md#abstract-cancellableevent).[`constructor`](base.md#constructor)
+[`DataEvent`](../../utils/events.md#abstract-dataevent).[`constructor`](../../utils/events.md#constructor-1)
 
 #### Properties
 
@@ -3640,15 +2859,19 @@ Defined in: events/render-homepage.ts:20
 readonly data: object;
 ```
 
-Defined in: events/render-homepage.ts:16
+Defined in: utils/dist/events.d.ts:111
 
-Event data containing output directory
+Read-only event data payload.
 
 ###### outputDir
 
 ```ts
 outputDir: string;
 ```
+
+###### Inherited from
+
+[`DataEvent`](../../utils/events.md#abstract-dataevent).[`data`](../../utils/events.md#data)
 
 #### Accessors
 
@@ -3660,7 +2883,7 @@ outputDir: string;
 get defaultAction(): DefaultAction | undefined;
 ```
 
-Defined in: events/base.ts:109
+Defined in: utils/dist/events.d.ts:78
 
 Gets the default action function if one was provided.
 
@@ -3670,7 +2893,7 @@ Gets the default action function if one was provided.
 
 ###### Inherited from
 
-[`CancellableEvent`](base.md#abstract-cancellableevent).[`defaultAction`](base.md#defaultaction)
+[`DataEvent`](../../utils/events.md#abstract-dataevent).[`defaultAction`](../../utils/events.md#defaultaction-1)
 
 ##### defaultPrevented \{#defaultprevented\}
 
@@ -3680,7 +2903,7 @@ Gets the default action function if one was provided.
 get defaultPrevented(): boolean;
 ```
 
-Defined in: events/base.ts:95
+Defined in: utils/dist/events.d.ts:70
 
 Gets whether the default action has been prevented.
 
@@ -3688,9 +2911,29 @@ Gets whether the default action has been prevented.
 
 `boolean`
 
+###### Set Signature
+
+```ts
+set defaultPrevented(value): void;
+```
+
+Defined in: utils/dist/events.d.ts:82
+
+Allows setting defaultPrevented to true directly.
+
+###### Parameters
+
+###### value
+
+`boolean`
+
+###### Returns
+
+`void`
+
 ###### Inherited from
 
-[`CancellableEvent`](base.md#abstract-cancellableevent).[`defaultPrevented`](base.md#defaultprevented)
+[`DataEvent`](../../utils/events.md#abstract-dataevent).[`defaultPrevented`](../../utils/events.md#defaultprevented-1)
 
 ##### propagationStopped \{#propagationstopped\}
 
@@ -3700,7 +2943,7 @@ Gets whether the default action has been prevented.
 get propagationStopped(): boolean;
 ```
 
-Defined in: events/base.ts:102
+Defined in: utils/dist/events.d.ts:74
 
 Gets whether propagation has been stopped.
 
@@ -3708,9 +2951,29 @@ Gets whether propagation has been stopped.
 
 `boolean`
 
+###### Set Signature
+
+```ts
+set propagationStopped(value): void;
+```
+
+Defined in: utils/dist/events.d.ts:86
+
+Allows setting propagationStopped to true directly.
+
+###### Parameters
+
+###### value
+
+`boolean`
+
+###### Returns
+
+`void`
+
 ###### Inherited from
 
-[`CancellableEvent`](base.md#abstract-cancellableevent).[`propagationStopped`](base.md#propagationstopped)
+[`DataEvent`](../../utils/events.md#abstract-dataevent).[`propagationStopped`](../../utils/events.md#propagationstopped-1)
 
 #### Methods
 
@@ -3720,7 +2983,7 @@ Gets whether propagation has been stopped.
 preventDefault(): void;
 ```
 
-Defined in: events/base.ts:127
+Defined in: utils/dist/events.d.ts:91
 
 Prevents the default action from executing.
 Only works if the event is cancellable.
@@ -3729,20 +2992,9 @@ Only works if the event is cancellable.
 
 `void`
 
-###### Example
-
-```typescript
-events.on("beforeLoadSchema", (event) => {
-  if (shouldUseCustomLoader) {
-    event.preventDefault(); // Stops default schema loading
-    // Custom logic here
-  }
-});
-```
-
 ###### Inherited from
 
-[`CancellableEvent`](base.md#abstract-cancellableevent).[`preventDefault`](base.md#preventdefault)
+[`DataEvent`](../../utils/events.md#abstract-dataevent).[`preventDefault`](../../utils/events.md#preventdefault-1)
 
 ##### runDefaultAction() \{#rundefaultaction\}
 
@@ -3750,7 +3002,7 @@ events.on("beforeLoadSchema", (event) => {
 runDefaultAction(): Promise<void>;
 ```
 
-Defined in: events/base.ts:160
+Defined in: utils/dist/events.d.ts:100
 
 Executes the default action for an event if it hasn't been prevented.
 
@@ -3758,18 +3010,9 @@ Executes the default action for an event if it hasn't been prevented.
 
 `Promise`&lt;`void`&gt;
 
-A promise that resolves when the default action completes, or void if the action was prevented or no default action is defined
-
-###### Remarks
-
-This method will only execute the `_defaultAction` if:
-
-- The event's default has not been prevented (`_defaultPrevented` is false)
-- A default action function has been defined (`_defaultAction` is a function)
-
 ###### Inherited from
 
-[`CancellableEvent`](base.md#abstract-cancellableevent).[`runDefaultAction`](base.md#rundefaultaction)
+[`DataEvent`](../../utils/events.md#abstract-dataevent).[`runDefaultAction`](../../utils/events.md#rundefaultaction-1)
 
 ##### stopPropagation() \{#stoppropagation\}
 
@@ -3777,7 +3020,7 @@ This method will only execute the `_defaultAction` if:
 stopPropagation(): void;
 ```
 
-Defined in: events/base.ts:146
+Defined in: utils/dist/events.d.ts:96
 
 Stops propagation to remaining event handlers.
 Handlers registered after the current one will not execute.
@@ -3786,19 +3029,9 @@ Handlers registered after the current one will not execute.
 
 `void`
 
-###### Example
-
-```typescript
-events.on("beforeLoadSchema", (event) => {
-  if (criticalError) {
-    event.stopPropagation(); // No more handlers run
-  }
-});
-```
-
 ###### Inherited from
 
-[`CancellableEvent`](base.md#abstract-cancellableevent).[`stopPropagation`](base.md#stoppropagation)
+[`DataEvent`](../../utils/events.md#abstract-dataevent).[`stopPropagation`](../../utils/events.md#stoppropagation-1)
 
 ---
 
@@ -3812,7 +3045,7 @@ Render root types event constants.
 const RenderRootTypesEvents: object;
 ```
 
-Defined in: events/render-root-types-events.ts:10
+Defined in: core/src/events/render-root-types-events.ts:10
 
 Event names for rendering root types.
 
@@ -3844,13 +3077,15 @@ Render root types event class.
 
 ### RenderRootTypesEvent \{#renderroottypesevent\}
 
-Defined in: events/render-root-types.ts:14
+Defined in: core/src/events/render-root-types.ts:15
 
 Event emitted before/after rendering root types.
 
 #### Extends
 
-- [`CancellableEvent`](base.md#abstract-cancellableevent)
+- [`DataEvent`](../../utils/events.md#abstract-dataevent)&lt;\{
+  `rootTypes`: `unknown`;
+  \}&gt;
 
 #### Constructors
 
@@ -3860,7 +3095,7 @@ Event emitted before/after rendering root types.
 new RenderRootTypesEvent(data, options?): RenderRootTypesEvent;
 ```
 
-Defined in: events/render-root-types.ts:20
+Defined in: core/src/events/render-root-types.ts:18
 
 ###### Parameters
 
@@ -3872,7 +3107,7 @@ Defined in: events/render-root-types.ts:20
 
 ###### options?
 
-[`CancellableEventOptions`](base.md#cancellableeventoptions)
+[`CancellableEventOptions`](../../utils/events.md#cancellableeventoptions)
 
 ###### Returns
 
@@ -3880,7 +3115,7 @@ Defined in: events/render-root-types.ts:20
 
 ###### Overrides
 
-[`CancellableEvent`](base.md#abstract-cancellableevent).[`constructor`](base.md#constructor)
+[`DataEvent`](../../utils/events.md#abstract-dataevent).[`constructor`](../../utils/events.md#constructor-1)
 
 #### Properties
 
@@ -3890,15 +3125,19 @@ Defined in: events/render-root-types.ts:20
 readonly data: object;
 ```
 
-Defined in: events/render-root-types.ts:16
+Defined in: utils/dist/events.d.ts:111
 
-Event data containing root types
+Read-only event data payload.
 
 ###### rootTypes
 
 ```ts
 rootTypes: unknown;
 ```
+
+###### Inherited from
+
+[`DataEvent`](../../utils/events.md#abstract-dataevent).[`data`](../../utils/events.md#data)
 
 #### Accessors
 
@@ -3910,7 +3149,7 @@ rootTypes: unknown;
 get defaultAction(): DefaultAction | undefined;
 ```
 
-Defined in: events/base.ts:109
+Defined in: utils/dist/events.d.ts:78
 
 Gets the default action function if one was provided.
 
@@ -3920,7 +3159,7 @@ Gets the default action function if one was provided.
 
 ###### Inherited from
 
-[`CancellableEvent`](base.md#abstract-cancellableevent).[`defaultAction`](base.md#defaultaction)
+[`DataEvent`](../../utils/events.md#abstract-dataevent).[`defaultAction`](../../utils/events.md#defaultaction-1)
 
 ##### defaultPrevented \{#defaultprevented\}
 
@@ -3930,7 +3169,7 @@ Gets the default action function if one was provided.
 get defaultPrevented(): boolean;
 ```
 
-Defined in: events/base.ts:95
+Defined in: utils/dist/events.d.ts:70
 
 Gets whether the default action has been prevented.
 
@@ -3938,9 +3177,29 @@ Gets whether the default action has been prevented.
 
 `boolean`
 
+###### Set Signature
+
+```ts
+set defaultPrevented(value): void;
+```
+
+Defined in: utils/dist/events.d.ts:82
+
+Allows setting defaultPrevented to true directly.
+
+###### Parameters
+
+###### value
+
+`boolean`
+
+###### Returns
+
+`void`
+
 ###### Inherited from
 
-[`CancellableEvent`](base.md#abstract-cancellableevent).[`defaultPrevented`](base.md#defaultprevented)
+[`DataEvent`](../../utils/events.md#abstract-dataevent).[`defaultPrevented`](../../utils/events.md#defaultprevented-1)
 
 ##### propagationStopped \{#propagationstopped\}
 
@@ -3950,7 +3209,7 @@ Gets whether the default action has been prevented.
 get propagationStopped(): boolean;
 ```
 
-Defined in: events/base.ts:102
+Defined in: utils/dist/events.d.ts:74
 
 Gets whether propagation has been stopped.
 
@@ -3958,9 +3217,29 @@ Gets whether propagation has been stopped.
 
 `boolean`
 
+###### Set Signature
+
+```ts
+set propagationStopped(value): void;
+```
+
+Defined in: utils/dist/events.d.ts:86
+
+Allows setting propagationStopped to true directly.
+
+###### Parameters
+
+###### value
+
+`boolean`
+
+###### Returns
+
+`void`
+
 ###### Inherited from
 
-[`CancellableEvent`](base.md#abstract-cancellableevent).[`propagationStopped`](base.md#propagationstopped)
+[`DataEvent`](../../utils/events.md#abstract-dataevent).[`propagationStopped`](../../utils/events.md#propagationstopped-1)
 
 #### Methods
 
@@ -3970,7 +3249,7 @@ Gets whether propagation has been stopped.
 preventDefault(): void;
 ```
 
-Defined in: events/base.ts:127
+Defined in: utils/dist/events.d.ts:91
 
 Prevents the default action from executing.
 Only works if the event is cancellable.
@@ -3979,20 +3258,9 @@ Only works if the event is cancellable.
 
 `void`
 
-###### Example
-
-```typescript
-events.on("beforeLoadSchema", (event) => {
-  if (shouldUseCustomLoader) {
-    event.preventDefault(); // Stops default schema loading
-    // Custom logic here
-  }
-});
-```
-
 ###### Inherited from
 
-[`CancellableEvent`](base.md#abstract-cancellableevent).[`preventDefault`](base.md#preventdefault)
+[`DataEvent`](../../utils/events.md#abstract-dataevent).[`preventDefault`](../../utils/events.md#preventdefault-1)
 
 ##### runDefaultAction() \{#rundefaultaction\}
 
@@ -4000,7 +3268,7 @@ events.on("beforeLoadSchema", (event) => {
 runDefaultAction(): Promise<void>;
 ```
 
-Defined in: events/base.ts:160
+Defined in: utils/dist/events.d.ts:100
 
 Executes the default action for an event if it hasn't been prevented.
 
@@ -4008,18 +3276,9 @@ Executes the default action for an event if it hasn't been prevented.
 
 `Promise`&lt;`void`&gt;
 
-A promise that resolves when the default action completes, or void if the action was prevented or no default action is defined
-
-###### Remarks
-
-This method will only execute the `_defaultAction` if:
-
-- The event's default has not been prevented (`_defaultPrevented` is false)
-- A default action function has been defined (`_defaultAction` is a function)
-
 ###### Inherited from
 
-[`CancellableEvent`](base.md#abstract-cancellableevent).[`runDefaultAction`](base.md#rundefaultaction)
+[`DataEvent`](../../utils/events.md#abstract-dataevent).[`runDefaultAction`](../../utils/events.md#rundefaultaction-1)
 
 ##### stopPropagation() \{#stoppropagation\}
 
@@ -4027,7 +3286,7 @@ This method will only execute the `_defaultAction` if:
 stopPropagation(): void;
 ```
 
-Defined in: events/base.ts:146
+Defined in: utils/dist/events.d.ts:96
 
 Stops propagation to remaining event handlers.
 Handlers registered after the current one will not execute.
@@ -4036,19 +3295,9 @@ Handlers registered after the current one will not execute.
 
 `void`
 
-###### Example
-
-```typescript
-events.on("beforeLoadSchema", (event) => {
-  if (criticalError) {
-    event.stopPropagation(); // No more handlers run
-  }
-});
-```
-
 ###### Inherited from
 
-[`CancellableEvent`](base.md#abstract-cancellableevent).[`stopPropagation`](base.md#stoppropagation)
+[`DataEvent`](../../utils/events.md#abstract-dataevent).[`stopPropagation`](../../utils/events.md#stoppropagation-1)
 
 ---
 
@@ -4062,7 +3311,7 @@ Render type entities event constants.
 const RenderTypeEntitiesEvents: object;
 ```
 
-Defined in: events/render-type-entities-events.ts:10
+Defined in: core/src/events/render-type-entities-events.ts:10
 
 Event names for rendering type entities.
 
@@ -4094,13 +3343,16 @@ Render type entities event class.
 
 ### RenderTypeEntitiesEvent \{#rendertypeentitiesevent\}
 
-Defined in: events/render-type-entities.ts:14
+Defined in: core/src/events/render-type-entities.ts:15
 
 Event emitted before/after rendering type entities.
 
 #### Extends
 
-- [`CancellableEvent`](base.md#abstract-cancellableevent)
+- [`DataEvent`](../../utils/events.md#abstract-dataevent)&lt;\{
+  `filePath`: `string`;
+  `name`: `string`;
+  \}&gt;
 
 #### Constructors
 
@@ -4110,7 +3362,7 @@ Event emitted before/after rendering type entities.
 new RenderTypeEntitiesEvent(data, options?): RenderTypeEntitiesEvent;
 ```
 
-Defined in: events/render-type-entities.ts:21
+Defined in: core/src/events/render-type-entities.ts:19
 
 ###### Parameters
 
@@ -4126,7 +3378,7 @@ Defined in: events/render-type-entities.ts:21
 
 ###### options?
 
-[`CancellableEventOptions`](base.md#cancellableeventoptions)
+[`CancellableEventOptions`](../../utils/events.md#cancellableeventoptions)
 
 ###### Returns
 
@@ -4134,7 +3386,7 @@ Defined in: events/render-type-entities.ts:21
 
 ###### Overrides
 
-[`CancellableEvent`](base.md#abstract-cancellableevent).[`constructor`](base.md#constructor)
+[`DataEvent`](../../utils/events.md#abstract-dataevent).[`constructor`](../../utils/events.md#constructor-1)
 
 #### Properties
 
@@ -4144,9 +3396,9 @@ Defined in: events/render-type-entities.ts:21
 readonly data: object;
 ```
 
-Defined in: events/render-type-entities.ts:16
+Defined in: utils/dist/events.d.ts:111
 
-Event data containing name and file path
+Read-only event data payload.
 
 ###### filePath
 
@@ -4160,6 +3412,10 @@ filePath: string;
 name: string;
 ```
 
+###### Inherited from
+
+[`DataEvent`](../../utils/events.md#abstract-dataevent).[`data`](../../utils/events.md#data)
+
 #### Accessors
 
 ##### defaultAction \{#defaultaction\}
@@ -4170,7 +3426,7 @@ name: string;
 get defaultAction(): DefaultAction | undefined;
 ```
 
-Defined in: events/base.ts:109
+Defined in: utils/dist/events.d.ts:78
 
 Gets the default action function if one was provided.
 
@@ -4180,7 +3436,7 @@ Gets the default action function if one was provided.
 
 ###### Inherited from
 
-[`CancellableEvent`](base.md#abstract-cancellableevent).[`defaultAction`](base.md#defaultaction)
+[`DataEvent`](../../utils/events.md#abstract-dataevent).[`defaultAction`](../../utils/events.md#defaultaction-1)
 
 ##### defaultPrevented \{#defaultprevented\}
 
@@ -4190,7 +3446,7 @@ Gets the default action function if one was provided.
 get defaultPrevented(): boolean;
 ```
 
-Defined in: events/base.ts:95
+Defined in: utils/dist/events.d.ts:70
 
 Gets whether the default action has been prevented.
 
@@ -4198,9 +3454,29 @@ Gets whether the default action has been prevented.
 
 `boolean`
 
+###### Set Signature
+
+```ts
+set defaultPrevented(value): void;
+```
+
+Defined in: utils/dist/events.d.ts:82
+
+Allows setting defaultPrevented to true directly.
+
+###### Parameters
+
+###### value
+
+`boolean`
+
+###### Returns
+
+`void`
+
 ###### Inherited from
 
-[`CancellableEvent`](base.md#abstract-cancellableevent).[`defaultPrevented`](base.md#defaultprevented)
+[`DataEvent`](../../utils/events.md#abstract-dataevent).[`defaultPrevented`](../../utils/events.md#defaultprevented-1)
 
 ##### propagationStopped \{#propagationstopped\}
 
@@ -4210,7 +3486,7 @@ Gets whether the default action has been prevented.
 get propagationStopped(): boolean;
 ```
 
-Defined in: events/base.ts:102
+Defined in: utils/dist/events.d.ts:74
 
 Gets whether propagation has been stopped.
 
@@ -4218,9 +3494,29 @@ Gets whether propagation has been stopped.
 
 `boolean`
 
+###### Set Signature
+
+```ts
+set propagationStopped(value): void;
+```
+
+Defined in: utils/dist/events.d.ts:86
+
+Allows setting propagationStopped to true directly.
+
+###### Parameters
+
+###### value
+
+`boolean`
+
+###### Returns
+
+`void`
+
 ###### Inherited from
 
-[`CancellableEvent`](base.md#abstract-cancellableevent).[`propagationStopped`](base.md#propagationstopped)
+[`DataEvent`](../../utils/events.md#abstract-dataevent).[`propagationStopped`](../../utils/events.md#propagationstopped-1)
 
 #### Methods
 
@@ -4230,7 +3526,7 @@ Gets whether propagation has been stopped.
 preventDefault(): void;
 ```
 
-Defined in: events/base.ts:127
+Defined in: utils/dist/events.d.ts:91
 
 Prevents the default action from executing.
 Only works if the event is cancellable.
@@ -4239,20 +3535,9 @@ Only works if the event is cancellable.
 
 `void`
 
-###### Example
-
-```typescript
-events.on("beforeLoadSchema", (event) => {
-  if (shouldUseCustomLoader) {
-    event.preventDefault(); // Stops default schema loading
-    // Custom logic here
-  }
-});
-```
-
 ###### Inherited from
 
-[`CancellableEvent`](base.md#abstract-cancellableevent).[`preventDefault`](base.md#preventdefault)
+[`DataEvent`](../../utils/events.md#abstract-dataevent).[`preventDefault`](../../utils/events.md#preventdefault-1)
 
 ##### runDefaultAction() \{#rundefaultaction\}
 
@@ -4260,7 +3545,7 @@ events.on("beforeLoadSchema", (event) => {
 runDefaultAction(): Promise<void>;
 ```
 
-Defined in: events/base.ts:160
+Defined in: utils/dist/events.d.ts:100
 
 Executes the default action for an event if it hasn't been prevented.
 
@@ -4268,18 +3553,9 @@ Executes the default action for an event if it hasn't been prevented.
 
 `Promise`&lt;`void`&gt;
 
-A promise that resolves when the default action completes, or void if the action was prevented or no default action is defined
-
-###### Remarks
-
-This method will only execute the `_defaultAction` if:
-
-- The event's default has not been prevented (`_defaultPrevented` is false)
-- A default action function has been defined (`_defaultAction` is a function)
-
 ###### Inherited from
 
-[`CancellableEvent`](base.md#abstract-cancellableevent).[`runDefaultAction`](base.md#rundefaultaction)
+[`DataEvent`](../../utils/events.md#abstract-dataevent).[`runDefaultAction`](../../utils/events.md#rundefaultaction-1)
 
 ##### stopPropagation() \{#stoppropagation\}
 
@@ -4287,7 +3563,7 @@ This method will only execute the `_defaultAction` if:
 stopPropagation(): void;
 ```
 
-Defined in: events/base.ts:146
+Defined in: utils/dist/events.d.ts:96
 
 Stops propagation to remaining event handlers.
 Handlers registered after the current one will not execute.
@@ -4296,19 +3572,9 @@ Handlers registered after the current one will not execute.
 
 `void`
 
-###### Example
-
-```typescript
-events.on("beforeLoadSchema", (event) => {
-  if (criticalError) {
-    event.stopPropagation(); // No more handlers run
-  }
-});
-```
-
 ###### Inherited from
 
-[`CancellableEvent`](base.md#abstract-cancellableevent).[`stopPropagation`](base.md#stoppropagation)
+[`DataEvent`](../../utils/events.md#abstract-dataevent).[`stopPropagation`](../../utils/events.md#stoppropagation-1)
 
 ---
 
@@ -4322,7 +3588,7 @@ Schema loading event constants.
 const SchemaEvents: object;
 ```
 
-Defined in: events/schema-events.ts:10
+Defined in: core/src/events/schema-events.ts:10
 
 Event names for schema loading lifecycle.
 
@@ -4370,13 +3636,17 @@ Schema loading event class.
 
 ### SchemaEvent \{#schemaevent\}
 
-Defined in: events/schema-load.ts:15
+Defined in: core/src/events/schema-load.ts:16
 
 Event emitted before/after loading a GraphQL schema.
 
 #### Extends
 
-- [`CancellableEvent`](base.md#abstract-cancellableevent)
+- [`DataEvent`](../../utils/events.md#abstract-dataevent)&lt;\{
+  `rootTypes?`: `Maybe`&lt;`SchemaMap`&gt;;
+  `schema?`: `Maybe`&lt;`GraphQLSchema`&gt;;
+  `schemaLocation?`: `string`;
+  \}&gt;
 
 #### Constructors
 
@@ -4386,7 +3656,7 @@ Event emitted before/after loading a GraphQL schema.
 new SchemaEvent(data, options?): SchemaEvent;
 ```
 
-Defined in: events/schema-load.ts:23
+Defined in: core/src/events/schema-load.ts:21
 
 ###### Parameters
 
@@ -4406,7 +3676,7 @@ Defined in: events/schema-load.ts:23
 
 ###### options?
 
-[`CancellableEventOptions`](base.md#cancellableeventoptions)
+[`CancellableEventOptions`](../../utils/events.md#cancellableeventoptions)
 
 ###### Returns
 
@@ -4414,7 +3684,7 @@ Defined in: events/schema-load.ts:23
 
 ###### Overrides
 
-[`CancellableEvent`](base.md#abstract-cancellableevent).[`constructor`](base.md#constructor)
+[`DataEvent`](../../utils/events.md#abstract-dataevent).[`constructor`](../../utils/events.md#constructor-1)
 
 #### Properties
 
@@ -4424,9 +3694,9 @@ Defined in: events/schema-load.ts:23
 readonly data: object;
 ```
 
-Defined in: events/schema-load.ts:17
+Defined in: utils/dist/events.d.ts:111
 
-Event data containing schema location, schema, and root types
+Read-only event data payload.
 
 ###### rootTypes?
 
@@ -4446,6 +3716,10 @@ optional schema?: Maybe<GraphQLSchema>;
 optional schemaLocation?: string;
 ```
 
+###### Inherited from
+
+[`DataEvent`](../../utils/events.md#abstract-dataevent).[`data`](../../utils/events.md#data)
+
 #### Accessors
 
 ##### defaultAction \{#defaultaction\}
@@ -4456,7 +3730,7 @@ optional schemaLocation?: string;
 get defaultAction(): DefaultAction | undefined;
 ```
 
-Defined in: events/base.ts:109
+Defined in: utils/dist/events.d.ts:78
 
 Gets the default action function if one was provided.
 
@@ -4466,7 +3740,7 @@ Gets the default action function if one was provided.
 
 ###### Inherited from
 
-[`CancellableEvent`](base.md#abstract-cancellableevent).[`defaultAction`](base.md#defaultaction)
+[`DataEvent`](../../utils/events.md#abstract-dataevent).[`defaultAction`](../../utils/events.md#defaultaction-1)
 
 ##### defaultPrevented \{#defaultprevented\}
 
@@ -4476,7 +3750,7 @@ Gets the default action function if one was provided.
 get defaultPrevented(): boolean;
 ```
 
-Defined in: events/base.ts:95
+Defined in: utils/dist/events.d.ts:70
 
 Gets whether the default action has been prevented.
 
@@ -4484,9 +3758,29 @@ Gets whether the default action has been prevented.
 
 `boolean`
 
+###### Set Signature
+
+```ts
+set defaultPrevented(value): void;
+```
+
+Defined in: utils/dist/events.d.ts:82
+
+Allows setting defaultPrevented to true directly.
+
+###### Parameters
+
+###### value
+
+`boolean`
+
+###### Returns
+
+`void`
+
 ###### Inherited from
 
-[`CancellableEvent`](base.md#abstract-cancellableevent).[`defaultPrevented`](base.md#defaultprevented)
+[`DataEvent`](../../utils/events.md#abstract-dataevent).[`defaultPrevented`](../../utils/events.md#defaultprevented-1)
 
 ##### propagationStopped \{#propagationstopped\}
 
@@ -4496,7 +3790,7 @@ Gets whether the default action has been prevented.
 get propagationStopped(): boolean;
 ```
 
-Defined in: events/base.ts:102
+Defined in: utils/dist/events.d.ts:74
 
 Gets whether propagation has been stopped.
 
@@ -4504,9 +3798,29 @@ Gets whether propagation has been stopped.
 
 `boolean`
 
+###### Set Signature
+
+```ts
+set propagationStopped(value): void;
+```
+
+Defined in: utils/dist/events.d.ts:86
+
+Allows setting propagationStopped to true directly.
+
+###### Parameters
+
+###### value
+
+`boolean`
+
+###### Returns
+
+`void`
+
 ###### Inherited from
 
-[`CancellableEvent`](base.md#abstract-cancellableevent).[`propagationStopped`](base.md#propagationstopped)
+[`DataEvent`](../../utils/events.md#abstract-dataevent).[`propagationStopped`](../../utils/events.md#propagationstopped-1)
 
 #### Methods
 
@@ -4516,7 +3830,7 @@ Gets whether propagation has been stopped.
 preventDefault(): void;
 ```
 
-Defined in: events/base.ts:127
+Defined in: utils/dist/events.d.ts:91
 
 Prevents the default action from executing.
 Only works if the event is cancellable.
@@ -4525,20 +3839,9 @@ Only works if the event is cancellable.
 
 `void`
 
-###### Example
-
-```typescript
-events.on("beforeLoadSchema", (event) => {
-  if (shouldUseCustomLoader) {
-    event.preventDefault(); // Stops default schema loading
-    // Custom logic here
-  }
-});
-```
-
 ###### Inherited from
 
-[`CancellableEvent`](base.md#abstract-cancellableevent).[`preventDefault`](base.md#preventdefault)
+[`DataEvent`](../../utils/events.md#abstract-dataevent).[`preventDefault`](../../utils/events.md#preventdefault-1)
 
 ##### runDefaultAction() \{#rundefaultaction\}
 
@@ -4546,7 +3849,7 @@ events.on("beforeLoadSchema", (event) => {
 runDefaultAction(): Promise<void>;
 ```
 
-Defined in: events/base.ts:160
+Defined in: utils/dist/events.d.ts:100
 
 Executes the default action for an event if it hasn't been prevented.
 
@@ -4554,18 +3857,9 @@ Executes the default action for an event if it hasn't been prevented.
 
 `Promise`&lt;`void`&gt;
 
-A promise that resolves when the default action completes, or void if the action was prevented or no default action is defined
-
-###### Remarks
-
-This method will only execute the `_defaultAction` if:
-
-- The event's default has not been prevented (`_defaultPrevented` is false)
-- A default action function has been defined (`_defaultAction` is a function)
-
 ###### Inherited from
 
-[`CancellableEvent`](base.md#abstract-cancellableevent).[`runDefaultAction`](base.md#rundefaultaction)
+[`DataEvent`](../../utils/events.md#abstract-dataevent).[`runDefaultAction`](../../utils/events.md#rundefaultaction-1)
 
 ##### stopPropagation() \{#stoppropagation\}
 
@@ -4573,7 +3867,7 @@ This method will only execute the `_defaultAction` if:
 stopPropagation(): void;
 ```
 
-Defined in: events/base.ts:146
+Defined in: utils/dist/events.d.ts:96
 
 Stops propagation to remaining event handlers.
 Handlers registered after the current one will not execute.
@@ -4582,25 +3876,305 @@ Handlers registered after the current one will not execute.
 
 `void`
 
-###### Example
-
-```typescript
-events.on("beforeLoadSchema", (event) => {
-  if (criticalError) {
-    event.stopPropagation(); // No more handlers run
-  }
-});
-```
-
 ###### Inherited from
 
-[`CancellableEvent`](base.md#abstract-cancellableevent).[`stopPropagation`](base.md#stoppropagation)
+[`DataEvent`](../../utils/events.md#abstract-dataevent).[`stopPropagation`](../../utils/events.md#stoppropagation-1)
 
 ---
 
 ## events
 
 Event system for GraphQL-Markdown.
+
+## ComposePageTypeEventData \{#composepagetypeeventdata\}
+
+Defined in: types/src/printer.d.ts:114
+
+Data payload for compose page type events.
+
+### Properties
+
+#### name \{#name\}
+
+```ts
+readonly name: Maybe<string>;
+```
+
+Defined in: types/src/printer.d.ts:118
+
+The name identifier for the type
+
+#### options \{#options\}
+
+```ts
+readonly options: PrintTypeOptions;
+```
+
+Defined in: types/src/printer.d.ts:120
+
+The print options in effect
+
+#### sections \{#sections\}
+
+```ts
+readonly sections: PageSections;
+```
+
+Defined in: types/src/printer.d.ts:122
+
+The map of all page sections (mutable in BEFORE event)
+
+#### type \{#type\}
+
+```ts
+readonly type: unknown;
+```
+
+Defined in: types/src/printer.d.ts:116
+
+The GraphQL type being composed
+
+---
+
+## PageSection \{#pagesection\}
+
+Defined in: types/src/printer.d.ts:24
+
+Represents a single section of a page with optional title and content.
+
+### Properties
+
+#### content? \{#content\}
+
+```ts
+optional content?:
+  | string
+  | MDXString
+  | PageSection
+  | PageSection[];
+```
+
+Defined in: types/src/printer.d.ts:30
+
+The section content
+
+#### level? \{#level\}
+
+```ts
+optional level?: number;
+```
+
+Defined in: types/src/printer.d.ts:28
+
+Optional section level for hierarchical structuring
+
+#### title? \{#title\}
+
+```ts
+optional title?: string | MDXString;
+```
+
+Defined in: types/src/printer.d.ts:26
+
+Optional title/heading for the section
+
+---
+
+## PageSections \{#pagesections\}
+
+Defined in: types/src/printer.d.ts:36
+
+Map of all available sections in a type page.
+
+### Indexable
+
+```ts
+[key: string]: Maybe<PageHeader | PageSection>
+```
+
+Additional custom sections can be added by event handlers
+
+### Properties
+
+#### code? \{#code\}
+
+```ts
+optional code?: PageSection;
+```
+
+Defined in: types/src/printer.d.ts:50
+
+GraphQL code block
+
+#### customDirectives? \{#customdirectives\}
+
+```ts
+optional customDirectives?: PageSection;
+```
+
+Defined in: types/src/printer.d.ts:52
+
+Custom directives
+
+#### description? \{#description\}
+
+```ts
+optional description?: PageSection;
+```
+
+Defined in: types/src/printer.d.ts:48
+
+Type description from GraphQL comments
+
+#### example? \{#example\}
+
+```ts
+optional example?: PageSection;
+```
+
+Defined in: types/src/printer.d.ts:56
+
+Usage examples
+
+#### header? \{#header\}
+
+```ts
+optional header?: PageHeader;
+```
+
+Defined in: types/src/printer.d.ts:40
+
+YAML frontmatter or top-level heading
+
+#### mdxDeclaration? \{#mdxdeclaration\}
+
+```ts
+optional mdxDeclaration?: PageHeader;
+```
+
+Defined in: types/src/printer.d.ts:44
+
+MDX import declarations
+
+#### metadata? \{#metadata\}
+
+```ts
+optional metadata?: PageSection;
+```
+
+Defined in: types/src/printer.d.ts:54
+
+Type metadata (fields, arguments, etc.)
+
+#### metatags? \{#metatags\}
+
+```ts
+optional metatags?: PageHeader;
+```
+
+Defined in: types/src/printer.d.ts:42
+
+HTML meta tags
+
+#### relations? \{#relations\}
+
+```ts
+optional relations?: PageSection;
+```
+
+Defined in: types/src/printer.d.ts:58
+
+Related types
+
+#### tags? \{#tags\}
+
+```ts
+optional tags?: PageSection;
+```
+
+Defined in: types/src/printer.d.ts:46
+
+Custom tags (e.g., @deprecated)
+
+---
+
+## PrintCodeEventData \{#printcodeeventdata\}
+
+Defined in: types/src/printer.d.ts:64
+
+Data payload for print code events.
+
+### Properties
+
+#### options \{#options-1\}
+
+```ts
+readonly options: PrintTypeOptions;
+```
+
+Defined in: types/src/printer.d.ts:70
+
+The print options in effect
+
+#### type \{#type-1\}
+
+```ts
+readonly type: unknown;
+```
+
+Defined in: types/src/printer.d.ts:66
+
+The GraphQL type being printed
+
+#### typeName \{#typename\}
+
+```ts
+readonly typeName: string;
+```
+
+Defined in: types/src/printer.d.ts:68
+
+The name of the type
+
+---
+
+## PrintTypeEventData \{#printtypeeventdata\}
+
+Defined in: types/src/printer.d.ts:76
+
+Data payload for print type events.
+
+### Properties
+
+#### name \{#name-1\}
+
+```ts
+readonly name: Maybe<string>;
+```
+
+Defined in: types/src/printer.d.ts:80
+
+The name identifier for the type
+
+#### options \{#options-2\}
+
+```ts
+readonly options: PrintTypeOptions;
+```
+
+Defined in: types/src/printer.d.ts:82
+
+The print options in effect
+
+#### type \{#type-2\}
+
+```ts
+readonly type: unknown;
+```
+
+Defined in: types/src/printer.d.ts:78
+
+The GraphQL type being printed
 
 ---
 
@@ -4618,7 +4192,7 @@ through appropriate printers and renderers.
 const FILE_EXTENSION: object;
 ```
 
-Defined in: generator.ts:62
+Defined in: core/src/generator.ts:62
 
 Supported file extensions for generated documentation files.
 
@@ -4654,7 +4228,7 @@ function checkSchemaDifferences(
 ): Promise<boolean>;
 ```
 
-Defined in: generator.ts:264
+Defined in: core/src/generator.ts:264
 
 Checks if there are differences in the GraphQL schema compared to a previous version.
 
@@ -4703,7 +4277,7 @@ When no changes are detected, a log message is generated indicating that the sch
 function generateDocFromSchema(options): Promise<void>;
 ```
 
-Defined in: generator.ts:336
+Defined in: core/src/generator.ts:336
 
 Main entry point for generating Markdown documentation from a GraphQL schema.
 
@@ -4740,7 +4314,7 @@ function getFormatterFromMDXModule(
 ): Partial<Formatter> | undefined;
 ```
 
-Defined in: generator.ts:169
+Defined in: core/src/generator.ts:169
 
 **`Internal`**
 
@@ -4779,7 +4353,7 @@ A partial Formatter with the found functions, or undefined if none found
 function getMDXModuleProperty<T>(mdxModule, propertyName): T | undefined;
 ```
 
-Defined in: generator.ts:132
+Defined in: core/src/generator.ts:132
 
 **`Internal`**
 
@@ -4824,7 +4398,7 @@ function loadGraphqlSchema(
 ): Promise<Maybe<GraphQLSchema>>;
 ```
 
-Defined in: generator.ts:233
+Defined in: core/src/generator.ts:233
 
 **`Internal`**
 
@@ -4861,7 +4435,7 @@ A promise that resolves to the loaded GraphQL schema, or undefined if:
 function loadMDXModule(mdxParser): Promise<unknown>;
 ```
 
-Defined in: generator.ts:91
+Defined in: core/src/generator.ts:91
 
 **`Internal`**
 
@@ -4896,7 +4470,7 @@ function resolveSkipAndOnlyDirectives(
 ): GraphQLDirective[][];
 ```
 
-Defined in: generator.ts:295
+Defined in: core/src/generator.ts:295
 
 Resolves and retrieves GraphQL directive objects from the schema based on their names.
 
@@ -4945,7 +4519,7 @@ using the graphql-config package.
 const EXTENSION_NAME: "graphql-markdown";
 ```
 
-Defined in: graphql-config.ts:31
+Defined in: core/src/graphql-config.ts:31
 
 The name of the GraphQL Markdown extension.
 Used to identify the extension in graphql-config.
@@ -4958,7 +4532,7 @@ Used to identify the extension in graphql-config.
 const graphQLConfigExtension: GraphQLExtensionDeclaration;
 ```
 
-Defined in: graphql-config.ts:46
+Defined in: core/src/graphql-config.ts:46
 
 GraphQL extension declaration for graphql-config.
 
@@ -4987,7 +4561,7 @@ function loadConfiguration(
 ): Promise<Maybe<Readonly<ExtensionProjectConfig>>>;
 ```
 
-Defined in: graphql-config.ts:142
+Defined in: core/src/graphql-config.ts:142
 
 Loads the GraphQL Markdown configuration from graphql-config.
 
@@ -5048,7 +4622,7 @@ const config = await loadConfiguration(
 function setLoaderOptions(loaders, options): LoaderOption;
 ```
 
-Defined in: graphql-config.ts:94
+Defined in: core/src/graphql-config.ts:94
 
 Sets loader options for GraphQL Markdown loaders.
 
@@ -5110,7 +4684,7 @@ Eliminates repetitive if/coalesce patterns throughout the codebase.
 
 ## OptionBuilder \{#optionbuilder\}
 
-Defined in: options/builder.ts:49
+Defined in: core/src/options/builder.ts:49
 
 Builder for constructing options from multiple sources with priority precedence.
 
@@ -5161,7 +4735,7 @@ new OptionBuilder<T>(): OptionBuilder<T>;
 addDefault<K>(value, key): this;
 ```
 
-Defined in: options/builder.ts:73
+Defined in: core/src/options/builder.ts:73
 
 Adds a default value (lowest priority).
 Sets a value that can be overwritten by config or CLI options.
@@ -5205,7 +4779,7 @@ builder.addDefault(3000, "port");
 addFromCli<K>(value, key): this;
 ```
 
-Defined in: options/builder.ts:109
+Defined in: core/src/options/builder.ts:109
 
 Adds a value from CLI options if provided (highest priority).
 Can override both default and config values for this key.
@@ -5249,7 +4823,7 @@ builder.addFromCli(cliOpts.port, "port");
 addFromConfig<K>(value, key): this;
 ```
 
-Defined in: options/builder.ts:91
+Defined in: core/src/options/builder.ts:91
 
 Adds a value from config file if provided (medium priority).
 Can override default values if the config value exists.
@@ -5293,7 +4867,7 @@ builder.addFromConfig(config.port, "port");
 build(): Partial<T>;
 ```
 
-Defined in: options/builder.ts:222
+Defined in: core/src/options/builder.ts:190
 
 Returns the built options object with all accumulated values.
 The object contains all keys that were set during the building process.
@@ -5316,7 +4890,7 @@ The constructed options object with type `Partial<T>` (may not have all properti
 get<K>(key): T[K] | undefined;
 ```
 
-Defined in: options/builder.ts:199
+Defined in: core/src/options/builder.ts:167
 
 Gets the current value for a key without building.
 Useful for conditional logic during building.
@@ -5349,7 +4923,7 @@ The current value for the key, or `undefined` if not set
 transform<K>(key, fn): this;
 ```
 
-Defined in: options/builder.ts:158
+Defined in: core/src/options/builder.ts:126
 
 Transforms a value using a function if the key exists.
 Useful for processing values after they've been set.
@@ -5395,7 +4969,7 @@ transformIf<K>(
    fn): this;
 ```
 
-Defined in: options/builder.ts:179
+Defined in: core/src/options/builder.ts:147
 
 Conditionally applies a transformation if a predicate is true.
 Useful for applying different transformations based on other values.
@@ -5461,7 +5035,7 @@ function getPrinter(
 ): Promise<typeof IPrinter>;
 ```
 
-Defined in: printer.ts:67
+Defined in: core/src/printer.ts:67
 
 Loads and initializes a printer module for GraphQL schema documentation.
 
@@ -5552,7 +5126,7 @@ const output = printer.printSchema();
 
 ## Renderer \{#renderer\}
 
-Defined in: renderer.ts:335
+Defined in: core/src/renderer.ts:335
 
 Core renderer class responsible for generating documentation files from GraphQL schema entities.
 Handles the conversion of schema types to markdown/MDX documentation with proper organization.
@@ -5585,7 +5159,7 @@ new Renderer(
    mdxExtension): Renderer;
 ```
 
-Defined in: renderer.ts:360
+Defined in: core/src/renderer.ts:360
 
 Creates a new Renderer instance.
 
@@ -5651,7 +5225,7 @@ Optional MDX file extension to use
 readonly baseURL: string;
 ```
 
-Defined in: renderer.ts:338
+Defined in: core/src/renderer.ts:338
 
 #### group \{#group\}
 
@@ -5659,7 +5233,7 @@ Defined in: renderer.ts:338
 readonly group: Maybe<Partial<Record<SchemaEntity, Record<string, Maybe<string>>>>>;
 ```
 
-Defined in: renderer.ts:336
+Defined in: core/src/renderer.ts:336
 
 #### mdxExtension \{#mdxextension\}
 
@@ -5667,7 +5241,7 @@ Defined in: renderer.ts:336
 readonly mdxExtension: string;
 ```
 
-Defined in: renderer.ts:341
+Defined in: core/src/renderer.ts:341
 
 #### options \{#options\}
 
@@ -5675,7 +5249,7 @@ Defined in: renderer.ts:341
 readonly options: Maybe<RendererDocOptions>;
 ```
 
-Defined in: renderer.ts:340
+Defined in: core/src/renderer.ts:340
 
 #### outputDir \{#outputdir\}
 
@@ -5683,7 +5257,7 @@ Defined in: renderer.ts:340
 readonly outputDir: string;
 ```
 
-Defined in: renderer.ts:337
+Defined in: core/src/renderer.ts:337
 
 #### prettify \{#prettify\}
 
@@ -5691,7 +5265,7 @@ Defined in: renderer.ts:337
 readonly prettify: boolean;
 ```
 
-Defined in: renderer.ts:339
+Defined in: core/src/renderer.ts:339
 
 ### Methods
 
@@ -5704,7 +5278,7 @@ generateCategoryMetafileType(
    rootTypeName): Promise<string>;
 ```
 
-Defined in: renderer.ts:463
+Defined in: core/src/renderer.ts:463
 
 Generates the directory path and metafiles for a specific schema entity type.
 Creates the appropriate directory structure based on configuration options.
@@ -5750,7 +5324,7 @@ generateIndexMetafile(
    options?): Promise<void>;
 ```
 
-Defined in: renderer.ts:408
+Defined in: core/src/renderer.ts:408
 
 Generates an index metafile for a category directory if MDX support is available.
 
@@ -5795,7 +5369,7 @@ await renderer.generateIndexMetafile("docs/types", "Types", {
 preCollectCategories(rootTypeNames): void;
 ```
 
-Defined in: renderer.ts:741
+Defined in: core/src/renderer.ts:753
 
 Pre-collects all category names that will be generated during rendering.
 This allows the position manager to assign consistent positions before
@@ -5831,7 +5405,7 @@ Array of root type names from the schema
 renderHomepage(homepageLocation): Promise<void>;
 ```
 
-Defined in: renderer.ts:791
+Defined in: core/src/renderer.ts:803
 
 Renders the homepage for the documentation from a template file.
 Replaces placeholders in the template with actual values.
@@ -5862,7 +5436,7 @@ Promise that resolves when the homepage is rendered
 renderRootTypes(rootTypeName, type): Promise<Maybe<Maybe<Category>[]>>;
 ```
 
-Defined in: renderer.ts:547
+Defined in: core/src/renderer.ts:547
 
 Renders all types within a root type category (e.g., all Query types).
 
@@ -5898,10 +5472,11 @@ Array of rendered categories or undefined
 renderTypeEntities(
    dirPath,
    name,
-   type): Promise<Maybe<Category>>;
+   type,
+   operationNamespaceParts?): Promise<Maybe<Category>>;
 ```
 
-Defined in: renderer.ts:606
+Defined in: core/src/renderer.ts:614
 
 Renders documentation for a specific type entity and saves it to a file.
 
@@ -5925,6 +5500,10 @@ The name of the type entity
 
 The type entity to render
 
+###### operationNamespaceParts?
+
+`string`[]
+
 ##### Returns
 
 `Promise`&lt;`Maybe`&lt;`Category`&gt;&gt;
@@ -5941,7 +5520,7 @@ The category information for the rendered entity or undefined
 
 ## CategoryMetafileOptions \{#categorymetafileoptions\}
 
-Defined in: renderer.ts:219
+Defined in: core/src/renderer.ts:219
 
 Configuration options for category metafiles in the documentation.
 These options control the appearance and behavior of category sections in the sidebar.
@@ -5967,7 +5546,7 @@ const options: CategoryMetafileOptions = {
 optional collapsed?: boolean;
 ```
 
-Defined in: renderer.ts:221
+Defined in: core/src/renderer.ts:221
 
 Whether the category should be initially collapsed
 
@@ -5977,7 +5556,7 @@ Whether the category should be initially collapsed
 optional collapsible?: boolean;
 ```
 
-Defined in: renderer.ts:220
+Defined in: core/src/renderer.ts:220
 
 Whether the category should be collapsible in the sidebar
 
@@ -5987,7 +5566,7 @@ Whether the category should be collapsible in the sidebar
 optional sidebarPosition?: number;
 ```
 
-Defined in: renderer.ts:222
+Defined in: core/src/renderer.ts:222
 
 Custom position in the sidebar (lower numbers appear first)
 
@@ -5997,7 +5576,7 @@ Custom position in the sidebar (lower numbers appear first)
 optional styleClass?: string;
 ```
 
-Defined in: renderer.ts:223
+Defined in: core/src/renderer.ts:223
 
 CSS class to apply to the category for styling
 
@@ -6009,7 +5588,7 @@ CSS class to apply to the category for styling
 const API_GROUPS: Required<ApiGroupOverrideType>;
 ```
 
-Defined in: renderer.ts:124
+Defined in: core/src/renderer.ts:124
 
 Default group names for API types and non-API types.
 This constant provides the base folder structure for organizing GraphQL schema entities.
@@ -6038,7 +5617,7 @@ const customGroups = { ...API_GROUPS, operations: "queries-and-mutations" };
 function getApiGroupFolder(type, groups?): string;
 ```
 
-Defined in: renderer.ts:145
+Defined in: core/src/renderer.ts:145
 
 Determines the appropriate folder for a GraphQL schema entity based on its type.
 
@@ -6088,7 +5667,7 @@ function getRenderer(
 ): Promise<Renderer>;
 ```
 
-Defined in: renderer.ts:1023
+Defined in: core/src/renderer.ts:1035
 
 Factory function to create and initialize a Renderer instance.
 Creates the output directory and returns a configured renderer.
@@ -6431,13 +6010,13 @@ which GraphQL-Markdown prepends to every generated MDX file.
 function createMDXFormatter(meta?): Formatter;
 ```
 
-Defined in: mdx/index.ts:157
+Defined in: mdx/index.ts:159
 
 Creates an MDX formatter for Docusaurus documentation.
 
-The MDX formatter produces React component-based markup compatible
-with Docusaurus MDX rendering. It uses components like `<Badge>`,
-`<Bullet>`, `<Details>`, and `<SpecifiedBy>`.
+The MDX formatter produces MDX/HTML markup compatible with Docusaurus.
+It uses helper components like `<Badge>`, `<Bullet>`, and `<SpecifiedBy>`,
+and emits native `<details>/<summary>` blocks for collapsible sections.
 
 ### Parameters
 
@@ -6580,7 +6159,7 @@ Formatted MDX string for the collapsible section
 function formatMDXFrontmatter(_props, formatted): MDXString;
 ```
 
-Defined in: mdx/index.ts:127
+Defined in: mdx/index.ts:129
 
 Default frontmatter formatter for MDX.
 
@@ -6612,7 +6191,7 @@ Formatted MDX string for the front matter
 function formatMDXLink(param): TypeLink;
 ```
 
-Defined in: mdx/index.ts:113
+Defined in: mdx/index.ts:115
 
 Formats a link in MDX format
 
@@ -6638,7 +6217,7 @@ Formatted MDX link object
 function formatMDXNameEntity(name, parentType?): MDXString;
 ```
 
-Defined in: mdx/index.ts:100
+Defined in: mdx/index.ts:102
 
 Formats a name entity with optional parent type
 
@@ -6670,7 +6249,7 @@ Formatted MDX string for the name entity
 function formatMDXSpecifiedByLink(url): MDXString;
 ```
 
-Defined in: mdx/index.ts:90
+Defined in: mdx/index.ts:92
 
 Creates a link to the specification documentation
 
@@ -7421,7 +7000,7 @@ Defined in: packages/graphql/src/introspection.ts:51
 new IntrospectionError(message?): IntrospectionError;
 ```
 
-Defined in: node_modules/.bun/typescript@5.9.3/node_modules/typescript/lib/lib.es5.d.ts:1082
+Defined in: node_modules/.bun/typescript@6.0.2/node_modules/typescript/lib/lib.es5.d.ts:1080
 
 ##### Parameters
 
@@ -7445,7 +7024,7 @@ Error.constructor;
 new IntrospectionError(message?, options?): IntrospectionError;
 ```
 
-Defined in: node_modules/.bun/typescript@5.9.3/node_modules/typescript/lib/lib.es5.d.ts:1082
+Defined in: node_modules/.bun/typescript@6.0.2/node_modules/typescript/lib/lib.es5.d.ts:1080
 
 ##### Parameters
 
@@ -7583,7 +7162,7 @@ Defined in: packages/graphql/src/introspection.ts:122
 function getFields(type): unknown[];
 ```
 
-Defined in: packages/graphql/src/introspection.ts:561
+Defined in: packages/graphql/src/introspection.ts:576
 
 Returns fields map for a GraphQL schema type.
 
@@ -7614,7 +7193,7 @@ function getOperation(
 ): Record<string, GraphQLOperationType>;
 ```
 
-Defined in: packages/graphql/src/introspection.ts:525
+Defined in: packages/graphql/src/introspection.ts:539
 
 **`Internal`**
 
@@ -7634,6 +7213,8 @@ the operation type to parse.
 
 `Maybe`&lt;`OperationKind`&gt;
 
+optional explicit operation kind.
+
 ### Returns
 
 `Record`&lt;`string`, `GraphQLOperationType`&gt;
@@ -7648,7 +7229,7 @@ a map of fields as k/v records.
 function getSchemaMap(schema): SchemaMap;
 ```
 
-Defined in: packages/graphql/src/introspection.ts:639
+Defined in: packages/graphql/src/introspection.ts:654
 
 Returns an introspection map of the GraphQL schema.
 This is the entry point for GraphQL-Markdown schema parsing features.
@@ -8576,9 +8157,14 @@ Logger singleton module.
 
 ## LogLevel \{#loglevel\}
 
-Defined in: index.ts:19
+Defined in: index.ts:23
 
-Log levels.
+Log levels supported by the logger.
+
+### Remarks
+
+The logger supports standard console methods plus custom 'success' level
+for framework-specific integrations like Docusaurus.
 
 ### Enumeration Members
 
@@ -8588,7 +8174,7 @@ Log levels.
 debug: "debug";
 ```
 
-Defined in: index.ts:20
+Defined in: index.ts:24
 
 #### error \{#error\}
 
@@ -8596,7 +8182,7 @@ Defined in: index.ts:20
 error: "error";
 ```
 
-Defined in: index.ts:21
+Defined in: index.ts:25
 
 #### info \{#info\}
 
@@ -8604,7 +8190,7 @@ Defined in: index.ts:21
 info: "info";
 ```
 
-Defined in: index.ts:22
+Defined in: index.ts:26
 
 #### log \{#log\}
 
@@ -8612,7 +8198,7 @@ Defined in: index.ts:22
 log: "log";
 ```
 
-Defined in: index.ts:23
+Defined in: index.ts:27
 
 #### success \{#success\}
 
@@ -8620,7 +8206,7 @@ Defined in: index.ts:23
 success: "success";
 ```
 
-Defined in: index.ts:24
+Defined in: index.ts:28
 
 #### warn \{#warn\}
 
@@ -8628,7 +8214,91 @@ Defined in: index.ts:24
 warn: "warn";
 ```
 
-Defined in: index.ts:25
+Defined in: index.ts:29
+
+---
+
+## \_\_internal \{#\_\_internal\}
+
+```ts
+const __internal: object;
+```
+
+Defined in: index.ts:183
+
+**`Internal`**
+
+Internal helpers exported for testing purposes only.
+Not part of the public API — do not use in application code.
+
+### Type Declaration
+
+#### hasLogMethod \{#haslogmethod\}
+
+```ts
+hasLogMethod: (instance, level) => instance is Record<string, (args: unknown[]) => unknown>;
+```
+
+Type guard to check if an object has a log method for a given level.
+
+##### Parameters
+
+###### instance
+
+`unknown`
+
+The object to check
+
+###### level
+
+\| `"debug"`
+\| `"error"`
+\| `"info"`
+\| `"log"`
+\| `"success"`
+\| `"warn"`
+\| [`LogLevel`](#loglevel)
+
+The log level to verify
+
+##### Returns
+
+`instance is Record<string, (args: unknown[]) => unknown>`
+
+`true` if the instance has a function at the given level, `false` otherwise
+
+#### resolveLoggerInstance \{#resolveloggerinstance\}
+
+```ts
+resolveLoggerInstance: (instance) =>
+  | Partial<Record<LogLevel, (...unknown) => void>>
+  | undefined;
+```
+
+Resolve a logger instance from a module export.
+
+##### Parameters
+
+###### instance
+
+`unknown`
+
+The module export or object to resolve
+
+##### Returns
+
+\| `Partial`&lt;`Record`&lt;`LogLevel`, (...`unknown`) => `void`&gt;&gt;
+\| `undefined`
+
+The logger instance if found, or `undefined` if no valid logger is detected (the caller is responsible for falling back to `globalThis.console`)
+
+##### Remarks
+
+Handles various module export patterns:
+
+- Direct logger instance: `{ info: () => {}, ... }`
+- Default export: `{ default: { info: () => {}, ... } }`
+- Named export: `{ logger: { info: () => {}, ... } }`
 
 ---
 
@@ -8638,7 +8308,7 @@ Defined in: index.ts:25
 function log(message, level?): void;
 ```
 
-Defined in: index.ts:86
+Defined in: index.ts:168
 
 Logs a message by calling the active logger instance.
 
@@ -8685,7 +8355,7 @@ log("Info message"); // Expected console output "Info message"
 function Logger(moduleName?): Promise<void>;
 ```
 
-Defined in: index.ts:45
+Defined in: index.ts:111
 
 Instantiate a logger module.
 By default, the logger module uses `globalThis.console`
@@ -9122,7 +8792,7 @@ Formatted warning message as MDX string
 
 ## SectionLevels \{#sectionlevels\}
 
-Defined in: printer-legacy/src/const/options.ts:21
+Defined in: printer-legacy/src/const/options.ts:22
 
 ### Enumeration Members
 
@@ -9132,7 +8802,7 @@ Defined in: printer-legacy/src/const/options.ts:21
 LEVEL: "#";
 ```
 
-Defined in: printer-legacy/src/const/options.ts:23
+Defined in: printer-legacy/src/const/options.ts:24
 
 #### NONE \{#none\}
 
@@ -9140,13 +8810,13 @@ Defined in: printer-legacy/src/const/options.ts:23
 NONE: "";
 ```
 
-Defined in: printer-legacy/src/const/options.ts:22
+Defined in: printer-legacy/src/const/options.ts:23
 
 ---
 
 ## TypeHierarchy \{#typehierarchy\}
 
-Defined in: printer-legacy/src/const/options.ts:15
+Defined in: printer-legacy/src/const/options.ts:16
 
 ### Enumeration Members
 
@@ -9156,7 +8826,7 @@ Defined in: printer-legacy/src/const/options.ts:15
 API: "api";
 ```
 
-Defined in: printer-legacy/src/const/options.ts:16
+Defined in: printer-legacy/src/const/options.ts:17
 
 #### ENTITY \{#entity\}
 
@@ -9164,7 +8834,7 @@ Defined in: printer-legacy/src/const/options.ts:16
 ENTITY: "entity";
 ```
 
-Defined in: printer-legacy/src/const/options.ts:17
+Defined in: printer-legacy/src/const/options.ts:18
 
 #### FLAT \{#flat\}
 
@@ -9172,7 +8842,7 @@ Defined in: printer-legacy/src/const/options.ts:17
 FLAT: "flat";
 ```
 
-Defined in: printer-legacy/src/const/options.ts:18
+Defined in: printer-legacy/src/const/options.ts:19
 
 ---
 
@@ -9182,7 +8852,20 @@ Defined in: printer-legacy/src/const/options.ts:18
 const DEFAULT_OPTIONS: Required<
   Omit<
     PrintTypeOptions,
+    | "afterDiffCheckHook"
+    | "afterGenerateIndexMetafileHook"
+    | "afterRenderHomepageHook"
+    | "afterRenderRootTypesHook"
+    | "afterRenderTypeEntitiesHook"
+    | "afterSchemaLoadHook"
+    | "beforeDiffCheckHook"
+    | "beforeGenerateIndexMetafileHook"
+    | "beforeRenderHomepageHook"
+    | "beforeRenderRootTypesHook"
+    | "beforeRenderTypeEntitiesHook"
+    | "beforeSchemaLoadHook"
     | "collapsible"
+    | "exampleSection"
     | "formatCategoryFolderName"
     | "groups"
     | "level"
@@ -9191,24 +8874,16 @@ const DEFAULT_OPTIONS: Required<
     | "parentType"
     | "schema"
     | "skipDocDirectives"
-    | "beforeSchemaLoadHook"
-    | "afterSchemaLoadHook"
-    | "beforeDiffCheckHook"
-    | "afterDiffCheckHook"
-    | "beforeRenderRootTypesHook"
-    | "afterRenderRootTypesHook"
-    | "beforeRenderHomepageHook"
-    | "afterRenderHomepageHook"
-    | "beforeRenderTypeEntitiesHook"
-    | "afterRenderTypeEntitiesHook"
-    | "beforeGenerateIndexMetafileHook"
-    | "afterGenerateIndexMetafileHook"
   >
 > &
   object;
 ```
 
-Defined in: printer-legacy/src/const/options.ts:38
+Defined in: printer-legacy/src/const/options.ts:54
+
+Clean runtime options passed through the printer.
+
+Deprecated section toggles are excluded and handled via backward-compat paths.
 
 ### Type Declaration
 
@@ -9216,6 +8891,12 @@ Defined in: printer-legacy/src/const/options.ts:38
 
 ```ts
 collapsible: Maybe<CollapsibleOption>;
+```
+
+#### exampleSection
+
+```ts
+exampleSection: PrintTypeOptions["exampleSection"];
 ```
 
 #### groups
@@ -9256,13 +8937,54 @@ skipDocDirectives: GraphQLDirective[];
 
 ---
 
+## PRINT_TYPE_DEFAULT_DEPRECATED_OPTIONS \{#print_type_default_deprecated_options\}
+
+```ts
+const PRINT_TYPE_DEFAULT_DEPRECATED_OPTIONS: object;
+```
+
+Defined in: printer-legacy/src/const/options.ts:27
+
+### Type Declaration
+
+#### codeSection \{#codesection\}
+
+```ts
+codeSection: true;
+```
+
+#### exampleSection \{#examplesection\}
+
+```ts
+exampleSection: false;
+```
+
+#### relatedTypeSection \{#relatedtypesection\}
+
+```ts
+relatedTypeSection: true;
+```
+
+---
+
 ## PRINT_TYPE_DEFAULT_OPTIONS \{#print_type_default_options\}
 
 ```ts
-const PRINT_TYPE_DEFAULT_OPTIONS: Required<PrinterConfigPrintTypeOptions>;
+const PRINT_TYPE_DEFAULT_OPTIONS: Required<
+  Omit<PrinterConfigPrintTypeOptions, "exampleSection">
+> &
+  object;
 ```
 
-Defined in: printer-legacy/src/const/options.ts:26
+Defined in: printer-legacy/src/const/options.ts:36
+
+### Type Declaration
+
+#### exampleSection
+
+```ts
+exampleSection: PrintTypeOptions["exampleSection"];
+```
 
 ---
 
@@ -9430,7 +9152,7 @@ function getCustomDirectiveResolver(
 ): Maybe<string>;
 ```
 
-Defined in: printer-legacy/src/directive.ts:30
+Defined in: printer-legacy/src/directive.ts:31
 
 Resolves a custom directive using the provided resolver function
 
@@ -9474,7 +9196,7 @@ The resolved directive value or `fallback`/`undefined`
 function getCustomTags(type, options): Badge[];
 ```
 
-Defined in: printer-legacy/src/directive.ts:120
+Defined in: printer-legacy/src/directive.ts:125
 
 Extracts custom tags from directives for a given type
 
@@ -9510,7 +9232,7 @@ function printCustomDirective(
 ): Maybe<string>;
 ```
 
-Defined in: printer-legacy/src/directive.ts:56
+Defined in: printer-legacy/src/directive.ts:57
 
 Prints a custom directive as a Markdown string
 
@@ -9545,10 +9267,10 @@ Formatted Markdown string for the directive or `undefined`
 ## printCustomDirectives() \{#printcustomdirectives\}
 
 ```ts
-function printCustomDirectives(type, options): string;
+function printCustomDirectives(type, options): Maybe<PageSection>;
 ```
 
-Defined in: printer-legacy/src/directive.ts:84
+Defined in: printer-legacy/src/directive.ts:85
 
 Prints all custom directives for a type as a Markdown section
 
@@ -9568,9 +9290,9 @@ General printing options
 
 ### Returns
 
-`string`
+`Maybe`&lt;[`PageSection`](events.md#pagesection)&gt;
 
-Markdown string containing all formatted directives
+A "Directives" PageSection, or undefined when no directives are printable
 
 ---
 
@@ -9580,7 +9302,7 @@ Markdown string containing all formatted directives
 function printCustomTags(type, options): string | MDXString;
 ```
 
-Defined in: printer-legacy/src/directive.ts:152
+Defined in: printer-legacy/src/directive.ts:157
 
 Prints custom directive tags as Markdown badges
 
@@ -9603,6 +9325,1171 @@ General printing options
 `string` \| `MDXString`
 
 Formatted Markdown string of badges or empty string
+
+---
+
+## events(Printer-legacy)
+
+Print type event classes.
+
+Event classes for print operations that allow handlers to modify the generated output.
+
+## Events
+
+### BeforeComposePageTypeEvent \{#beforecomposepagetypeevent\}
+
+Defined in: printer-legacy/src/events.ts:114
+
+Event emitted before composing page sections for a GraphQL type.
+
+This event fires after section content is generated and before sections are joined into final output.
+The `output` property contains an array of content section keys that will be included in the final page,
+in addition to fixed header sections (`header`, `metatags`, `mdxDeclaration`) which are managed separately
+by the printer and always prepended. Handlers can reorder, filter, or append to this array to control the
+structure of the content portion of the page.
+
+#### Example
+
+```typescript
+events.on(
+  PrintTypeEvents.BEFORE_COMPOSE_PAGE_TYPE,
+  (event: BeforeComposePageTypeEvent) => {
+    // Move relations section before metadata
+    const idx = event.output.indexOf("relations");
+    if (idx > -1) {
+      event.output.splice(idx, 1);
+      const metaidx = event.output.indexOf("metadata");
+      event.output.splice(metaidx, 0, "relations");
+    }
+  },
+);
+```
+
+#### Extends
+
+- [`DataOutputEvent`](../utils/events.md#abstract-dataoutputevent)&lt;[`ComposePageTypeEventData`](#composepagetypeeventdata), keyof [`PageSections`](#pagesections)[]&gt;
+
+#### Constructors
+
+##### Constructor
+
+```ts
+new BeforeComposePageTypeEvent(
+   data,
+   initialOutput,
+   options?): BeforeComposePageTypeEvent;
+```
+
+Defined in: printer-legacy/src/events.ts:118
+
+###### Parameters
+
+###### data
+
+[`ComposePageTypeEventData`](#composepagetypeeventdata)
+
+###### initialOutput
+
+keyof [`PageSections`](#pagesections)[]
+
+###### options?
+
+[`CancellableEventOptions`](../utils/events.md#cancellableeventoptions)
+
+###### Returns
+
+[`BeforeComposePageTypeEvent`](#beforecomposepagetypeevent)
+
+###### Overrides
+
+[`DataOutputEvent`](../utils/events.md#abstract-dataoutputevent).[`constructor`](../utils/events.md#constructor-2)
+
+#### Properties
+
+##### data \{#data\}
+
+```ts
+readonly data: ComposePageTypeEventData;
+```
+
+Defined in: utils/dist/events.d.ts:111
+
+Read-only event data payload.
+
+###### Inherited from
+
+[`DataOutputEvent`](../utils/events.md#abstract-dataoutputevent).[`data`](../utils/events.md#data-1)
+
+##### output \{#output\}
+
+```ts
+output: keyof PageSections[];
+```
+
+Defined in: utils/dist/events.d.ts:127
+
+The generated output.
+Handlers can modify this property to change the final result.
+
+###### Inherited from
+
+[`DataOutputEvent`](../utils/events.md#abstract-dataoutputevent).[`output`](../utils/events.md#output)
+
+#### Accessors
+
+##### defaultAction \{#defaultaction\}
+
+###### Get Signature
+
+```ts
+get defaultAction(): DefaultAction | undefined;
+```
+
+Defined in: utils/dist/events.d.ts:78
+
+Gets the default action function if one was provided.
+
+###### Returns
+
+`DefaultAction` \| `undefined`
+
+###### Inherited from
+
+[`DataOutputEvent`](../utils/events.md#abstract-dataoutputevent).[`defaultAction`](../utils/events.md#defaultaction-2)
+
+##### defaultPrevented \{#defaultprevented\}
+
+###### Get Signature
+
+```ts
+get defaultPrevented(): boolean;
+```
+
+Defined in: utils/dist/events.d.ts:70
+
+Gets whether the default action has been prevented.
+
+###### Returns
+
+`boolean`
+
+###### Set Signature
+
+```ts
+set defaultPrevented(value): void;
+```
+
+Defined in: utils/dist/events.d.ts:82
+
+Allows setting defaultPrevented to true directly.
+
+###### Parameters
+
+###### value
+
+`boolean`
+
+###### Returns
+
+`void`
+
+###### Inherited from
+
+[`DataOutputEvent`](../utils/events.md#abstract-dataoutputevent).[`defaultPrevented`](../utils/events.md#defaultprevented-2)
+
+##### propagationStopped \{#propagationstopped\}
+
+###### Get Signature
+
+```ts
+get propagationStopped(): boolean;
+```
+
+Defined in: utils/dist/events.d.ts:74
+
+Gets whether propagation has been stopped.
+
+###### Returns
+
+`boolean`
+
+###### Set Signature
+
+```ts
+set propagationStopped(value): void;
+```
+
+Defined in: utils/dist/events.d.ts:86
+
+Allows setting propagationStopped to true directly.
+
+###### Parameters
+
+###### value
+
+`boolean`
+
+###### Returns
+
+`void`
+
+###### Inherited from
+
+[`DataOutputEvent`](../utils/events.md#abstract-dataoutputevent).[`propagationStopped`](../utils/events.md#propagationstopped-2)
+
+#### Methods
+
+##### preventDefault() \{#preventdefault\}
+
+```ts
+preventDefault(): void;
+```
+
+Defined in: utils/dist/events.d.ts:91
+
+Prevents the default action from executing.
+Only works if the event is cancellable.
+
+###### Returns
+
+`void`
+
+###### Inherited from
+
+[`DataOutputEvent`](../utils/events.md#abstract-dataoutputevent).[`preventDefault`](../utils/events.md#preventdefault-2)
+
+##### runDefaultAction() \{#rundefaultaction\}
+
+```ts
+runDefaultAction(): Promise<void>;
+```
+
+Defined in: utils/dist/events.d.ts:100
+
+Executes the default action for an event if it hasn't been prevented.
+
+###### Returns
+
+`Promise`&lt;`void`&gt;
+
+###### Inherited from
+
+[`DataOutputEvent`](../utils/events.md#abstract-dataoutputevent).[`runDefaultAction`](../utils/events.md#rundefaultaction-2)
+
+##### stopPropagation() \{#stoppropagation\}
+
+```ts
+stopPropagation(): void;
+```
+
+Defined in: utils/dist/events.d.ts:96
+
+Stops propagation to remaining event handlers.
+Handlers registered after the current one will not execute.
+
+###### Returns
+
+`void`
+
+###### Inherited from
+
+[`DataOutputEvent`](../utils/events.md#abstract-dataoutputevent).[`stopPropagation`](../utils/events.md#stoppropagation-2)
+
+---
+
+### PrintCodeEvent \{#printcodeevent\}
+
+Defined in: printer-legacy/src/events.ts:48
+
+Event emitted around code block generation for a GraphQL type.
+
+The `output` property is mutable, allowing event handlers to modify
+the generated code before it's included in the documentation.
+
+#### Example
+
+```typescript
+events.on(PrintTypeEvents.AFTER_PRINT_CODE, (event: PrintCodeEvent) => {
+  // Add a comment to all generated code
+  event.output = `# Auto-generated\n${event.output}`;
+});
+```
+
+#### Extends
+
+- [`DataOutputEvent`](../utils/events.md#abstract-dataoutputevent)&lt;[`PrintCodeEventData`](#printcodeeventdata-1), `string`&gt;
+
+#### Implements
+
+- `IPrintCodeEvent`
+
+#### Constructors
+
+##### Constructor
+
+```ts
+new PrintCodeEvent(
+   data,
+   initialOutput,
+   options?): PrintCodeEvent;
+```
+
+Defined in: printer-legacy/src/events.ts:52
+
+###### Parameters
+
+###### data
+
+[`PrintCodeEventData`](#printcodeeventdata-1)
+
+###### initialOutput
+
+`string`
+
+###### options?
+
+[`CancellableEventOptions`](../utils/events.md#cancellableeventoptions)
+
+###### Returns
+
+[`PrintCodeEvent`](#printcodeevent)
+
+###### Overrides
+
+[`DataOutputEvent`](../utils/events.md#abstract-dataoutputevent).[`constructor`](../utils/events.md#constructor-2)
+
+#### Properties
+
+##### data \{#data-1\}
+
+```ts
+readonly data: PrintCodeEventData;
+```
+
+Defined in: utils/dist/events.d.ts:111
+
+Read-only event data payload.
+
+###### Implementation of
+
+```ts
+IPrintCodeEvent.data;
+```
+
+###### Inherited from
+
+[`DataOutputEvent`](../utils/events.md#abstract-dataoutputevent).[`data`](../utils/events.md#data-1)
+
+##### output \{#output-1\}
+
+```ts
+output: string;
+```
+
+Defined in: utils/dist/events.d.ts:127
+
+The generated output.
+Handlers can modify this property to change the final result.
+
+###### Implementation of
+
+```ts
+IPrintCodeEvent.output;
+```
+
+###### Inherited from
+
+[`DataOutputEvent`](../utils/events.md#abstract-dataoutputevent).[`output`](../utils/events.md#output)
+
+#### Accessors
+
+##### defaultAction \{#defaultaction-1\}
+
+###### Get Signature
+
+```ts
+get defaultAction(): DefaultAction | undefined;
+```
+
+Defined in: utils/dist/events.d.ts:78
+
+Gets the default action function if one was provided.
+
+###### Returns
+
+`DefaultAction` \| `undefined`
+
+###### Implementation of
+
+```ts
+IPrintCodeEvent.defaultAction;
+```
+
+###### Inherited from
+
+[`PrintTypeEvent`](#printtypeevent).[`defaultAction`](#defaultaction-2)
+
+##### defaultPrevented \{#defaultprevented-1\}
+
+###### Get Signature
+
+```ts
+get defaultPrevented(): boolean;
+```
+
+Defined in: utils/dist/events.d.ts:70
+
+Gets whether the default action has been prevented.
+
+###### Returns
+
+`boolean`
+
+###### Set Signature
+
+```ts
+set defaultPrevented(value): void;
+```
+
+Defined in: utils/dist/events.d.ts:82
+
+Allows setting defaultPrevented to true directly.
+
+###### Parameters
+
+###### value
+
+`boolean`
+
+###### Returns
+
+`void`
+
+###### Implementation of
+
+```ts
+IPrintCodeEvent.defaultPrevented;
+```
+
+###### Inherited from
+
+[`DataOutputEvent`](../utils/events.md#abstract-dataoutputevent).[`defaultPrevented`](../utils/events.md#defaultprevented-2)
+
+##### propagationStopped \{#propagationstopped-1\}
+
+###### Get Signature
+
+```ts
+get propagationStopped(): boolean;
+```
+
+Defined in: utils/dist/events.d.ts:74
+
+Gets whether propagation has been stopped.
+
+###### Returns
+
+`boolean`
+
+###### Set Signature
+
+```ts
+set propagationStopped(value): void;
+```
+
+Defined in: utils/dist/events.d.ts:86
+
+Allows setting propagationStopped to true directly.
+
+###### Parameters
+
+###### value
+
+`boolean`
+
+###### Returns
+
+`void`
+
+###### Implementation of
+
+```ts
+IPrintCodeEvent.propagationStopped;
+```
+
+###### Inherited from
+
+[`DataOutputEvent`](../utils/events.md#abstract-dataoutputevent).[`propagationStopped`](../utils/events.md#propagationstopped-2)
+
+#### Methods
+
+##### preventDefault() \{#preventdefault-1\}
+
+```ts
+preventDefault(): void;
+```
+
+Defined in: utils/dist/events.d.ts:91
+
+Prevents the default action from executing.
+Only works if the event is cancellable.
+
+###### Returns
+
+`void`
+
+###### Implementation of
+
+```ts
+IPrintCodeEvent.preventDefault;
+```
+
+###### Inherited from
+
+[`DataOutputEvent`](../utils/events.md#abstract-dataoutputevent).[`preventDefault`](../utils/events.md#preventdefault-2)
+
+##### runDefaultAction() \{#rundefaultaction-1\}
+
+```ts
+runDefaultAction(): Promise<void>;
+```
+
+Defined in: utils/dist/events.d.ts:100
+
+Executes the default action for an event if it hasn't been prevented.
+
+###### Returns
+
+`Promise`&lt;`void`&gt;
+
+###### Implementation of
+
+```ts
+IPrintCodeEvent.runDefaultAction;
+```
+
+###### Inherited from
+
+[`DataOutputEvent`](../utils/events.md#abstract-dataoutputevent).[`runDefaultAction`](../utils/events.md#rundefaultaction-2)
+
+##### stopPropagation() \{#stoppropagation-1\}
+
+```ts
+stopPropagation(): void;
+```
+
+Defined in: utils/dist/events.d.ts:96
+
+Stops propagation to remaining event handlers.
+Handlers registered after the current one will not execute.
+
+###### Returns
+
+`void`
+
+###### Implementation of
+
+```ts
+IPrintCodeEvent.stopPropagation;
+```
+
+###### Inherited from
+
+[`DataOutputEvent`](../utils/events.md#abstract-dataoutputevent).[`stopPropagation`](../utils/events.md#stoppropagation-2)
+
+---
+
+### PrintTypeEvent \{#printtypeevent\}
+
+Defined in: printer-legacy/src/events.ts:77
+
+Event emitted around full documentation generation for a GraphQL type.
+
+The `output` property is mutable, allowing event handlers to modify
+the complete generated documentation.
+
+#### Example
+
+```typescript
+events.on(PrintTypeEvents.AFTER_PRINT_TYPE, (event: PrintTypeEvent) => {
+  // Add a footer to all type documentation
+  event.output = `${event.output}\n\n---\nGenerated by GraphQL-Markdown`;
+});
+```
+
+#### Extends
+
+- [`DataOutputEvent`](../utils/events.md#abstract-dataoutputevent)&lt;[`PrintTypeEventData`](#printtypeeventdata-1), `Maybe`&lt;`MDXString`&gt;&gt;
+
+#### Implements
+
+- `IPrintTypeEvent`
+
+#### Constructors
+
+##### Constructor
+
+```ts
+new PrintTypeEvent(
+   data,
+   initialOutput,
+   options?): PrintTypeEvent;
+```
+
+Defined in: printer-legacy/src/events.ts:81
+
+###### Parameters
+
+###### data
+
+[`PrintTypeEventData`](#printtypeeventdata-1)
+
+###### initialOutput
+
+`Maybe`&lt;`MDXString`&gt;
+
+###### options?
+
+[`CancellableEventOptions`](../utils/events.md#cancellableeventoptions)
+
+###### Returns
+
+[`PrintTypeEvent`](#printtypeevent)
+
+###### Overrides
+
+[`DataOutputEvent`](../utils/events.md#abstract-dataoutputevent).[`constructor`](../utils/events.md#constructor-2)
+
+#### Properties
+
+##### data \{#data-2\}
+
+```ts
+readonly data: PrintTypeEventData;
+```
+
+Defined in: utils/dist/events.d.ts:111
+
+Read-only event data payload.
+
+###### Implementation of
+
+```ts
+IPrintTypeEvent.data;
+```
+
+###### Inherited from
+
+[`DataOutputEvent`](../utils/events.md#abstract-dataoutputevent).[`data`](../utils/events.md#data-1)
+
+##### output \{#output-2\}
+
+```ts
+output: Maybe;
+```
+
+Defined in: utils/dist/events.d.ts:127
+
+The generated output.
+Handlers can modify this property to change the final result.
+
+###### Implementation of
+
+```ts
+IPrintTypeEvent.output;
+```
+
+###### Inherited from
+
+[`DataOutputEvent`](../utils/events.md#abstract-dataoutputevent).[`output`](../utils/events.md#output)
+
+#### Accessors
+
+##### defaultAction \{#defaultaction-2\}
+
+###### Get Signature
+
+```ts
+get defaultAction(): DefaultAction | undefined;
+```
+
+Defined in: utils/dist/events.d.ts:78
+
+Gets the default action function if one was provided.
+
+###### Returns
+
+`DefaultAction` \| `undefined`
+
+###### Implementation of
+
+```ts
+IPrintTypeEvent.defaultAction;
+```
+
+###### Inherited from
+
+[`DataOutputEvent`](../utils/events.md#abstract-dataoutputevent).[`defaultAction`](../utils/events.md#defaultaction-2)
+
+##### defaultPrevented \{#defaultprevented-2\}
+
+###### Get Signature
+
+```ts
+get defaultPrevented(): boolean;
+```
+
+Defined in: utils/dist/events.d.ts:70
+
+Gets whether the default action has been prevented.
+
+###### Returns
+
+`boolean`
+
+###### Set Signature
+
+```ts
+set defaultPrevented(value): void;
+```
+
+Defined in: utils/dist/events.d.ts:82
+
+Allows setting defaultPrevented to true directly.
+
+###### Parameters
+
+###### value
+
+`boolean`
+
+###### Returns
+
+`void`
+
+###### Implementation of
+
+```ts
+IPrintTypeEvent.defaultPrevented;
+```
+
+###### Inherited from
+
+[`DataOutputEvent`](../utils/events.md#abstract-dataoutputevent).[`defaultPrevented`](../utils/events.md#defaultprevented-2)
+
+##### propagationStopped \{#propagationstopped-2\}
+
+###### Get Signature
+
+```ts
+get propagationStopped(): boolean;
+```
+
+Defined in: utils/dist/events.d.ts:74
+
+Gets whether propagation has been stopped.
+
+###### Returns
+
+`boolean`
+
+###### Set Signature
+
+```ts
+set propagationStopped(value): void;
+```
+
+Defined in: utils/dist/events.d.ts:86
+
+Allows setting propagationStopped to true directly.
+
+###### Parameters
+
+###### value
+
+`boolean`
+
+###### Returns
+
+`void`
+
+###### Implementation of
+
+```ts
+IPrintTypeEvent.propagationStopped;
+```
+
+###### Inherited from
+
+[`DataOutputEvent`](../utils/events.md#abstract-dataoutputevent).[`propagationStopped`](../utils/events.md#propagationstopped-2)
+
+#### Methods
+
+##### preventDefault() \{#preventdefault-2\}
+
+```ts
+preventDefault(): void;
+```
+
+Defined in: utils/dist/events.d.ts:91
+
+Prevents the default action from executing.
+Only works if the event is cancellable.
+
+###### Returns
+
+`void`
+
+###### Implementation of
+
+```ts
+IPrintTypeEvent.preventDefault;
+```
+
+###### Inherited from
+
+[`DataOutputEvent`](../utils/events.md#abstract-dataoutputevent).[`preventDefault`](../utils/events.md#preventdefault-2)
+
+##### runDefaultAction() \{#rundefaultaction-2\}
+
+```ts
+runDefaultAction(): Promise<void>;
+```
+
+Defined in: utils/dist/events.d.ts:100
+
+Executes the default action for an event if it hasn't been prevented.
+
+###### Returns
+
+`Promise`&lt;`void`&gt;
+
+###### Implementation of
+
+```ts
+IPrintTypeEvent.runDefaultAction;
+```
+
+###### Inherited from
+
+[`DataOutputEvent`](../utils/events.md#abstract-dataoutputevent).[`runDefaultAction`](../utils/events.md#rundefaultaction-2)
+
+##### stopPropagation() \{#stoppropagation-2\}
+
+```ts
+stopPropagation(): void;
+```
+
+Defined in: utils/dist/events.d.ts:96
+
+Stops propagation to remaining event handlers.
+Handlers registered after the current one will not execute.
+
+###### Returns
+
+`void`
+
+###### Implementation of
+
+```ts
+IPrintTypeEvent.stopPropagation;
+```
+
+###### Inherited from
+
+[`DataOutputEvent`](../utils/events.md#abstract-dataoutputevent).[`stopPropagation`](../utils/events.md#stoppropagation-2)
+
+## Other
+
+### ComposePageTypeEventData \{#composepagetypeeventdata\}
+
+Defined in: types/src/printer.d.ts:114
+
+Data payload for compose page type events.
+
+#### Properties
+
+##### name \{#name\}
+
+```ts
+readonly name: Maybe<string>;
+```
+
+Defined in: types/src/printer.d.ts:118
+
+The name identifier for the type
+
+##### options \{#options\}
+
+```ts
+readonly options: PrintTypeOptions;
+```
+
+Defined in: types/src/printer.d.ts:120
+
+The print options in effect
+
+##### sections \{#sections\}
+
+```ts
+readonly sections: PageSections;
+```
+
+Defined in: types/src/printer.d.ts:122
+
+The map of all page sections (mutable in BEFORE event)
+
+##### type \{#type\}
+
+```ts
+readonly type: unknown;
+```
+
+Defined in: types/src/printer.d.ts:116
+
+The GraphQL type being composed
+
+---
+
+### PageSection \{#pagesection\}
+
+Defined in: types/src/printer.d.ts:24
+
+Represents a single section of a page with optional title and content.
+
+#### Properties
+
+##### content? \{#content\}
+
+```ts
+optional content?:
+  | string
+  | MDXString
+  | PageSection
+  | PageSection[];
+```
+
+Defined in: types/src/printer.d.ts:30
+
+The section content
+
+##### level? \{#level\}
+
+```ts
+optional level?: number;
+```
+
+Defined in: types/src/printer.d.ts:28
+
+Optional section level for hierarchical structuring
+
+##### title? \{#title\}
+
+```ts
+optional title?: string | MDXString;
+```
+
+Defined in: types/src/printer.d.ts:26
+
+Optional title/heading for the section
+
+---
+
+### PageSections \{#pagesections\}
+
+Defined in: types/src/printer.d.ts:36
+
+Map of all available sections in a type page.
+
+#### Indexable
+
+```ts
+[key: string]: Maybe<PageSection | PageHeader>
+```
+
+Additional custom sections can be added by event handlers
+
+#### Properties
+
+##### code? \{#code\}
+
+```ts
+optional code?: PageSection;
+```
+
+Defined in: types/src/printer.d.ts:50
+
+GraphQL code block
+
+##### customDirectives? \{#customdirectives\}
+
+```ts
+optional customDirectives?: PageSection;
+```
+
+Defined in: types/src/printer.d.ts:52
+
+Custom directives
+
+##### description? \{#description\}
+
+```ts
+optional description?: PageSection;
+```
+
+Defined in: types/src/printer.d.ts:48
+
+Type description from GraphQL comments
+
+##### example? \{#example\}
+
+```ts
+optional example?: PageSection;
+```
+
+Defined in: types/src/printer.d.ts:56
+
+Usage examples
+
+##### header? \{#header\}
+
+```ts
+optional header?: PageHeader;
+```
+
+Defined in: types/src/printer.d.ts:40
+
+YAML frontmatter or top-level heading
+
+##### mdxDeclaration? \{#mdxdeclaration\}
+
+```ts
+optional mdxDeclaration?: PageHeader;
+```
+
+Defined in: types/src/printer.d.ts:44
+
+MDX import declarations
+
+##### metadata? \{#metadata\}
+
+```ts
+optional metadata?: PageSection;
+```
+
+Defined in: types/src/printer.d.ts:54
+
+Type metadata (fields, arguments, etc.)
+
+##### metatags? \{#metatags\}
+
+```ts
+optional metatags?: PageHeader;
+```
+
+Defined in: types/src/printer.d.ts:42
+
+HTML meta tags
+
+##### relations? \{#relations\}
+
+```ts
+optional relations?: PageSection;
+```
+
+Defined in: types/src/printer.d.ts:58
+
+Related types
+
+##### tags? \{#tags\}
+
+```ts
+optional tags?: PageSection;
+```
+
+Defined in: types/src/printer.d.ts:46
+
+Custom tags (e.g., @deprecated)
+
+---
+
+### PrintCodeEventData \{#printcodeeventdata-1\}
+
+Defined in: types/src/printer.d.ts:64
+
+Data payload for print code events.
+
+#### Properties
+
+##### options \{#options-1\}
+
+```ts
+readonly options: PrintTypeOptions;
+```
+
+Defined in: types/src/printer.d.ts:70
+
+The print options in effect
+
+##### type \{#type-1\}
+
+```ts
+readonly type: unknown;
+```
+
+Defined in: types/src/printer.d.ts:66
+
+The GraphQL type being printed
+
+##### typeName \{#typename\}
+
+```ts
+readonly typeName: string;
+```
+
+Defined in: types/src/printer.d.ts:68
+
+The name of the type
+
+---
+
+### PrintTypeEventData \{#printtypeeventdata-1\}
+
+Defined in: types/src/printer.d.ts:76
+
+Data payload for print type events.
+
+#### Properties
+
+##### name \{#name-1\}
+
+```ts
+readonly name: Maybe<string>;
+```
+
+Defined in: types/src/printer.d.ts:80
+
+The name identifier for the type
+
+##### options \{#options-2\}
+
+```ts
+readonly options: PrintTypeOptions;
+```
+
+Defined in: types/src/printer.d.ts:82
+
+The print options in effect
+
+##### type \{#type-2\}
+
+```ts
+readonly type: unknown;
+```
+
+Defined in: types/src/printer.d.ts:78
+
+The GraphQL type being printed
 
 ---
 
@@ -9760,9 +10647,18 @@ Default bullet formatter.
 function formatMDXDetails(__namedParameters): MDXString;
 ```
 
-Defined in: printer-legacy/src/format-helpers.ts:55
+Defined in: printer-legacy/src/format-helpers.ts:64
 
 Default details formatter.
+
+The returned string **must** contain a `\r` (carriage return) character as a
+delimiter between the opening part (ending after `</summary>`) and the
+closing part (starting before `</details>`). `printSection` calls
+`result.split('\r')` to obtain `[openSection, closeSection]`; without this
+delimiter the closing tag is lost and items are rendered outside the
+collapsible element.
+
+Custom implementations of `formatMDXDetails` must follow the same contract.
 
 ### Parameters
 
@@ -9782,7 +10678,7 @@ Default details formatter.
 function formatMDXFrontmatter(_props, formatted): MDXString;
 ```
 
-Defined in: printer-legacy/src/format-helpers.ts:64
+Defined in: printer-legacy/src/format-helpers.ts:73
 
 Default frontmatter formatter.
 
@@ -9808,7 +10704,7 @@ Default frontmatter formatter.
 function formatMDXLink(link): TypeLink;
 ```
 
-Defined in: printer-legacy/src/format-helpers.ts:78
+Defined in: printer-legacy/src/format-helpers.ts:87
 
 Default link formatter.
 
@@ -9830,7 +10726,7 @@ Default link formatter.
 function formatMDXNameEntity(name, parentType?): MDXString;
 ```
 
-Defined in: printer-legacy/src/format-helpers.ts:85
+Defined in: printer-legacy/src/format-helpers.ts:94
 
 Default name entity formatter.
 
@@ -9856,7 +10752,7 @@ Default name entity formatter.
 function formatMDXSpecifiedByLink(url): MDXString;
 ```
 
-Defined in: printer-legacy/src/format-helpers.ts:98
+Defined in: printer-legacy/src/format-helpers.ts:107
 
 Default specified-by link formatter.
 
@@ -9964,7 +10860,7 @@ including their metadata, arguments, and locations.
 function printCodeDirective(type, options?): string;
 ```
 
-Defined in: printer-legacy/src/graphql/directive.ts:66
+Defined in: printer-legacy/src/graphql/directive.ts:67
 
 Generates a string representation of a complete GraphQL directive definition.
 
@@ -9993,10 +10889,10 @@ A formatted string containing the complete directive definition
 ## printDirectiveMetadata() \{#printdirectivemetadata\}
 
 ```ts
-function printDirectiveMetadata(type, options): string | MDXString;
+function printDirectiveMetadata(type, options): Maybe<PageSection>;
 ```
 
-Defined in: printer-legacy/src/graphql/directive.ts:48
+Defined in: printer-legacy/src/graphql/directive.ts:49
 
 Prints metadata information for a GraphQL directive, focusing on its arguments.
 
@@ -10016,9 +10912,9 @@ Configuration options for printing directive metadata
 
 ### Returns
 
-`string` \| `MDXString`
+`Maybe`&lt;[`PageSection`](../events.md#pagesection)&gt;
 
-Formatted metadata string in MDX format or empty string if no arguments
+An "Arguments" PageSection, or undefined when no arguments are available
 
 ---
 
@@ -10032,7 +10928,7 @@ Provides utilities for printing GraphQL enum types to Markdown/MDX format
 function printCodeEnum(type, options?): string;
 ```
 
-Defined in: printer-legacy/src/graphql/enum.ts:43
+Defined in: printer-legacy/src/graphql/enum.ts:47
 
 Generates a GraphQL SDL code block for an enum type.
 
@@ -10061,10 +10957,10 @@ A string containing the enum type definition in GraphQL SDL, or empty string if 
 ## printEnumMetadata() \{#printenummetadata\}
 
 ```ts
-function printEnumMetadata(type, options): string | MDXString;
+function printEnumMetadata(type, options): Maybe<PageSection>;
 ```
 
-Defined in: printer-legacy/src/graphql/enum.ts:25
+Defined in: printer-legacy/src/graphql/enum.ts:29
 
 Prints the metadata section for a GraphQL enum type.
 
@@ -10084,9 +10980,9 @@ Options for printing the type
 
 ### Returns
 
-`string` \| `MDXString`
+`Maybe`&lt;[`PageSection`](../events.md#pagesection)&gt;
 
-A string containing the metadata section in MDX format, or empty string if type is not an enum
+A "Values" PageSection, or undefined when `type` is not an enum
 
 ---
 
@@ -10173,7 +11069,7 @@ GraphQL Object Type printing utilities
 function printCodeObject(type, options): string;
 ```
 
-Defined in: printer-legacy/src/graphql/object.ts:104
+Defined in: printer-legacy/src/graphql/object.ts:108
 
 Prints a GraphQL object type definition as a code block
 
@@ -10205,7 +11101,7 @@ GraphQL object type definition as a code block string
 function printCodeType(type, entity, options): string;
 ```
 
-Defined in: printer-legacy/src/graphql/object.ts:64
+Defined in: printer-legacy/src/graphql/object.ts:68
 
 Prints the GraphQL type definition as a code block
 
@@ -10240,10 +11136,10 @@ GraphQL type definition as a code block string
 ## printObjectMetadata() \{#printobjectmetadata\}
 
 ```ts
-function printObjectMetadata(type, options): string;
+function printObjectMetadata(type, options): Maybe<PageSection[]>;
 ```
 
-Defined in: printer-legacy/src/graphql/object.ts:42
+Defined in: printer-legacy/src/graphql/object.ts:46
 
 Prints the complete metadata section for a GraphQL object type
 
@@ -10263,9 +11159,9 @@ Printing options
 
 ### Returns
 
-`string`
+`Maybe`&lt;[`PageSection`](../events.md#pagesection)[]&gt;
 
-Markdown formatted string containing fields and interfaces metadata
+Ordered metadata sections for fields and interfaces
 
 ---
 
@@ -10274,13 +11170,39 @@ Markdown formatted string containing fields and interfaces metadata
 Module for handling GraphQL operation printing functionality.
 Provides utilities to print operation types, metadata, and code representations.
 
+## printCodeOperation() \{#printcodeoperation\}
+
+```ts
+function printCodeOperation(type, options?): string | MDXString;
+```
+
+Defined in: printer-legacy/src/graphql/operation.ts:94
+
+Prints the code representation of an operation.
+
+### Parameters
+
+#### type
+
+`unknown`
+
+#### options?
+
+`PrintTypeOptions`
+
+### Returns
+
+`string` \| `MDXString`
+
+---
+
 ## printOperationMetadata() \{#printoperationmetadata\}
 
 ```ts
-function printOperationMetadata(type, options): string | MDXString;
+function printOperationMetadata(type, options): Maybe<PageSection[]>;
 ```
 
-Defined in: printer-legacy/src/graphql/operation.ts:38
+Defined in: printer-legacy/src/graphql/operation.ts:45
 
 Prints the operation metadata including arguments and type information.
 
@@ -10300,19 +11222,19 @@ Print type options for customizing output
 
 ### Returns
 
-`string` \| `MDXString`
+`Maybe`&lt;[`PageSection`](../events.md#pagesection)[]&gt;
 
-Formatted string containing operation metadata or empty string if invalid
+Ordered operation metadata sections, or undefined when `type` is not an operation
 
 ---
 
 ## printOperationType() \{#printoperationtype\}
 
 ```ts
-function printOperationType(type, options): string | MDXString;
+function printOperationType(type, options): Maybe<PageSection>;
 ```
 
-Defined in: printer-legacy/src/graphql/operation.ts:17
+Defined in: printer-legacy/src/graphql/operation.ts:24
 
 Prints the operation type information.
 
@@ -10332,9 +11254,9 @@ Print type options for customizing output
 
 ### Returns
 
-`string` \| `MDXString`
+`Maybe`&lt;[`PageSection`](../events.md#pagesection)&gt;
 
-Formatted string representation of the operation type or empty string if invalid
+A "Type" PageSection, or undefined when `type` is not an operation
 
 ---
 
@@ -10348,7 +11270,7 @@ Provides utility functions for handling GraphQL scalar types in markdown generat
 function printCodeScalar(type, options?): string;
 ```
 
-Defined in: printer-legacy/src/graphql/scalar.ts:57
+Defined in: printer-legacy/src/graphql/scalar.ts:60
 
 Generates the GraphQL SDL representation of a scalar type.
 
@@ -10377,10 +11299,10 @@ SDL string representation of the scalar type
 ## printScalarMetadata() \{#printscalarmetadata\}
 
 ```ts
-function printScalarMetadata(type, options): string | MDXString;
+function printScalarMetadata(type, options): Maybe<PageSection>;
 ```
 
-Defined in: printer-legacy/src/graphql/scalar.ts:44
+Defined in: printer-legacy/src/graphql/scalar.ts:47
 
 Prints metadata information for a scalar type.
 Currently only includes the specification URL if available.
@@ -10401,19 +11323,19 @@ Options for printing type information
 
 ### Returns
 
-`string` \| `MDXString`
+`Maybe`&lt;[`PageSection`](../events.md#pagesection)&gt;
 
-Markdown string containing the scalar metadata
+A scalar metadata PageSection, or undefined when not available
 
 ---
 
 ## printSpecification() \{#printspecification\}
 
 ```ts
-function printSpecification(type, options): string | MDXString;
+function printSpecification(type, options): Maybe<PageSection>;
 ```
 
-Defined in: printer-legacy/src/graphql/scalar.ts:18
+Defined in: printer-legacy/src/graphql/scalar.ts:19
 
 Generates markdown documentation for a scalar type's specification URL.
 
@@ -10433,9 +11355,9 @@ Options for printing type information
 
 ### Returns
 
-`string` \| `MDXString`
+`Maybe`&lt;[`PageSection`](../events.md#pagesection)&gt;
 
-Markdown string containing the specification link, or empty string if no URL exists
+A specification PageSection, or undefined when no URL exists
 
 ---
 
@@ -10449,7 +11371,7 @@ Module for handling GraphQL Union type printing operations.
 function printCodeUnion(type, options?): string;
 ```
 
-Defined in: printer-legacy/src/graphql/union.ts:42
+Defined in: printer-legacy/src/graphql/union.ts:43
 
 Generates GraphQL SDL code representation of a Union type.
 
@@ -10478,10 +11400,10 @@ SDL string representation of the union type
 ## printUnionMetadata() \{#printunionmetadata\}
 
 ```ts
-function printUnionMetadata(type, options): string | MDXString;
+function printUnionMetadata(type, options): Maybe<PageSection>;
 ```
 
-Defined in: printer-legacy/src/graphql/union.ts:22
+Defined in: printer-legacy/src/graphql/union.ts:23
 
 Generates metadata documentation for a GraphQL Union type.
 
@@ -10501,9 +11423,9 @@ Configuration options for printing
 
 ### Returns
 
-`string` \| `MDXString`
+`Maybe`&lt;[`PageSection`](../events.md#pagesection)&gt;
 
-Formatted MDX string containing the union type's possible types
+A "Possible types" PageSection, or undefined when `type` is not a union
 
 ---
 
@@ -10836,6 +11758,8 @@ Prints a link for a GraphQL type based on the provided options.
 
 `Maybe`&lt;`TypeLink`&gt; \| `T`
 
+The GraphQL type or link object to print a link for
+
 #### options
 
 `PrintLinkOptions`
@@ -11018,7 +11942,7 @@ It includes utilities for handling various GraphQL types, custom directives, and
 
 ## Printer \{#printer\}
 
-Defined in: printer-legacy/src/printer.ts:119
+Defined in: printer-legacy/src/printer.ts:157
 
 The Printer class implements the core functionality for generating Markdown documentation
 from GraphQL schema types.
@@ -11058,45 +11982,13 @@ new Printer(): Printer;
 
 ### Properties
 
-#### eventEmitter \{#eventemitter\}
-
-```ts
-static eventEmitter: Maybe<PrinterEventEmitter>;
-```
-
-Defined in: printer-legacy/src/printer.ts:130
-
-Optional event emitter for print events.
-When set, the printer will emit events before/after printCode and printType,
-allowing external code to intercept and modify the output.
-
-#### mdxDeclaration \{#mdxdeclaration\}
-
-```ts
-static mdxDeclaration: Readonly<Maybe<string>>;
-```
-
-Defined in: printer-legacy/src/printer.ts:150
-
-Prints mdx modules import declaration
-
-#### options \{#options\}
-
-```ts
-static options: Readonly<Maybe<PrintTypeOptions>>;
-```
-
-Defined in: printer-legacy/src/printer.ts:123
-
-Global printer configuration options
-
 #### printCustomDirectives \{#printcustomdirectives\}
 
 ```ts
-readonly static printCustomDirectives: (type, options) => string;
+readonly static printCustomDirectives: (type, options) => Maybe<PageSection>;
 ```
 
-Defined in: printer-legacy/src/printer.ts:140
+Defined in: printer-legacy/src/printer.ts:166
 
 Prints custom directives
 
@@ -11118,9 +12010,9 @@ General printing options
 
 ##### Returns
 
-`string`
+`Maybe`&lt;[`PageSection`](events.md#pagesection)&gt;
 
-Markdown string containing all formatted directives
+A "Directives" PageSection, or undefined when no directives are printable
 
 #### printCustomTags \{#printcustomtags\}
 
@@ -11128,7 +12020,7 @@ Markdown string containing all formatted directives
 readonly static printCustomTags: (type, options) => string | MDXString;
 ```
 
-Defined in: printer-legacy/src/printer.ts:145
+Defined in: printer-legacy/src/printer.ts:171
 
 Prints custom tags
 
@@ -11160,7 +12052,7 @@ Formatted Markdown string of badges or empty string
 readonly static printDescription: (type, options, noText?) => string | MDXString;
 ```
 
-Defined in: printer-legacy/src/printer.ts:135
+Defined in: printer-legacy/src/printer.ts:161
 
 Prints type descriptions
 
@@ -11192,6 +12084,130 @@ Optional text to display when no description exists
 
 Combined description, deprecation notices, and custom directives as MDX content
 
+### Accessors
+
+#### deprecatedOptions \{#deprecatedoptions\}
+
+##### Get Signature
+
+```ts
+get static deprecatedOptions(): Readonly<Maybe<DeprecatedPrintTypeOptions>>;
+```
+
+Defined in: printer-legacy/src/printer.ts:195
+
+Backward-compat section toggles extracted from legacy config options.
+
+These flags are applied only during section order composition.
+
+###### Returns
+
+`Readonly`&lt;`Maybe`&lt;`DeprecatedPrintTypeOptions`&gt;&gt;
+
+#### eventEmitter \{#eventemitter\}
+
+##### Get Signature
+
+```ts
+get static eventEmitter(): Maybe<PrinterEventEmitter>;
+```
+
+Defined in: printer-legacy/src/printer.ts:204
+
+Optional event emitter for print events.
+When set, the printer will emit events before/after printCode and printType,
+allowing external code to intercept and modify the output.
+
+###### Returns
+
+`Maybe`&lt;`PrinterEventEmitter`&gt;
+
+##### Set Signature
+
+```ts
+set static eventEmitter(eventEmitter): void;
+```
+
+Defined in: printer-legacy/src/printer.ts:219
+
+###### Parameters
+
+###### eventEmitter
+
+`Maybe`&lt;`PrinterEventEmitter`&gt;
+
+###### Returns
+
+`void`
+
+#### mdxDeclaration \{#mdxdeclaration\}
+
+##### Get Signature
+
+```ts
+get static mdxDeclaration(): Readonly<Maybe<string>>;
+```
+
+Defined in: printer-legacy/src/printer.ts:211
+
+Prints mdx modules import declaration
+
+###### Returns
+
+`Readonly`&lt;`Maybe`&lt;`string`&gt;&gt;
+
+##### Set Signature
+
+```ts
+set static mdxDeclaration(mdxDeclaration): void;
+```
+
+Defined in: printer-legacy/src/printer.ts:223
+
+###### Parameters
+
+###### mdxDeclaration
+
+`Readonly`&lt;`Maybe`&lt;`string`&gt;&gt;
+
+###### Returns
+
+`void`
+
+#### options \{#options\}
+
+##### Get Signature
+
+```ts
+get static options(): Readonly<Maybe<PrintTypeOptions>>;
+```
+
+Defined in: printer-legacy/src/printer.ts:186
+
+Global printer configuration options
+
+###### Returns
+
+`Readonly`&lt;`Maybe`&lt;`PrintTypeOptions`&gt;&gt;
+
+##### Set Signature
+
+```ts
+set static options(options): void;
+```
+
+Defined in: printer-legacy/src/printer.ts:215
+
+###### Parameters
+
+###### options
+
+`Readonly`&lt;`Maybe`&lt;`PrintTypeOptions`&gt;&gt;
+
+###### Returns
+
+`void`
+
 ### Methods
 
 #### init() \{#init\}
@@ -11207,7 +12223,7 @@ static init(
    eventEmitter?): Promise<void>;
 ```
 
-Defined in: printer-legacy/src/printer.ts:163
+Defined in: printer-legacy/src/printer.ts:238
 
 Initializes the printer with the given schema and configuration.
 
@@ -11261,7 +12277,7 @@ Configuration options for the printer
 
 ###### printTypeOptions?
 
-`PrinterConfigPrintTypeOptions`
+`InitPrintTypeOptions`
 
 ###### sectionHeaderId?
 
@@ -11299,7 +12315,7 @@ Optional event emitter for print events interception
 readonly static printCode(type, options): string;
 ```
 
-Defined in: printer-legacy/src/printer.ts:263
+Defined in: printer-legacy/src/printer.ts:354
 
 Prints the GraphQL type definition as code block
 
@@ -11332,7 +12348,7 @@ readonly static printCodeAsync(
    options): Promise<string>;
 ```
 
-Defined in: printer-legacy/src/printer.ts:323
+Defined in: printer-legacy/src/printer.ts:410
 
 Prints the GraphQL type definition as code block with event emission support.
 
@@ -11378,10 +12394,10 @@ Event handlers can:
 #### printExample() \{#printexample\}
 
 ```ts
-readonly static printExample(type, options): string;
+readonly static printExample(type, options): Maybe<PageSection>;
 ```
 
-Defined in: printer-legacy/src/printer.ts:378
+Defined in: printer-legacy/src/printer.ts:455
 
 Prints example usage of the type if available
 
@@ -11401,9 +12417,9 @@ Printer configuration options
 
 ##### Returns
 
-`string`
+`Maybe`&lt;[`PageSection`](events.md#pagesection)&gt;
 
-Formatted example section string or empty string if no example
+Example page section or undefined when no example is available
 
 #### printHeader() \{#printheader\}
 
@@ -11414,7 +12430,7 @@ readonly static printHeader(
    options): string;
 ```
 
-Defined in: printer-legacy/src/printer.ts:242
+Defined in: printer-legacy/src/printer.ts:333
 
 Prints the header section of a type documentation
 
@@ -11450,7 +12466,7 @@ Formatted header string with optional frontmatter
 readonly static printMetaTags(_type, options): string | MDXString;
 ```
 
-Defined in: printer-legacy/src/printer.ts:460
+Defined in: printer-legacy/src/printer.ts:528
 
 Prints HTML meta tags for the documentation
 
@@ -11480,7 +12496,7 @@ Formatted HTML meta tags string
 readonly static printRelations(type, options): string | MDXString;
 ```
 
-Defined in: printer-legacy/src/printer.ts:443
+Defined in: printer-legacy/src/printer.ts:514
 
 Prints related type information
 
@@ -11513,7 +12529,7 @@ readonly static printType(
    options?): Promise<Maybe<MDXString>>;
 ```
 
-Defined in: printer-legacy/src/printer.ts:510
+Defined in: printer-legacy/src/printer.ts:578
 
 Main method to print complete documentation for a GraphQL type
 
@@ -11548,7 +12564,6 @@ Complete documentation as MDX string or undefined if type should be skipped
 ```typescript
 const doc = await Printer.printType("User", UserType, {
   frontMatter: true,
-  codeSection: true,
 });
 ```
 
@@ -11568,15 +12583,18 @@ The method combines multiple sections:
 When an event emitter is configured, emits events:
 
 - `print:beforePrintType` - Before generating documentation
+- `print:beforeComposePageType` - Before composing section order and final page output
 - `print:afterPrintType` - After generating documentation (output can be modified)
 
 #### printTypeMetadata() \{#printtypemetadata\}
 
 ```ts
-readonly static printTypeMetadata(type, options): string | MDXString;
+readonly static printTypeMetadata(type, options): Maybe<
+  | PageSection
+  | PageSection[]>;
 ```
 
-Defined in: printer-legacy/src/printer.ts:407
+Defined in: printer-legacy/src/printer.ts:478
 
 Prints metadata information for a GraphQL type
 
@@ -11596,13 +12614,11 @@ Printer configuration options
 
 ##### Returns
 
-`string` \| `MDXString`
+`Maybe`&lt;
+\| [`PageSection`](events.md#pagesection)
+\| [`PageSection`](events.md#pagesection)[]&gt;
 
-Formatted metadata string as MDX or plain string
-
-##### Throws
-
-When type is not supported
+Metadata section (or section list) for supported types, otherwise undefined
 
 ---
 
@@ -11768,10 +12784,10 @@ function printMetadataSection<T, V>(
   values,
   section,
   options,
-): string | MDXString;
+): Maybe<PageSection>;
 ```
 
-Defined in: printer-legacy/src/section.ts:193
+Defined in: printer-legacy/src/section.ts:195
 
 Prints a metadata section with special handling for deprecated items.
 
@@ -11817,7 +12833,7 @@ Configuration options for printing
 
 ### Returns
 
-`string` \| `MDXString`
+`Maybe`&lt;[`PageSection`](events.md#pagesection)&gt;
 
 Formatted MDX string containing the metadata section
 
@@ -11826,10 +12842,10 @@ Formatted MDX string containing the metadata section
 ## printSection() \{#printsection\}
 
 ```ts
-function printSection<V>(values, section, options): string | MDXString;
+function printSection<V>(values, section, options): Maybe<PageSection>;
 ```
 
-Defined in: printer-legacy/src/section.ts:142
+Defined in: printer-legacy/src/section.ts:140
 
 Prints a complete section with title and content.
 
@@ -11863,7 +12879,7 @@ Configuration options for printing
 
 ### Returns
 
-`string` \| `MDXString`
+`Maybe`&lt;[`PageSection`](events.md#pagesection)&gt;
 
 Formatted MDX string containing the complete section
 
@@ -11875,7 +12891,7 @@ Formatted MDX string containing the complete section
 function printSectionItem<T>(type, options): string | MDXString;
 ```
 
-Defined in: printer-legacy/src/section.ts:44
+Defined in: printer-legacy/src/section.ts:46
 
 Prints a single section item with its associated metadata.
 
@@ -11915,7 +12931,7 @@ Formatted MDX string containing the section item
 function printSectionItems<V>(values, options): string | MDXString;
 ```
 
-Defined in: printer-legacy/src/section.ts:106
+Defined in: printer-legacy/src/section.ts:108
 
 Prints an array of section items with consistent formatting.
 
@@ -12046,6 +13062,785 @@ toArray({
 });
 
 // Expected result: [true, "test", 123, ["one", "two"], { key: "value" }]
+```
+
+---
+
+## events(Utils)
+
+Base event class and utilities for GraphQL-Markdown events.
+
+## Events
+
+### `abstract` CancellableEvent \{#abstract-cancellableevent\}
+
+Defined in: events.ts:55
+
+Base class for all cancellable events in GraphQL-Markdown.
+
+Provides common functionality:
+
+- preventDefault() to cancel default actions
+- stopPropagation() to halt handler chain
+- Configurable cancellability
+- Optional default action function
+
+#### Extended by
+
+- [`DataEvent`](#abstract-dataevent)
+
+#### Implements
+
+- `ICancellableEvent`
+
+#### Constructors
+
+##### Constructor
+
+```ts
+new CancellableEvent(options?): CancellableEvent;
+```
+
+Defined in: events.ts:88
+
+Creates a new CancellableEvent.
+
+###### Parameters
+
+###### options?
+
+[`CancellableEventOptions`](#cancellableeventoptions)
+
+Configuration options for the event
+
+###### Returns
+
+[`CancellableEvent`](#abstract-cancellableevent)
+
+###### Remarks
+
+options.cancellable controls whether this event can be cancelled (default: true).
+options.defaultAction defines an optional function to execute as default action.
+
+#### Accessors
+
+##### defaultAction \{#defaultaction\}
+
+###### Get Signature
+
+```ts
+get defaultAction(): DefaultAction | undefined;
+```
+
+Defined in: events.ts:110
+
+Gets the default action function if one was provided.
+
+###### Returns
+
+`DefaultAction` \| `undefined`
+
+###### Implementation of
+
+```ts
+ICancellableEvent.defaultAction;
+```
+
+##### defaultPrevented \{#defaultprevented\}
+
+###### Get Signature
+
+```ts
+get defaultPrevented(): boolean;
+```
+
+Defined in: events.ts:96
+
+Gets whether the default action has been prevented.
+
+###### Returns
+
+`boolean`
+
+###### Set Signature
+
+```ts
+set defaultPrevented(value): void;
+```
+
+Defined in: events.ts:117
+
+Allows setting defaultPrevented to true directly.
+
+###### Parameters
+
+###### value
+
+`boolean`
+
+###### Returns
+
+`void`
+
+###### Implementation of
+
+```ts
+ICancellableEvent.defaultPrevented;
+```
+
+##### propagationStopped \{#propagationstopped\}
+
+###### Get Signature
+
+```ts
+get propagationStopped(): boolean;
+```
+
+Defined in: events.ts:103
+
+Gets whether propagation has been stopped.
+
+###### Returns
+
+`boolean`
+
+###### Set Signature
+
+```ts
+set propagationStopped(value): void;
+```
+
+Defined in: events.ts:126
+
+Allows setting propagationStopped to true directly.
+
+###### Parameters
+
+###### value
+
+`boolean`
+
+###### Returns
+
+`void`
+
+###### Implementation of
+
+```ts
+ICancellableEvent.propagationStopped;
+```
+
+#### Methods
+
+##### preventDefault() \{#preventdefault\}
+
+```ts
+preventDefault(): void;
+```
+
+Defined in: events.ts:136
+
+Prevents the default action from executing.
+Only works if the event is cancellable.
+
+###### Returns
+
+`void`
+
+###### Implementation of
+
+```ts
+ICancellableEvent.preventDefault;
+```
+
+##### runDefaultAction() \{#rundefaultaction\}
+
+```ts
+runDefaultAction(): Promise<void>;
+```
+
+Defined in: events.ts:153
+
+Executes the default action for an event if it hasn't been prevented.
+
+###### Returns
+
+`Promise`&lt;`void`&gt;
+
+###### Implementation of
+
+```ts
+ICancellableEvent.runDefaultAction;
+```
+
+##### stopPropagation() \{#stoppropagation\}
+
+```ts
+stopPropagation(): void;
+```
+
+Defined in: events.ts:146
+
+Stops propagation to remaining event handlers.
+Handlers registered after the current one will not execute.
+
+###### Returns
+
+`void`
+
+###### Implementation of
+
+```ts
+ICancellableEvent.stopPropagation;
+```
+
+---
+
+### `abstract` DataEvent \{#abstract-dataevent\}
+
+Defined in: events.ts:168
+
+Abstract base for events that carry a typed, read-only data payload.
+
+#### Extends
+
+- [`CancellableEvent`](#abstract-cancellableevent)
+
+#### Extended by
+
+- [`DataOutputEvent`](#abstract-dataoutputevent)
+- [`DiffCheckEvent`](../core/events/diff-check.md#diffcheckevent)
+- [`GenerateIndexMetafileEvent`](../core/events/generate-index-metafile.md#generateindexmetafileevent)
+- [`RenderHomepageEvent`](../core/events/render-homepage.md#renderhomepageevent)
+- [`RenderRootTypesEvent`](../core/events/render-root-types.md#renderroottypesevent)
+- [`RenderTypeEntitiesEvent`](../core/events/render-type-entities.md#rendertypeentitiesevent)
+- [`SchemaEvent`](../core/events/schema-load.md#schemaevent)
+
+#### Type Parameters
+
+##### TData
+
+`TData`
+
+Type of the event data payload.
+
+#### Constructors
+
+##### Constructor
+
+```ts
+new DataEvent<TData>(data, options?): DataEvent<TData>;
+```
+
+Defined in: events.ts:172
+
+###### Parameters
+
+###### data
+
+`TData`
+
+###### options?
+
+[`CancellableEventOptions`](#cancellableeventoptions)
+
+###### Returns
+
+[`DataEvent`](#abstract-dataevent)&lt;`TData`&gt;
+
+###### Overrides
+
+[`CancellableEvent`](#abstract-cancellableevent).[`constructor`](#constructor)
+
+#### Properties
+
+##### data \{#data\}
+
+```ts
+readonly data: TData;
+```
+
+Defined in: events.ts:170
+
+Read-only event data payload.
+
+#### Accessors
+
+##### defaultAction \{#defaultaction-1\}
+
+###### Get Signature
+
+```ts
+get defaultAction(): DefaultAction | undefined;
+```
+
+Defined in: events.ts:110
+
+Gets the default action function if one was provided.
+
+###### Returns
+
+`DefaultAction` \| `undefined`
+
+###### Inherited from
+
+[`CancellableEvent`](#abstract-cancellableevent).[`defaultAction`](#defaultaction)
+
+##### defaultPrevented \{#defaultprevented-1\}
+
+###### Get Signature
+
+```ts
+get defaultPrevented(): boolean;
+```
+
+Defined in: events.ts:96
+
+Gets whether the default action has been prevented.
+
+###### Returns
+
+`boolean`
+
+###### Set Signature
+
+```ts
+set defaultPrevented(value): void;
+```
+
+Defined in: events.ts:117
+
+Allows setting defaultPrevented to true directly.
+
+###### Parameters
+
+###### value
+
+`boolean`
+
+###### Returns
+
+`void`
+
+###### Inherited from
+
+[`CancellableEvent`](#abstract-cancellableevent).[`defaultPrevented`](#defaultprevented)
+
+##### propagationStopped \{#propagationstopped-1\}
+
+###### Get Signature
+
+```ts
+get propagationStopped(): boolean;
+```
+
+Defined in: events.ts:103
+
+Gets whether propagation has been stopped.
+
+###### Returns
+
+`boolean`
+
+###### Set Signature
+
+```ts
+set propagationStopped(value): void;
+```
+
+Defined in: events.ts:126
+
+Allows setting propagationStopped to true directly.
+
+###### Parameters
+
+###### value
+
+`boolean`
+
+###### Returns
+
+`void`
+
+###### Inherited from
+
+[`CancellableEvent`](#abstract-cancellableevent).[`propagationStopped`](#propagationstopped)
+
+#### Methods
+
+##### preventDefault() \{#preventdefault-1\}
+
+```ts
+preventDefault(): void;
+```
+
+Defined in: events.ts:136
+
+Prevents the default action from executing.
+Only works if the event is cancellable.
+
+###### Returns
+
+`void`
+
+###### Inherited from
+
+[`CancellableEvent`](#abstract-cancellableevent).[`preventDefault`](#preventdefault)
+
+##### runDefaultAction() \{#rundefaultaction-1\}
+
+```ts
+runDefaultAction(): Promise<void>;
+```
+
+Defined in: events.ts:153
+
+Executes the default action for an event if it hasn't been prevented.
+
+###### Returns
+
+`Promise`&lt;`void`&gt;
+
+###### Inherited from
+
+[`CancellableEvent`](#abstract-cancellableevent).[`runDefaultAction`](#rundefaultaction)
+
+##### stopPropagation() \{#stoppropagation-1\}
+
+```ts
+stopPropagation(): void;
+```
+
+Defined in: events.ts:146
+
+Stops propagation to remaining event handlers.
+Handlers registered after the current one will not execute.
+
+###### Returns
+
+`void`
+
+###### Inherited from
+
+[`CancellableEvent`](#abstract-cancellableevent).[`stopPropagation`](#stoppropagation)
+
+---
+
+### `abstract` DataOutputEvent \{#abstract-dataoutputevent\}
+
+Defined in: events.ts:186
+
+Abstract base for events that carry typed data and a mutable output value.
+
+#### Extends
+
+- [`DataEvent`](#abstract-dataevent)&lt;`TData`&gt;
+
+#### Extended by
+
+- [`BeforeComposePageTypeEvent`](../printer-legacy/events.md#beforecomposepagetypeevent)
+- [`PrintCodeEvent`](../printer-legacy/events.md#printcodeevent)
+- [`PrintTypeEvent`](../printer-legacy/events.md#printtypeevent)
+
+#### Type Parameters
+
+##### TData
+
+`TData`
+
+Type of the event data payload.
+
+##### TOutput
+
+`TOutput`
+
+Type of the mutable output value.
+
+#### Constructors
+
+##### Constructor
+
+```ts
+new DataOutputEvent<TData, TOutput>(
+   data,
+   initialOutput,
+   options?): DataOutputEvent<TData, TOutput>;
+```
+
+Defined in: events.ts:193
+
+###### Parameters
+
+###### data
+
+`TData`
+
+###### initialOutput
+
+`TOutput`
+
+###### options?
+
+[`CancellableEventOptions`](#cancellableeventoptions)
+
+###### Returns
+
+[`DataOutputEvent`](#abstract-dataoutputevent)&lt;`TData`, `TOutput`&gt;
+
+###### Overrides
+
+[`DataEvent`](#abstract-dataevent).[`constructor`](#constructor-1)
+
+#### Properties
+
+##### data \{#data-1\}
+
+```ts
+readonly data: TData;
+```
+
+Defined in: events.ts:170
+
+Read-only event data payload.
+
+###### Inherited from
+
+[`DataEvent`](#abstract-dataevent).[`data`](#data)
+
+##### output \{#output\}
+
+```ts
+output: TOutput;
+```
+
+Defined in: events.ts:191
+
+The generated output.
+Handlers can modify this property to change the final result.
+
+#### Accessors
+
+##### defaultAction \{#defaultaction-2\}
+
+###### Get Signature
+
+```ts
+get defaultAction(): DefaultAction | undefined;
+```
+
+Defined in: events.ts:110
+
+Gets the default action function if one was provided.
+
+###### Returns
+
+`DefaultAction` \| `undefined`
+
+###### Inherited from
+
+[`DataEvent`](#abstract-dataevent).[`defaultAction`](#defaultaction-1)
+
+##### defaultPrevented \{#defaultprevented-2\}
+
+###### Get Signature
+
+```ts
+get defaultPrevented(): boolean;
+```
+
+Defined in: events.ts:96
+
+Gets whether the default action has been prevented.
+
+###### Returns
+
+`boolean`
+
+###### Set Signature
+
+```ts
+set defaultPrevented(value): void;
+```
+
+Defined in: events.ts:117
+
+Allows setting defaultPrevented to true directly.
+
+###### Parameters
+
+###### value
+
+`boolean`
+
+###### Returns
+
+`void`
+
+###### Inherited from
+
+[`DataEvent`](#abstract-dataevent).[`defaultPrevented`](#defaultprevented-1)
+
+##### propagationStopped \{#propagationstopped-2\}
+
+###### Get Signature
+
+```ts
+get propagationStopped(): boolean;
+```
+
+Defined in: events.ts:103
+
+Gets whether propagation has been stopped.
+
+###### Returns
+
+`boolean`
+
+###### Set Signature
+
+```ts
+set propagationStopped(value): void;
+```
+
+Defined in: events.ts:126
+
+Allows setting propagationStopped to true directly.
+
+###### Parameters
+
+###### value
+
+`boolean`
+
+###### Returns
+
+`void`
+
+###### Inherited from
+
+[`DataEvent`](#abstract-dataevent).[`propagationStopped`](#propagationstopped-1)
+
+#### Methods
+
+##### preventDefault() \{#preventdefault-2\}
+
+```ts
+preventDefault(): void;
+```
+
+Defined in: events.ts:136
+
+Prevents the default action from executing.
+Only works if the event is cancellable.
+
+###### Returns
+
+`void`
+
+###### Inherited from
+
+[`DataEvent`](#abstract-dataevent).[`preventDefault`](#preventdefault-1)
+
+##### runDefaultAction() \{#rundefaultaction-2\}
+
+```ts
+runDefaultAction(): Promise<void>;
+```
+
+Defined in: events.ts:153
+
+Executes the default action for an event if it hasn't been prevented.
+
+###### Returns
+
+`Promise`&lt;`void`&gt;
+
+###### Inherited from
+
+[`DataEvent`](#abstract-dataevent).[`runDefaultAction`](#rundefaultaction-1)
+
+##### stopPropagation() \{#stoppropagation-2\}
+
+```ts
+stopPropagation(): void;
+```
+
+Defined in: events.ts:146
+
+Stops propagation to remaining event handlers.
+Handlers registered after the current one will not execute.
+
+###### Returns
+
+`void`
+
+###### Inherited from
+
+[`DataEvent`](#abstract-dataevent).[`stopPropagation`](#stoppropagation-1)
+
+## Other
+
+### CancellableEventOptions \{#cancellableeventoptions\}
+
+Defined in: events.ts:39
+
+#### Properties
+
+##### cancellable? \{#cancellable\}
+
+```ts
+optional cancellable?: boolean;
+```
+
+Defined in: events.ts:41
+
+##### defaultAction? \{#defaultaction-3\}
+
+```ts
+optional defaultAction?: DefaultAction;
+```
+
+Defined in: events.ts:40
+
+---
+
+### deepFreeze() \{#deepfreeze\}
+
+```ts
+function deepFreeze<T>(obj): T;
+```
+
+Defined in: events.ts:23
+
+Deep freezes an object to make it immutable at runtime.
+Recursively freezes all nested objects and arrays.
+
+#### Type Parameters
+
+##### T
+
+`T` _extends_ `Record`&lt;`PropertyKey`, `any`&gt;
+
+#### Parameters
+
+##### obj
+
+`T`
+
+The object to freeze
+
+#### Returns
+
+`T`
+
+The frozen object (same reference)
+
+#### Example
+
+```typescript
+const data = { user: { name: "John" } };
+deepFreeze(data);
+data.user.name = "Jane"; // Throws error in strict mode
 ```
 
 ---

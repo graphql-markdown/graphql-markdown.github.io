@@ -33,16 +33,15 @@ This index exposes the documentation set that powers graphql-markdown.dev so LLM
 - [diff](https://graphql-markdown.dev/api/core/diff): Diff utilities for detecting schema changes between builds.
 - [normalize](https://graphql-markdown.dev/api/core/directives/normalize): Directive name normalization and processing utilities.
 - [validation](https://graphql-markdown.dev/api/core/directives/validation): Configuration validation utilities for directive and configuration options.
-- [event-emitter](https://graphql-markdown.dev/api/core/event-emitter): Defined in: event-emitter.ts:9
+- [event-emitter](https://graphql-markdown.dev/api/core/event-emitter): Defined in: core/src/event-emitter.ts:9
 - [event-handlers](https://graphql-markdown.dev/api/core/event-handlers): MDX event handler registration functionality.
 - [event-map](https://graphql-markdown.dev/api/core/event-map): Event callback mapping configuration.
-- [base](https://graphql-markdown.dev/api/core/events/base): Base event class and utilities for GraphQL-Markdown events.
 - [diff-check](https://graphql-markdown.dev/api/core/events/diff-check): Diff checking event class.
 - [diff-events](https://graphql-markdown.dev/api/core/events/diff-events): Diff checking event constants.
 - [generate-index-metafile-events](https://graphql-markdown.dev/api/core/events/generate-index-metafile-events): Generate index metafile event constants.
 - [generate-index-metafile](https://graphql-markdown.dev/api/core/events/generate-index-metafile): Generate index metafile event class.
 - [print-type-events](https://graphql-markdown.dev/api/core/events/print-type-events): Print type event constants.
-- [print-type](https://graphql-markdown.dev/api/core/events/print-type): Print type event classes.
+- [print-type](https://graphql-markdown.dev/api/core/events/print-type): Print type interfaces — re-exported from @graphql-markdown/types.
 - [render-homepage-events](https://graphql-markdown.dev/api/core/events/render-homepage-events): Render homepage event constants.
 - [render-homepage](https://graphql-markdown.dev/api/core/events/render-homepage): Render homepage event class.
 - [render-root-types-events](https://graphql-markdown.dev/api/core/events/render-root-types-events): Render root types event constants.
@@ -56,7 +55,7 @@ This index exposes the documentation set that powers graphql-markdown.dev so LLM
 - [graphql-config](https://graphql-markdown.dev/api/core/graphql-config): GraphQL Markdown configuration utilities
 - [builder](https://graphql-markdown.dev/api/core/options/builder): Option builder for handling CLI/config/default option precedence.
 - [printer](https://graphql-markdown.dev/api/core/printer): Printer loader helpers for bootstrapping GraphQL-Markdown renderers.
-- [renderer](https://graphql-markdown.dev/api/core/renderer): Defined in: renderer.ts:335
+- [renderer](https://graphql-markdown.dev/api/core/renderer): Defined in: core/src/renderer.ts:335
 - [diff](https://graphql-markdown.dev/api/diff): Schema comparison module for GraphQL Markdown.
 - [index](https://graphql-markdown.dev/api/docusaurus): Docusaurus integration for running GraphQL-Markdown and wiring CLI commands.
 - [category](https://graphql-markdown.dev/api/docusaurus/mdx/category): ```ts
@@ -76,9 +75,10 @@ This index exposes the documentation set that powers graphql-markdown.dev so LLM
 - [badge](https://graphql-markdown.dev/api/printer-legacy/badge): Module for handling GraphQL type badges in MDX documentation.
 - [code](https://graphql-markdown.dev/api/printer-legacy/code): Provides utility functions for generating code representations of GraphQL types
 - [common](https://graphql-markdown.dev/api/printer-legacy/common): Common printer utility functions for handling descriptions, directives, and warnings.
-- [options](https://graphql-markdown.dev/api/printer-legacy/const/options): Defined in: printer-legacy/src/const/options.ts:21
+- [options](https://graphql-markdown.dev/api/printer-legacy/const/options): Defined in: printer-legacy/src/const/options.ts:22
 - [strings](https://graphql-markdown.dev/api/printer-legacy/const/strings): String constants and helpers shared by the legacy printer when composing
 - [directive](https://graphql-markdown.dev/api/printer-legacy/directive): Provides utilities for handling and printing GraphQL directives in Markdown format
+- [events](https://graphql-markdown.dev/api/printer-legacy/events): Print type event classes.
 - [example](https://graphql-markdown.dev/api/printer-legacy/example): Module providing utilities for handling GraphQL example directives and printing example values.
 - [format-helpers](https://graphql-markdown.dev/api/printer-legacy/format-helpers): Format event helpers for printer-legacy.
 - [formatter](https://graphql-markdown.dev/api/printer-legacy/formatter): Formatter factories for GraphQL documentation output.
@@ -99,6 +99,7 @@ This index exposes the documentation set that powers graphql-markdown.dev so LLM
 - [relation](https://graphql-markdown.dev/api/printer-legacy/relation): This module provides functionality to print relationships between GraphQL types,
 - [section](https://graphql-markdown.dev/api/printer-legacy/section): Module responsible for generating Markdown sections for GraphQL schema documentation.
 - [array](https://graphql-markdown.dev/api/utils/array): Internal library of helpers for manipulating array and list.
+- [events](https://graphql-markdown.dev/api/utils/events): Base event class and utilities for GraphQL-Markdown events.
 - [frontmatter](https://graphql-markdown.dev/api/utils/frontmatter): Routines for serializing data structures into Markdown frontmatter blocks.
 - [fs](https://graphql-markdown.dev/api/utils/fs): Library of helper functions for handling files and folders.
 - [guards](https://graphql-markdown.dev/api/utils/guards): Type guard utilities for common validation patterns.

@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_graphql_markdown_website=self.webpackChunk_graphql_markdown_website||[]).push([["84214"],{55513(e){e.exports=JSON.parse('{"title":"Recent posts","items":[]}')}}]);
