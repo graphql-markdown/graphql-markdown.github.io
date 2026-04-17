@@ -26,7 +26,7 @@ This index exposes the documentation set that powers graphql-markdown.dev so LLM
 - [Settings](https://graphql-markdown.dev/docs/settings): Complete reference of all GraphQL-Markdown settings, CLI flags, and configuration options with default values and examples.
 - [Troubleshooting](https://graphql-markdown.dev/docs/troubleshooting): Solutions for common GraphQL-Markdown issues including duplicate graphql modules, missing type definitions, and configuration problems.
 - [introspection](https://graphql-markdown.dev/api/graphql/introspection): Library for introspecting a GraphQL schema.
-- [cli](https://graphql-markdown.dev/docs/api/cli/cli): This module provides the CLI functionality for generating documentation from GraphQL schemas.
+- [cli](https://graphql-markdown.dev/api/cli): This module provides the CLI functionality for generating documentation from GraphQL schemas.
 - [main](https://graphql-markdown.dev/api/cli/main): Entry point for the GraphQL Markdown CLI.
 - [config](https://graphql-markdown.dev/api/core/config): Configuration management for GraphQL Markdown.
 - [patterns](https://graphql-markdown.dev/api/core/const/patterns): Regular expressions and string patterns used throughout the core package.
