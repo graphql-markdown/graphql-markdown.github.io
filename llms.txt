@@ -8,7 +8,7 @@ This index exposes the documentation set that powers graphql-markdown.dev so LLM
 
 - [Introduction](https://graphql-markdown.dev/docs/intro): Generate human-friendly Markdown/MDX documentation from GraphQL schemas. Easy setup, customizable output, and seamless Docusaurus integration.
 - [Getting started](https://graphql-markdown.dev/docs/get-started): Quick start guide for installing and configuring GraphQL-Markdown with Docusaurus. Generate documentation from your GraphQL schema in minutes.
-- [Try it](https://graphql-markdown.dev/docs/try-it): Try GraphQL-Markdown instantly with interactive CodeSandbox demos for Docusaurus, Astro, Next.js, and other frameworks.
+- [Try it](https://graphql-markdown.dev/docs/try-it): Try GraphQL-Markdown instantly with interactive CodeSandbox demos for Docusaurus, Astro, Next.js, Vocs, GitBook, and other frameworks.
 - [How It Works](https://graphql-markdown.dev/docs/how-it-works): Understand how GraphQL-Markdown transforms your GraphQL schema into comprehensive Markdown documentation through parsing, rendering, and output.
 - [Configuration Cheat Sheet](https://graphql-markdown.dev/docs/configuration-cheatsheet): Quickly look up in the most frequently used CLI flag and renderer options for GraphQL-Markdown in one place without digging through the longer Sett...
 - [Configuration](https://graphql-markdown.dev/docs/configuration): Learn how to configure GraphQL-Markdown using GraphQL Config, Docusaurus plugin options, or CLI arguments. Supports multiple frameworks.

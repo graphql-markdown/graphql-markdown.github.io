@@ -20,42 +20,33 @@ Managing API documentation can be time-consuming and prone to becoming outdated.
 
 ## Features
 
-- Easy set up and customizable
-- Full relations information between types
-  - Visual representation of type relationships
-  - Complete type hierarchy documentation
-- Custom category sorting and organization
-  - Alphabetical or custom ordering logic
-  - Automatic folder numbering for consistent navigation
-- MDX generated are fully customizable using MDX components
-- Extensible hooks and events system
-  - Native Node.js EventEmitter integration
-  - Lifecycle hooks for custom workflows
-- Use any schema loader compatible with `@graphql-tools/load`
-  - Support for local schema files
-  - Support for remote GraphQL endpoints
+- Easy set up and customizable output
+- Full cross-linking between types with visual relationship hierarchy
+- MDX output fully customizable using your own components
+- Extensible lifecycle hooks and events system
+- Any schema loader compatible with `@graphql-tools/load` (local files, remote endpoints)
 - Group types into categories using directives
-  - Organize types logically
-  - Create a custom navigation structure
-- Support namespaced operations (nested query/mutation/subscription objects)
-  - Generate nested operation pages automatically
-  - Keep grouped navigation working with namespaced operations
-- Support of GraphQL config
-  - Integration with existing GraphQL setups
-  - Consistent configuration across tools
+- Namespaced operations (nested query/mutation/subscription objects)
+- GraphQL config support
 
 ## Quick Install
 
+For **Docusaurus** projects:
+
 ```bash
-npm install @graphql-markdown/cli
+npm install @graphql-markdown/docusaurus graphql
+```
+
+For **other MDX frameworks** (Astro, Next.js, etc.):
+
+```bash
+npm install @graphql-markdown/cli graphql
 ```
 
 ---
 
 ## Getting started
 
-
-Quick start guide for installing and configuring GraphQL-Markdown with Docusaurus. Generate documentation from your GraphQL schema in minutes.
 
 :::info
 
@@ -107,12 +98,6 @@ A schema loader is required to load your GraphQL schema. The template comes with
 
 See [schema loading](/docs/advanced/schema-loading) for other loaders and configuration options.
 
-:::tip
-
-The template comes by default with `@graphql-tools/url-loader` for remote schemas.
-
-:::
-
 ### Start your site
 
 Run the development server:
@@ -121,8 +106,6 @@ Run the development server:
 cd my-website
 npm start
 ```
-
-The `cd` command changes the directory you're working in. To work with your newly created Docusaurus site, you'll need to navigate the terminal there.
 
 :::tip
 
@@ -134,7 +117,7 @@ The `npm run start` command builds your website locally and serves it through a 
 
 ## Existing Docusaurus site
 
-### Requirements
+### Prerequisites
 
 :::note
 
@@ -156,7 +139,7 @@ Add the `@graphql-markdown/docusaurus` plugin to your site installation:
 npm install @graphql-markdown/docusaurus graphql
 ```
 
-### Add a GraphQL schema loader
+### Add a schema loader
 
 See [schema loading](/docs/advanced/schema-loading).
 
@@ -172,9 +155,7 @@ Build your website:
 npm run docusaurus build
 ```
 
-**OR**
-
-Run the documentation generator using CLI:
+Or run the documentation generator directly:
 
 ```shell title="shell"
 npm run docusaurus graphql-to-doc
@@ -205,126 +186,80 @@ Use the [CodeSandbox template](https://codesandbox.io/p/sandbox/github/graphql-m
 
 Edit the configuration in `graphql.config.mjs`.
 
+## Vite/Vocs
+
+Fork our [demo repo](https://github.com/graphql-markdown/demo-vite-vocs) to try with your own GraphQL schema.
+
+Edit the configuration in `graphql.config.mjs`.
+
+## HonKit / GitBook legacy
+
+Fork our [demo repo](https://github.com/graphql-markdown/demo-honkit) to try with your own GraphQL schema.
+
+Edit the configuration in `graphql.config.mjs`.
+
 ---
 
 ## How It Works
 
 
-This page explains how GraphQL-Markdown transforms your GraphQL schema into comprehensive documentation.
+GraphQL-Markdown reads your schema, parses every type and operation, and writes one MDX file per type category — ready to publish with Docusaurus or any MDX framework.
 
-## Documentation Generation Process
+## Pipeline
 
 ```mermaid
-flowchart TD
-    A[GraphQL Schema] --> B[Schema Loader]
-    B --> C[Schema Parser]
-    C --> D[Documentation Generator]
-    D --> E[Markdown Output]
+flowchart LR
+    subgraph Input
+        A1[".graphql file"]
+        A2["Remote endpoint"]
+        A3["Introspection JSON"]
+    end
 
-    style A fill:#f9f,stroke:#333,stroke-width:2px
-    style E fill:#bbf,stroke:#333,stroke-width:2px
+    subgraph Core
+        B["Schema Loader\n@graphql-tools"]
+        C["Schema Parser"]
+        D["Doc Generator"]
+    end
+
+    subgraph Output
+        E1["objects.mdx"]
+        E2["queries.mdx"]
+        E3["inputs.mdx"]
+        E4["..."]
+    end
+
+    A1 --> B
+    A2 --> B
+    A3 --> B
+    B --> C
+    C --> D
+    D --> E1
+    D --> E2
+    D --> E3
+    D --> E4
+
+    style Input fill:#1a2520,stroke:#36c46f,color:#dbf5e6
+    style Core fill:#1a2520,stroke:#374844,color:#dbf5e6
+    style Output fill:#1a2520,stroke:#e535ab,color:#dbf5e6
 ```
 
-## The Process Step-by-Step
+## Input → Output
 
-### 1. GraphQL Schema Input
-
-The process begins with your GraphQL schema - this can be:
-
-- A local `.graphql` or `.gql` file
-- A remote GraphQL endpoint URL
-- An introspection result JSON file
-- A programmatically provided GraphQL schema object
-
-### 2. Schema Loading
-
-GraphQL-Markdown loads the schema using:
-
-- For local files: Direct file reading
-- For remote endpoints: Introspection query
-- For provided schemas: Direct schema parsing
-
-### 3. Schema Parsing
-
-Once loaded, GraphQL-Markdown analyzes the schema to extract:
-
-- Types (Object, Input, Interface, Union, etc.)
-- Queries, mutations, and subscriptions
-- Fields, arguments, and return types
-- Descriptions and deprecation notices
-- Custom directives and their usage
-
-### 4. Documentation Generation
-
-The parsed schema is transformed into documentation with:
-
-- Hierarchical organization by type categories
-- Cross-linking between related types
-- Formatting of descriptions (Markdown support)
-- Special handling for deprecated items
-- Custom rendering hooks (if configured)
-
-### 5. Markdown Output
-
-Finally, GraphQL-Markdown outputs:
-
-- Individual Markdown files for each type category
-- Index files for easy navigation
-- Table of contents and sidebar configuration
-- Links and references between types
-
-## Configuration Options
-
-GraphQL-Markdown supports extensive configuration through the `graphql-markdown.config.js` file:
-
-```javascript
-module.exports = {
-  schema: "./schema.graphql", // Schema source
-  rootPath: "./docs", // Output directory
-  baseURL: "graphql", // Base URL for docs
-  homepage: "graphql-schema.md", // Home page
-  loaders: {
-    // Custom loaders
-    // Loader configuration
-  },
-  docOptions: {
-    // Documentation options
-    pagination: true, // Enable pagination
-    toc: true, // Table of contents
-    index: true, // Generate index
-    // ...more options
-  },
-};
-```
-
-## Example: Input to Output
-
-**Input:** A GraphQL schema definition
+Given this schema:
 
 ```graphql
 type User {
-  """
-  User's unique identifier
-  """
+  """User's unique identifier"""
   id: ID!
-  """
-  User's full name
-  """
+  """User's full name"""
   name: String!
-  """
-  User's email address
-  """
-  email: String!
-  """
-  List of posts authored by this user
-  """
+  """List of posts authored by this user"""
   posts: [Post!]
 }
 
 type Post {
   id: ID!
   title: String!
-  content: String!
   author: User!
 }
 
@@ -334,31 +269,58 @@ type Query {
 }
 ```
 
-**Output:** Generated documentation files including:
+GraphQL-Markdown generates a file per type category. For example, `objects/user.mdx`:
 
-- Schema overview (`index.md`)
-- Object types (`objects.md`)
-- Queries (`queries.md`)
-- Cross-linked type documentation
+```mdx
+---
+id: user
+title: User
+---
+
+# User
+
+Object Type
+
+## Fields
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `id` | `ID!` | User's unique identifier |
+| `name` | `String!` | User's full name |
+| `posts` | [`[Post!]`](/docs/graphql/objects/post) | List of posts authored by this user |
+
+## Returned by
+
+[`getUser`](/docs/graphql/queries/get-user)
+```
+
+Notice the cross-link on `Post` and the back-reference under "Returned by" — these are generated automatically from the schema graph.
+
+## What gets generated
+
+| Output | Description |
+| ------ | ----------- |
+| `objects/` | One file per Object type |
+| `inputs/` | One file per Input type |
+| `queries/` | One file per Query field |
+| `mutations/` | One file per Mutation field |
+| `subscriptions/` | One file per Subscription field |
+| `enums/` | One file per Enum type |
+| `interfaces/` | One file per Interface type |
+| `unions/` | One file per Union type |
+| `scalars/` | One file per Scalar type |
+| `_category_.yml` | Sidebar metadata for each folder |
 
 ## Customization
 
-GraphQL-Markdown allows for customization through:
+The generation pipeline exposes lifecycle hooks at every stage — before/after schema load, before/after rendering each type, before/after composing each page. See [hook recipes](/docs/advanced/hook-recipes) and [custom directives](/docs/advanced/custom-directive).
 
-- Custom templates
-- Rendering hooks
-- Plugin architecture
-- Integration with documentation frameworks (Docusaurus, VuePress, etc.)
-- Custom loaders for specialized schema sources
-
-By understanding this process, you can optimize your documentation setup and make the most of GraphQL-Markdown's capabilities.
+To see the full output in action, browse the [live examples](/examples/default).
 
 ---
 
 ## Configuration Cheat Sheet
 
-
-Quickly look up in the most frequently used CLI flag and renderer options for GraphQL-Markdown in one place without digging through the longer Settings guide.
 
 :::note
 This is a quick reference guide. All settings are thoroughly documented in the [**Settings** page](/docs/settings).
@@ -376,7 +338,7 @@ This is a quick reference guide. All settings are thoroughly documented in the [
 
 | Option         | Type                     | Default | Description                                                           |
 | -------------- | ------------------------ | ------- | --------------------------------------------------------------------- |
-| `linkRoot`     | `boolean`                | `false` | Link types to root documentation                                      |
+| `linkRoot`     | `string`                 | `/`     | Root path used for type cross-links in generated documentation        |
 | `homepage`     | `string`                 | —       | Custom homepage content file                                          |
 | `hierarchy`    | `string`                 | `api`   | Documentation structure: `api`, `entity`, or `flat`                   |
 | `index`        | `boolean`                | `false` | Generate category indices                                             |
@@ -402,20 +364,48 @@ This is a quick reference guide. All settings are thoroughly documented in the [
 | `skip`             | `string[]` | —         | Exclude types with specified directives                            |
 | `deprecated`       | `string`   | `default` | Handling of deprecated items: `default`, `group`, `skip`           |
 
-## Advanced Options
+## Build Control Options
 
-| Option   | Type      | Default | Description                            |
-| -------- | --------- | ------- | -------------------------------------- |
-| `force`  | `boolean` | `false` | Force regeneration of all files        |
-| `diff`   | `string`  | —       | Diff method for schema changes         |
-| `tmpDir` | `string`  | —       | Temporary directory for schema diffing |
+| Option        | Type      | Default | Description                                                       |
+| ------------- | --------- | ------- | ----------------------------------------------------------------- |
+| `force`       | `boolean` | `false` | Force regeneration of all files                                   |
+| `diffMethod`  | `string`  | `NONE`  | Change detection: `NONE`, `FORCE`, `SCHEMA-DIFF`, `SCHEMA-HASH`   |
+| `tmpDir`      | `string`  | —       | Temporary directory for storing schema signature (used by diff)   |
+| `pretty`      | `boolean` | `false` | Format output files with Prettier (requires `prettier` installed) |
+| `mdxParser`   | `string`  | —       | Path to a custom MDX formatter module                             |
+
+## CLI Flags
+
+All config options can be passed as CLI flags to `npx docusaurus graphql-to-doc` or `npx graphql-markdown`.
+
+| Flag                              | Config option                         | Description                                    |
+| --------------------------------- | ------------------------------------- | ---------------------------------------------- |
+| `-s, --schema <path>`             | `schema`                              | Schema file, URL, or introspection JSON        |
+| `-b, --base <baseURL>`            | `baseURL`                             | Base URL and output folder name                |
+| `-r, --root <rootPath>`           | `rootPath`                            | Root output folder                             |
+| `-l, --link <linkRoot>`           | `linkRoot`                            | Root path for cross-links                      |
+| `-h, --homepage <file>`           | `homepage`                            | Custom homepage file                           |
+| `-f, --force`                     | `force`                               | Skip diff, always regenerate                   |
+| `-d, --diff <method>`             | `diffMethod`                          | Diff method (`NONE`, `SCHEMA-DIFF`, etc.)      |
+| `-t, --tmp <dir>`                 | `tmpDir`                              | Temp dir for schema diffing                    |
+| `--index`                         | `docOptions.index`                    | Generate category index pages                  |
+| `--hierarchy <type>`              | `printTypeOptions.hierarchy`          | Folder structure: `api`, `entity`, `flat`      |
+| `--deprecated <option>`           | `printTypeOptions.deprecated`         | `default`, `group`, or `skip`                  |
+| `--noParentType`                  | `printTypeOptions.parentTypePrefix`   | Hide parent type prefix on fields              |
+| `--noTypeBadges`                  | `printTypeOptions.typeBadges`         | Hide type attribute badges                     |
+| `--only <@directive...>`          | `onlyDocDirective`                    | Include only types with these directives       |
+| `--skip <@directive...>`          | `skipDocDirective`                    | Exclude types with these directives            |
+| `-gdb, --groupByDirective <expr>` | `groupByDirective`                    | Group by directive: `@dir(field\|=fallback)`   |
+| `--pretty`                        | `pretty`                              | Format output with Prettier                    |
+| `--mdxParser <path>`              | `mdxParser`                           | Custom MDX formatter module                    |
+| `--config`                        | —                                     | Print resolved config (debug)                  |
 
 ---
 
 ## Configuration
 
 
-GraphQL-Markdown is compatible with most MDX frameworks, with built-in support for Docusaurus and other static site generators. This guide explains the different configuration methods and their priorities.
+GraphQL-Markdown supports three configuration methods. Later entries in this list take precedence over earlier ones.
 
 ## Framework-agnostic Configuration
 
@@ -802,7 +792,7 @@ type RootTypes = { query?: string; mutation?: string; subscription?: string };
 ```
 
 - use a custom type name to override the standard type
-use an empty string to disable the GraphQL standard type
+- use an empty string to disable the GraphQL standard type
 - unset root types will use the GraphQL standard type
 
 Add the option `rootTypes` to the loader options under `@graphql-markdown/docusaurus` configuration (see also [schema loading](/docs/advanced/schema-loading)):
@@ -954,9 +944,6 @@ For example, we have two mutations called `addCourse` and `dropCourse`, and we w
 ```graphql
 type Mutation {
   AddCourse(input: String): String
-}
-
-type Mutation {
   DropCourse(input: String): String
 }
 ```
@@ -968,9 +955,6 @@ We can accomplish this by adding a directive called `doc` with a field `category
 ```graphql
 type Mutation {
   AddCourse(input: String): String @doc(category: "Course")
-}
-
-type Mutation {
   DropCourse(input: String): String @doc(category: "Course")
 }
 ```
@@ -1325,16 +1309,16 @@ When integrating with frameworks other than Docusaurus, you'll need to create a 
 
 A custom MDX module can export individual formatter functions:
 
-| Export | Type | Description |
-|--------|------|-------------|
-| `formatMDXBadge` | `(badge: { text, classname? }) => string` | Format type badges (deprecated, required, etc.) |
-| `formatMDXAdmonition` | `(admonition: { text, title, type, icon? }, meta?) => string` | Format callout/warning blocks |
-| `formatMDXBullet` | `(text?: string) => string` | Format bullet point separators |
-| `formatMDXDetails` | `(option: { dataOpen, dataClose? }) => string` | Format collapsible sections |
-| `formatMDXFrontmatter` | `(props?, formatted?: string[]) => string` | Format page frontmatter |
-| `formatMDXLink` | `(link: { text, url }) => { text, url }` | Transform type links |
-| `formatMDXNameEntity` | `(name: string, parentType?: string) => string` | Format named entity references |
-| `formatMDXSpecifiedByLink` | `(url: string) => string` | Format scalar specification links |
+| Export                     | Type                                                               | Description                                      |
+| -------------------------- | ------------------------------------------------------------------ | ------------------------------------------------ |
+| `formatMDXBadge`           | `(badge: { text, classname? }) => string`                          | Format type badges (deprecated, required, etc.)  |
+| `formatMDXAdmonition`      | `(admonition: { text, title, type, icon? }, meta?) => string`      | Format callout/warning blocks                    |
+| `formatMDXBullet`          | `(text?: string) => string`                                        | Format bullet point separators                   |
+| `formatMDXDetails`         | `(option: { dataOpen, dataClose? }) => string`                     | Format collapsible sections                      |
+| `formatMDXFrontmatter`     | `(props?, formatted?: string[]) => string`                         | Format page frontmatter                          |
+| `formatMDXLink`            | `(link: { text, url }) => { text, url }`                           | Transform type links                             |
+| `formatMDXNameEntity`      | `(name: string, parentType?: string) => string`                    | Format named entity references                   |
+| `formatMDXSpecifiedByLink` | `(url: string) => string`                                          | Format scalar specification links                |
 
 :::warning `formatMDXDetails` contract
 
@@ -1360,10 +1344,10 @@ export const formatMDXDetails = ({ dataOpen }) =>
 
 Additionally, the module can export:
 
-| Export | Type | Description |
-|--------|------|-------------|
-| `mdxDeclaration` | `string` | Import statements prepended to generated files |
-| `mdxExtension` | `string` | Custom file extension (defaults to `.mdx`) |
+| Export            | Type     | Description                                          |
+| ----------------- | -------- | ---------------------------------------------------- |
+| `mdxDeclaration`  | `string` | Import statements prepended to generated files       |
+| `mdxExtension`    | `string` | Custom file extension (defaults to `.mdx`)           |
 
 ### Lifecycle Hooks
 
@@ -1371,30 +1355,30 @@ The custom MDX module can also export lifecycle hooks to customize the generatio
 
 **Generation Hooks:**
 
-| Export | Description |
-|--------|-------------|
-| `beforeSchemaLoadHook` | Called before loading the GraphQL schema |
-| `afterSchemaLoadHook` | Called after loading the GraphQL schema |
-| `beforeDiffCheckHook` | Called before checking schema differences |
-| `afterDiffCheckHook` | Called after checking schema differences |
-| `beforeRenderRootTypesHook` | Called before rendering root types |
-| `afterRenderRootTypesHook` | Called after rendering root types |
-| `beforeRenderHomepageHook` | Called before rendering the homepage |
-| `afterRenderHomepageHook` | Called after rendering the homepage |
-| `beforeRenderTypeEntitiesHook` | Called before rendering type entities |
-| `afterRenderTypeEntitiesHook` | Called after rendering type entities |
-| `beforeGenerateIndexMetafileHook` | Called before generating index metafiles |
-| `afterGenerateIndexMetafileHook` | Called after generating index metafiles |
+| Export                              | Description                                                                             |
+| ----------------------------------- | --------------------------------------------------------------------------------------- |
+| `beforeSchemaLoadHook`              | Called before loading the GraphQL schema                                                |
+| `afterSchemaLoadHook`               | Called after loading the GraphQL schema                                                 |
+| `beforeDiffCheckHook`               | Called before checking schema differences                                               |
+| `afterDiffCheckHook`                | Called after checking schema differences                                                |
+| `beforeRenderRootTypesHook`         | Called before rendering root types                                                      |
+| `afterRenderRootTypesHook`          | Called after rendering root types                                                       |
+| `beforeRenderHomepageHook`          | Called before rendering the homepage                                                    |
+| `afterRenderHomepageHook`           | Called after rendering the homepage                                                     |
+| `beforeRenderTypeEntitiesHook`      | Called before rendering type entities                                                   |
+| `afterRenderTypeEntitiesHook`       | Called after rendering type entities                                                    |
+| `beforeGenerateIndexMetafileHook`   | Called before generating index metafiles                                                |
+| `afterGenerateIndexMetafileHook`    | Called after generating index metafiles                                                 |
 
 **Printer Hooks:**
 
-| Export | Description |
-|--------|-------------|
-| `beforePrintCodeHook` | Called before generating code blocks - can modify options or prevent default generation |
-| `afterPrintCodeHook` | Called after generating code blocks - can modify the generated output |
-| `beforePrintTypeHook` | Called before generating type documentation - can modify options or prevent default |
-| `afterPrintTypeHook` | Called after generating type documentation - can modify the generated output |
-| `beforeComposePageTypeHook` | Called before composing type page sections - can reorder, remove, or inject sections |
+| Export                        | Description                                                                             |
+| ----------------------------- | --------------------------------------------------------------------------------------- |
+| `beforePrintCodeHook`         | Called before generating code blocks — can modify options or prevent default generation |
+| `afterPrintCodeHook`          | Called after generating code blocks — can modify the generated output                   |
+| `beforePrintTypeHook`         | Called before generating type documentation — can modify options or prevent default     |
+| `afterPrintTypeHook`          | Called after generating type documentation — can modify the generated output            |
+| `beforeComposePageTypeHook`   | Called before composing type page sections — can reorder, remove, or inject sections    |
 
 :::tip
 Printer hooks are useful for extending the generated documentation. For example, you can use `afterPrintCodeHook` to append response type information after operation code blocks. See **[Hooks Recipes](/docs/advanced/hook-recipes)** for examples.
@@ -1733,9 +1717,7 @@ See our [Troubleshooting section](/docs/troubleshooting) in case of error ['UrlL
 ## Settings
 
 
-GraphQL-Markdown can be configured through plugin options in your configuration file and through CLI flags. This page lists all available settings, their CLI equivalents, and default values.
-
-By default, the plugin will use the options as defined in the [configuration](/docs/configuration), and they can be overridden using CLI flags.
+All settings can be set via plugin options in your config file and overridden with CLI flags. See [configuration](/docs/configuration) for the different config methods.
 
 ## `--config`
 
@@ -1839,7 +1821,7 @@ plugins: [
   ],
 ```
 
-### Compatibility with Other Options
+:::info[Compatibility between options]
 
 The `categorySort` option works seamlessly with:
 
@@ -1861,6 +1843,8 @@ groupByDirective: {
 ```
 
 This generates folder names like: `01-common`, `02-internal`, `03-public`
+
+:::
 
 ## `force`
 
@@ -2319,11 +2303,6 @@ For large schemas, try:
 1. Increase Node.js memory limit:
 ```shell
 NODE_OPTIONS=--max-old-space-size=4096 npx docusaurus graphql-to-doc
-```
-
-2. Use the `--chunk-size` option to process in batches:
-```shell
-npx docusaurus graphql-to-doc --chunk-size 50
 ```
 
 ## Getting Help
