@@ -62,9 +62,9 @@ Or try GraphQL-Markdown immediately with our [demo](/docs/try-it).
 
 ### Requirements
 
-Node.js version [16.14](https://nodejs.org/en/download/) or above (which can be checked by running `node -v`) is required.
+Node.js version [20.0](https://nodejs.org/en/download/) or above (which can be checked by running `node -v`) is required.
 
-:::info Package managers
+:::info[Package managers]
 
 You can use either `npm`, `yarn`, or `pnpm` as your package manager. The examples in this documentation use `npm`, but you can substitute the commands with your preferred package manager.
 
@@ -127,7 +127,7 @@ These requirements are specific to Docusaurus integration. See our [Framework In
 
 Your project needs to meet the following requirements:
 
-- Node.js version [16.14](https://nodejs.org/en/download/) or above
+- Node.js version [20.0](https://nodejs.org/en/download/) or above
 - [Docusaurus](https://docusaurus.io/) instance version 2.0 or above with the [docs plugin](https://docusaurus.io/docs/docs-introduction) enabled
 - [GraphQL.js](https://graphql.org/graphql-js/) version 16.0 or above
 
@@ -1320,7 +1320,7 @@ A custom MDX module can export individual formatter functions:
 | `formatMDXNameEntity`      | `(name: string, parentType?: string) => string`                    | Format named entity references                   |
 | `formatMDXSpecifiedByLink` | `(url: string) => string`                                          | Format scalar specification links                |
 
-:::warning `formatMDXDetails` contract
+:::warning[`formatMDXDetails` contract]
 
 The string returned by `formatMDXDetails` **must** contain a single `\r` (carriage return) character as a delimiter between the opening part and the closing part. The printer splits on `"\r"` to wrap generated content inside the collapsible element, so reserve `\r` only for that separator and use `\n` for all regular line breaks inside the returned string.
 
@@ -1353,7 +1353,7 @@ Additionally, the module can export:
 
 The custom MDX module can also export lifecycle hooks to customize the generation process. These hooks are executed at specific points during documentation generation:
 
-**Generation Hooks:**
+#### Generation Hooks
 
 | Export                              | Description                                                                             |
 | ----------------------------------- | --------------------------------------------------------------------------------------- |
@@ -1370,7 +1370,7 @@ The custom MDX module can also export lifecycle hooks to customize the generatio
 | `beforeGenerateIndexMetafileHook`   | Called before generating index metafiles                                                |
 | `afterGenerateIndexMetafileHook`    | Called after generating index metafiles                                                 |
 
-**Printer Hooks:**
+#### Printer Hooks
 
 | Export                        | Description                                                                             |
 | ----------------------------- | --------------------------------------------------------------------------------------- |
@@ -1394,7 +1394,7 @@ You only need to export the formatter functions your framework requires. Any mis
 
 The official [Docusaurus](https://docusaurus.io/) integration is available as a dedicated package:
 
-:::info Docusaurus default details output
+:::info[Docusaurus default details output]
 
 With the default `@graphql-markdown/docusaurus/mdx` parser, collapsible sections are emitted as native `<details>/<summary>` markup.
 Custom summary labels are rendered with open/closed spans and toggled with CSS (`data-collapsed` and `[open]` selectors), so no custom `<Details>` React component is required.
