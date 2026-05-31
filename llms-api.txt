@@ -35,11 +35,11 @@ Type representing the GraphQL Markdown CLI.
 function getGraphQLMarkdownCli(
   options,
   loggerModule?,
-  customMdxParser?,
+  customFormatter?,
 ): CommanderStatic;
 ```
 
-Defined in: index.ts:84
+Defined in: index.ts:86
 
 Configures and returns the GraphQL Markdown CLI.
 
@@ -47,7 +47,7 @@ Configures and returns the GraphQL Markdown CLI.
 
 #### options
 
-`GraphQLMarkdownCliOptions`
+`ConfigOptions`
 
 Options for configuring the GraphQL Markdown CLI.
 
@@ -57,11 +57,12 @@ Options for configuring the GraphQL Markdown CLI.
 
 Optional logger module to use.
 
-#### customMdxParser?
+#### customFormatter?
 
-`string` \| `boolean`
+`string`
 
-Optional MDX parser configuration.
+Optional default formatter package name. When provided, registers
+`--formatter` and `--mdxParser` (deprecated) flags with this value as the default.
 
 ### Returns
 
@@ -72,7 +73,11 @@ The configured CLI instance.
 ### Example
 
 ```typescript
-const cli = getGraphQLMarkdownCli({ id: "custom" }, "custom-logger", true);
+const cli = getGraphQLMarkdownCli(
+  { id: "custom" },
+  "custom-logger",
+  "@graphql-markdown/formatters/docusaurus",
+);
 await cli.parseAsync(process.argv);
 ```
 
@@ -92,7 +97,7 @@ Runs the GraphQL Markdown CLI to generate documentation from a GraphQL schema.
 
 #### options
 
-`GraphQLMarkdownCliOptions`
+`ConfigOptions`
 
 Options for configuring the GraphQL Markdown CLI.
 
@@ -135,7 +140,7 @@ Loads configuration from graphql-config and sets up command-line interface.
 const EXTENSION_NAME: "graphql-markdown";
 ```
 
-Defined in: main.ts:24
+Defined in: main.ts:21
 
 Name of the GraphQL Markdown extension for graphql-config
 
@@ -147,7 +152,7 @@ Name of the GraphQL Markdown extension for graphql-config
 const graphQLConfigExtension: GraphQLExtensionDeclaration;
 ```
 
-Defined in: main.ts:30
+Defined in: main.ts:27
 
 GraphQL config extension declaration for GraphQL Markdown
 
@@ -177,7 +182,7 @@ The configuration follows this precedence (highest to lowest):
 
 ## DeprecatedOption \{#deprecatedoption\}
 
-Defined in: core/src/config.ts:102
+Defined in: core/src/config.ts:98
 
 Options for handling deprecated items in the schema.
 
@@ -199,7 +204,7 @@ const deprecatedHandling = DeprecatedOption.GROUP;
 DEFAULT: "default";
 ```
 
-Defined in: core/src/config.ts:103
+Defined in: core/src/config.ts:99
 
 #### GROUP \{#group\}
 
@@ -207,7 +212,7 @@ Defined in: core/src/config.ts:103
 GROUP: "group";
 ```
 
-Defined in: core/src/config.ts:104
+Defined in: core/src/config.ts:100
 
 #### SKIP \{#skip\}
 
@@ -215,13 +220,13 @@ Defined in: core/src/config.ts:104
 SKIP: "skip";
 ```
 
-Defined in: core/src/config.ts:105
+Defined in: core/src/config.ts:101
 
 ---
 
 ## DiffMethod \{#diffmethod\}
 
-Defined in: core/src/config.ts:84
+Defined in: core/src/config.ts:80
 
 Diff methods used to determine how schema changes are processed.
 
@@ -242,7 +247,7 @@ const diffMethod = DiffMethod.FORCE;
 FORCE: "FORCE";
 ```
 
-Defined in: core/src/config.ts:86
+Defined in: core/src/config.ts:82
 
 #### NONE \{#none\}
 
@@ -250,13 +255,13 @@ Defined in: core/src/config.ts:86
 NONE: "NONE";
 ```
 
-Defined in: core/src/config.ts:85
+Defined in: core/src/config.ts:81
 
 ---
 
 ## TypeHierarchy \{#typehierarchy\}
 
-Defined in: core/src/config.ts:66
+Defined in: core/src/config.ts:62
 
 Type hierarchy options for organizing schema documentation.
 
@@ -278,7 +283,7 @@ const hierarchy = TypeHierarchy.API;
 API: "api";
 ```
 
-Defined in: core/src/config.ts:67
+Defined in: core/src/config.ts:63
 
 #### ENTITY \{#entity\}
 
@@ -286,7 +291,7 @@ Defined in: core/src/config.ts:67
 ENTITY: "entity";
 ```
 
-Defined in: core/src/config.ts:68
+Defined in: core/src/config.ts:64
 
 #### FLAT \{#flat\}
 
@@ -294,7 +299,7 @@ Defined in: core/src/config.ts:68
 FLAT: "flat";
 ```
 
-Defined in: core/src/config.ts:69
+Defined in: core/src/config.ts:65
 
 ---
 
@@ -304,7 +309,7 @@ Defined in: core/src/config.ts:69
 const ASSET_HOMEPAGE_LOCATION: string;
 ```
 
-Defined in: core/src/config.ts:123
+Defined in: core/src/config.ts:119
 
 Location of the default homepage template.
 
@@ -316,7 +321,7 @@ Location of the default homepage template.
 const DEFAULT_HIERARCHY: object;
 ```
 
-Defined in: core/src/config.ts:134
+Defined in: core/src/config.ts:130
 
 Default hierarchy configuration using the API hierarchy type.
 
@@ -339,6 +344,7 @@ const DEFAULT_OPTIONS: Readonly<
       Omit<
         ConfigOptions,
         | "customDirective"
+        | "formatter"
         | "groupByDirective"
         | "loaders"
         | "mdxParser"
@@ -349,7 +355,7 @@ const DEFAULT_OPTIONS: Readonly<
   object;
 ```
 
-Defined in: core/src/config.ts:143
+Defined in: core/src/config.ts:139
 
 Default configuration options used when no user options are provided.
 These values serve as fallbacks for any missing configuration.
@@ -359,10 +365,18 @@ These values serve as fallbacks for any missing configuration.
 #### printTypeOptions
 
 ```ts
-printTypeOptions: Required<Omit<ConfigPrintTypeOptions, "hierarchy">> & object;
+printTypeOptions: Required<
+  Omit<ConfigPrintTypeOptions, "exampleSection" | "hierarchy">
+> & object;
 ```
 
 ##### Type Declaration
+
+###### exampleSection
+
+```ts
+exampleSection: ConfigPrintTypeOptions["exampleSection"];
+```
 
 ###### hierarchy
 
@@ -382,7 +396,7 @@ Options for the complete configuration interface
 const DOCS_URL: "https://graphql-markdown.dev/docs";
 ```
 
-Defined in: core/src/config.ts:112
+Defined in: core/src/config.ts:108
 
 Documentation website URL for reference in error messages and help text.
 
@@ -394,7 +408,7 @@ Documentation website URL for reference in error messages and help text.
 const PACKAGE_NAME: "@graphql-markdown/docusaurus";
 ```
 
-Defined in: core/src/config.ts:118
+Defined in: core/src/config.ts:114
 
 Default package name used for temporary directory creation and identification.
 
@@ -406,7 +420,7 @@ Default package name used for temporary directory creation and identification.
 function buildConfig(configFileOpts, cliOpts?, id?): Promise<Options>;
 ```
 
-Defined in: core/src/config.ts:820
+Defined in: core/src/config.ts:761
 
 ### Parameters
 
@@ -437,7 +451,7 @@ function getCustomDirectives(
 ): Maybe<CustomDirective>;
 ```
 
-Defined in: core/src/config.ts:392
+Defined in: core/src/config.ts:386
 
 Processes custom directives, filtering out any that should be skipped.
 Validates that each custom directive has the correct format with required functions.
@@ -500,7 +514,7 @@ getCustomDirectives({ example: { invalid: true } }, []);
 function getDiffMethod(diff): TypeDiffMethod;
 ```
 
-Defined in: core/src/config.ts:447
+Defined in: core/src/config.ts:439
 
 ### Parameters
 
@@ -520,7 +534,7 @@ Defined in: core/src/config.ts:447
 function getDocDirective(name): DirectiveName;
 ```
 
-Defined in: core/src/config.ts:217
+Defined in: core/src/config.ts:211
 
 Retrieves a directive name from a string by parsing and validating the format.
 Directive names should be prefixed with '@' (e.g., '@example').
@@ -561,7 +575,7 @@ getDocDirective("example"); // Error: Invalid "example"
 function getDocOptions(cliOpts?, configOptions?): Required<ConfigDocOptions>;
 ```
 
-Defined in: core/src/config.ts:486
+Defined in: core/src/config.ts:470
 
 Builds the document options by merging CLI options, config file options, and defaults.
 Handles index generation flag and front matter configuration.
@@ -570,13 +584,13 @@ Handles index generation flag and front matter configuration.
 
 #### cliOpts?
 
-`Maybe`&lt;`CliOptions` & `Omit`&lt;`DeprecatedCliOptions`, `"never"`&gt;&gt;
+`Maybe`&lt;`CliOptions`&gt;
 
 CLI options for document generation
 
 #### configOptions?
 
-`Maybe`&lt;`ConfigDocOptions` & `Omit`&lt;`DeprecatedConfigDocOptions`, `"never"`&gt;&gt;
+`Maybe`&lt;`ConfigDocOptions`&gt;
 
 Config file options for document generation
 
@@ -608,7 +622,7 @@ console.log(docOptions);
 function getForcedDiffMethod(): TypeDiffMethod;
 ```
 
-Defined in: core/src/config.ts:437
+Defined in: core/src/config.ts:431
 
 Returns FORCE as the diff method.
 This function is used when documentation should be forcefully regenerated.
@@ -632,33 +646,13 @@ console.log(method); // "FORCE"
 
 ---
 
-## getNormalizedDiffMethod() \{#getnormalizeddiffmethod\}
-
-```ts
-function getNormalizedDiffMethod(diff): TypeDiffMethod;
-```
-
-Defined in: core/src/config.ts:441
-
-### Parameters
-
-#### diff
-
-`TypeDiffMethod`
-
-### Returns
-
-`TypeDiffMethod`
-
----
-
 ## getOnlyDocDirectives() \{#getonlydocdirectives\}
 
 ```ts
 function getOnlyDocDirectives(cliOpts, configFileOpts): DirectiveName[];
 ```
 
-Defined in: core/src/config.ts:248
+Defined in: core/src/config.ts:242
 
 Retrieves the list of "only" directives from CLI and config options.
 These directives specify which schema elements should be included in the documentation.
@@ -699,76 +693,13 @@ console.log(onlyDirectives); // ["example", "internal", "auth"]
 
 ---
 
-## getPrintTypeOptions() \{#getprinttypeoptions\}
-
-```ts
-function getPrintTypeOptions(
-  cliOpts,
-  configOptions,
-): Required<ConfigPrintTypeOptions>;
-```
-
-Defined in: core/src/config.ts:671
-
-Builds the print type options by merging CLI options, config file options, and defaults.
-Handles various formatting options for type documentation.
-
-### Parameters
-
-#### cliOpts
-
-`Maybe`&lt;`CliOptions` & `Omit`&lt;`DeprecatedCliOptions`, `"never"`&gt;&gt;
-
-CLI options for print type configuration
-
-#### configOptions
-
-`Maybe`&lt;`ConfigPrintTypeOptions` & `Omit`&lt;`DeprecatedConfigPrintTypeOptions`, `"never"`&gt;&gt;
-
-Config file options for print type configuration
-
-### Returns
-
-`Required`&lt;`ConfigPrintTypeOptions`&gt;
-
-The resolved print type options with all required fields
-
-### Example
-
-```typescript
-const cliOptions = { noCode: true, deprecated: "group" };
-const configOptions = {
-  exampleSection: true,
-  hierarchy: "entity",
-};
-
-const printOptions = getPrintTypeOptions(cliOptions, configOptions);
-console.log(printOptions);
-// {
-//   codeSection: false,  // Disabled via noCode CLI flag
-//   deprecated: "group", // From CLI
-//   exampleSection: true, // From config
-//   parentTypePrefix: true, // Default value
-//   relatedTypeSection: true, // Default value
-//   typeBadges: true, // Default value
-//   hierarchy: { entity: {} } // Parsed from config
-// }
-```
-
-### See
-
-- [DeprecatedOption](#deprecatedoption) for deprecated handling options
-- [getTypeHierarchyOption](#gettypehierarchyoption) for hierarchy resolution
-
----
-
 ## getSkipDocDirectives() \{#getskipdocdirectives\}
 
 ```ts
 function getSkipDocDirectives(cliOpts, configFileOpts): DirectiveName[];
 ```
 
-Defined in: core/src/config.ts:283
+Defined in: core/src/config.ts:277
 
 Retrieves the list of "skip" directives from CLI and config options.
 These directives specify which schema elements should be excluded from the documentation.
@@ -820,7 +751,7 @@ function getTypeHierarchyOption(
 ): Maybe<Partial<Record<TypeHierarchyValueType, TypeHierarchyTypeOptions>>>;
 ```
 
-Defined in: core/src/config.ts:539
+Defined in: core/src/config.ts:521
 
 Resolves the type hierarchy configuration by merging CLI and config file options.
 Validates that CLI and config don't specify conflicting hierarchy types.
@@ -879,7 +810,7 @@ getTypeHierarchyOption("api", { entity: {} });
 function getVisibilityDirectives(cliOpts, configFileOpts): object;
 ```
 
-Defined in: core/src/config.ts:337
+Defined in: core/src/config.ts:331
 
 Combines and validates visibility directives (only and skip) from both CLI and config sources.
 Ensures that no directive appears in both "only" and "skip" lists simultaneously.
@@ -947,35 +878,53 @@ getVisibilityDirectives({ only: ["@example"], skip: ["@example"] }, {}); // Erro
 
 ```ts
 function parseDeprecatedDocOptions(
-  _cliOpts,
-  _configOptions,
+  _cliOpts?,
+  _configOptions?,
 ): Record<string, never>;
 ```
 
-Defined in: core/src/config.ts:459
-
-Placeholder function for handling deprecated document options.
-Currently returns an empty object as these options are deprecated.
+Defined in: core/src/config.ts:443
 
 ### Parameters
 
-#### \_cliOpts
+#### \_cliOpts?
 
-`Maybe`&lt;`Omit`&lt;`DeprecatedCliOptions`, `"never"`&gt;&gt;
+`Maybe`&lt;`CliOptions`&gt;
 
-Deprecated CLI options (unused)
+#### \_configOptions?
 
-#### \_configOptions
-
-`Maybe`&lt;`Omit`&lt;`DeprecatedConfigDocOptions`, `"never"`&gt;&gt;
-
-Deprecated config options (unused)
+`Maybe`&lt;`ConfigDocOptions`&gt;
 
 ### Returns
 
 `Record`&lt;`string`, `never`&gt;
 
-An empty object
+---
+
+## parseDeprecatedFormatterOption() \{#parsedeprecatedformatteroption\}
+
+```ts
+function parseDeprecatedFormatterOption(
+  cliOpts?,
+  configOptions?,
+): Maybe<string>;
+```
+
+Defined in: core/src/config.ts:565
+
+### Parameters
+
+#### cliOpts?
+
+`Maybe`&lt;`CliOptions`&gt;
+
+#### configOptions?
+
+`Maybe`&lt;`ConfigOptions`&gt;
+
+### Returns
+
+`Maybe`&lt;`string`&gt;
 
 ---
 
@@ -983,37 +932,26 @@ An empty object
 
 ```ts
 function parseDeprecatedPrintTypeOptions(
-  cliOpts,
-  configOptions,
+  _cliOpts?,
+  _configOptions?,
 ): Record<string, never>;
 ```
 
-Defined in: core/src/config.ts:593
-
-Handles deprecated print type options.
-
-Emits deprecation warnings when legacy section toggle options are detected
-from CLI flags or config file values.
+Defined in: core/src/config.ts:585
 
 ### Parameters
 
-#### cliOpts
+#### \_cliOpts?
 
-`Maybe`&lt;`Pick`&lt;`CliOptions`, `"noCode"` \| `"noExample"` \| `"noRelatedType"`&gt;&gt;
+`Maybe`&lt;`CliOptions`&gt;
 
-CLI options containing deprecated print type flags
+#### \_configOptions?
 
-#### configOptions
-
-`Maybe`&lt;`Pick`&lt;`ConfigPrintTypeOptions`, `"codeSection"` \| `"exampleSection"` \| `"relatedTypeSection"`&gt;&gt;
-
-Config options containing deprecated print type settings
+`Maybe`&lt;`ConfigPrintTypeOptions`&gt;
 
 ### Returns
 
 `Record`&lt;`string`, `never`&gt;
-
-An empty object reserved for backward compatibility
 
 ---
 
@@ -1023,7 +961,7 @@ An empty object reserved for backward compatibility
 function parseGroupByOption(groupOptions): Maybe<GroupByDirectiveOptions>;
 ```
 
-Defined in: core/src/config.ts:732
+Defined in: core/src/config.ts:673
 
 Parses and validates the groupByDirective option string format.
 The format should be @directive(field|=fallback) where:
@@ -1076,7 +1014,7 @@ parseGroupByOption("invalid-format");
 function parseHomepageOption(cliHomepage, configHomepage): Maybe<string>;
 ```
 
-Defined in: core/src/config.ts:752
+Defined in: core/src/config.ts:693
 
 ### Parameters
 
@@ -1378,144 +1316,6 @@ Will log a warning if the specified diff module cannot be found.
 #### Since
 
 1.0.0
-
----
-
-## normalize
-
-Directive name normalization and processing utilities.
-
-This module consolidates utilities for handling directive names from multiple
-sources (CLI, config file, etc.) ensuring consistent normalization across
-the application.
-
-## combineDirectiveNames() \{#combinedirectivenames\}
-
-```ts
-function combineDirectiveNames(...sources): DirectiveName[];
-```
-
-Defined in: core/src/directives/normalize.ts:94
-
-Combines and deduplicates directive names from multiple sources in one step.
-
-This is a convenience function that combines normalizeDirectiveNames
-with uniqueDirectiveNames for the common case where you need both
-normalization and deduplication.
-
-### Parameters
-
-#### sources
-
-...`Maybe`&lt;`DirectiveName`[]&gt;[]
-
-Multiple arrays of directive names or undefined/null values
-
-### Returns
-
-`DirectiveName`[]
-
-A single array of deduplicated directive names
-
-### Example
-
-```typescript
-
-const cliDirectives = ["@example", "@internal"];
-const configDirectives = ["@auth", "@example"]; // @example is duplicate
-
-const all = combineDirectiveNames(cliDirectives, configDirectives);
-// Result: ["@example", "@internal", "@auth"]
-```
-
----
-
-## normalizeDirectiveNames() \{#normalizedirectivenames\}
-
-```ts
-function normalizeDirectiveNames(...sources): DirectiveName[];
-```
-
-Defined in: core/src/directives/normalize.ts:42
-
-Normalizes directive names from multiple sources into a single flattened array.
-
-This function:
-
-1. Accepts multiple directive name arrays from different sources
-2. Filters out null/undefined values and empty arrays
-3. Flattens them into a single array
-4. Returns the normalized array (may contain duplicates if sources contain duplicates)
-
-Useful when combining directives from CLI, config file, and environment sources.
-
-### Parameters
-
-#### sources
-
-...`Maybe`&lt;`DirectiveName`[]&gt;[]
-
-Multiple arrays of directive names or undefined/null values
-
-### Returns
-
-`DirectiveName`[]
-
-A single array of normalized directive names (may contain duplicates)
-
-### Example
-
-```typescript
-
-const cliDirectives = ["@example", "@internal"];
-const configDirectives = ["@auth"];
-
-const all = normalizeDirectiveNames(cliDirectives, configDirectives);
-// Result: ["@example", "@internal", "@auth"]
-
-// Safely handles undefined:
-const safe = normalizeDirectiveNames(
-  cliDirectives,
-  undefined,
-  configDirectives,
-);
-// Result: ["@example", "@internal", "@auth"]
-```
-
----
-
-## uniqueDirectiveNames() \{#uniquedirectivenames\}
-
-```ts
-function uniqueDirectiveNames(directives): DirectiveName[];
-```
-
-Defined in: core/src/directives/normalize.ts:67
-
-Removes duplicate directive names from an array while preserving order.
-
-### Parameters
-
-#### directives
-
-`DirectiveName`[]
-
-Array of directive names that may contain duplicates
-
-### Returns
-
-`DirectiveName`[]
-
-A new array with duplicate directive names removed
-
-### Example
-
-```typescript
-
-const directives = ["@auth", "@example", "@auth", "@internal"];
-const unique = uniqueDirectiveNames(directives);
-// Result: ["@auth", "@example", "@internal"]
-```
 
 ---
 
@@ -1998,7 +1798,7 @@ callback names in MDX modules. Kept separate to avoid circular dependencies.
 const EVENT_CALLBACK_MAP: object;
 ```
 
-Defined in: core/src/event-map.ts:24
+Defined in: core/src/event-map.ts:25
 
 Event callback mapping configuration.
 Maps event names to their corresponding callback names in mdxModule.
@@ -2054,6 +1854,12 @@ readonly print:beforePrintType: "beforePrintTypeHook" = "beforePrintTypeHook";
 
 ```ts
 readonly render:afterGenerateIndexMetafile: "afterGenerateIndexMetafileHook" = "afterGenerateIndexMetafileHook";
+```
+
+#### render:afterRenderFiles \{#renderafterrenderfiles\}
+
+```ts
+readonly render:afterRenderFiles: "afterRenderFilesHook" = "afterRenderFilesHook";
 ```
 
 #### render:afterRenderHomepage \{#renderafterrenderhomepage\}
@@ -2760,12 +2566,294 @@ events.on(PrintTypeEvents.AFTER_PRINT_CODE, (event: PrintCodeEvent) => {
 
 ---
 
-## print-type
+## render-files-events
 
-Print type interfaces — re-exported from @graphql-markdown/types.
+Render files event constants.
 
-Event class implementations (PrintCodeEvent, PrintTypeEvent, etc.) live in
-@graphql-markdown/printer-legacy, which is the package that emits the events.
+## RenderFilesEvents \{#renderfilesevents\}
+
+```ts
+const RenderFilesEvents: object;
+```
+
+Defined in: core/src/events/render-files-events.ts:10
+
+Event names fired once after all output files (entities + homepage) are written.
+
+### Type Declaration
+
+#### AFTER_RENDER \{#after_render\}
+
+```ts
+readonly AFTER_RENDER: "render:afterRenderFiles" = "render:afterRenderFiles";
+```
+
+Emitted after all files have been written
+
+---
+
+## render-files
+
+Render files event class.
+
+## Events
+
+### RenderFilesEvent \{#renderfilesevent\}
+
+Defined in: core/src/events/render-files.ts:15
+
+Event emitted after all output files (entities + homepage) have been written.
+
+#### Extends
+
+- [`DataEvent`](../../utils/events.md#abstract-dataevent)&lt;\{
+  `baseURL`: `string`;
+  `outputDir`: `string`;
+  `pages`: `unknown`;
+  `rootDir`: `string`;
+  \}&gt;
+
+#### Constructors
+
+##### Constructor
+
+```ts
+new RenderFilesEvent(data, options?): RenderFilesEvent;
+```
+
+Defined in: core/src/events/render-files.ts:21
+
+###### Parameters
+
+###### data
+
+###### baseURL
+
+`string`
+
+###### outputDir
+
+`string`
+
+###### pages
+
+`unknown`
+
+###### rootDir
+
+`string`
+
+###### options?
+
+[`CancellableEventOptions`](../../utils/events.md#cancellableeventoptions)
+
+###### Returns
+
+[`RenderFilesEvent`](#renderfilesevent)
+
+###### Overrides
+
+[`DataEvent`](../../utils/events.md#abstract-dataevent).[`constructor`](../../utils/events.md#constructor-1)
+
+#### Properties
+
+##### data \{#data\}
+
+```ts
+readonly data: object;
+```
+
+Defined in: utils/dist/events.d.ts:111
+
+Read-only event data payload.
+
+###### baseURL
+
+```ts
+baseURL: string;
+```
+
+###### outputDir
+
+```ts
+outputDir: string;
+```
+
+###### pages
+
+```ts
+pages: unknown;
+```
+
+###### rootDir
+
+```ts
+rootDir: string;
+```
+
+###### Inherited from
+
+[`DataEvent`](../../utils/events.md#abstract-dataevent).[`data`](../../utils/events.md#data)
+
+#### Accessors
+
+##### defaultAction \{#defaultaction\}
+
+###### Get Signature
+
+```ts
+get defaultAction(): DefaultAction | undefined;
+```
+
+Defined in: utils/dist/events.d.ts:78
+
+Gets the default action function if one was provided.
+
+###### Returns
+
+`DefaultAction` \| `undefined`
+
+###### Inherited from
+
+[`DataEvent`](../../utils/events.md#abstract-dataevent).[`defaultAction`](../../utils/events.md#defaultaction-1)
+
+##### defaultPrevented \{#defaultprevented\}
+
+###### Get Signature
+
+```ts
+get defaultPrevented(): boolean;
+```
+
+Defined in: utils/dist/events.d.ts:70
+
+Gets whether the default action has been prevented.
+
+###### Returns
+
+`boolean`
+
+###### Set Signature
+
+```ts
+set defaultPrevented(value): void;
+```
+
+Defined in: utils/dist/events.d.ts:82
+
+Allows setting defaultPrevented to true directly.
+
+###### Parameters
+
+###### value
+
+`boolean`
+
+###### Returns
+
+`void`
+
+###### Inherited from
+
+[`DataEvent`](../../utils/events.md#abstract-dataevent).[`defaultPrevented`](../../utils/events.md#defaultprevented-1)
+
+##### propagationStopped \{#propagationstopped\}
+
+###### Get Signature
+
+```ts
+get propagationStopped(): boolean;
+```
+
+Defined in: utils/dist/events.d.ts:74
+
+Gets whether propagation has been stopped.
+
+###### Returns
+
+`boolean`
+
+###### Set Signature
+
+```ts
+set propagationStopped(value): void;
+```
+
+Defined in: utils/dist/events.d.ts:86
+
+Allows setting propagationStopped to true directly.
+
+###### Parameters
+
+###### value
+
+`boolean`
+
+###### Returns
+
+`void`
+
+###### Inherited from
+
+[`DataEvent`](../../utils/events.md#abstract-dataevent).[`propagationStopped`](../../utils/events.md#propagationstopped-1)
+
+#### Methods
+
+##### preventDefault() \{#preventdefault\}
+
+```ts
+preventDefault(): void;
+```
+
+Defined in: utils/dist/events.d.ts:91
+
+Prevents the default action from executing.
+Only works if the event is cancellable.
+
+###### Returns
+
+`void`
+
+###### Inherited from
+
+[`DataEvent`](../../utils/events.md#abstract-dataevent).[`preventDefault`](../../utils/events.md#preventdefault-1)
+
+##### runDefaultAction() \{#rundefaultaction\}
+
+```ts
+runDefaultAction(): Promise<void>;
+```
+
+Defined in: utils/dist/events.d.ts:100
+
+Executes the default action for an event if it hasn't been prevented.
+
+###### Returns
+
+`Promise`&lt;`void`&gt;
+
+###### Inherited from
+
+[`DataEvent`](../../utils/events.md#abstract-dataevent).[`runDefaultAction`](../../utils/events.md#rundefaultaction-1)
+
+##### stopPropagation() \{#stoppropagation\}
+
+```ts
+stopPropagation(): void;
+```
+
+Defined in: utils/dist/events.d.ts:96
+
+Stops propagation to remaining event handlers.
+Handlers registered after the current one will not execute.
+
+###### Returns
+
+`void`
+
+###### Inherited from
+
+[`DataEvent`](../../utils/events.md#abstract-dataevent).[`stopPropagation`](../../utils/events.md#stoppropagation-1)
 
 ---
 
@@ -3350,8 +3438,10 @@ Event emitted before/after rendering type entities.
 #### Extends
 
 - [`DataEvent`](../../utils/events.md#abstract-dataevent)&lt;\{
+  `baseURL`: `string`;
   `filePath`: `string`;
   `name`: `string`;
+  `outputDir`: `string`;
   \}&gt;
 
 #### Constructors
@@ -3362,17 +3452,25 @@ Event emitted before/after rendering type entities.
 new RenderTypeEntitiesEvent(data, options?): RenderTypeEntitiesEvent;
 ```
 
-Defined in: core/src/events/render-type-entities.ts:19
+Defined in: core/src/events/render-type-entities.ts:21
 
 ###### Parameters
 
 ###### data
+
+###### baseURL
+
+`string`
 
 ###### filePath
 
 `string`
 
 ###### name
+
+`string`
+
+###### outputDir
 
 `string`
 
@@ -3400,6 +3498,12 @@ Defined in: utils/dist/events.d.ts:111
 
 Read-only event data payload.
 
+###### baseURL
+
+```ts
+baseURL: string;
+```
+
 ###### filePath
 
 ```ts
@@ -3410,6 +3514,12 @@ filePath: string;
 
 ```ts
 name: string;
+```
+
+###### outputDir
+
+```ts
+outputDir: string;
 ```
 
 ###### Inherited from
@@ -3886,296 +3996,6 @@ Handlers registered after the current one will not execute.
 
 Event system for GraphQL-Markdown.
 
-## ComposePageTypeEventData \{#composepagetypeeventdata\}
-
-Defined in: types/src/printer.d.ts:114
-
-Data payload for compose page type events.
-
-### Properties
-
-#### name \{#name\}
-
-```ts
-readonly name: Maybe<string>;
-```
-
-Defined in: types/src/printer.d.ts:118
-
-The name identifier for the type
-
-#### options \{#options\}
-
-```ts
-readonly options: PrintTypeOptions;
-```
-
-Defined in: types/src/printer.d.ts:120
-
-The print options in effect
-
-#### sections \{#sections\}
-
-```ts
-readonly sections: PageSections;
-```
-
-Defined in: types/src/printer.d.ts:122
-
-The map of all page sections (mutable in BEFORE event)
-
-#### type \{#type\}
-
-```ts
-readonly type: unknown;
-```
-
-Defined in: types/src/printer.d.ts:116
-
-The GraphQL type being composed
-
----
-
-## PageSection \{#pagesection\}
-
-Defined in: types/src/printer.d.ts:24
-
-Represents a single section of a page with optional title and content.
-
-### Properties
-
-#### content? \{#content\}
-
-```ts
-optional content?:
-  | string
-  | MDXString
-  | PageSection
-  | PageSection[];
-```
-
-Defined in: types/src/printer.d.ts:30
-
-The section content
-
-#### level? \{#level\}
-
-```ts
-optional level?: number;
-```
-
-Defined in: types/src/printer.d.ts:28
-
-Optional section level for hierarchical structuring
-
-#### title? \{#title\}
-
-```ts
-optional title?: string | MDXString;
-```
-
-Defined in: types/src/printer.d.ts:26
-
-Optional title/heading for the section
-
----
-
-## PageSections \{#pagesections\}
-
-Defined in: types/src/printer.d.ts:36
-
-Map of all available sections in a type page.
-
-### Indexable
-
-```ts
-[key: string]: Maybe<PageHeader | PageSection>
-```
-
-Additional custom sections can be added by event handlers
-
-### Properties
-
-#### code? \{#code\}
-
-```ts
-optional code?: PageSection;
-```
-
-Defined in: types/src/printer.d.ts:50
-
-GraphQL code block
-
-#### customDirectives? \{#customdirectives\}
-
-```ts
-optional customDirectives?: PageSection;
-```
-
-Defined in: types/src/printer.d.ts:52
-
-Custom directives
-
-#### description? \{#description\}
-
-```ts
-optional description?: PageSection;
-```
-
-Defined in: types/src/printer.d.ts:48
-
-Type description from GraphQL comments
-
-#### example? \{#example\}
-
-```ts
-optional example?: PageSection;
-```
-
-Defined in: types/src/printer.d.ts:56
-
-Usage examples
-
-#### header? \{#header\}
-
-```ts
-optional header?: PageHeader;
-```
-
-Defined in: types/src/printer.d.ts:40
-
-YAML frontmatter or top-level heading
-
-#### mdxDeclaration? \{#mdxdeclaration\}
-
-```ts
-optional mdxDeclaration?: PageHeader;
-```
-
-Defined in: types/src/printer.d.ts:44
-
-MDX import declarations
-
-#### metadata? \{#metadata\}
-
-```ts
-optional metadata?: PageSection;
-```
-
-Defined in: types/src/printer.d.ts:54
-
-Type metadata (fields, arguments, etc.)
-
-#### metatags? \{#metatags\}
-
-```ts
-optional metatags?: PageHeader;
-```
-
-Defined in: types/src/printer.d.ts:42
-
-HTML meta tags
-
-#### relations? \{#relations\}
-
-```ts
-optional relations?: PageSection;
-```
-
-Defined in: types/src/printer.d.ts:58
-
-Related types
-
-#### tags? \{#tags\}
-
-```ts
-optional tags?: PageSection;
-```
-
-Defined in: types/src/printer.d.ts:46
-
-Custom tags (e.g., @deprecated)
-
----
-
-## PrintCodeEventData \{#printcodeeventdata\}
-
-Defined in: types/src/printer.d.ts:64
-
-Data payload for print code events.
-
-### Properties
-
-#### options \{#options-1\}
-
-```ts
-readonly options: PrintTypeOptions;
-```
-
-Defined in: types/src/printer.d.ts:70
-
-The print options in effect
-
-#### type \{#type-1\}
-
-```ts
-readonly type: unknown;
-```
-
-Defined in: types/src/printer.d.ts:66
-
-The GraphQL type being printed
-
-#### typeName \{#typename\}
-
-```ts
-readonly typeName: string;
-```
-
-Defined in: types/src/printer.d.ts:68
-
-The name of the type
-
----
-
-## PrintTypeEventData \{#printtypeeventdata\}
-
-Defined in: types/src/printer.d.ts:76
-
-Data payload for print type events.
-
-### Properties
-
-#### name \{#name-1\}
-
-```ts
-readonly name: Maybe<string>;
-```
-
-Defined in: types/src/printer.d.ts:80
-
-The name identifier for the type
-
-#### options \{#options-2\}
-
-```ts
-readonly options: PrintTypeOptions;
-```
-
-Defined in: types/src/printer.d.ts:82
-
-The print options in effect
-
-#### type \{#type-2\}
-
-```ts
-readonly type: unknown;
-```
-
-Defined in: types/src/printer.d.ts:78
-
-The GraphQL type being printed
-
 ---
 
 ## generator
@@ -4185,37 +4005,6 @@ Core generator functionality for GraphQL Markdown documentation.
 This module contains the main functionality for generating markdown documentation
 from GraphQL schemas. It handles schema loading, processing, and markdown generation
 through appropriate printers and renderers.
-
-## FILE_EXTENSION \{#file_extension\}
-
-```ts
-const FILE_EXTENSION: object;
-```
-
-Defined in: core/src/generator.ts:62
-
-Supported file extensions for generated documentation files.
-
-### Type Declaration
-
-#### MD \{#md\}
-
-```ts
-readonly MD: ".md" = ".md";
-```
-
-#### MDX \{#mdx\}
-
-```ts
-readonly MDX: ".mdx" = ".mdx";
-```
-
-### Remarks
-
-- MDX: MDX file extension (.mdx) for React component-enabled markdown
-- MD: Standard markdown file extension (.md)
-
----
 
 ## checkSchemaDifferences() \{#checkschemadifferences\}
 
@@ -4228,7 +4017,7 @@ function checkSchemaDifferences(
 ): Promise<boolean>;
 ```
 
-Defined in: core/src/generator.ts:264
+Defined in: core/src/generator.ts:268
 
 Checks if there are differences in the GraphQL schema compared to a previous version.
 
@@ -4277,7 +4066,7 @@ When no changes are detected, a log message is generated indicating that the sch
 function generateDocFromSchema(options): Promise<void>;
 ```
 
-Defined in: core/src/generator.ts:336
+Defined in: core/src/generator.ts:340
 
 Main entry point for generating Markdown documentation from a GraphQL schema.
 
@@ -4314,7 +4103,7 @@ function getFormatterFromMDXModule(
 ): Partial<Formatter> | undefined;
 ```
 
-Defined in: core/src/generator.ts:169
+Defined in: core/src/generator.ts:173
 
 **`Internal`**
 
@@ -4353,7 +4142,7 @@ A partial Formatter with the found functions, or undefined if none found
 function getMDXModuleProperty<T>(mdxModule, propertyName): T | undefined;
 ```
 
-Defined in: core/src/generator.ts:132
+Defined in: core/src/generator.ts:136
 
 **`Internal`**
 
@@ -4398,7 +4187,7 @@ function loadGraphqlSchema(
 ): Promise<Maybe<GraphQLSchema>>;
 ```
 
-Defined in: core/src/generator.ts:233
+Defined in: core/src/generator.ts:237
 
 **`Internal`**
 
@@ -4435,7 +4224,7 @@ A promise that resolves to the loaded GraphQL schema, or undefined if:
 function loadMDXModule(mdxParser): Promise<unknown>;
 ```
 
-Defined in: core/src/generator.ts:91
+Defined in: core/src/generator.ts:95
 
 **`Internal`**
 
@@ -4470,7 +4259,7 @@ function resolveSkipAndOnlyDirectives(
 ): GraphQLDirective[][];
 ```
 
-Defined in: core/src/generator.ts:295
+Defined in: core/src/generator.ts:299
 
 Resolves and retrieves GraphQL directive objects from the schema based on their names.
 
@@ -4513,19 +4302,6 @@ GraphQL Markdown configuration utilities
 This module provides utilities for loading and processing GraphQL configuration
 using the graphql-config package.
 
-## EXTENSION_NAME \{#extension_name\}
-
-```ts
-const EXTENSION_NAME: "graphql-markdown";
-```
-
-Defined in: core/src/graphql-config.ts:31
-
-The name of the GraphQL Markdown extension.
-Used to identify the extension in graphql-config.
-
----
-
 ## graphQLConfigExtension \{#graphqlconfigextension\}
 
 ```ts
@@ -4561,7 +4337,7 @@ function loadConfiguration(
 ): Promise<Maybe<Readonly<ExtensionProjectConfig>>>;
 ```
 
-Defined in: core/src/graphql-config.ts:142
+Defined in: core/src/graphql-config.ts:145
 
 Loads the GraphQL Markdown configuration from graphql-config.
 
@@ -4622,7 +4398,7 @@ const config = await loadConfiguration(
 function setLoaderOptions(loaders, options): LoaderOption;
 ```
 
-Defined in: core/src/graphql-config.ts:94
+Defined in: core/src/graphql-config.ts:97
 
 Sets loader options for GraphQL Markdown loaders.
 
@@ -5026,7 +4802,6 @@ Printer loader helpers for bootstrapping GraphQL-Markdown renderers.
 
 ```ts
 function getPrinter(
-  printerModule?,
   config?,
   options?,
   formatter?,
@@ -5035,21 +4810,15 @@ function getPrinter(
 ): Promise<typeof IPrinter>;
 ```
 
-Defined in: core/src/printer.ts:67
+Defined in: core/src/printer.ts:65
 
 Loads and initializes a printer module for GraphQL schema documentation.
 
-This function dynamically imports the specified printer module and initializes it
+This function resolves the specified printer module and initializes it
 with the provided configuration and options. The printer is responsible for rendering
 GraphQL schema documentation in the desired format.
 
 ### Parameters
-
-#### printerModule?
-
-`Maybe`&lt;`PackageName`&gt;
-
-The name/path of the printer module to load
 
 #### config?
 
@@ -5085,15 +4854,7 @@ A promise that resolves to the initialized Printer instance
 
 ### Throws
 
-Will throw an error if printerModule is not a string
-
-### Throws
-
 Will throw an error if config is not provided
-
-### Throws
-
-Will throw an error if the module specified by printerModule cannot be found
 
 ### Example
 
@@ -5106,18 +4867,20 @@ const schema = buildSchema(`
 `);
 
 const printer = await getPrinter(
-  "@graphql-markdown/printer-legacy",
   {
     schema,
     baseURL: "/docs",
     linkRoot: "graphql",
   },
   {
-    printTypeOptions: { includeDeprecationReasons: true },
+    printTypeOptions: { deprecated: "group" },
   },
 );
 
-const output = printer.printSchema();
+const queryType = schema.getQueryType();
+if (queryType) {
+  const output = await printer.printType("Query", queryType);
+}
 ```
 
 ---
@@ -5159,7 +4922,7 @@ new Renderer(
    mdxExtension): Renderer;
 ```
 
-Defined in: core/src/renderer.ts:360
+Defined in: core/src/renderer.ts:359
 
 Creates a new Renderer instance.
 
@@ -5278,7 +5041,7 @@ generateCategoryMetafileType(
    rootTypeName): Promise<string>;
 ```
 
-Defined in: core/src/renderer.ts:463
+Defined in: core/src/renderer.ts:462
 
 Generates the directory path and metafiles for a specific schema entity type.
 Creates the appropriate directory structure based on configuration options.
@@ -5324,7 +5087,7 @@ generateIndexMetafile(
    options?): Promise<void>;
 ```
 
-Defined in: core/src/renderer.ts:408
+Defined in: core/src/renderer.ts:407
 
 Generates an index metafile for a category directory if MDX support is available.
 
@@ -5369,7 +5132,7 @@ await renderer.generateIndexMetafile("docs/types", "Types", {
 preCollectCategories(rootTypeNames): void;
 ```
 
-Defined in: core/src/renderer.ts:753
+Defined in: core/src/renderer.ts:752
 
 Pre-collects all category names that will be generated during rendering.
 This allows the position manager to assign consistent positions before
@@ -5405,7 +5168,7 @@ Array of root type names from the schema
 renderHomepage(homepageLocation): Promise<void>;
 ```
 
-Defined in: core/src/renderer.ts:803
+Defined in: core/src/renderer.ts:802
 
 Renders the homepage for the documentation from a template file.
 Replaces placeholders in the template with actual values.
@@ -5436,7 +5199,7 @@ Promise that resolves when the homepage is rendered
 renderRootTypes(rootTypeName, type): Promise<Maybe<Maybe<Category>[]>>;
 ```
 
-Defined in: core/src/renderer.ts:547
+Defined in: core/src/renderer.ts:546
 
 Renders all types within a root type category (e.g., all Query types).
 
@@ -5476,7 +5239,7 @@ renderTypeEntities(
    operationNamespaceParts?): Promise<Maybe<Category>>;
 ```
 
-Defined in: core/src/renderer.ts:614
+Defined in: core/src/renderer.ts:613
 
 Renders documentation for a specific type entity and saves it to a file.
 
@@ -5667,7 +5430,7 @@ function getRenderer(
 ): Promise<Renderer>;
 ```
 
-Defined in: core/src/renderer.ts:1035
+Defined in: core/src/renderer.ts:1034
 
 Factory function to create and initialize a Renderer instance.
 Creates the output directory and returns a configured renderer.
@@ -5913,7 +5676,7 @@ Docusaurus integration for running GraphQL-Markdown and wiring CLI commands.
 function default(_, options): Promise<Plugin>;
 ```
 
-Defined in: index.ts:31
+Defined in: docusaurus/src/index.ts:28
 
 Docusaurus plugin wrapper that wires GraphQL-Markdown into the build,
 optionally running the CLI during `docusaurus build` and registering
@@ -5929,7 +5692,7 @@ Load context (unused).
 
 #### options
 
-`ConfigOptions` & `Partial`&lt;`ExperimentalConfigOptions`&gt; & `Partial`&lt;`PluginOptions`&gt;
+`ConfigOptions` & `Partial`&lt;`PluginOptions`&gt;
 
 GraphQL-Markdown CLI options plus Docusaurus plugin options.
 
@@ -5949,7 +5712,7 @@ A configured Docusaurus plugin instance.
 function beforeGenerateIndexMetafileHook(event): Promise<void>;
 ```
 
-Defined in: mdx/category.ts:31
+Defined in: docusaurus/src/mdx/category.ts:31
 
 Hook that materializes a `_category_.yml` file before Docusaurus indexes
 a directory, ensuring generated bundles have labels, ordering, and
@@ -5987,36 +5750,18 @@ Hook payload containing the target directory, category name, and generator optio
 
 ---
 
-## components
-
-## mdxDeclaration \{#mdxdeclaration\}
-
-```ts
-const mdxDeclaration: MDXString;
-```
-
-Defined in: mdx/components.ts:20
-
-String literal that declares the React helpers (`Bullet`, `SpecifiedBy`, etc.)
-which GraphQL-Markdown prepends to every generated MDX file.
-
----
-
 ## mdx
 
-## createMDXFormatter() \{#createmdxformatter\}
+## createMDXFormatter \{#createmdxformatter\}
 
 ```ts
-function createMDXFormatter(meta?): Formatter;
+const createMDXFormatter: (meta?) => Formatter;
 ```
 
-Defined in: mdx/index.ts:159
+Defined in: formatters/dist/docusaurus/index.d.ts:75
 
-Creates an MDX formatter for Docusaurus documentation.
-
-The MDX formatter produces MDX/HTML markup compatible with Docusaurus.
-It uses helper components like `<Badge>`, `<Bullet>`, and `<SpecifiedBy>`,
-and emits native `<details>/<summary>` blocks for collapsible sections.
+Creates a Docusaurus formatter.
+Captures `meta` in closure so `formatMDXAdmonition` can detect the Docusaurus version.
 
 ### Parameters
 
@@ -6024,80 +5769,314 @@ and emits native `<details>/<summary>` blocks for collapsible sections.
 
 `Maybe`&lt;`MetaInfo`&gt;
 
-Optional metadata for framework-specific formatting
+Optional metadata used to detect Docusaurus version
 
 ### Returns
 
 `Formatter`
 
-A complete Formatter implementation for MDX output
-
-### Example
-
-```typescript
-
-const formatter = createMDXFormatter({ generatorFrameworkName: "docusaurus" });
-const badge = formatter.formatMDXBadge({ text: "Required" });
-// '<Badge class="badge badge--secondary " text="Required"/>'
-```
+A complete Formatter implementation for Docusaurus MDX output
 
 ---
 
-## formatMDXAdmonition() \{#formatmdxadmonition\}
+## formatMDXAdmonition \{#formatmdxadmonition\}
 
 ```ts
-function formatMDXAdmonition(param, meta): MDXString;
+const formatMDXAdmonition: ({ text, title, type }, meta) => MDXString;
 ```
 
-Defined in: mdx/index.ts:52
+Defined in: formatters/dist/docusaurus/index.d.ts:26
 
-Formats an admonition block in MDX format
+Formats an admonition using Docusaurus native `:::type` callout syntax.
+Detects Docusaurus v2 (via `meta`) and uses `:::caution` instead of `:::warning`.
 
 ### Parameters
 
-#### param
+#### \{ text, title, type \}
 
 `AdmonitionType`
-
-The admonition configuration object
 
 #### meta
 
 `Maybe`&lt;`MetaInfo`&gt;
 
-Optional metadata for generator configuration
+Optional metadata used to detect Docusaurus version
 
 ### Returns
 
 `MDXString`
 
-Formatted MDX string for the admonition
+Formatted admonition string
+
+---
+
+## formatMDXBadge \{#formatmdxbadge\}
+
+```ts
+const formatMDXBadge: ({ text, classname }) => MDXString;
+```
+
+Defined in: formatters/dist/docusaurus/index.d.ts:18
+
+Formats a badge using the inline `<Badge>` component defined in `mdxDeclaration`.
+Appends a CSS class derived from `classname` (e.g. `badge--deprecated`).
+
+### Parameters
+
+#### \{ text, classname \}
+
+`Badge`
+
+### Returns
+
+`MDXString`
+
+Formatted Badge component string
+
+---
+
+## formatMDXBullet \{#formatmdxbullet\}
+
+```ts
+const formatMDXBullet: (text?) => MDXString;
+```
+
+Defined in: formatters/dist/docusaurus/index.d.ts:32
+
+Formats a bullet point using the inline `<Bullet/>` component defined in `mdxDeclaration`.
+
+### Parameters
+
+#### text?
+
+`string`
+
+Optional text to append after the bullet
+
+### Returns
+
+`MDXString`
+
+Formatted Bullet component string
+
+---
+
+## formatMDXDetails \{#formatmdxdetails\}
+
+```ts
+const formatMDXDetails: ({ dataOpen, dataClose }) => MDXString;
+```
+
+Defined in: formatters/dist/docusaurus/index.d.ts:40
+
+Formats a collapsible block as an HTML `<details>` element with
+toggle labels that swap via the `hidden` attribute.
+Text is escaped so curly braces and angle brackets don't break MDX.
+
+### Parameters
+
+#### \{ dataOpen, dataClose, \}
+
+`CollapsibleOption`
+
+### Returns
+
+`MDXString`
+
+Formatted details element string
+
+---
+
+## formatMDXFrontmatter \{#formatmdxfrontmatter\}
+
+```ts
+const formatMDXFrontmatter: (_props, formatted) => MDXString;
+```
+
+Defined in: formatters/dist/docusaurus/index.d.ts:68
+
+Formats YAML front matter wrapped in `---` delimiters.
+
+### Parameters
+
+#### \_props
+
+`Maybe`&lt;`FrontMatterOptions`&gt;
+
+Front matter options (unused)
+
+#### formatted
+
+`Maybe`&lt;`string`[]&gt;
+
+Pre-formatted front matter lines
+
+### Returns
+
+`MDXString`
+
+Formatted front matter block, or empty string if no lines provided
+
+---
+
+## formatMDXLink \{#formatmdxlink\}
+
+```ts
+const formatMDXLink: ({ text, url }) => TypeLink;
+```
+
+Defined in: formatters/dist/docusaurus/index.d.ts:61
+
+Appends `.mdx` to internal link URLs.
+
+### Parameters
+
+#### \{ text, url \}
+
+`TypeLink`
+
+### Returns
+
+`TypeLink`
+
+Link with `.mdx` extension appended to the URL
+
+---
+
+## formatMDXNameEntity \{#formatmdxnameentity\}
+
+```ts
+const formatMDXNameEntity: (name, parentType?) => MDXString;
+```
+
+Defined in: formatters/dist/docusaurus/index.d.ts:55
+
+Formats a named entity as an inline `<code>` element with the parent type
+in normal weight and the entity name in bold.
+Text is escaped so curly braces don't break MDX.
+
+### Parameters
+
+#### name
+
+`string`
+
+Entity name
+
+#### parentType?
+
+`Maybe`&lt;`string`&gt;
+
+Optional parent type name for qualified references
+
+### Returns
+
+`MDXString`
+
+Formatted JSX code element string
+
+---
+
+## formatMDXSpecifiedByLink \{#formatmdxspecifiedbylink\}
+
+```ts
+const formatMDXSpecifiedByLink: (url) => MDXString;
+```
+
+Defined in: formatters/dist/docusaurus/index.d.ts:46
+
+Formats a "specified by" link using the inline `<SpecifiedBy>` component.
+
+### Parameters
+
+#### url
+
+`string`
+
+URL to the specification
+
+### Returns
+
+`MDXString`
+
+Formatted SpecifiedBy component string
+
+---
+
+## mdxDeclaration \{#mdxdeclaration\}
+
+```ts
+const mdxDeclaration: MDXString;
+```
+
+Defined in: formatters/dist/docusaurus/index.d.ts:11
+
+MDX component definitions prepended to every generated file.
+
+---
+
+## defaults
+
+Default formatter implementations shared across multiple formatter packages.
+
+These functions provide the standard/baseline rendering behaviour.
+Individual formatters import what they need and override only what differs.
+
+## formatMDXAdmonition() \{#formatmdxadmonition\}
+
+```ts
+function formatMDXAdmonition(admonition, _meta): MDXString;
+```
+
+Defined in: defaults.ts:42
+
+Formats an admonition as an HTML `<fieldset>` element with `gqlmd-mdx-admonition-*` CSS classes.
+
+### Parameters
+
+#### admonition
+
+`AdmonitionType`
+
+Admonition data with text, title, type, and optional icon
+
+#### \_meta
+
+`Maybe`&lt;`MetaInfo`&gt;
+
+Unused metadata parameter
+
+### Returns
+
+`MDXString`
+
+Formatted admonition string
 
 ---
 
 ## formatMDXBadge() \{#formatmdxbadge\}
 
 ```ts
-function formatMDXBadge(param): MDXString;
+function formatMDXBadge(badge): MDXString;
 ```
 
-Defined in: mdx/index.ts:40
+Defined in: defaults.ts:32
 
-Formats a Badge inline-block in MDX format
+Formats a badge using an HTML `<mark>` element with a `gqlmd-mdx-badge` CSS class.
 
 ### Parameters
 
-#### param
+#### badge
 
 `Badge`
 
-The badge configuration object
+Badge data containing the text to display
 
 ### Returns
 
 `MDXString`
 
-Formatted MDX string for the badge
+Formatted badge string
 
 ---
 
@@ -6107,9 +6086,9 @@ Formatted MDX string for the badge
 function formatMDXBullet(text?): MDXString;
 ```
 
-Defined in: mdx/index.ts:69
+Defined in: defaults.ts:54
 
-Creates a bullet point element in MDX format
+Formats a bullet point separator using a `` with a `gqlmd-mdx-bullet` CSS class.
 
 ### Parameters
 
@@ -6117,39 +6096,40 @@ Creates a bullet point element in MDX format
 
 `string` = `""`
 
-Optional text to append after the bullet point
+Optional text to append after the bullet
 
 ### Returns
 
 `MDXString`
 
-Formatted MDX string for the bullet point
+Formatted bullet string
 
 ---
 
 ## formatMDXDetails() \{#formatmdxdetails\}
 
 ```ts
-function formatMDXDetails(param): MDXString;
+function formatMDXDetails(option): MDXString;
 ```
 
-Defined in: mdx/index.ts:78
+Defined in: defaults.ts:64
 
-Creates a collapsible details section in MDX format
+Formats a collapsible block as an HTML `<details>` element with a `gqlmd-mdx-details` CSS class.
+The summary label is uppercase; the close label is rendered as ``.
 
 ### Parameters
 
-#### param
+#### option
 
 `CollapsibleOption`
 
-The collapsible section configuration
+Configuration for open/close label text
 
 ### Returns
 
 `MDXString`
 
-Formatted MDX string for the collapsible section
+Formatted details element string
 
 ---
 
@@ -6159,9 +6139,9 @@ Formatted MDX string for the collapsible section
 function formatMDXFrontmatter(_props, formatted): MDXString;
 ```
 
-Defined in: mdx/index.ts:129
+Defined in: defaults.ts:77
 
-Default frontmatter formatter for MDX.
+Formats YAML front matter wrapped in `---` delimiters.
 
 ### Parameters
 
@@ -6169,45 +6149,45 @@ Default frontmatter formatter for MDX.
 
 `Maybe`&lt;`FrontMatterOptions`&gt;
 
-The front matter options (unused)
+Front matter options (unused)
 
 #### formatted
 
 `Maybe`&lt;`string`[]&gt;
 
-The formatted front matter as an array of strings
+Pre-formatted front matter lines
 
 ### Returns
 
 `MDXString`
 
-Formatted MDX string for the front matter
+Formatted front matter block, or empty string if no lines provided
 
 ---
 
 ## formatMDXLink() \{#formatmdxlink\}
 
 ```ts
-function formatMDXLink(param): TypeLink;
+function formatMDXLink(link): TypeLink;
 ```
 
-Defined in: mdx/index.ts:115
+Defined in: defaults.ts:93
 
-Formats a link in MDX format
+Formats a type link — returns the link unchanged (identity passthrough).
 
 ### Parameters
 
-#### param
+#### link
 
 `TypeLink`
 
-The link configuration object
+The `TypeLink` object to format
 
 ### Returns
 
 `TypeLink`
 
-Formatted MDX link object
+The unmodified `TypeLink` object
 
 ---
 
@@ -6217,9 +6197,9 @@ Formatted MDX link object
 function formatMDXNameEntity(name, parentType?): MDXString;
 ```
 
-Defined in: mdx/index.ts:102
+Defined in: defaults.ts:103
 
-Formats a name entity with optional parent type
+Formats a named entity using `` and `<code>` elements with `gqlmd-mdx-entity-*` CSS classes.
 
 ### Parameters
 
@@ -6227,19 +6207,19 @@ Formats a name entity with optional parent type
 
 `string`
 
-The name to format
+Entity name
 
 #### parentType?
 
 `Maybe`&lt;`string`&gt;
 
-Optional parent type to prefix the name
+Optional parent type name for qualified references
 
 ### Returns
 
 `MDXString`
 
-Formatted MDX string for the name entity
+Formatted entity reference string
 
 ---
 
@@ -6249,9 +6229,10 @@ Formatted MDX string for the name entity
 function formatMDXSpecifiedByLink(url): MDXString;
 ```
 
-Defined in: mdx/index.ts:92
+Defined in: defaults.ts:119
 
-Creates a link to the specification documentation
+Formats a "specified by" link as an HTML `` with a `gqlmd-mdx-specifiedby` CSS class
+containing an anchor that opens in a new tab.
 
 ### Parameters
 
@@ -6259,13 +6240,2050 @@ Creates a link to the specification documentation
 
 `string`
 
-The URL to the specification
+URL to the specification
 
 ### Returns
 
 `MDXString`
 
-Formatted MDX string for the specification link
+Formatted specification link string
+
+---
+
+## docfx
+
+DocFX formatter for GraphQL documentation output.
+
+Produces Markdown compatible with Microsoft DocFX.
+Uses DocFX alert syntax for admonitions and injects the required
+`uid` front matter field for cross-reference resolution.
+
+## afterRenderTypeEntitiesHook \{#afterrendertypeentitieshook\}
+
+```ts
+const afterRenderTypeEntitiesHook: RenderTypeEntitiesHook;
+```
+
+Defined in: docfx/index.ts:200
+
+Builds DocFX `toc.yml` navigation files as each entity page is written.
+
+Walks up from the generated file to the graphql output root (`outputDir`),
+writing or updating a `toc.yml` at every directory level. Section index pages
+are prepended as an "Overview" entry on first encounter.
+
+---
+
+## BADGE_CLASS_MAP \{#badge_class_map\}
+
+```ts
+const BADGE_CLASS_MAP: Record<string, string>;
+```
+
+Defined in: docfx/index.ts:54
+
+Maps graphql-markdown badge classnames to Bootstrap 5 contextual badge classes.
+
+---
+
+## mdxExtension \{#mdxextension\}
+
+```ts
+const mdxExtension: ".md";
+```
+
+Defined in: docfx/index.ts:148
+
+---
+
+## createMDXFormatter() \{#createmdxformatter\}
+
+```ts
+function createMDXFormatter(_meta?): Formatter;
+```
+
+Defined in: docfx/index.ts:135
+
+Creates a DocFX formatter.
+
+### Parameters
+
+#### \_meta?
+
+`Maybe`&lt;`MetaInfo`&gt;
+
+Unused metadata parameter
+
+### Returns
+
+`Formatter`
+
+A complete Formatter implementation for DocFX output
+
+---
+
+## formatMDXAdmonition() \{#formatmdxadmonition\}
+
+```ts
+function formatMDXAdmonition(admonition, _meta): MDXString;
+```
+
+Defined in: docfx/index.ts:77
+
+Formats an admonition using DocFX alert syntax (`> [!TYPE]`).
+
+### Parameters
+
+#### admonition
+
+`AdmonitionType`
+
+Admonition data with text, title, and type
+
+#### \_meta
+
+`Maybe`&lt;`MetaInfo`&gt;
+
+Unused metadata parameter
+
+### Returns
+
+`MDXString`
+
+Formatted admonition string
+
+---
+
+## formatMDXBadge() \{#formatmdxbadge\}
+
+```ts
+function formatMDXBadge(badge): MDXString;
+```
+
+Defined in: docfx/index.ts:65
+
+Formats a badge using Bootstrap 5 badge classes available in DocFX's modern template.
+
+### Parameters
+
+#### badge
+
+`Badge`
+
+Badge data containing text and optional classname
+
+### Returns
+
+`MDXString`
+
+Formatted badge string
+
+---
+
+## formatMDXFrontmatter() \{#formatmdxfrontmatter\}
+
+```ts
+function formatMDXFrontmatter(props, formatted): MDXString;
+```
+
+Defined in: docfx/index.ts:93
+
+Formats YAML front matter, injecting a `uid` field required by DocFX
+for cross-reference resolution between pages.
+
+### Parameters
+
+#### props
+
+`Maybe`&lt;`FrontMatterOptions`&gt;
+
+Front matter options; `id` is used as the DocFX `uid` value
+
+#### formatted
+
+`Maybe`&lt;`string`[]&gt;
+
+Pre-formatted front matter lines
+
+### Returns
+
+`MDXString`
+
+Formatted front matter block, or empty string if no lines provided
+
+---
+
+## formatMDXLink() \{#formatmdxlink\}
+
+```ts
+function formatMDXLink(link): TypeLink;
+```
+
+Defined in: docfx/index.ts:119
+
+Returns the link unchanged — DocFX resolves `.md` links natively.
+
+### Parameters
+
+#### link
+
+`TypeLink`
+
+Link data with URL and text
+
+### Returns
+
+`TypeLink`
+
+The link unchanged
+
+---
+
+## docusaurus
+
+Docusaurus MDX formatter for GraphQL documentation output.
+
+Produces MDX markup compatible with Docusaurus v2 and v3,
+using Badge, Bullet, SpecifiedBy components and native admonition syntax.
+
+## mdxDeclaration \{#mdxdeclaration\}
+
+```ts
+const mdxDeclaration: MDXString;
+```
+
+Defined in: docusaurus/index.ts:36
+
+MDX component definitions prepended to every generated file.
+
+---
+
+## createMDXFormatter() \{#createmdxformatter\}
+
+```ts
+function createMDXFormatter(meta?): Formatter;
+```
+
+Defined in: docusaurus/index.ts:162
+
+Creates a Docusaurus formatter.
+Captures `meta` in closure so `formatMDXAdmonition` can detect the Docusaurus version.
+
+### Parameters
+
+#### meta?
+
+`Maybe`&lt;`MetaInfo`&gt;
+
+Optional metadata used to detect Docusaurus version
+
+### Returns
+
+`Formatter`
+
+A complete Formatter implementation for Docusaurus MDX output
+
+---
+
+## formatMDXAdmonition() \{#formatmdxadmonition\}
+
+```ts
+function formatMDXAdmonition(admonition, meta): MDXString;
+```
+
+Defined in: docusaurus/index.ts:65
+
+Formats an admonition using Docusaurus native `:::type` callout syntax.
+Detects Docusaurus v2 (via `meta`) and uses `:::caution` instead of `:::warning`.
+
+### Parameters
+
+#### admonition
+
+`AdmonitionType`
+
+Admonition data with text, title, and type
+
+#### meta
+
+`Maybe`&lt;`MetaInfo`&gt;
+
+Optional metadata used to detect Docusaurus version
+
+### Returns
+
+`MDXString`
+
+Formatted admonition string
+
+---
+
+## formatMDXBadge() \{#formatmdxbadge\}
+
+```ts
+function formatMDXBadge(badge): MDXString;
+```
+
+Defined in: docusaurus/index.ts:52
+
+Formats a badge using the inline `<Badge>` component defined in `mdxDeclaration`.
+Appends a CSS class derived from `classname` (e.g. `badge--deprecated`).
+
+### Parameters
+
+#### badge
+
+`Badge`
+
+Badge data containing text and optional classname
+
+### Returns
+
+`MDXString`
+
+Formatted Badge component string
+
+---
+
+## formatMDXBullet() \{#formatmdxbullet\}
+
+```ts
+function formatMDXBullet(text?): MDXString;
+```
+
+Defined in: docusaurus/index.ts:82
+
+Formats a bullet point using the inline `<Bullet/>` component defined in `mdxDeclaration`.
+
+### Parameters
+
+#### text?
+
+`string` = `""`
+
+Optional text to append after the bullet
+
+### Returns
+
+`MDXString`
+
+Formatted Bullet component string
+
+---
+
+## formatMDXDetails() \{#formatmdxdetails\}
+
+```ts
+function formatMDXDetails(option): MDXString;
+```
+
+Defined in: docusaurus/index.ts:93
+
+Formats a collapsible block as an HTML `<details>` element with
+toggle labels that swap via the `hidden` attribute.
+Text is escaped so curly braces and angle brackets don't break MDX.
+
+### Parameters
+
+#### option
+
+`CollapsibleOption`
+
+Configuration for open/close label text
+
+### Returns
+
+`MDXString`
+
+Formatted details element string
+
+---
+
+## formatMDXFrontmatter() \{#formatmdxfrontmatter\}
+
+```ts
+function formatMDXFrontmatter(_props, formatted): MDXString;
+```
+
+Defined in: docusaurus/index.ts:145
+
+Formats YAML front matter wrapped in `---` delimiters.
+
+### Parameters
+
+#### \_props
+
+`Maybe`&lt;`FrontMatterOptions`&gt;
+
+Front matter options (unused)
+
+#### formatted
+
+`Maybe`&lt;`string`[]&gt;
+
+Pre-formatted front matter lines
+
+### Returns
+
+`MDXString`
+
+Formatted front matter block, or empty string if no lines provided
+
+---
+
+## formatMDXLink() \{#formatmdxlink\}
+
+```ts
+function formatMDXLink(link): TypeLink;
+```
+
+Defined in: docusaurus/index.ts:132
+
+Appends `.mdx` to internal link URLs.
+
+### Parameters
+
+#### link
+
+`TypeLink`
+
+Link data with URL and text
+
+### Returns
+
+`TypeLink`
+
+Link with `.mdx` extension appended to the URL
+
+---
+
+## formatMDXNameEntity() \{#formatmdxnameentity\}
+
+```ts
+function formatMDXNameEntity(name, parentType?): MDXString;
+```
+
+Defined in: docusaurus/index.ts:119
+
+Formats a named entity as an inline `<code>` element with the parent type
+in normal weight and the entity name in bold.
+Text is escaped so curly braces don't break MDX.
+
+### Parameters
+
+#### name
+
+`string`
+
+Entity name
+
+#### parentType?
+
+`Maybe`&lt;`string`&gt;
+
+Optional parent type name for qualified references
+
+### Returns
+
+`MDXString`
+
+Formatted JSX code element string
+
+---
+
+## formatMDXSpecifiedByLink() \{#formatmdxspecifiedbylink\}
+
+```ts
+function formatMDXSpecifiedByLink(url): MDXString;
+```
+
+Defined in: docusaurus/index.ts:107
+
+Formats a "specified by" link using the inline `<SpecifiedBy>` component.
+
+### Parameters
+
+#### url
+
+`string`
+
+URL to the specification
+
+### Returns
+
+`MDXString`
+
+Formatted SpecifiedBy component string
+
+---
+
+## fumadocs
+
+Fumadocs formatter for GraphQL documentation output.
+
+Produces MDX compatible with Next.js Fumadocs using its native
+Callout component for admonitions and Material UI Chip for badges.
+
+## mdxDeclaration \{#mdxdeclaration\}
+
+```ts
+const mdxDeclaration: MDXString;
+```
+
+Defined in: fumadocs/index.ts:33
+
+MDX import statement prepended to every generated file to register Fumadocs and MUI components.
+
+---
+
+## mdxExtension \{#mdxextension\}
+
+```ts
+const mdxExtension: ".mdx";
+```
+
+Defined in: fumadocs/index.ts:30
+
+File extension used for generated pages.
+
+---
+
+## createMDXFormatter() \{#createmdxformatter\}
+
+```ts
+function createMDXFormatter(_meta?): Formatter;
+```
+
+Defined in: fumadocs/index.ts:89
+
+Creates a Fumadocs formatter.
+
+### Parameters
+
+#### \_meta?
+
+`Maybe`&lt;`MetaInfo`&gt;
+
+Unused metadata parameter
+
+### Returns
+
+`Formatter`
+
+A complete Formatter implementation for Fumadocs MDX output
+
+---
+
+## formatMDXAdmonition() \{#formatmdxadmonition\}
+
+```ts
+function formatMDXAdmonition(admonition, _meta): MDXString;
+```
+
+Defined in: fumadocs/index.ts:56
+
+Formats an admonition using the Fumadocs `<Callout>` component.
+Maps `warning` type to `warn`; all other types use `info`.
+
+### Parameters
+
+#### admonition
+
+`AdmonitionType`
+
+Admonition data with text, title, and type
+
+#### \_meta
+
+`Maybe`&lt;`MetaInfo`&gt;
+
+Unused metadata parameter
+
+### Returns
+
+`MDXString`
+
+Formatted Fumadocs Callout component string
+
+---
+
+## formatMDXBadge() \{#formatmdxbadge\}
+
+```ts
+function formatMDXBadge(badge): MDXString;
+```
+
+Defined in: fumadocs/index.ts:44
+
+Formats a badge using the Material UI `<Chip>` component.
+Maps `DEPRECATED` classname to `warning` color; all others use `info`.
+
+### Parameters
+
+#### badge
+
+`Badge`
+
+Badge data containing text and optional classname
+
+### Returns
+
+`MDXString`
+
+Formatted MUI Chip component string
+
+---
+
+## formatMDXLink() \{#formatmdxlink\}
+
+```ts
+function formatMDXLink(link): TypeLink;
+```
+
+Defined in: fumadocs/index.ts:69
+
+Appends `.mdx` to internal link URLs.
+
+### Parameters
+
+#### link
+
+`TypeLink`
+
+Link data with URL and text
+
+### Returns
+
+`TypeLink`
+
+Link with `.mdx` extension appended to the URL
+
+---
+
+## honkit
+
+HonKit formatter for GraphQL documentation output.
+
+Produces plain Markdown compatible with HonKit static site generator.
+Internal links are converted to .html paths.
+
+## \_\_default \{#\_\_default\}
+
+```ts
+const __default: object;
+```
+
+Defined in: honkit/index.ts:30
+
+### Type Declaration
+
+#### formatMDXBullet \{#formatmdxbullet\}
+
+```ts
+formatMDXBullet: (text) => MDXString;
+```
+
+Formats a bullet point separator using a `` with a `gqlmd-mdx-bullet` CSS class.
+
+##### Parameters
+
+###### text?
+
+`string` = `""`
+
+Optional text to append after the bullet
+
+##### Returns
+
+`MDXString`
+
+Formatted bullet string
+
+---
+
+## mdxExtension \{#mdxextension\}
+
+```ts
+const mdxExtension: ".md";
+```
+
+Defined in: honkit/index.ts:33
+
+File extension used for generated pages — HonKit renders plain Markdown to HTML.
+
+---
+
+## createMDXFormatter() \{#createmdxformatter\}
+
+```ts
+function createMDXFormatter(_meta?): Formatter;
+```
+
+Defined in: honkit/index.ts:171
+
+Creates a HonKit formatter.
+
+### Parameters
+
+#### \_meta?
+
+`Maybe`&lt;`MetaInfo`&gt;
+
+Unused metadata parameter
+
+### Returns
+
+`Formatter`
+
+A complete Formatter implementation for HonKit output
+
+---
+
+## formatMDXAdmonition() \{#formatmdxadmonition\}
+
+```ts
+function formatMDXAdmonition(admonition, _meta): MDXString;
+```
+
+Defined in: honkit/index.ts:62
+
+Formats an admonition as a Markdown blockquote with a bold prefix label.
+Maps `warning` type to `WARNING`; all other types use `INFO`.
+
+### Parameters
+
+#### admonition
+
+`AdmonitionType`
+
+Admonition data with text, title, and type
+
+#### \_meta
+
+`Maybe`&lt;`MetaInfo`&gt;
+
+Unused metadata parameter
+
+### Returns
+
+`MDXString`
+
+Formatted blockquote string
+
+---
+
+## formatMDXBadge() \{#formatmdxbadge\}
+
+```ts
+function formatMDXBadge(badge): MDXString;
+```
+
+Defined in: honkit/index.ts:48
+
+Formats a badge as an inline HTML `` with a shared default style.
+Users can customize badge colors by providing their own `formatMDXBadge` implementation.
+
+### Parameters
+
+#### badge
+
+`Badge`
+
+Badge data containing text
+
+### Returns
+
+`MDXString`
+
+Formatted inline HTML span string
+
+---
+
+## formatMDXDetails() \{#formatmdxdetails\}
+
+```ts
+function formatMDXDetails(option): MDXString;
+```
+
+Defined in: honkit/index.ts:75
+
+Formats a collapsible block as an HTML `<details>` element.
+
+### Parameters
+
+#### option
+
+`CollapsibleOption`
+
+Configuration for open/close label text
+
+### Returns
+
+`MDXString`
+
+Formatted details element string
+
+---
+
+## formatMDXFrontmatter() \{#formatmdxfrontmatter\}
+
+```ts
+function formatMDXFrontmatter(props, formatted): MDXString;
+```
+
+Defined in: honkit/index.ts:91
+
+Formats YAML front matter and appends an H1 heading derived from the `title` prop.
+Merges `props` entries with `formatted` lines (formatted lines take precedence).
+Returns empty string if `props` is empty or absent — HonKit renders front matter
+without a title as literal YAML content.
+
+### Parameters
+
+#### props
+
+`Maybe`&lt;`FrontMatterOptions`&gt;
+
+Front matter options; `title` is used to generate the H1 heading
+
+#### formatted
+
+`Maybe`&lt;`string`[]&gt;
+
+Pre-formatted front matter lines that override props values
+
+### Returns
+
+`MDXString`
+
+Formatted front matter block with optional H1, or empty string
+
+---
+
+## formatMDXLink() \{#formatmdxlink\}
+
+```ts
+function formatMDXLink(link): TypeLink;
+```
+
+Defined in: honkit/index.ts:120
+
+Converts internal link URLs to `.html` paths for HonKit static output.
+Absolute paths without an `.html` extension are suffixed with `.html`.
+External URLs and fragment-only links are returned unchanged.
+
+### Parameters
+
+#### link
+
+`TypeLink`
+
+Link data with URL and text
+
+### Returns
+
+`TypeLink`
+
+Link with `.html` extension applied to absolute internal paths
+
+---
+
+## formatMDXNameEntity() \{#formatmdxnameentity\}
+
+```ts
+function formatMDXNameEntity(name, parentType?): MDXString;
+```
+
+Defined in: honkit/index.ts:149
+
+Formats a named entity as plain text (no markup).
+HonKit renders plain Markdown — no JSX or code spans needed.
+
+### Parameters
+
+#### name
+
+`string`
+
+Entity name
+
+#### parentType?
+
+`Maybe`&lt;`string`&gt;
+
+Optional parent type name for qualified references
+
+### Returns
+
+`MDXString`
+
+Formatted entity reference string
+
+---
+
+## formatMDXSpecifiedByLink() \{#formatmdxspecifiedbylink\}
+
+```ts
+function formatMDXSpecifiedByLink(url): MDXString;
+```
+
+Defined in: honkit/index.ts:162
+
+Formats a "specified by" link as plain text with the raw URL.
+HonKit does not render custom JSX components.
+
+### Parameters
+
+#### url
+
+`string`
+
+URL to the specification
+
+### Returns
+
+`MDXString`
+
+Formatted specification text string
+
+---
+
+## hugo
+
+Hugo formatter for GraphQL documentation output.
+
+Produces Markdown compatible with Hugo static site generator.
+Uses GitHub-style alerts (Hugo 0.132+) for admonitions and
+strips file extensions from internal links to match Hugo's URL routing.
+
+## beforeGenerateIndexMetafileHook \{#beforegenerateindexmetafilehook\}
+
+```ts
+const beforeGenerateIndexMetafileHook: GenerateIndexMetafileHook;
+```
+
+Defined in: hugo/index.ts:179
+
+Lifecycle hook that generates a Hugo-compatible `_index.md` section index file.
+The file is (re)created on every run with YAML frontmatter:
+
+- `title`: the start-cased category name
+- `type: docs`: required by the Hugo Book theme for sidebar rendering
+- `bookCollapseSection: true`: collapses the section in the Hugo Book theme sidebar by default
+
+### Param
+
+Hook event whose `data` contains `dirPath` (target directory) and `category` (section name)
+
+---
+
+## mdxExtension \{#mdxextension\}
+
+```ts
+const mdxExtension: ".md";
+```
+
+Defined in: hugo/index.ts:169
+
+File extension used for generated pages — Hugo uses standard Markdown (.md) files.
+
+---
+
+## createMDXFormatter() \{#createmdxformatter\}
+
+```ts
+function createMDXFormatter(_meta?): Formatter;
+```
+
+Defined in: hugo/index.ts:155
+
+Creates a Hugo formatter.
+
+### Parameters
+
+#### \_meta?
+
+`Maybe`&lt;`MetaInfo`&gt;
+
+Unused metadata parameter
+
+### Returns
+
+`Formatter`
+
+A complete Formatter implementation for Hugo output
+
+---
+
+## formatMDXAdmonition() \{#formatmdxadmonition\}
+
+```ts
+function formatMDXAdmonition(text, _meta): MDXString;
+```
+
+Defined in: hugo/index.ts:77
+
+Formats an admonition using Hugo GitHub-style alert syntax (`> [!TYPE]`).
+Requires Hugo 0.132 or later.
+
+### Parameters
+
+#### text
+
+`AdmonitionType`
+
+The admonition body text
+
+#### \_meta
+
+`Maybe`&lt;`MetaInfo`&gt;
+
+Unused metadata parameter
+
+### Returns
+
+`MDXString`
+
+Formatted blockquote alert string
+
+---
+
+## formatMDXBadge() \{#formatmdxbadge\}
+
+```ts
+function formatMDXBadge(badge): MDXString;
+```
+
+Defined in: hugo/index.ts:64
+
+Formats a badge as a styled span element.
+
+### Parameters
+
+#### badge
+
+`Badge`
+
+Badge data containing the display text
+
+### Returns
+
+`MDXString`
+
+HTML `` string with the `gqlmd-badge` class
+
+---
+
+## formatMDXDetails() \{#formatmdxdetails\}
+
+```ts
+function formatMDXDetails(dataOpen): MDXString;
+```
+
+Defined in: hugo/index.ts:92
+
+Formats a collapsible block as an HTML `<details>` element.
+
+### Parameters
+
+#### dataOpen
+
+`CollapsibleOption`
+
+Label shown when the section is collapsed (used as `<summary>` text)
+
+### Returns
+
+`MDXString`
+
+HTML `<details>`/`<summary>` block string
+
+---
+
+## formatMDXFrontmatter() \{#formatmdxfrontmatter\}
+
+```ts
+function formatMDXFrontmatter(props, formatted): MDXString;
+```
+
+Defined in: hugo/index.ts:108
+
+Formats YAML front matter wrapped in `---` delimiters, with page title rendered as H1 heading.
+Falls back to serializing `props` via [formatFrontMatterObject](../utils/frontmatter.md#formatfrontmatterobject) when `formatted` is not provided.
+The title is extracted from the frontmatter lines and also rendered as a visible `# Title` heading,
+since Hugo does not automatically display the frontmatter `title` field as page content.
+
+### Parameters
+
+#### props
+
+`Maybe`&lt;`FrontMatterOptions`&gt;
+
+Front matter options used as fallback when `formatted` is not provided
+
+#### formatted
+
+`Maybe`&lt;`string`[]&gt;
+
+Pre-formatted front matter lines produced by the printer
+
+### Returns
+
+`MDXString`
+
+Formatted front matter block with H1 title heading, or empty string if no data
+
+---
+
+## formatMDXLink() \{#formatmdxlink\}
+
+```ts
+function formatMDXLink(text): TypeLink;
+```
+
+Defined in: hugo/index.ts:137
+
+Strips the `.md` extension from internal links.
+Hugo serves pages at extensionless URLs — links with `.md` would 404 in the built site.
+
+### Parameters
+
+#### text
+
+`TypeLink`
+
+Display text for the link
+
+### Returns
+
+`TypeLink`
+
+Link object with the cleaned URL
+
+---
+
+## mdbook
+
+mdBook formatter for GraphQL documentation output.
+
+Produces Markdown compatible with Rust's mdBook static site generator.
+Front matter is suppressed because mdBook renders it as literal content.
+Admonitions use mdBook's native `> [!TYPE]` syntax.
+Exports `afterRenderFilesHook` to build `SUMMARY.md` after all pages are written.
+
+## afterRenderFilesHook \{#afterrenderfileshook\}
+
+```ts
+const afterRenderFilesHook: RenderFilesHook;
+```
+
+Defined in: mdbook/index.ts:164
+
+Builds `src/SUMMARY.md` after all pages have been written.
+
+mdBook requires every page to be listed in `SUMMARY.md` before the site can
+be built. This hook collects all rendered pages from the event, groups them
+by top-level section (Operations / Types) and category, then writes the file.
+
+---
+
+## mdxExtension \{#mdxextension\}
+
+```ts
+const mdxExtension: ".md" = ".md";
+```
+
+Defined in: mdbook/index.ts:101
+
+mdBook expects `.md` files; override the default `.mdx` extension.
+
+---
+
+## createMDXFormatter() \{#createmdxformatter\}
+
+```ts
+function createMDXFormatter(_meta?): Formatter;
+```
+
+Defined in: mdbook/index.ts:131
+
+Creates an mdBook formatter.
+
+### Parameters
+
+#### \_meta?
+
+`Maybe`&lt;`MetaInfo`&gt;
+
+Unused metadata parameter
+
+### Returns
+
+`Formatter`
+
+A complete Formatter implementation for mdBook output
+
+---
+
+## formatMDXAdmonition() \{#formatmdxadmonition\}
+
+```ts
+function formatMDXAdmonition(admonition, _meta): MDXString;
+```
+
+Defined in: mdbook/index.ts:59
+
+Formats an admonition using mdBook's native admonition syntax (`> [!TYPE]`).
+Uses `type` for the admonition tag and `title` as an optional override label.
+
+### Parameters
+
+#### admonition
+
+`AdmonitionType`
+
+Admonition data with text, title, and type
+
+#### \_meta
+
+`Maybe`&lt;`MetaInfo`&gt;
+
+Unused metadata parameter
+
+### Returns
+
+`MDXString`
+
+Formatted admonition string
+
+---
+
+## formatMDXBadge() \{#formatmdxbadge\}
+
+```ts
+function formatMDXBadge(badge): MDXString;
+```
+
+Defined in: mdbook/index.ts:48
+
+Formats a badge as Markdown bold text — mdBook has no badge component.
+
+### Parameters
+
+#### badge
+
+`Badge`
+
+Badge data containing text
+
+### Returns
+
+`MDXString`
+
+Formatted bold text string
+
+---
+
+## formatMDXDetails() \{#formatmdxdetails\}
+
+```ts
+function formatMDXDetails(option): MDXString;
+```
+
+Defined in: mdbook/index.ts:80
+
+Renders a deprecated section as a bold inline label.
+
+A fixed heading level would break hierarchy when this section is nested
+inside field entries at varying depths. Bold text is CommonMark-safe and
+works at any nesting level without affecting the heading outline.
+
+The output is split on `\r` to produce [openSection, closeSection] as the
+printer expects — the deprecated items are inserted between the two halves.
+
+### Parameters
+
+#### option
+
+`CollapsibleOption`
+
+Configuration for the section label
+
+### Returns
+
+`MDXString`
+
+Bold label + split marker
+
+---
+
+## formatMDXFrontmatter() \{#formatmdxfrontmatter\}
+
+```ts
+function formatMDXFrontmatter(_props, formatted): MDXString;
+```
+
+Defined in: mdbook/index.ts:92
+
+Replaces front matter with an H1 title heading.
+mdBook renders `---` YAML blocks as literal content, so front matter is
+suppressed entirely. The page title is emitted as `# Title` instead.
+
+### Parameters
+
+#### \_props
+
+`Maybe`&lt;`FrontMatterOptions`&gt;
+
+#### formatted
+
+`Maybe`&lt;`string`[]&gt;
+
+### Returns
+
+`MDXString`
+
+`# Title\n` when a title is available, otherwise an empty string
+
+---
+
+## formatMDXLink() \{#formatmdxlink\}
+
+```ts
+function formatMDXLink(link): TypeLink;
+```
+
+Defined in: mdbook/index.ts:108
+
+Returns the link unchanged — mdBook resolves `.md` links natively.
+
+### Parameters
+
+#### link
+
+`TypeLink`
+
+Link data with URL and text
+
+### Returns
+
+`TypeLink`
+
+The link with `.md` appended to extensionless absolute paths
+
+---
+
+## mkdocs
+
+MkDocs formatter for GraphQL documentation output.
+
+Produces Markdown compatible with MkDocs admonitions, HTML details blocks,
+and visible page headings.
+
+## \_\_default \{#\_\_default\}
+
+```ts
+const __default: object;
+```
+
+Defined in: mkdocs/index.ts:34
+
+### Type Declaration
+
+#### formatMDXBullet \{#formatmdxbullet\}
+
+```ts
+formatMDXBullet: (text) => MDXString;
+```
+
+Formats a bullet point separator using a `` with a `gqlmd-mdx-bullet` CSS class.
+
+##### Parameters
+
+###### text?
+
+`string` = `""`
+
+Optional text to append after the bullet
+
+##### Returns
+
+`MDXString`
+
+Formatted bullet string
+
+#### formatMDXLink \{#formatmdxlink\}
+
+```ts
+formatMDXLink: (link) => TypeLink;
+```
+
+Formats a type link — returns the link unchanged (identity passthrough).
+
+##### Parameters
+
+###### link
+
+`TypeLink`
+
+The `TypeLink` object to format
+
+##### Returns
+
+`TypeLink`
+
+The unmodified `TypeLink` object
+
+---
+
+## afterRenderTypeEntitiesHook \{#afterrendertypeentitieshook\}
+
+```ts
+const afterRenderTypeEntitiesHook: RenderTypeEntitiesHook;
+```
+
+Defined in: mkdocs/index.ts:154
+
+Lifecycle hook that rewrites generated absolute GraphQL-Markdown links
+into page-relative `.md` links compatible with MkDocs validation.
+
+### Param
+
+Hook payload containing the current file path and renderer output context
+
+---
+
+## mdxExtension \{#mdxextension\}
+
+```ts
+const mdxExtension: ".md";
+```
+
+Defined in: mkdocs/index.ts:147
+
+File extension used for generated pages — MkDocs uses standard Markdown (.md) files.
+
+---
+
+## createMDXFormatter() \{#createmdxformatter\}
+
+```ts
+function createMDXFormatter(_meta?): Formatter;
+```
+
+Defined in: mkdocs/index.ts:183
+
+Creates an MkDocs Material formatter.
+
+### Parameters
+
+#### \_meta?
+
+`Maybe`&lt;`MetaInfo`&gt;
+
+Unused metadata parameter
+
+### Returns
+
+`Formatter`
+
+A complete Formatter implementation for MkDocs Material output
+
+---
+
+## formatMDXAdmonition() \{#formatmdxadmonition\}
+
+```ts
+function formatMDXAdmonition(admonition, _meta): MDXString;
+```
+
+Defined in: mkdocs/index.ts:88
+
+Formats an admonition using MkDocs Material `!!!` block syntax.
+Content is indented by 4 spaces as required by the spec.
+
+### Parameters
+
+#### admonition
+
+`AdmonitionType`
+
+Admonition data with text, title, and type
+
+#### \_meta
+
+`Maybe`&lt;`MetaInfo`&gt;
+
+Unused metadata parameter
+
+### Returns
+
+`MDXString`
+
+Formatted admonition string
+
+---
+
+## formatMDXBadge() \{#formatmdxbadge\}
+
+```ts
+function formatMDXBadge(badge): MDXString;
+```
+
+Defined in: mkdocs/index.ts:77
+
+Formats a badge as an inline HTML mark element.
+
+### Parameters
+
+#### badge
+
+`Badge`
+
+Badge data containing text and optional classname
+
+### Returns
+
+`MDXString`
+
+Formatted badge string
+
+---
+
+## formatMDXDetails() \{#formatmdxdetails\}
+
+```ts
+function formatMDXDetails(option): MDXString;
+```
+
+Defined in: mkdocs/index.ts:102
+
+Formats a collapsible block as an HTML `<details>` element.
+
+### Parameters
+
+#### option
+
+`CollapsibleOption`
+
+Configuration for open/close label text
+
+### Returns
+
+`MDXString`
+
+Formatted collapsible string
+
+---
+
+## formatMDXFrontmatter() \{#formatmdxfrontmatter\}
+
+```ts
+function formatMDXFrontmatter(_props, formatted): MDXString;
+```
+
+Defined in: mkdocs/index.ts:115
+
+Formats page title as a visible H1 heading.
+
+### Parameters
+
+#### \_props
+
+`Maybe`&lt;`FrontMatterOptions`&gt;
+
+Front matter options (unused)
+
+#### formatted
+
+`Maybe`&lt;`string`[]&gt;
+
+Pre-formatted front matter lines
+
+### Returns
+
+`MDXString`
+
+Visible heading string, or empty string if no title is available
+
+---
+
+## formatMDXNameEntity() \{#formatmdxnameentity\}
+
+```ts
+function formatMDXNameEntity(name, parentType?): MDXString;
+```
+
+Defined in: mkdocs/index.ts:129
+
+Formats a named entity as a backtick code span.
+
+### Parameters
+
+#### name
+
+`string`
+
+Entity name
+
+#### parentType?
+
+`Maybe`&lt;`string`&gt;
+
+Optional parent type name for qualified references
+
+### Returns
+
+`MDXString`
+
+Formatted entity reference string
+
+---
+
+## formatMDXSpecifiedByLink() \{#formatmdxspecifiedbylink\}
+
+```ts
+function formatMDXSpecifiedByLink(url): MDXString;
+```
+
+Defined in: mkdocs/index.ts:142
+
+Formats a "specified by" link as a standard Markdown link.
+
+### Parameters
+
+#### url
+
+`string`
+
+URL to the specification
+
+### Returns
+
+`MDXString`
+
+Formatted specification link string
+
+---
+
+## starlight
+
+Astro Starlight formatter for GraphQL documentation output.
+
+Produces MDX compatible with Astro Starlight using its native
+Aside and Badge components. Includes lifecycle hooks for generating
+index files for each category directory.
+
+## mdxDeclaration \{#mdxdeclaration\}
+
+```ts
+const mdxDeclaration: MDXString;
+```
+
+Defined in: starlight/index.ts:43
+
+MDX import statement prepended to every generated file to register Starlight components.
+
+---
+
+## mdxExtension \{#mdxextension\}
+
+```ts
+const mdxExtension: ".mdx";
+```
+
+Defined in: starlight/index.ts:40
+
+File extension used for generated pages.
+
+---
+
+## afterRenderTypeEntitiesHook() \{#afterrendertypeentitieshook\}
+
+```ts
+function afterRenderTypeEntitiesHook(event): Promise<void>;
+```
+
+Defined in: starlight/index.ts:120
+
+Lifecycle hook that appends a link entry to the category `index.md`
+after each type entity page is rendered.
+
+### Parameters
+
+#### event
+
+Hook payload containing the entity name and its output file path
+
+##### data
+
+\{
+`filePath`: `string`;
+`name`: `string`;
+\}
+
+##### data.filePath
+
+`string`
+
+##### data.name
+
+`string`
+
+### Returns
+
+`Promise`&lt;`void`&gt;
+
+---
+
+## beforeGenerateIndexMetafileHook() \{#beforegenerateindexmetafilehook\}
+
+```ts
+function beforeGenerateIndexMetafileHook(event): Promise<void>;
+```
+
+Defined in: starlight/index.ts:100
+
+Lifecycle hook that creates an `index.md` file for a category directory
+before Starlight indexes it. Skips creation if the file already exists.
+
+### Parameters
+
+#### event
+
+Hook payload containing the target directory and category name
+
+##### data
+
+\{
+`category`: `string`;
+`dirPath`: `string`;
+\}
+
+##### data.category
+
+`string`
+
+##### data.dirPath
+
+`string`
+
+### Returns
+
+`Promise`&lt;`void`&gt;
+
+---
+
+## createMDXFormatter() \{#createmdxformatter\}
+
+```ts
+function createMDXFormatter(_meta?): Formatter;
+```
+
+Defined in: starlight/index.ts:137
+
+Creates an Astro Starlight formatter.
+
+### Parameters
+
+#### \_meta?
+
+`Maybe`&lt;`MetaInfo`&gt;
+
+Unused metadata parameter
+
+### Returns
+
+`Formatter`
+
+A complete Formatter implementation for Starlight MDX output
+
+---
+
+## formatMDXAdmonition() \{#formatmdxadmonition\}
+
+```ts
+function formatMDXAdmonition(admonition, _meta): MDXString;
+```
+
+Defined in: starlight/index.ts:65
+
+Formats an admonition using the Starlight `<Aside>` component.
+Maps `warning` type to `caution`; all other types use `note`.
+
+### Parameters
+
+#### admonition
+
+`AdmonitionType`
+
+Admonition data with text, title, and type
+
+#### \_meta
+
+`Maybe`&lt;`MetaInfo`&gt;
+
+Unused metadata parameter
+
+### Returns
+
+`MDXString`
+
+Formatted Starlight Aside component string
+
+---
+
+## formatMDXBadge() \{#formatmdxbadge\}
+
+```ts
+function formatMDXBadge(badge): MDXString;
+```
+
+Defined in: starlight/index.ts:53
+
+Formats a badge using the Starlight `<Badge>` component.
+Maps `DEPRECATED` classname to the `caution` variant; all others use `default`.
+
+### Parameters
+
+#### badge
+
+`Badge`
+
+Badge data containing text and optional classname
+
+### Returns
+
+`MDXString`
+
+Formatted Starlight Badge component string
+
+---
+
+## formatMDXLink() \{#formatmdxlink\}
+
+```ts
+function formatMDXLink(link): TypeLink;
+```
+
+Defined in: starlight/index.ts:78
+
+Appends `.mdx` to internal link URLs.
+
+### Parameters
+
+#### link
+
+`TypeLink`
+
+Link data with URL and text
+
+### Returns
+
+`TypeLink`
+
+Link with `.mdx` extension appended to the URL
+
+---
+
+## vocs
+
+Vocs formatter for GraphQL documentation output.
+
+Produces MDX compatible with Vite/Vocs using its native callout syntax
+and Material UI Chip components for badges.
+
+## mdxDeclaration \{#mdxdeclaration\}
+
+```ts
+const mdxDeclaration: MDXString;
+```
+
+Defined in: vocs/index.ts:28
+
+MDX import statement and inline component definitions prepended to every generated file.
+
+---
+
+## mdxExtension \{#mdxextension\}
+
+```ts
+const mdxExtension: ".mdx";
+```
+
+Defined in: vocs/index.ts:35
+
+File extension used for generated pages.
+
+---
+
+## createMDXFormatter() \{#createmdxformatter\}
+
+```ts
+function createMDXFormatter(_meta?): Formatter;
+```
+
+Defined in: vocs/index.ts:111
+
+Creates a Vocs formatter.
+
+### Parameters
+
+#### \_meta?
+
+`Maybe`&lt;`MetaInfo`&gt;
+
+Unused metadata parameter
+
+### Returns
+
+`Formatter`
+
+A complete Formatter implementation for Vocs MDX output
+
+---
+
+## formatMDXAdmonition() \{#formatmdxadmonition\}
+
+```ts
+function formatMDXAdmonition(admonition, _meta): MDXString;
+```
+
+Defined in: vocs/index.ts:55
+
+Formats an admonition using Vocs native callout syntax (`:::type[title]`).
+Maps `warning` type to `warning`; all other types use `info`.
+
+### Parameters
+
+#### admonition
+
+`AdmonitionType`
+
+Admonition data with text, title, and type
+
+#### \_meta
+
+`Maybe`&lt;`MetaInfo`&gt;
+
+Unused metadata parameter
+
+### Returns
+
+`MDXString`
+
+Formatted Vocs callout string
+
+---
+
+## formatMDXBadge() \{#formatmdxbadge\}
+
+```ts
+function formatMDXBadge(badge): MDXString;
+```
+
+Defined in: vocs/index.ts:43
+
+Formats a badge using the Material UI `<Chip>` component.
+Maps `DEPRECATED` classname to `warning` color; all others use `info`.
+
+### Parameters
+
+#### badge
+
+`Badge`
+
+Badge data containing text and optional classname
+
+### Returns
+
+`MDXString`
+
+Formatted MUI Chip component string
+
+---
+
+## formatMDXBullet() \{#formatmdxbullet\}
+
+```ts
+function formatMDXBullet(text?): MDXString;
+```
+
+Defined in: vocs/index.ts:68
+
+Formats a bullet point using the inline `<Bullet/>` component defined in `mdxDeclaration`.
+
+### Parameters
+
+#### text?
+
+`string` = `""`
+
+Optional text to append after the bullet
+
+### Returns
+
+`MDXString`
+
+Formatted Bullet component string
+
+---
+
+## formatMDXLink() \{#formatmdxlink\}
+
+```ts
+function formatMDXLink(link): TypeLink;
+```
+
+Defined in: vocs/index.ts:77
+
+Appends `.mdx` to internal link URLs.
+
+### Parameters
+
+#### link
+
+`TypeLink`
+
+Link data with URL and text
+
+### Returns
+
+`TypeLink`
+
+Link with `.mdx` extension appended to the URL
+
+---
+
+## formatMDXNameEntity() \{#formatmdxnameentity\}
+
+```ts
+function formatMDXNameEntity(name, parentType?): MDXString;
+```
+
+Defined in: vocs/index.ts:90
+
+Formats a named entity as a JSX span with styled code elements.
+
+### Parameters
+
+#### name
+
+`string`
+
+Entity name
+
+#### parentType?
+
+`Maybe`&lt;`string`&gt;
+
+Optional parent type name for qualified references
+
+### Returns
+
+`MDXString`
+
+Formatted JSX entity reference string
 
 ---
 
@@ -7058,7 +9076,7 @@ function _getFields<T, V>(
 ): Record<string, unknown> | V;
 ```
 
-Defined in: packages/graphql/src/introspection.ts:312
+Defined in: packages/graphql/src/introspection.ts:310
 
 **`Internal`**
 
@@ -7110,7 +9128,7 @@ a map of fields as k/v records, or `fallback` value if no fields available.
 function getDirective(entity, directives): GraphQLDirective[];
 ```
 
-Defined in: packages/graphql/src/introspection.ts:223
+Defined in: packages/graphql/src/introspection.ts:221
 
 Returns a schema entity's list of directives matching a defined set.
 
@@ -7142,7 +9160,7 @@ a list of GraphQL directives matching the set, else `false`.
 function getDirectiveLocationForASTPath(appliedTo): DirectiveLocation;
 ```
 
-Defined in: packages/graphql/src/introspection.ts:122
+Defined in: packages/graphql/src/introspection.ts:120
 
 ### Parameters
 
@@ -7162,7 +9180,7 @@ Defined in: packages/graphql/src/introspection.ts:122
 function getFields(type): unknown[];
 ```
 
-Defined in: packages/graphql/src/introspection.ts:576
+Defined in: packages/graphql/src/introspection.ts:574
 
 Returns fields map for a GraphQL schema type.
 
@@ -7193,7 +9211,7 @@ function getOperation(
 ): Record<string, GraphQLOperationType>;
 ```
 
-Defined in: packages/graphql/src/introspection.ts:539
+Defined in: packages/graphql/src/introspection.ts:537
 
 **`Internal`**
 
@@ -7229,7 +9247,7 @@ a map of fields as k/v records.
 function getSchemaMap(schema): SchemaMap;
 ```
 
-Defined in: packages/graphql/src/introspection.ts:654
+Defined in: packages/graphql/src/introspection.ts:652
 
 Returns an introspection map of the GraphQL schema.
 This is the entry point for GraphQL-Markdown schema parsing features.
@@ -7318,7 +9336,7 @@ function getTypeDirectiveArgValue(
 ): Maybe<string | Record<string, unknown>>;
 ```
 
-Defined in: packages/graphql/src/introspection.ts:284
+Defined in: packages/graphql/src/introspection.ts:282
 
 Returns one directive's argument's value linked to a GraphQL schema type.
 It calls [getTypeDirectiveValues](#gettypedirectivevalues) and returns a matching record.
@@ -7360,7 +9378,7 @@ function getTypeDirectiveValues(
 ): Maybe<Record<string, unknown>>;
 ```
 
-Defined in: packages/graphql/src/introspection.ts:253
+Defined in: packages/graphql/src/introspection.ts:251
 
 Returns all directive's arguments' values linked to a GraphQL schema type.
 
@@ -7437,7 +9455,7 @@ a map of GraphQL named types for the matching GraphQL type, or `undefined` if no
 function getTypeName(type, defaultName?): string;
 ```
 
-Defined in: packages/graphql/src/introspection.ts:374
+Defined in: packages/graphql/src/introspection.ts:372
 
 Resolves the name of a GraphQL schema type.
 
@@ -7469,7 +9487,7 @@ the type's name, or `defaultName`.
 function hasAstNode<T>(node): node is AstNodeType<T>;
 ```
 
-Defined in: packages/graphql/src/introspection.ts:115
+Defined in: packages/graphql/src/introspection.ts:113
 
 **`Internal`**
 
@@ -7503,7 +9521,7 @@ a GraphQL schema named type.
 function hasDirective(entity, directives, fallback?): boolean;
 ```
 
-Defined in: packages/graphql/src/introspection.ts:188
+Defined in: packages/graphql/src/introspection.ts:186
 
 Checks if a schema entity as a directive belonging to a defined set.
 
@@ -7541,7 +9559,7 @@ default value if the entity type is not a valid location for directives.
 function isValidDirectiveLocation(entity, directive): boolean;
 ```
 
-Defined in: packages/graphql/src/introspection.ts:167
+Defined in: packages/graphql/src/introspection.ts:165
 
 Check if a directive can be applied to specific schema entity location.
 
@@ -7577,7 +9595,7 @@ Library for GraphQL schema loading and `loaders` config processing.
 function getDocumentLoaders(loadersList): Promise<Maybe<LoadSchemaOptions>>;
 ```
 
-Defined in: packages/graphql/src/loader.ts:113
+Defined in: packages/graphql/src/loader.ts:111
 
 ### Parameters
 
@@ -7597,7 +9615,7 @@ Defined in: packages/graphql/src/loader.ts:113
 function loadSchema(schemaLocation, options): Promise<GraphQLSchema>;
 ```
 
-Defined in: packages/graphql/src/loader.ts:50
+Defined in: packages/graphql/src/loader.ts:48
 
 ### Parameters
 
@@ -7617,11 +9635,11 @@ Defined in: packages/graphql/src/loader.ts:50
 
 ## relation
 
-Library supporting `relatedTypeSection` for displaying relations between GraphQL schema entities.
+Library for displaying relations between GraphQL schema entities.
 
 ## See
 
-[Option `relatedTypeSection`](https://graphql-markdown.dev/docs/settings#printtypeoptions)
+[Settings `printTypeOptions`](https://graphql-markdown.dev/docs/settings#printtypeoptions)
 
 ## getRelationOfField \{#getrelationoffield\}
 
@@ -7995,6 +10013,274 @@ directiveTag(directive, type);
 
 ---
 
+## markdown
+
+Shared markdown-oriented helpers used by formatter presets.
+
+## appendExtensionToAbsolutePathWithoutExtension() \{#appendextensiontoabsolutepathwithoutextension\}
+
+```ts
+function appendExtensionToAbsolutePathWithoutExtension(url, extension): string;
+```
+
+Defined in: formatters/markdown.ts:159
+
+Appends an extension only when URL is an absolute path without a file extension.
+
+Fragment-only and already suffixed paths are returned unchanged.
+
+### Parameters
+
+#### url
+
+`string`
+
+Link URL to evaluate.
+
+#### extension
+
+`string`
+
+Extension suffix to append when eligible.
+
+### Returns
+
+`string`
+
+Updated or original URL depending on path shape.
+
+---
+
+## appendLinkExtension() \{#appendlinkextension\}
+
+```ts
+function appendLinkExtension(url, extension): string;
+```
+
+Defined in: formatters/markdown.ts:146
+
+Appends an extension to a link URL.
+
+### Parameters
+
+#### url
+
+`string`
+
+Link URL to update.
+
+#### extension
+
+`string`
+
+Extension suffix (for example `.mdx`).
+
+### Returns
+
+`string`
+
+URL with appended extension.
+
+---
+
+## extractFrontmatterTitle() \{#extractfrontmattertitle\}
+
+```ts
+function extractFrontmatterTitle(formatted): string;
+```
+
+Defined in: formatters/markdown.ts:64
+
+Extracts a title value from pre-formatted frontmatter lines.
+
+### Parameters
+
+#### formatted
+
+`string`[] \| `null` \| `undefined`
+
+Serialized frontmatter lines without delimiters.
+
+### Returns
+
+`string`
+
+Parsed title value, or an empty string when no `title:` line exists.
+
+---
+
+## formatMarkdownFrontmatter() \{#formatmarkdownfrontmatter\}
+
+```ts
+function formatMarkdownFrontmatter(formatted, delimiter?, eol?): string;
+```
+
+Defined in: formatters/markdown.ts:127
+
+Formats a markdown frontmatter block from preformatted lines.
+
+### Parameters
+
+#### formatted
+
+`string`[] \| `null` \| `undefined`
+
+Serialized frontmatter lines without delimiters.
+
+#### delimiter?
+
+`string` = `"---"`
+
+Frontmatter delimiter marker.
+
+#### eol?
+
+`string` = "\n"
+
+End-of-line separator.
+
+### Returns
+
+`string`
+
+Complete frontmatter block or an empty string when input is absent.
+
+---
+
+## indentMarkdownLines() \{#indentmarkdownlines\}
+
+```ts
+function indentMarkdownLines(text, spaces, eol?): string;
+```
+
+Defined in: formatters/markdown.ts:178
+
+Indents non-empty markdown lines by a fixed amount of spaces.
+
+### Parameters
+
+#### text
+
+`string`
+
+Multiline markdown block to indent.
+
+#### spaces
+
+`number`
+
+Number of spaces to prepend to non-empty lines.
+
+#### eol?
+
+`string` = "\n"
+
+Line separator used to split and join lines.
+
+### Returns
+
+`string`
+
+Indented multiline string.
+
+---
+
+## mergeFrontmatterLines() \{#mergefrontmatterlines\}
+
+```ts
+function mergeFrontmatterLines(props, formatted): string[];
+```
+
+Defined in: formatters/markdown.ts:84
+
+Merges frontmatter object entries with preformatted frontmatter lines.
+
+Preformatted lines take precedence over object values when keys overlap.
+Lines without a `key: value` shape and comment lines are ignored.
+
+### Parameters
+
+#### props
+
+`Record`&lt;`string`, `unknown`&gt; \| `null` \| `undefined`
+
+Frontmatter key-value object.
+
+#### formatted
+
+`string`[] \| `null` \| `undefined`
+
+Serialized frontmatter lines without delimiters.
+
+### Returns
+
+`string`[]
+
+Merged frontmatter lines in insertion order.
+
+---
+
+## parseFrontmatterTitleLine() \{#parsefrontmattertitleline\}
+
+```ts
+function parseFrontmatterTitleLine(line): string;
+```
+
+Defined in: formatters/markdown.ts:34
+
+Parses a YAML-like frontmatter title line and returns its string value.
+
+Accepts unquoted values (`title: My Title`) and quoted values
+(`title: "My Title"` or `title: 'My Title'`).
+
+### Parameters
+
+#### line
+
+`string`
+
+Candidate frontmatter line.
+
+### Returns
+
+`string`
+
+Parsed title value, or an empty string when the line is not a title.
+
+---
+
+## quoteMarkdownLines() \{#quotemarkdownlines\}
+
+```ts
+function quoteMarkdownLines(text, eol?): string;
+```
+
+Defined in: formatters/markdown.ts:16
+
+Prefixes each line with a Markdown blockquote marker.
+
+### Parameters
+
+#### text
+
+`string`
+
+Multiline text to transform into blockquote content.
+
+#### eol?
+
+`string` = "\n"
+
+Line separator used to split and join lines.
+
+### Returns
+
+`string`
+
+Text where every line starts with `> `.
+
+---
+
 ## interpolate
 
 Helpers utility functions library.
@@ -8106,7 +10392,8 @@ GraphQL-Markdown is organized into several packages:
 
 - [@graphql-markdown/cli](/api/category/graphql-markdowncli/) - Command-line interface for generating documentation
 - [@graphql-markdown/core](/api/category/graphql-markdowncore/) - Core functionality and base classes
-- [@graphql-markdown/docusaurus](/api/category/graphql-markdowndocusaurus/) - Docusaurus plugin and MDX formatters
+- [@graphql-markdown/docusaurus](/api/category/graphql-markdowndocusaurus/) - Docusaurus plugin integration
+- [@graphql-markdown/formatters](/api/category/graphql-markdownformatters/) - Formatter presets for all supported documentation frameworks
 - [@graphql-markdown/graphql](/api/category/graphql-markdowngraphql/) - GraphQL schema utilities and helpers
 - [@graphql-markdown/helpers](/api/category/graphql-markdownhelpers/) - Helper functions for documentation generation
 - [@graphql-markdown/printer-legacy](/api/category/graphql-markdownprinter-legacy/) - Legacy markdown printer implementation
@@ -8119,6 +10406,8 @@ npm install @graphql-markdown/cli
 # or with your preferred package manager
 yarn add @graphql-markdown/cli
 ```
+
+If you are targeting a formatter-based documentation stack such as Hugo, MkDocs, DocFX, or mdBook, also install `@graphql-markdown/formatters` and configure the `formatter` option.
 
 ## Basic Usage
 
@@ -8420,6 +10709,38 @@ RELATION: string = "RELATION";
 
 ---
 
+## formatBadges() \{#formatbadges\}
+
+```ts
+function formatBadges(badges, options): string | MDXString;
+```
+
+Defined in: printer-legacy/src/badge.ts:119
+
+Formats an array of badges into a space-joined MDX string.
+
+### Parameters
+
+#### badges
+
+`Badge`[]
+
+Array of badge objects to format
+
+#### options
+
+`PrintTypeOptions`
+
+Options containing the formatter for badges
+
+### Returns
+
+`string` \| `MDXString`
+
+Space-joined MDX string of all badges, or empty string if none
+
+---
+
 ## getTypeBadges() \{#gettypebadges\}
 
 ```ts
@@ -8490,7 +10811,7 @@ Formatted MDX string representation of the badge
 function printBadges(type, options): string | MDXString;
 ```
 
-Defined in: printer-legacy/src/badge.ts:119
+Defined in: printer-legacy/src/badge.ts:139
 
 Generates and formats all applicable badges for a GraphQL type.
 
@@ -8616,42 +10937,10 @@ printCodeField({ name: 'user', type: 'User!', args: [{ name: 'id', type: 'ID!' }
 
 Common printer utility functions for handling descriptions, directives, and warnings.
 
-## formatDescription() \{#formatdescription\}
+## getCustomDirectivesText() \{#getcustomdirectivestext\}
 
 ```ts
-function formatDescription(type, replacement?): string | MDXString;
-```
-
-Defined in: printer-legacy/src/common.ts:73
-
-Formats a GraphQL type description or falls back to a default message.
-
-### Parameters
-
-#### type
-
-`unknown`
-
-GraphQL type to get description from
-
-#### replacement?
-
-`Maybe`&lt;`string`&gt; = `NO_DESCRIPTION_TEXT`
-
-Optional fallback text if no description exists
-
-### Returns
-
-`string` \| `MDXString`
-
-Formatted description string or MDX content
-
----
-
-## printCustomDirectives() \{#printcustomdirectives\}
-
-```ts
-function printCustomDirectives(type, options?): string;
+function getCustomDirectivesText(type, options?): string;
 ```
 
 Defined in: printer-legacy/src/common.ts:33
@@ -8792,7 +11081,7 @@ Formatted warning message as MDX string
 
 ## SectionLevels \{#sectionlevels\}
 
-Defined in: printer-legacy/src/const/options.ts:22
+Defined in: printer-legacy/src/const/options.ts:32
 
 ### Enumeration Members
 
@@ -8802,21 +11091,25 @@ Defined in: printer-legacy/src/const/options.ts:22
 LEVEL: "#";
 ```
 
-Defined in: printer-legacy/src/const/options.ts:24
+Defined in: printer-legacy/src/const/options.ts:38
 
-#### NONE \{#none\}
+#### ~~NONE~~ \{#none\}
 
 ```ts
 NONE: "";
 ```
 
-Defined in: printer-legacy/src/const/options.ts:23
+Defined in: printer-legacy/src/const/options.ts:37
+
+##### Deprecated
+
+Use `SectionLevels.LEVEL` instead.
 
 ---
 
 ## TypeHierarchy \{#typehierarchy\}
 
-Defined in: printer-legacy/src/const/options.ts:16
+Defined in: printer-legacy/src/const/options.ts:23
 
 ### Enumeration Members
 
@@ -8826,7 +11119,7 @@ Defined in: printer-legacy/src/const/options.ts:16
 API: "api";
 ```
 
-Defined in: printer-legacy/src/const/options.ts:17
+Defined in: printer-legacy/src/const/options.ts:24
 
 #### ENTITY \{#entity\}
 
@@ -8834,7 +11127,7 @@ Defined in: printer-legacy/src/const/options.ts:17
 ENTITY: "entity";
 ```
 
-Defined in: printer-legacy/src/const/options.ts:18
+Defined in: printer-legacy/src/const/options.ts:28
 
 #### FLAT \{#flat\}
 
@@ -8842,7 +11135,7 @@ Defined in: printer-legacy/src/const/options.ts:18
 FLAT: "flat";
 ```
 
-Defined in: printer-legacy/src/const/options.ts:19
+Defined in: printer-legacy/src/const/options.ts:29
 
 ---
 
@@ -8879,11 +11172,9 @@ const DEFAULT_OPTIONS: Required<
   object;
 ```
 
-Defined in: printer-legacy/src/const/options.ts:54
+Defined in: printer-legacy/src/const/options.ts:57
 
 Clean runtime options passed through the printer.
-
-Deprecated section toggles are excluded and handled via backward-compat paths.
 
 ### Type Declaration
 
@@ -8937,36 +11228,6 @@ skipDocDirectives: GraphQLDirective[];
 
 ---
 
-## PRINT_TYPE_DEFAULT_DEPRECATED_OPTIONS \{#print_type_default_deprecated_options\}
-
-```ts
-const PRINT_TYPE_DEFAULT_DEPRECATED_OPTIONS: object;
-```
-
-Defined in: printer-legacy/src/const/options.ts:27
-
-### Type Declaration
-
-#### codeSection \{#codesection\}
-
-```ts
-codeSection: true;
-```
-
-#### exampleSection \{#examplesection\}
-
-```ts
-exampleSection: false;
-```
-
-#### relatedTypeSection \{#relatedtypesection\}
-
-```ts
-relatedTypeSection: true;
-```
-
----
-
 ## PRINT_TYPE_DEFAULT_OPTIONS \{#print_type_default_options\}
 
 ```ts
@@ -8976,7 +11237,7 @@ const PRINT_TYPE_DEFAULT_OPTIONS: Required<
   object;
 ```
 
-Defined in: printer-legacy/src/const/options.ts:36
+Defined in: printer-legacy/src/const/options.ts:41
 
 ### Type Declaration
 
@@ -8999,33 +11260,9 @@ Markdown fragments for GraphQL schemas.
 const DEPRECATED: "deprecated";
 ```
 
-Defined in: printer-legacy/src/const/strings.ts:36
+Defined in: printer-legacy/src/const/strings.ts:34
 
 Label used when a schema element is flagged as deprecated.
-
----
-
-## FRONT_MATTER_DELIMITER \{#front_matter_delimiter\}
-
-```ts
-const FRONT_MATTER_DELIMITER: "---";
-```
-
-Defined in: utils/dist/markdown.d.ts:17
-
-Frontmatter delimiter for YAML frontmatter blocks.
-
----
-
-## GRAPHQL \{#graphql\}
-
-```ts
-const GRAPHQL: "graphql";
-```
-
-Defined in: printer-legacy/src/const/strings.ts:42
-
-Short identifier for the GraphQL language tag used in fenced blocks.
 
 ---
 
@@ -9041,25 +11278,13 @@ Standard indentation for code blocks (2 spaces).
 
 ---
 
-## MARKDOWN_CODE_SNIPPET \{#markdown_code_snippet\}
-
-```ts
-const MARKDOWN_CODE_SNIPPET: "``";
-```
-
-Defined in: utils/dist/markdown.d.ts:21
-
-Code snippet delimiter for fenced code blocks.
-
----
-
 ## MARKDOWN_EOC \{#markdown_eoc\}
 
 ```ts
 const MARKDOWN_EOC: "\n``\n";
 ```
 
-Defined in: printer-legacy/src/const/strings.ts:48
+Defined in: printer-legacy/src/const/strings.ts:46
 
 Helper for inserting the code-block end delimiter in generated Markdown.
 
@@ -9095,7 +11320,7 @@ End of paragraph (double newline) for Markdown.
 const MARKDOWN_SOC: "\n``graphql\n";
 ```
 
-Defined in: printer-legacy/src/const/strings.ts:52
+Defined in: printer-legacy/src/const/strings.ts:50
 
 Helper for inserting the code-block start delimiter targeting GraphQL syntax.
 
@@ -9107,7 +11332,7 @@ Helper for inserting the code-block start delimiter targeting GraphQL syntax.
 const NO_DESCRIPTION_TEXT: "No description";
 ```
 
-Defined in: printer-legacy/src/const/strings.ts:45
+Defined in: printer-legacy/src/const/strings.ts:43
 
 Default placeholder when no schema description is provided.
 
@@ -9119,7 +11344,7 @@ Default placeholder when no schema description is provided.
 const NON_NULL: "non-null";
 ```
 
-Defined in: printer-legacy/src/const/strings.ts:39
+Defined in: printer-legacy/src/const/strings.ts:37
 
 Copy fragment describing a non-null GraphQL modifier.
 
@@ -9131,7 +11356,7 @@ Copy fragment describing a non-null GraphQL modifier.
 const ROOT_TYPE_LOCALE: RootTypeLocale;
 ```
 
-Defined in: printer-legacy/src/const/strings.ts:21
+Defined in: printer-legacy/src/const/strings.ts:19
 
 Human-readable labels for each GraphQL root type used when rendering copy or badges.
 
@@ -10203,7 +12428,7 @@ IPrintTypeEvent.stopPropagation;
 
 ### ComposePageTypeEventData \{#composepagetypeeventdata\}
 
-Defined in: types/src/printer.d.ts:114
+Defined in: types/src/printer.d.ts:109
 
 Data payload for compose page type events.
 
@@ -10215,7 +12440,7 @@ Data payload for compose page type events.
 readonly name: Maybe<string>;
 ```
 
-Defined in: types/src/printer.d.ts:118
+Defined in: types/src/printer.d.ts:113
 
 The name identifier for the type
 
@@ -10225,7 +12450,7 @@ The name identifier for the type
 readonly options: PrintTypeOptions;
 ```
 
-Defined in: types/src/printer.d.ts:120
+Defined in: types/src/printer.d.ts:115
 
 The print options in effect
 
@@ -10235,7 +12460,7 @@ The print options in effect
 readonly sections: PageSections;
 ```
 
-Defined in: types/src/printer.d.ts:122
+Defined in: types/src/printer.d.ts:117
 
 The map of all page sections (mutable in BEFORE event)
 
@@ -10245,7 +12470,7 @@ The map of all page sections (mutable in BEFORE event)
 readonly type: unknown;
 ```
 
-Defined in: types/src/printer.d.ts:116
+Defined in: types/src/printer.d.ts:111
 
 The GraphQL type being composed
 
@@ -10564,210 +12789,6 @@ if (example) {
 
 ---
 
-## format-helpers
-
-Format event helpers for printer-legacy.
-
-This module provides helper functions to emit MDX format events and handle
-fallback to default formatters when no custom handlers are registered.
-
-## formatMDXAdmonition() \{#formatmdxadmonition\}
-
-```ts
-function formatMDXAdmonition(__namedParameters, _meta): MDXString;
-```
-
-Defined in: printer-legacy/src/format-helpers.ts:38
-
-Default admonition formatter.
-
-### Parameters
-
-#### \_\_namedParameters
-
-`AdmonitionType`
-
-#### \_meta
-
-`Maybe`&lt;`MetaInfo`&gt;
-
-### Returns
-
-`MDXString`
-
----
-
-## formatMDXBadge() \{#formatmdxbadge\}
-
-```ts
-function formatMDXBadge(badge): MDXString;
-```
-
-Defined in: printer-legacy/src/format-helpers.ts:31
-
-Default badge formatter.
-
-### Parameters
-
-#### badge
-
-`Badge`
-
-### Returns
-
-`MDXString`
-
----
-
-## formatMDXBullet() \{#formatmdxbullet\}
-
-```ts
-function formatMDXBullet(text?): MDXString;
-```
-
-Defined in: printer-legacy/src/format-helpers.ts:48
-
-Default bullet formatter.
-
-### Parameters
-
-#### text?
-
-`string` = `""`
-
-### Returns
-
-`MDXString`
-
----
-
-## formatMDXDetails() \{#formatmdxdetails\}
-
-```ts
-function formatMDXDetails(__namedParameters): MDXString;
-```
-
-Defined in: printer-legacy/src/format-helpers.ts:64
-
-Default details formatter.
-
-The returned string **must** contain a `\r` (carriage return) character as a
-delimiter between the opening part (ending after `</summary>`) and the
-closing part (starting before `</details>`). `printSection` calls
-`result.split('\r')` to obtain `[openSection, closeSection]`; without this
-delimiter the closing tag is lost and items are rendered outside the
-collapsible element.
-
-Custom implementations of `formatMDXDetails` must follow the same contract.
-
-### Parameters
-
-#### \_\_namedParameters
-
-`CollapsibleOption`
-
-### Returns
-
-`MDXString`
-
----
-
-## formatMDXFrontmatter() \{#formatmdxfrontmatter\}
-
-```ts
-function formatMDXFrontmatter(_props, formatted): MDXString;
-```
-
-Defined in: printer-legacy/src/format-helpers.ts:73
-
-Default frontmatter formatter.
-
-### Parameters
-
-#### \_props
-
-`Maybe`&lt;`FrontMatterOptions`&gt;
-
-#### formatted
-
-`Maybe`&lt;`string`[]&gt;
-
-### Returns
-
-`MDXString`
-
----
-
-## formatMDXLink() \{#formatmdxlink\}
-
-```ts
-function formatMDXLink(link): TypeLink;
-```
-
-Defined in: printer-legacy/src/format-helpers.ts:87
-
-Default link formatter.
-
-### Parameters
-
-#### link
-
-`TypeLink`
-
-### Returns
-
-`TypeLink`
-
----
-
-## formatMDXNameEntity() \{#formatmdxnameentity\}
-
-```ts
-function formatMDXNameEntity(name, parentType?): MDXString;
-```
-
-Defined in: printer-legacy/src/format-helpers.ts:94
-
-Default name entity formatter.
-
-### Parameters
-
-#### name
-
-`string`
-
-#### parentType?
-
-`Maybe`&lt;`string`&gt;
-
-### Returns
-
-`MDXString`
-
----
-
-## formatMDXSpecifiedByLink() \{#formatmdxspecifiedbylink\}
-
-```ts
-function formatMDXSpecifiedByLink(url): MDXString;
-```
-
-Defined in: printer-legacy/src/format-helpers.ts:107
-
-Default specified-by link formatter.
-
-### Parameters
-
-#### url
-
-`string`
-
-### Returns
-
-`MDXString`
-
----
-
 ## formatter(Printer-legacy)
 
 Formatter factories for GraphQL documentation output.
@@ -10781,7 +12802,7 @@ The default formatter produces HTML-like markup suitable for most Markdown proce
 function createDefaultFormatter(): Formatter;
 ```
 
-Defined in: printer-legacy/src/formatter.ts:45
+Defined in: printer-legacy/src/formatter.ts:40
 
 Creates a default formatter for documentation output.
 
@@ -11228,38 +13249,6 @@ Ordered operation metadata sections, or undefined when `type` is not an operatio
 
 ---
 
-## printOperationType() \{#printoperationtype\}
-
-```ts
-function printOperationType(type, options): Maybe<PageSection>;
-```
-
-Defined in: printer-legacy/src/graphql/operation.ts:24
-
-Prints the operation type information.
-
-### Parameters
-
-#### type
-
-`unknown`
-
-The operation type to print
-
-#### options
-
-`PrintTypeOptions`
-
-Print type options for customizing output
-
-### Returns
-
-`Maybe`&lt;[`PageSection`](../events.md#pagesection)&gt;
-
-A "Type" PageSection, or undefined when `type` is not an operation
-
----
-
 ## scalar
 
 Provides utility functions for handling GraphQL scalar types in markdown generation.
@@ -11488,7 +13477,7 @@ Provides utilities for creating, formatting, and managing links to GraphQL types
 const API_GROUPS: Required<ApiGroupOverrideType>;
 ```
 
-Defined in: printer-legacy/src/link.ts:52
+Defined in: printer-legacy/src/link.ts:51
 
 ---
 
@@ -11498,7 +13487,7 @@ Defined in: printer-legacy/src/link.ts:52
 function getCategoryLocale(type): Maybe<TypeLocale>;
 ```
 
-Defined in: printer-legacy/src/link.ts:103
+Defined in: printer-legacy/src/link.ts:102
 
 Gets the locale category for a given GraphQL type.
 
@@ -11524,7 +13513,7 @@ The locale category for the type, or `undefined` if not found
 function getLinkApiGroupFolder(type, groups?): string;
 ```
 
-Defined in: printer-legacy/src/link.ts:189
+Defined in: printer-legacy/src/link.ts:188
 
 Gets the folder name for an API group based on the GraphQL type and group options.
 
@@ -11556,7 +13545,7 @@ The folder name for the API group
 function getLinkCategoryFolder(type, operationLocale?): Maybe<string>;
 ```
 
-Defined in: printer-legacy/src/link.ts:132
+Defined in: printer-legacy/src/link.ts:131
 
 Gets the folder name for a link category based on the GraphQL type and operation locale.
 
@@ -11582,45 +13571,13 @@ The folder name for the link category, or `undefined` if not found
 
 ---
 
-## getLinkDeprecatedFolder() \{#getlinkdeprecatedfolder\}
-
-```ts
-function getLinkDeprecatedFolder(type, option): string;
-```
-
-Defined in: printer-legacy/src/link.ts:207
-
-Gets the folder name for deprecated types based on the GraphQL type and deprecation option.
-
-### Parameters
-
-#### type
-
-`unknown`
-
-The GraphQL type to get the folder name for
-
-#### option
-
-`Maybe`&lt;`TypeDeprecatedOption`&gt;
-
-The deprecation option
-
-### Returns
-
-`string`
-
-The folder name for deprecated types
-
----
-
 ## getRelationLink() \{#getrelationlink\}
 
 ```ts
 function getRelationLink(category, type, options): Maybe<TypeLink>;
 ```
 
-Defined in: printer-legacy/src/link.ts:327
+Defined in: printer-legacy/src/link.ts:326
 
 Gets the link for a relation based on the category, type, and options.
 
@@ -11658,7 +13615,7 @@ The link object for the relation, or `undefined` if not found
 function hasOptionParentType(options): boolean;
 ```
 
-Defined in: printer-legacy/src/link.ts:173
+Defined in: printer-legacy/src/link.ts:172
 
 Checks if the options include the `parentTypePrefix` attribute.
 
@@ -11684,7 +13641,7 @@ The options to check
 function hasOptionWithAttributes(options): boolean;
 ```
 
-Defined in: printer-legacy/src/link.ts:163
+Defined in: printer-legacy/src/link.ts:162
 
 Checks if the options include the `withAttributes` attribute.
 
@@ -11710,7 +13667,7 @@ The options to check
 function hasPrintableDirective(type, options?): boolean;
 ```
 
-Defined in: printer-legacy/src/link.ts:64
+Defined in: printer-legacy/src/link.ts:63
 
 Checks if a type has printable directives based on the provided options.
 
@@ -11742,7 +13699,7 @@ Configuration options for directive printing (`deprecated`, `onlyDocDirectives`,
 function printLink<T>(arg, options): string;
 ```
 
-Defined in: printer-legacy/src/link.ts:398
+Defined in: printer-legacy/src/link.ts:397
 
 Prints a link for a GraphQL type based on the provided options.
 
@@ -11780,7 +13737,7 @@ The formatted link as a string
 function printLinkAttributes(type, text?): string;
 ```
 
-Defined in: printer-legacy/src/link.ts:350
+Defined in: printer-legacy/src/link.ts:349
 
 Prints the attributes of a link based on the GraphQL type.
 
@@ -11812,7 +13769,7 @@ The text with appended attributes
 function printParentLink(type, options): string | MDXString;
 ```
 
-Defined in: printer-legacy/src/link.ts:442
+Defined in: printer-legacy/src/link.ts:441
 
 Prints a parent link for a GraphQL type based on the provided options.
 
@@ -11844,7 +13801,7 @@ The formatted parent link as a string or MDX string
 function toLink(type, name, operation, options): TypeLink;
 ```
 
-Defined in: printer-legacy/src/link.ts:230
+Defined in: printer-legacy/src/link.ts:229
 
 Converts a GraphQL type to a link object.
 
@@ -11882,57 +13839,6 @@ The link object for the type
 
 ---
 
-## mdx(Printer-legacy)
-
-MDX formatting module for GraphQL-Markdown.
-
-This module provides a set of utility functions for formatting various MDX components
-used in the documentation generation process. It handles the formatting of badges,
-admonitions, bullet points, collapsible sections, and other MDX-specific elements.
-
-The module can be used with default formatters or customized with user-provided
-MDX formatting functions through the mdxModule factory function.
-
-## default \{#default\}
-
-```ts
-const default: MDXSupportType;
-```
-
-Defined in: printer-legacy/src/mdx/index.ts:197
-
----
-
-## mdxDeclaration \{#mdxdeclaration\}
-
-```ts
-const mdxDeclaration: "" = "";
-```
-
-Defined in: printer-legacy/src/mdx/index.ts:195
-
----
-
-## mdxModule() \{#mdxmodule\}
-
-```ts
-function mdxModule(mdxPackage?): Promise<Readonly<MDXSupportType>>;
-```
-
-Defined in: printer-legacy/src/mdx/index.ts:208
-
-### Parameters
-
-#### mdxPackage?
-
-`Record`&lt;`string`, `unknown`&gt;
-
-### Returns
-
-`Promise`&lt;`Readonly`&lt;`MDXSupportType`&gt;&gt;
-
----
-
 ## printer(Printer-legacy)
 
 GraphQL Schema Printer Module
@@ -11942,7 +13848,7 @@ It includes utilities for handling various GraphQL types, custom directives, and
 
 ## Printer \{#printer\}
 
-Defined in: printer-legacy/src/printer.ts:157
+Defined in: printer-legacy/src/printer.ts:167
 
 The Printer class implements the core functionality for generating Markdown documentation
 from GraphQL schema types.
@@ -11988,7 +13894,7 @@ new Printer(): Printer;
 readonly static printCustomDirectives: (type, options) => Maybe<PageSection>;
 ```
 
-Defined in: printer-legacy/src/printer.ts:166
+Defined in: printer-legacy/src/printer.ts:176
 
 Prints custom directives
 
@@ -12020,7 +13926,7 @@ A "Directives" PageSection, or undefined when no directives are printable
 readonly static printCustomTags: (type, options) => string | MDXString;
 ```
 
-Defined in: printer-legacy/src/printer.ts:171
+Defined in: printer-legacy/src/printer.ts:181
 
 Prints custom tags
 
@@ -12052,7 +13958,7 @@ Formatted Markdown string of badges or empty string
 readonly static printDescription: (type, options, noText?) => string | MDXString;
 ```
 
-Defined in: printer-legacy/src/printer.ts:161
+Defined in: printer-legacy/src/printer.ts:171
 
 Prints type descriptions
 
@@ -12086,24 +13992,6 @@ Combined description, deprecation notices, and custom directives as MDX content
 
 ### Accessors
 
-#### deprecatedOptions \{#deprecatedoptions\}
-
-##### Get Signature
-
-```ts
-get static deprecatedOptions(): Readonly<Maybe<DeprecatedPrintTypeOptions>>;
-```
-
-Defined in: printer-legacy/src/printer.ts:195
-
-Backward-compat section toggles extracted from legacy config options.
-
-These flags are applied only during section order composition.
-
-###### Returns
-
-`Readonly`&lt;`Maybe`&lt;`DeprecatedPrintTypeOptions`&gt;&gt;
-
 #### eventEmitter \{#eventemitter\}
 
 ##### Get Signature
@@ -12112,7 +14000,7 @@ These flags are applied only during section order composition.
 get static eventEmitter(): Maybe<PrinterEventEmitter>;
 ```
 
-Defined in: printer-legacy/src/printer.ts:204
+Defined in: printer-legacy/src/printer.ts:201
 
 Optional event emitter for print events.
 When set, the printer will emit events before/after printCode and printType,
@@ -12128,7 +14016,7 @@ allowing external code to intercept and modify the output.
 set static eventEmitter(eventEmitter): void;
 ```
 
-Defined in: printer-legacy/src/printer.ts:219
+Defined in: printer-legacy/src/printer.ts:216
 
 ###### Parameters
 
@@ -12148,7 +14036,7 @@ Defined in: printer-legacy/src/printer.ts:219
 get static mdxDeclaration(): Readonly<Maybe<string>>;
 ```
 
-Defined in: printer-legacy/src/printer.ts:211
+Defined in: printer-legacy/src/printer.ts:208
 
 Prints mdx modules import declaration
 
@@ -12162,7 +14050,7 @@ Prints mdx modules import declaration
 set static mdxDeclaration(mdxDeclaration): void;
 ```
 
-Defined in: printer-legacy/src/printer.ts:223
+Defined in: printer-legacy/src/printer.ts:220
 
 ###### Parameters
 
@@ -12182,7 +14070,7 @@ Defined in: printer-legacy/src/printer.ts:223
 get static options(): Readonly<Maybe<PrintTypeOptions>>;
 ```
 
-Defined in: printer-legacy/src/printer.ts:186
+Defined in: printer-legacy/src/printer.ts:192
 
 Global printer configuration options
 
@@ -12196,7 +14084,7 @@ Global printer configuration options
 set static options(options): void;
 ```
 
-Defined in: printer-legacy/src/printer.ts:215
+Defined in: printer-legacy/src/printer.ts:212
 
 ###### Parameters
 
@@ -12223,7 +14111,7 @@ static init(
    eventEmitter?): Promise<void>;
 ```
 
-Defined in: printer-legacy/src/printer.ts:238
+Defined in: printer-legacy/src/printer.ts:235
 
 Initializes the printer with the given schema and configuration.
 
@@ -12249,43 +14137,9 @@ Root path for generating links between types
 
 ###### options?
 
+`PrinterInitOptions` = `DEFAULT_INIT_OPTIONS`
+
 Configuration options for the printer
-
-###### customDirectives?
-
-`CustomDirectiveMap`
-
-###### deprecated?
-
-`TypeDeprecatedOption`
-
-###### groups?
-
-`Partial`&lt;`Record`&lt;`SchemaEntity`, `Record`&lt;`string`, `Maybe`&lt;`string`&gt;&gt;&gt;&gt;
-
-###### meta?
-
-`Maybe`&lt;`MetaInfo`&gt;
-
-###### metatags?
-
-`Record`&lt;`string`, `string`&gt;[]
-
-###### onlyDocDirectives?
-
-`GraphQLDirective`[]
-
-###### printTypeOptions?
-
-`InitPrintTypeOptions`
-
-###### sectionHeaderId?
-
-`boolean`
-
-###### skipDocDirectives?
-
-`GraphQLDirective`[]
 
 ###### formatter?
 
@@ -12315,7 +14169,7 @@ Optional event emitter for print events interception
 readonly static printCode(type, options): string;
 ```
 
-Defined in: printer-legacy/src/printer.ts:354
+Defined in: printer-legacy/src/printer.ts:323
 
 Prints the GraphQL type definition as code block
 
@@ -12348,7 +14202,7 @@ readonly static printCodeAsync(
    options): Promise<string>;
 ```
 
-Defined in: printer-legacy/src/printer.ts:410
+Defined in: printer-legacy/src/printer.ts:379
 
 Prints the GraphQL type definition as code block with event emission support.
 
@@ -12397,7 +14251,7 @@ Event handlers can:
 readonly static printExample(type, options): Maybe<PageSection>;
 ```
 
-Defined in: printer-legacy/src/printer.ts:455
+Defined in: printer-legacy/src/printer.ts:424
 
 Prints example usage of the type if available
 
@@ -12430,7 +14284,7 @@ readonly static printHeader(
    options): string;
 ```
 
-Defined in: printer-legacy/src/printer.ts:333
+Defined in: printer-legacy/src/printer.ts:302
 
 Prints the header section of a type documentation
 
@@ -12466,7 +14320,7 @@ Formatted header string with optional frontmatter
 readonly static printMetaTags(_type, options): string | MDXString;
 ```
 
-Defined in: printer-legacy/src/printer.ts:528
+Defined in: printer-legacy/src/printer.ts:494
 
 Prints HTML meta tags for the documentation
 
@@ -12496,7 +14350,7 @@ Formatted HTML meta tags string
 readonly static printRelations(type, options): string | MDXString;
 ```
 
-Defined in: printer-legacy/src/printer.ts:514
+Defined in: printer-legacy/src/printer.ts:480
 
 Prints related type information
 
@@ -12529,7 +14383,7 @@ readonly static printType(
    options?): Promise<Maybe<MDXString>>;
 ```
 
-Defined in: printer-legacy/src/printer.ts:578
+Defined in: printer-legacy/src/printer.ts:544
 
 Main method to print complete documentation for a GraphQL type
 
@@ -12594,7 +14448,7 @@ readonly static printTypeMetadata(type, options): Maybe<
   | PageSection[]>;
 ```
 
-Defined in: printer-legacy/src/printer.ts:478
+Defined in: printer-legacy/src/printer.ts:447
 
 Prints metadata information for a GraphQL type
 
@@ -12787,7 +14641,7 @@ function printMetadataSection<T, V>(
 ): Maybe<PageSection>;
 ```
 
-Defined in: printer-legacy/src/section.ts:195
+Defined in: printer-legacy/src/section.ts:193
 
 Prints a metadata section with special handling for deprecated items.
 
@@ -13311,6 +15165,7 @@ Abstract base for events that carry a typed, read-only data payload.
 - [`DataOutputEvent`](#abstract-dataoutputevent)
 - [`DiffCheckEvent`](../core/events/diff-check.md#diffcheckevent)
 - [`GenerateIndexMetafileEvent`](../core/events/generate-index-metafile.md#generateindexmetafileevent)
+- [`RenderFilesEvent`](../core/events/render-files.md#renderfilesevent)
 - [`RenderHomepageEvent`](../core/events/render-homepage.md#renderhomepageevent)
 - [`RenderRootTypesEvent`](../core/events/render-root-types.md#renderroottypesevent)
 - [`RenderTypeEntitiesEvent`](../core/events/render-type-entities.md#rendertypeentitiesevent)
@@ -14709,7 +16564,7 @@ if (isTypeObject(value)) {
 
 ---
 
-## markdown
+## markdown(Utils)
 
 Shared Markdown constants used across packages.
 
@@ -15327,3 +17182,72 @@ toHTMLUnicode("%"); // Expected result: "&#x0025;"
 ## url
 
 Alias `path.posix` to normalize URL handling on Windows.
+
+## RelativeGeneratedDocLinkOptions \{#relativegenerateddoclinkoptions\}
+
+Defined in: url.ts:15
+
+### Properties
+
+#### baseURL \{#baseurl\}
+
+```ts
+baseURL: string;
+```
+
+Defined in: url.ts:16
+
+#### currentFilePath \{#currentfilepath\}
+
+```ts
+currentFilePath: string;
+```
+
+Defined in: url.ts:17
+
+#### extension? \{#extension\}
+
+```ts
+optional extension?: string;
+```
+
+Defined in: url.ts:18
+
+#### outputDir \{#outputdir\}
+
+```ts
+outputDir: string;
+```
+
+Defined in: url.ts:19
+
+#### targetUrlPath \{#targeturlpath\}
+
+```ts
+targetUrlPath: string;
+```
+
+Defined in: url.ts:20
+
+---
+
+## toRelativeGeneratedDocLink() \{#torelativegenerateddoclink\}
+
+```ts
+function toRelativeGeneratedDocLink(__namedParameters): string | undefined;
+```
+
+Defined in: url.ts:34
+
+Converts a generated absolute GraphQL-Markdown doc URL into a page-relative file path.
+Returns `undefined` when the target URL does not belong to the configured `baseURL`.
+
+### Parameters
+
+#### \_\_namedParameters
+
+[`RelativeGeneratedDocLinkOptions`](#relativegenerateddoclinkoptions)
+
+### Returns
+
+`string` \| `undefined`
