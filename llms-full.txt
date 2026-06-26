@@ -2811,10 +2811,10 @@ It exports utilities to run the documentation generator both programmatically an
 ## GraphQLMarkdownCliType \{#graphqlmarkdownclitype\}
 
 ```ts
-type GraphQLMarkdownCliType = CommanderStatic;
+type GraphQLMarkdownCliType = Command;
 ```
 
-Defined in: index.ts:29
+Defined in: index.ts:32
 
 Type representing the GraphQL Markdown CLI.
 
@@ -2831,10 +2831,10 @@ function getGraphQLMarkdownCli(
   options,
   loggerModule?,
   customFormatter?,
-): CommanderStatic;
+): Command;
 ```
 
-Defined in: index.ts:86
+Defined in: index.ts:89
 
 Configures and returns the GraphQL Markdown CLI.
 
@@ -2861,7 +2861,7 @@ Optional default formatter package name. When provided, registers
 
 ### Returns
 
-`CommanderStatic`
+`Command`
 
 The configured CLI instance.
 
@@ -2884,7 +2884,7 @@ await cli.parseAsync(process.argv);
 function runGraphQLMarkdown(options, cliOptions, loggerModule?): Promise<void>;
 ```
 
-Defined in: index.ts:47
+Defined in: index.ts:50
 
 Runs the GraphQL Markdown CLI to generate documentation from a GraphQL schema.
 
@@ -2935,7 +2935,7 @@ Loads configuration from graphql-config and sets up command-line interface.
 const EXTENSION_NAME: "graphql-markdown";
 ```
 
-Defined in: main.ts:21
+Defined in: main.ts:23
 
 Name of the GraphQL Markdown extension for graphql-config
 
@@ -2947,7 +2947,7 @@ Name of the GraphQL Markdown extension for graphql-config
 const graphQLConfigExtension: GraphQLExtensionDeclaration;
 ```
 
-Defined in: main.ts:27
+Defined in: main.ts:29
 
 GraphQL config extension declaration for GraphQL Markdown
 
@@ -4087,6 +4087,8 @@ const schema = buildSchema(`
 const changesDetected = await hasChanges(schema, "/tmp", "methodName");
 console.log(changesDetected); // true or false
 ```
+
+**Using with a custom diff module**
 
 ```typescript
 
@@ -8363,13 +8365,19 @@ Uses either diff or hash-based comparison methods based on the method parameter.
 
 ### Param
 
+**schema**
+
 The current GraphQL schema
 
 ### Param
 
+**outputDir**
+
 Directory where schema or hash files will be saved
 
 ### Param
+
+**method**
 
 Comparison method to use (defaults to DIFF)
 
@@ -9059,7 +9067,7 @@ Uses DocFX alert syntax for admonitions and injects the required
 const afterRenderTypeEntitiesHook: RenderTypeEntitiesHook;
 ```
 
-Defined in: docfx/index.ts:200
+Defined in: docfx/index.ts:284
 
 Builds DocFX `toc.yml` navigation files as each entity page is written.
 
@@ -9075,7 +9083,7 @@ are prepended as an "Overview" entry on first encounter.
 const BADGE_CLASS_MAP: Record<string, string>;
 ```
 
-Defined in: docfx/index.ts:54
+Defined in: docfx/index.ts:55
 
 Maps graphql-markdown badge classnames to Bootstrap 5 contextual badge classes.
 
@@ -9087,7 +9095,7 @@ Maps graphql-markdown badge classnames to Bootstrap 5 contextual badge classes.
 const mdxExtension: ".md";
 ```
 
-Defined in: docfx/index.ts:148
+Defined in: docfx/index.ts:149
 
 ---
 
@@ -9097,7 +9105,7 @@ Defined in: docfx/index.ts:148
 function createMDXFormatter(_meta?): Formatter;
 ```
 
-Defined in: docfx/index.ts:135
+Defined in: docfx/index.ts:136
 
 Creates a DocFX formatter.
 
@@ -9123,7 +9131,7 @@ A complete Formatter implementation for DocFX output
 function formatMDXAdmonition(admonition, _meta): MDXString;
 ```
 
-Defined in: docfx/index.ts:77
+Defined in: docfx/index.ts:78
 
 Formats an admonition using DocFX alert syntax (`> [!TYPE]`).
 
@@ -9155,7 +9163,7 @@ Formatted admonition string
 function formatMDXBadge(badge): MDXString;
 ```
 
-Defined in: docfx/index.ts:65
+Defined in: docfx/index.ts:66
 
 Formats a badge using Bootstrap 5 badge classes available in DocFX's modern template.
 
@@ -9181,7 +9189,7 @@ Formatted badge string
 function formatMDXFrontmatter(props, formatted): MDXString;
 ```
 
-Defined in: docfx/index.ts:93
+Defined in: docfx/index.ts:94
 
 Formats YAML front matter, injecting a `uid` field required by DocFX
 for cross-reference resolution between pages.
@@ -9214,7 +9222,7 @@ Formatted front matter block, or empty string if no lines provided
 function formatMDXLink(link): TypeLink;
 ```
 
-Defined in: docfx/index.ts:119
+Defined in: docfx/index.ts:120
 
 Returns the link unchanged — DocFX resolves `.md` links natively.
 
@@ -9968,6 +9976,8 @@ The file is (re)created on every run with YAML frontmatter:
 
 ### Param
 
+**event**
+
 Hook event whose `data` contains `dirPath` (target directory) and `category` (section name)
 
 ---
@@ -10172,7 +10182,7 @@ Exports `afterRenderFilesHook` to build `SUMMARY.md` after all pages are written
 const afterRenderFilesHook: RenderFilesHook;
 ```
 
-Defined in: mdbook/index.ts:164
+Defined in: mdbook/index.ts:222
 
 Builds `src/SUMMARY.md` after all pages have been written.
 
@@ -10182,13 +10192,32 @@ by top-level section (Operations / Types) and category, then writes the file.
 
 ---
 
+## afterRenderTypeEntitiesHook \{#afterrendertypeentitieshook\}
+
+```ts
+const afterRenderTypeEntitiesHook: RenderTypeEntitiesHook;
+```
+
+Defined in: mdbook/index.ts:162
+
+Rewrites absolute generated doc links to page-relative `.md` paths after each page is rendered.
+
+mdBook resolves links relative to the book source root, so absolute paths
+like `/graphql/types/scalars/id.md` are rendered as `/graphql/types/scalars/id.html`
+in the output HTML — which breaks when the book is served under a subdirectory
+(e.g. `https://example.com/demo-mdbook/`).
+Converting them to relative paths (e.g. `../../scalars/id.md`) makes links
+work correctly regardless of where the book is hosted.
+
+---
+
 ## mdxExtension \{#mdxextension\}
 
 ```ts
 const mdxExtension: ".md" = ".md";
 ```
 
-Defined in: mdbook/index.ts:101
+Defined in: mdbook/index.ts:104
 
 mdBook expects `.md` files; override the default `.mdx` extension.
 
@@ -10200,7 +10229,7 @@ mdBook expects `.md` files; override the default `.mdx` extension.
 function createMDXFormatter(_meta?): Formatter;
 ```
 
-Defined in: mdbook/index.ts:131
+Defined in: mdbook/index.ts:189
 
 Creates an mdBook formatter.
 
@@ -10226,7 +10255,7 @@ A complete Formatter implementation for mdBook output
 function formatMDXAdmonition(admonition, _meta): MDXString;
 ```
 
-Defined in: mdbook/index.ts:59
+Defined in: mdbook/index.ts:62
 
 Formats an admonition using mdBook's native admonition syntax (`> [!TYPE]`).
 Uses `type` for the admonition tag and `title` as an optional override label.
@@ -10259,7 +10288,7 @@ Formatted admonition string
 function formatMDXBadge(badge): MDXString;
 ```
 
-Defined in: mdbook/index.ts:48
+Defined in: mdbook/index.ts:51
 
 Formats a badge as Markdown bold text — mdBook has no badge component.
 
@@ -10285,7 +10314,7 @@ Formatted bold text string
 function formatMDXDetails(option): MDXString;
 ```
 
-Defined in: mdbook/index.ts:80
+Defined in: mdbook/index.ts:83
 
 Renders a deprecated section as a bold inline label.
 
@@ -10318,7 +10347,7 @@ Bold label + split marker
 function formatMDXFrontmatter(_props, formatted): MDXString;
 ```
 
-Defined in: mdbook/index.ts:92
+Defined in: mdbook/index.ts:95
 
 Replaces front matter with an H1 title heading.
 mdBook renders `---` YAML blocks as literal content, so front matter is
@@ -10348,7 +10377,7 @@ suppressed entirely. The page title is emitted as `# Title` instead.
 function formatMDXLink(link): TypeLink;
 ```
 
-Defined in: mdbook/index.ts:108
+Defined in: mdbook/index.ts:111
 
 Returns the link unchanged — mdBook resolves `.md` links natively.
 
@@ -10443,6 +10472,8 @@ Lifecycle hook that rewrites generated absolute GraphQL-Markdown links
 into page-relative `.md` links compatible with MkDocs validation.
 
 ### Param
+
+**event**
 
 Hook payload containing the current file path and renderer output context
 
@@ -10675,7 +10706,7 @@ index files for each category directory.
 const mdxDeclaration: MDXString;
 ```
 
-Defined in: starlight/index.ts:43
+Defined in: starlight/index.ts:42
 
 MDX import statement prepended to every generated file to register Starlight components.
 
@@ -10687,7 +10718,7 @@ MDX import statement prepended to every generated file to register Starlight com
 const mdxExtension: ".mdx";
 ```
 
-Defined in: starlight/index.ts:40
+Defined in: starlight/index.ts:39
 
 File extension used for generated pages.
 
@@ -10699,7 +10730,7 @@ File extension used for generated pages.
 function afterRenderTypeEntitiesHook(event): Promise<void>;
 ```
 
-Defined in: starlight/index.ts:120
+Defined in: starlight/index.ts:117
 
 Lifecycle hook that appends a link entry to the category `index.md`
 after each type entity page is rendered.
@@ -10737,7 +10768,7 @@ Hook payload containing the entity name and its output file path
 function beforeGenerateIndexMetafileHook(event): Promise<void>;
 ```
 
-Defined in: starlight/index.ts:100
+Defined in: starlight/index.ts:97
 
 Lifecycle hook that creates an `index.md` file for a category directory
 before Starlight indexes it. Skips creation if the file already exists.
@@ -10775,7 +10806,7 @@ Hook payload containing the target directory and category name
 function createMDXFormatter(_meta?): Formatter;
 ```
 
-Defined in: starlight/index.ts:137
+Defined in: starlight/index.ts:134
 
 Creates an Astro Starlight formatter.
 
@@ -10801,7 +10832,7 @@ A complete Formatter implementation for Starlight MDX output
 function formatMDXAdmonition(admonition, _meta): MDXString;
 ```
 
-Defined in: starlight/index.ts:65
+Defined in: starlight/index.ts:64
 
 Formats an admonition using the Starlight `<Aside>` component.
 Maps `warning` type to `caution`; all other types use `note`.
@@ -10834,7 +10865,7 @@ Formatted Starlight Aside component string
 function formatMDXBadge(badge): MDXString;
 ```
 
-Defined in: starlight/index.ts:53
+Defined in: starlight/index.ts:52
 
 Formats a badge using the Starlight `<Badge>` component.
 Maps `DEPRECATED` classname to the `caution` variant; all others use `default`.
@@ -10863,7 +10894,8 @@ function formatMDXLink(link): TypeLink;
 
 Defined in: starlight/index.ts:78
 
-Appends `.mdx` to internal link URLs.
+Returns the link unchanged — Starlight routes `page.mdx` to `page/` so
+links must not include the `.mdx` extension.
 
 ### Parameters
 
@@ -10877,7 +10909,7 @@ Link data with URL and text
 
 `TypeLink`
 
-Link with `.mdx` extension appended to the URL
+Unmodified link
 
 ---
 
@@ -11858,17 +11890,25 @@ mapRelationOf
 
 ### Type Param
 
+**T**
+
 the type of the GraphQL schema type.
 
 ### Type Param
+
+**R**
 
 the return type of map of relations (see IGetRelation).
 
 ### Param
 
+**type**
+
 the GraphQL schema type being processed.
 
 ### Param
+
+**schemaMap**
 
 a GraphQL schema map (see getSchemaMap).
 
@@ -11894,17 +11934,25 @@ mapRelationOf
 
 ### Type Param
 
+**T**
+
 the type of the GraphQL schema type.
 
 ### Type Param
+
+**R**
 
 the return type of map of relations (see IGetRelation).
 
 ### Param
 
+**type**
+
 the GraphQL schema type being processed.
 
 ### Param
+
+**schemaMap**
 
 a GraphQL schema map (see getSchemaMap).
 
@@ -11930,17 +11978,25 @@ mapRelationOf
 
 ### Type Param
 
+**T**
+
 the type of the GraphQL schema type.
 
 ### Type Param
+
+**R**
 
 the return type of map of relations (see IGetRelation).
 
 ### Param
 
+**type**
+
 the GraphQL schema type being processed.
 
 ### Param
+
+**schemaMap**
 
 a GraphQL schema map (see getSchemaMap).
 
@@ -11966,17 +12022,25 @@ mapRelationOf
 
 ### Type Param
 
+**T**
+
 the type of the GraphQL schema type.
 
 ### Type Param
+
+**R**
 
 the return type of map of relations (see IGetRelation).
 
 ### Param
 
+**type**
+
 the GraphQL schema type being processed.
 
 ### Param
+
+**schemaMap**
 
 a GraphQL schema map (see getSchemaMap).
 
@@ -12002,17 +12066,25 @@ mapRelationOf
 
 ### Type Param
 
+**T**
+
 the type of the GraphQL schema type.
 
 ### Type Param
+
+**R**
 
 the return type of map of relations (see IGetRelation).
 
 ### Param
 
+**type**
+
 the GraphQL schema type being processed.
 
 ### Param
+
+**schemaMap**
 
 a GraphQL schema map (see getSchemaMap).
 
@@ -19016,6 +19088,8 @@ Defined in: string.ts:293
 Returns a stringified version of the variable.
 
 ### Param
+
+**variable**
 
 the variable to be transformed.
 
