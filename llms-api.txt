@@ -19,7 +19,7 @@ It exports utilities to run the documentation generator both programmatically an
 type GraphQLMarkdownCliType = Command;
 ```
 
-Defined in: index.ts:32
+Defined in: [index.ts:32](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/cli/src/index.ts#L32)
 
 Type representing the GraphQL Markdown CLI.
 
@@ -39,7 +39,7 @@ function getGraphQLMarkdownCli(
 ): Command;
 ```
 
-Defined in: index.ts:89
+Defined in: [index.ts:89](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/cli/src/index.ts#L89)
 
 Configures and returns the GraphQL Markdown CLI.
 
@@ -89,7 +89,7 @@ await cli.parseAsync(process.argv);
 function runGraphQLMarkdown(options, cliOptions, loggerModule?): Promise<void>;
 ```
 
-Defined in: index.ts:50
+Defined in: [index.ts:50](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/cli/src/index.ts#L50)
 
 Runs the GraphQL Markdown CLI to generate documentation from a GraphQL schema.
 
@@ -140,7 +140,7 @@ Loads configuration from graphql-config and sets up command-line interface.
 const EXTENSION_NAME: "graphql-markdown";
 ```
 
-Defined in: main.ts:23
+Defined in: [main.ts:23](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/cli/src/main.ts#L23)
 
 Name of the GraphQL Markdown extension for graphql-config
 
@@ -152,7 +152,7 @@ Name of the GraphQL Markdown extension for graphql-config
 const graphQLConfigExtension: GraphQLExtensionDeclaration;
 ```
 
-Defined in: main.ts:29
+Defined in: [main.ts:29](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/cli/src/main.ts#L29)
 
 GraphQL config extension declaration for GraphQL Markdown
 
@@ -182,7 +182,7 @@ The configuration follows this precedence (highest to lowest):
 
 ## DeprecatedOption \{#deprecatedoption\}
 
-Defined in: core/src/config.ts:98
+Defined in: [core/src/config.ts:98](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L98)
 
 Options for handling deprecated items in the schema.
 
@@ -204,7 +204,7 @@ const deprecatedHandling = DeprecatedOption.GROUP;
 DEFAULT: "default";
 ```
 
-Defined in: core/src/config.ts:99
+Defined in: [core/src/config.ts:99](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L99)
 
 #### GROUP \{#group\}
 
@@ -212,7 +212,7 @@ Defined in: core/src/config.ts:99
 GROUP: "group";
 ```
 
-Defined in: core/src/config.ts:100
+Defined in: [core/src/config.ts:100](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L100)
 
 #### SKIP \{#skip\}
 
@@ -220,13 +220,13 @@ Defined in: core/src/config.ts:100
 SKIP: "skip";
 ```
 
-Defined in: core/src/config.ts:101
+Defined in: [core/src/config.ts:101](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L101)
 
 ---
 
 ## DiffMethod \{#diffmethod\}
 
-Defined in: core/src/config.ts:80
+Defined in: [core/src/config.ts:80](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L80)
 
 Diff methods used to determine how schema changes are processed.
 
@@ -247,7 +247,7 @@ const diffMethod = DiffMethod.FORCE;
 FORCE: "FORCE";
 ```
 
-Defined in: core/src/config.ts:82
+Defined in: [core/src/config.ts:82](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L82)
 
 #### NONE \{#none\}
 
@@ -255,13 +255,13 @@ Defined in: core/src/config.ts:82
 NONE: "NONE";
 ```
 
-Defined in: core/src/config.ts:81
+Defined in: [core/src/config.ts:81](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L81)
 
 ---
 
 ## TypeHierarchy \{#typehierarchy\}
 
-Defined in: core/src/config.ts:62
+Defined in: [core/src/config.ts:62](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L62)
 
 Type hierarchy options for organizing schema documentation.
 
@@ -283,7 +283,7 @@ const hierarchy = TypeHierarchy.API;
 API: "api";
 ```
 
-Defined in: core/src/config.ts:63
+Defined in: [core/src/config.ts:63](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L63)
 
 #### ENTITY \{#entity\}
 
@@ -291,7 +291,7 @@ Defined in: core/src/config.ts:63
 ENTITY: "entity";
 ```
 
-Defined in: core/src/config.ts:64
+Defined in: [core/src/config.ts:64](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L64)
 
 #### FLAT \{#flat\}
 
@@ -299,7 +299,7 @@ Defined in: core/src/config.ts:64
 FLAT: "flat";
 ```
 
-Defined in: core/src/config.ts:65
+Defined in: [core/src/config.ts:65](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L65)
 
 ---
 
@@ -309,7 +309,7 @@ Defined in: core/src/config.ts:65
 const ASSET_HOMEPAGE_LOCATION: string;
 ```
 
-Defined in: core/src/config.ts:119
+Defined in: [core/src/config.ts:119](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L119)
 
 Location of the default homepage template.
 
@@ -321,7 +321,7 @@ Location of the default homepage template.
 const DEFAULT_HIERARCHY: object;
 ```
 
-Defined in: core/src/config.ts:130
+Defined in: [core/src/config.ts:130](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L130)
 
 Default hierarchy configuration using the API hierarchy type.
 
@@ -355,7 +355,7 @@ const DEFAULT_OPTIONS: Readonly<
   object;
 ```
 
-Defined in: core/src/config.ts:139
+Defined in: [core/src/config.ts:139](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L139)
 
 Default configuration options used when no user options are provided.
 These values serve as fallbacks for any missing configuration.
@@ -396,7 +396,7 @@ Options for the complete configuration interface
 const DOCS_URL: "https://graphql-markdown.dev/docs";
 ```
 
-Defined in: core/src/config.ts:108
+Defined in: [core/src/config.ts:108](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L108)
 
 Documentation website URL for reference in error messages and help text.
 
@@ -408,7 +408,7 @@ Documentation website URL for reference in error messages and help text.
 const PACKAGE_NAME: "@graphql-markdown/docusaurus";
 ```
 
-Defined in: core/src/config.ts:114
+Defined in: [core/src/config.ts:114](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L114)
 
 Default package name used for temporary directory creation and identification.
 
@@ -420,7 +420,7 @@ Default package name used for temporary directory creation and identification.
 function buildConfig(configFileOpts, cliOpts?, id?): Promise<Options>;
 ```
 
-Defined in: core/src/config.ts:761
+Defined in: [core/src/config.ts:783](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L783)
 
 ### Parameters
 
@@ -451,7 +451,7 @@ function getCustomDirectives(
 ): Maybe<CustomDirective>;
 ```
 
-Defined in: core/src/config.ts:386
+Defined in: [core/src/config.ts:390](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L390)
 
 Processes custom directives, filtering out any that should be skipped.
 Validates that each custom directive has the correct format with required functions.
@@ -514,7 +514,7 @@ getCustomDirectives({ example: { invalid: true } }, []);
 function getDiffMethod(diff): TypeDiffMethod;
 ```
 
-Defined in: core/src/config.ts:439
+Defined in: [core/src/config.ts:447](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L447)
 
 ### Parameters
 
@@ -534,7 +534,7 @@ Defined in: core/src/config.ts:439
 function getDocDirective(name): DirectiveName;
 ```
 
-Defined in: core/src/config.ts:211
+Defined in: [core/src/config.ts:213](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L213)
 
 Retrieves a directive name from a string by parsing and validating the format.
 Directive names should be prefixed with '@' (e.g., '@example').
@@ -575,7 +575,7 @@ getDocDirective("example"); // Error: Invalid "example"
 function getDocOptions(cliOpts?, configOptions?): Required<ConfigDocOptions>;
 ```
 
-Defined in: core/src/config.ts:470
+Defined in: [core/src/config.ts:482](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L482)
 
 Builds the document options by merging CLI options, config file options, and defaults.
 Handles index generation flag and front matter configuration.
@@ -622,7 +622,7 @@ console.log(docOptions);
 function getForcedDiffMethod(): TypeDiffMethod;
 ```
 
-Defined in: core/src/config.ts:431
+Defined in: [core/src/config.ts:437](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L437)
 
 Returns FORCE as the diff method.
 This function is used when documentation should be forcefully regenerated.
@@ -652,7 +652,7 @@ console.log(method); // "FORCE"
 function getOnlyDocDirectives(cliOpts, configFileOpts): DirectiveName[];
 ```
 
-Defined in: core/src/config.ts:242
+Defined in: [core/src/config.ts:244](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L244)
 
 Retrieves the list of "only" directives from CLI and config options.
 These directives specify which schema elements should be included in the documentation.
@@ -699,7 +699,7 @@ console.log(onlyDirectives); // ["example", "internal", "auth"]
 function getSkipDocDirectives(cliOpts, configFileOpts): DirectiveName[];
 ```
 
-Defined in: core/src/config.ts:277
+Defined in: [core/src/config.ts:279](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L279)
 
 Retrieves the list of "skip" directives from CLI and config options.
 These directives specify which schema elements should be excluded from the documentation.
@@ -751,7 +751,7 @@ function getTypeHierarchyOption(
 ): Maybe<Partial<Record<TypeHierarchyValueType, TypeHierarchyTypeOptions>>>;
 ```
 
-Defined in: core/src/config.ts:521
+Defined in: [core/src/config.ts:535](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L535)
 
 Resolves the type hierarchy configuration by merging CLI and config file options.
 Validates that CLI and config don't specify conflicting hierarchy types.
@@ -810,7 +810,7 @@ getTypeHierarchyOption("api", { entity: {} });
 function getVisibilityDirectives(cliOpts, configFileOpts): object;
 ```
 
-Defined in: core/src/config.ts:331
+Defined in: [core/src/config.ts:333](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L333)
 
 Combines and validates visibility directives (only and skip) from both CLI and config sources.
 Ensures that no directive appears in both "only" and "skip" lists simultaneously.
@@ -883,7 +883,7 @@ function parseDeprecatedDocOptions(
 ): Record<string, never>;
 ```
 
-Defined in: core/src/config.ts:443
+Defined in: [core/src/config.ts:453](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L453)
 
 ### Parameters
 
@@ -910,7 +910,7 @@ function parseDeprecatedFormatterOption(
 ): Maybe<string>;
 ```
 
-Defined in: core/src/config.ts:565
+Defined in: [core/src/config.ts:581](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L581)
 
 ### Parameters
 
@@ -937,7 +937,7 @@ function parseDeprecatedPrintTypeOptions(
 ): Record<string, never>;
 ```
 
-Defined in: core/src/config.ts:585
+Defined in: [core/src/config.ts:603](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L603)
 
 ### Parameters
 
@@ -961,7 +961,7 @@ Defined in: core/src/config.ts:585
 function parseGroupByOption(groupOptions): Maybe<GroupByDirectiveOptions>;
 ```
 
-Defined in: core/src/config.ts:673
+Defined in: [core/src/config.ts:693](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L693)
 
 Parses and validates the groupByDirective option string format.
 The format should be @directive(field|=fallback) where:
@@ -1014,7 +1014,7 @@ parseGroupByOption("invalid-format");
 function parseHomepageOption(cliHomepage, configHomepage): Maybe<string>;
 ```
 
-Defined in: core/src/config.ts:693
+Defined in: [core/src/config.ts:715](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L715)
 
 ### Parameters
 
@@ -1045,7 +1045,7 @@ and simplify maintenance when patterns need to be updated.
 const CONFIG_CONSTANTS: object;
 ```
 
-Defined in: core/src/const/patterns.ts:115
+Defined in: [core/src/const/patterns.ts:115](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/const/patterns.ts#L115)
 
 String constants used for configuration parsing and defaults.
 
@@ -1068,7 +1068,7 @@ Items without the grouping directive are assigned to this group.
 const PATTERNS: object;
 ```
 
-Defined in: core/src/const/patterns.ts:20
+Defined in: [core/src/const/patterns.ts:20](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/const/patterns.ts#L20)
 
 Central repository of regex patterns used for configuration parsing and string transformation.
 
@@ -1243,7 +1243,7 @@ Diff utilities for detecting schema changes between builds.
 function hasChanges(schema, tmpDir, diffMethod, diffModule?): Promise<boolean>;
 ```
 
-Defined in: core/src/diff.ts:67
+Defined in: [core/src/diff.ts:67](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/diff.ts#L67)
 
 Determines if there are changes in the GraphQL schema by using a specified diff method and module.
 
@@ -1336,7 +1336,7 @@ function hasDescriptor(
 ): config is Record<"descriptor", (args: unknown[]) => unknown>;
 ```
 
-Defined in: core/src/directives/validation.ts:39
+Defined in: [core/src/directives/validation.ts:41](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/directives/validation.ts#L41)
 
 Type guard to check if an object has a `descriptor` function property.
 
@@ -1373,7 +1373,7 @@ if (hasDescriptor(option)) {
 function hasTag(config): config is Record<"tag", (args: unknown[]) => unknown>;
 ```
 
-Defined in: core/src/directives/validation.ts:65
+Defined in: [core/src/directives/validation.ts:69](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/directives/validation.ts#L69)
 
 Type guard to check if an object has a `tag` function property.
 
@@ -1410,7 +1410,7 @@ if (hasTag(option)) {
 function isGroupsObject(groups): groups is Record<string, string>;
 ```
 
-Defined in: core/src/directives/validation.ts:153
+Defined in: [core/src/directives/validation.ts:157](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/directives/validation.ts#L157)
 
 Type guard to check if a value is a configuration group object.
 
@@ -1450,7 +1450,7 @@ function isInvalidFunctionProperty(
 ): config is Record<string, unknown>;
 ```
 
-Defined in: core/src/directives/validation.ts:196
+Defined in: [core/src/directives/validation.ts:200](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/directives/validation.ts#L200)
 
 Type guard to check if a descriptor or tag property is NOT a function.
 
@@ -1493,7 +1493,7 @@ if (isInvalidFunctionProperty(option, "descriptor")) {
 function isLoaderString(loader): loader is string;
 ```
 
-Defined in: core/src/directives/validation.ts:175
+Defined in: [core/src/directives/validation.ts:179](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/directives/validation.ts#L179)
 
 Type guard to check if a value is a loader module name (string).
 
@@ -1530,7 +1530,7 @@ if (isLoaderString(loaders[name])) {
 function isPath(path): path is string;
 ```
 
-Defined in: core/src/directives/validation.ts:133
+Defined in: [core/src/directives/validation.ts:137](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/directives/validation.ts#L137)
 
 Type guard to check if a value is a valid non-empty path string.
 
@@ -1567,7 +1567,7 @@ if (isPath(folderPath)) {
 function isSchemaObject(schema): schema is Record<string, unknown>;
 ```
 
-Defined in: core/src/directives/validation.ts:111
+Defined in: [core/src/directives/validation.ts:115](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/directives/validation.ts#L115)
 
 Type guard to check if a value is a schema object (key-value mapping).
 
@@ -1604,7 +1604,7 @@ if (isSchemaObject(projectConfig.schema)) {
 function isSchemaString(schema): schema is string;
 ```
 
-Defined in: core/src/directives/validation.ts:91
+Defined in: [core/src/directives/validation.ts:95](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/directives/validation.ts#L95)
 
 Type guard to check if a value is a schema string.
 
@@ -1641,7 +1641,7 @@ if (isSchemaString(config.schema)) {
 
 ### EmitResult \{#emitresult\}
 
-Defined in: core/src/event-emitter.ts:9
+Defined in: [core/src/event-emitter.ts:9](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/event-emitter.ts#L9)
 
 Result object returned when emitting a cancellable event.
 
@@ -1653,7 +1653,7 @@ Result object returned when emitting a cancellable event.
 defaultPrevented: boolean;
 ```
 
-Defined in: core/src/event-emitter.ts:20
+Defined in: [core/src/event-emitter.ts:20](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/event-emitter.ts#L20)
 
 Whether any handler called preventDefault() on the event.
 Only applicable if the event is cancellable.
@@ -1664,7 +1664,7 @@ Only applicable if the event is cancellable.
 errors: Error[];
 ```
 
-Defined in: core/src/event-emitter.ts:14
+Defined in: [core/src/event-emitter.ts:14](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/event-emitter.ts#L14)
 
 Array of errors that occurred during handler execution.
 Handlers continue executing even if previous handlers throw errors.
@@ -1677,7 +1677,7 @@ Handlers continue executing even if previous handlers throw errors.
 function getEvents(): CancellableEventEmitter;
 ```
 
-Defined in: core/src/event-emitter.ts:172
+Defined in: [core/src/event-emitter.ts:172](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/event-emitter.ts#L172)
 
 Get the singleton event emitter instance.
 
@@ -1710,7 +1710,7 @@ await events.emitAsync("beforeLoadSchema", event);
 function resetEvents(): void;
 ```
 
-Defined in: core/src/event-emitter.ts:196
+Defined in: [core/src/event-emitter.ts:196](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/event-emitter.ts#L196)
 
 Reset the event emitter singleton.
 
@@ -1749,7 +1749,7 @@ automatically detects and registers matching callbacks from MDX modules.
 function registerMDXEventHandlers(mdxModule): void;
 ```
 
-Defined in: core/src/event-handlers.ts:35
+Defined in: [core/src/event-handlers.ts:35](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/event-handlers.ts#L35)
 
 Registers MDX module lifecycle event handlers with the event emitter.
 
@@ -1800,7 +1800,7 @@ callback names in MDX modules. Kept separate to avoid circular dependencies.
 const EVENT_CALLBACK_MAP: object;
 ```
 
-Defined in: core/src/event-map.ts:25
+Defined in: [core/src/event-map.ts:25](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/event-map.ts#L25)
 
 Event callback mapping configuration.
 Maps event names to their corresponding callback names in mdxModule.
@@ -1928,7 +1928,7 @@ Diff checking event class.
 
 ### DiffCheckEvent \{#diffcheckevent\}
 
-Defined in: core/src/events/diff-check.ts:15
+Defined in: [core/src/events/diff-check.ts:15](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/events/diff-check.ts#L15)
 
 Event emitted before/after checking schema differences.
 
@@ -1948,7 +1948,7 @@ Event emitted before/after checking schema differences.
 new DiffCheckEvent(data, options?): DiffCheckEvent;
 ```
 
-Defined in: core/src/events/diff-check.ts:20
+Defined in: [core/src/events/diff-check.ts:20](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/events/diff-check.ts#L20)
 
 ###### Parameters
 
@@ -2184,7 +2184,7 @@ Diff checking event constants.
 const DiffEvents: object;
 ```
 
-Defined in: core/src/events/diff-events.ts:10
+Defined in: [core/src/events/diff-events.ts:10](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/events/diff-events.ts#L10)
 
 Event names for diff checking lifecycle.
 
@@ -2218,7 +2218,7 @@ Generate index metafile event constants.
 const GenerateIndexMetafileEvents: object;
 ```
 
-Defined in: core/src/events/generate-index-metafile-events.ts:10
+Defined in: [core/src/events/generate-index-metafile-events.ts:10](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/events/generate-index-metafile-events.ts#L10)
 
 Event names for generating index metafile.
 
@@ -2250,7 +2250,7 @@ Generate index metafile event class.
 
 ### GenerateIndexMetafileEvent \{#generateindexmetafileevent\}
 
-Defined in: core/src/events/generate-index-metafile.ts:15
+Defined in: [core/src/events/generate-index-metafile.ts:15](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/events/generate-index-metafile.ts#L15)
 
 Event emitted before/after generating index metafile.
 
@@ -2270,7 +2270,7 @@ Event emitted before/after generating index metafile.
 new GenerateIndexMetafileEvent(data, options?): GenerateIndexMetafileEvent;
 ```
 
-Defined in: core/src/events/generate-index-metafile.ts:20
+Defined in: [core/src/events/generate-index-metafile.ts:20](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/events/generate-index-metafile.ts#L20)
 
 ###### Parameters
 
@@ -2509,7 +2509,7 @@ These events allow interception and modification of the generated code output.
 const PrintTypeEvents: object;
 ```
 
-Defined in: core/src/events/print-type-events.ts:25
+Defined in: [core/src/events/print-type-events.ts:25](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/events/print-type-events.ts#L25)
 
 Event names for printing type documentation.
 
@@ -2578,7 +2578,7 @@ Render files event constants.
 const RenderFilesEvents: object;
 ```
 
-Defined in: core/src/events/render-files-events.ts:10
+Defined in: [core/src/events/render-files-events.ts:10](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/events/render-files-events.ts#L10)
 
 Event names fired once after all output files (entities + homepage) are written.
 
@@ -2602,7 +2602,7 @@ Render files event class.
 
 ### RenderFilesEvent \{#renderfilesevent\}
 
-Defined in: core/src/events/render-files.ts:15
+Defined in: [core/src/events/render-files.ts:15](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/events/render-files.ts#L15)
 
 Event emitted after all output files (entities + homepage) have been written.
 
@@ -2623,7 +2623,7 @@ Event emitted after all output files (entities + homepage) have been written.
 new RenderFilesEvent(data, options?): RenderFilesEvent;
 ```
 
-Defined in: core/src/events/render-files.ts:21
+Defined in: [core/src/events/render-files.ts:21](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/events/render-files.ts#L21)
 
 ###### Parameters
 
@@ -2869,7 +2869,7 @@ Render homepage event constants.
 const RenderHomepageEvents: object;
 ```
 
-Defined in: core/src/events/render-homepage-events.ts:10
+Defined in: [core/src/events/render-homepage-events.ts:10](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/events/render-homepage-events.ts#L10)
 
 Event names for rendering homepage.
 
@@ -2901,7 +2901,7 @@ Render homepage event class.
 
 ### RenderHomepageEvent \{#renderhomepageevent\}
 
-Defined in: core/src/events/render-homepage.ts:15
+Defined in: [core/src/events/render-homepage.ts:15](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/events/render-homepage.ts#L15)
 
 Event emitted before/after rendering homepage.
 
@@ -2919,7 +2919,7 @@ Event emitted before/after rendering homepage.
 new RenderHomepageEvent(data, options?): RenderHomepageEvent;
 ```
 
-Defined in: core/src/events/render-homepage.ts:18
+Defined in: [core/src/events/render-homepage.ts:18](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/events/render-homepage.ts#L18)
 
 ###### Parameters
 
@@ -3135,7 +3135,7 @@ Render root types event constants.
 const RenderRootTypesEvents: object;
 ```
 
-Defined in: core/src/events/render-root-types-events.ts:10
+Defined in: [core/src/events/render-root-types-events.ts:10](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/events/render-root-types-events.ts#L10)
 
 Event names for rendering root types.
 
@@ -3167,7 +3167,7 @@ Render root types event class.
 
 ### RenderRootTypesEvent \{#renderroottypesevent\}
 
-Defined in: core/src/events/render-root-types.ts:15
+Defined in: [core/src/events/render-root-types.ts:15](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/events/render-root-types.ts#L15)
 
 Event emitted before/after rendering root types.
 
@@ -3185,7 +3185,7 @@ Event emitted before/after rendering root types.
 new RenderRootTypesEvent(data, options?): RenderRootTypesEvent;
 ```
 
-Defined in: core/src/events/render-root-types.ts:18
+Defined in: [core/src/events/render-root-types.ts:18](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/events/render-root-types.ts#L18)
 
 ###### Parameters
 
@@ -3401,7 +3401,7 @@ Render type entities event constants.
 const RenderTypeEntitiesEvents: object;
 ```
 
-Defined in: core/src/events/render-type-entities-events.ts:10
+Defined in: [core/src/events/render-type-entities-events.ts:10](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/events/render-type-entities-events.ts#L10)
 
 Event names for rendering type entities.
 
@@ -3433,7 +3433,7 @@ Render type entities event class.
 
 ### RenderTypeEntitiesEvent \{#rendertypeentitiesevent\}
 
-Defined in: core/src/events/render-type-entities.ts:15
+Defined in: [core/src/events/render-type-entities.ts:15](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/events/render-type-entities.ts#L15)
 
 Event emitted before/after rendering type entities.
 
@@ -3454,7 +3454,7 @@ Event emitted before/after rendering type entities.
 new RenderTypeEntitiesEvent(data, options?): RenderTypeEntitiesEvent;
 ```
 
-Defined in: core/src/events/render-type-entities.ts:21
+Defined in: [core/src/events/render-type-entities.ts:21](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/events/render-type-entities.ts#L21)
 
 ###### Parameters
 
@@ -3700,7 +3700,7 @@ Schema loading event constants.
 const SchemaEvents: object;
 ```
 
-Defined in: core/src/events/schema-events.ts:10
+Defined in: [core/src/events/schema-events.ts:10](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/events/schema-events.ts#L10)
 
 Event names for schema loading lifecycle.
 
@@ -3748,7 +3748,7 @@ Schema loading event class.
 
 ### SchemaEvent \{#schemaevent\}
 
-Defined in: core/src/events/schema-load.ts:16
+Defined in: [core/src/events/schema-load.ts:16](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/events/schema-load.ts#L16)
 
 Event emitted before/after loading a GraphQL schema.
 
@@ -3768,7 +3768,7 @@ Event emitted before/after loading a GraphQL schema.
 new SchemaEvent(data, options?): SchemaEvent;
 ```
 
-Defined in: core/src/events/schema-load.ts:21
+Defined in: [core/src/events/schema-load.ts:21](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/events/schema-load.ts#L21)
 
 ###### Parameters
 
@@ -4019,7 +4019,7 @@ function checkSchemaDifferences(
 ): Promise<boolean>;
 ```
 
-Defined in: core/src/generator.ts:268
+Defined in: [core/src/generator.ts:270](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/generator.ts#L270)
 
 Checks if there are differences in the GraphQL schema compared to a previous version.
 
@@ -4068,7 +4068,7 @@ When no changes are detected, a log message is generated indicating that the sch
 function generateDocFromSchema(options): Promise<void>;
 ```
 
-Defined in: core/src/generator.ts:340
+Defined in: [core/src/generator.ts:344](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/generator.ts#L344)
 
 Main entry point for generating Markdown documentation from a GraphQL schema.
 
@@ -4105,7 +4105,7 @@ function getFormatterFromMDXModule(
 ): Partial<Formatter> | undefined;
 ```
 
-Defined in: core/src/generator.ts:173
+Defined in: [core/src/generator.ts:173](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/generator.ts#L173)
 
 **`Internal`**
 
@@ -4144,7 +4144,7 @@ A partial Formatter with the found functions, or undefined if none found
 function getMDXModuleProperty<T>(mdxModule, propertyName): T | undefined;
 ```
 
-Defined in: core/src/generator.ts:136
+Defined in: [core/src/generator.ts:136](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/generator.ts#L136)
 
 **`Internal`**
 
@@ -4189,7 +4189,7 @@ function loadGraphqlSchema(
 ): Promise<Maybe<GraphQLSchema>>;
 ```
 
-Defined in: core/src/generator.ts:237
+Defined in: [core/src/generator.ts:237](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/generator.ts#L237)
 
 **`Internal`**
 
@@ -4226,7 +4226,7 @@ A promise that resolves to the loaded GraphQL schema, or undefined if:
 function loadMDXModule(mdxParser): Promise<unknown>;
 ```
 
-Defined in: core/src/generator.ts:95
+Defined in: [core/src/generator.ts:95](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/generator.ts#L95)
 
 **`Internal`**
 
@@ -4261,7 +4261,7 @@ function resolveSkipAndOnlyDirectives(
 ): GraphQLDirective[][];
 ```
 
-Defined in: core/src/generator.ts:299
+Defined in: [core/src/generator.ts:303](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/generator.ts#L303)
 
 Resolves and retrieves GraphQL directive objects from the schema based on their names.
 
@@ -4310,7 +4310,7 @@ using the graphql-config package.
 const graphQLConfigExtension: GraphQLExtensionDeclaration;
 ```
 
-Defined in: core/src/graphql-config.ts:46
+Defined in: [core/src/graphql-config.ts:48](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/graphql-config.ts#L48)
 
 GraphQL extension declaration for graphql-config.
 
@@ -4339,7 +4339,7 @@ function loadConfiguration(
 ): Promise<Maybe<Readonly<ExtensionProjectConfig>>>;
 ```
 
-Defined in: core/src/graphql-config.ts:145
+Defined in: [core/src/graphql-config.ts:146](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/graphql-config.ts#L146)
 
 Loads the GraphQL Markdown configuration from graphql-config.
 
@@ -4400,7 +4400,7 @@ const config = await loadConfiguration(
 function setLoaderOptions(loaders, options): LoaderOption;
 ```
 
-Defined in: core/src/graphql-config.ts:97
+Defined in: [core/src/graphql-config.ts:98](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/graphql-config.ts#L98)
 
 Sets loader options for GraphQL Markdown loaders.
 
@@ -4462,7 +4462,7 @@ Eliminates repetitive if/coalesce patterns throughout the codebase.
 
 ## OptionBuilder \{#optionbuilder\}
 
-Defined in: core/src/options/builder.ts:49
+Defined in: [core/src/options/builder.ts:49](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/options/builder.ts#L49)
 
 Builder for constructing options from multiple sources with priority precedence.
 
@@ -4513,7 +4513,7 @@ new OptionBuilder<T>(): OptionBuilder<T>;
 addDefault<K>(value, key): this;
 ```
 
-Defined in: core/src/options/builder.ts:73
+Defined in: [core/src/options/builder.ts:73](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/options/builder.ts#L73)
 
 Adds a default value (lowest priority).
 Sets a value that can be overwritten by config or CLI options.
@@ -4557,7 +4557,7 @@ builder.addDefault(3000, "port");
 addFromCli<K>(value, key): this;
 ```
 
-Defined in: core/src/options/builder.ts:109
+Defined in: [core/src/options/builder.ts:109](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/options/builder.ts#L109)
 
 Adds a value from CLI options if provided (highest priority).
 Can override both default and config values for this key.
@@ -4601,7 +4601,7 @@ builder.addFromCli(cliOpts.port, "port");
 addFromConfig<K>(value, key): this;
 ```
 
-Defined in: core/src/options/builder.ts:91
+Defined in: [core/src/options/builder.ts:91](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/options/builder.ts#L91)
 
 Adds a value from config file if provided (medium priority).
 Can override default values if the config value exists.
@@ -4645,7 +4645,7 @@ builder.addFromConfig(config.port, "port");
 build(): Partial<T>;
 ```
 
-Defined in: core/src/options/builder.ts:190
+Defined in: [core/src/options/builder.ts:190](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/options/builder.ts#L190)
 
 Returns the built options object with all accumulated values.
 The object contains all keys that were set during the building process.
@@ -4668,7 +4668,7 @@ The constructed options object with type `Partial<T>` (may not have all properti
 get<K>(key): T[K] | undefined;
 ```
 
-Defined in: core/src/options/builder.ts:167
+Defined in: [core/src/options/builder.ts:167](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/options/builder.ts#L167)
 
 Gets the current value for a key without building.
 Useful for conditional logic during building.
@@ -4701,7 +4701,7 @@ The current value for the key, or `undefined` if not set
 transform<K>(key, fn): this;
 ```
 
-Defined in: core/src/options/builder.ts:126
+Defined in: [core/src/options/builder.ts:126](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/options/builder.ts#L126)
 
 Transforms a value using a function if the key exists.
 Useful for processing values after they've been set.
@@ -4747,7 +4747,7 @@ transformIf<K>(
    fn): this;
 ```
 
-Defined in: core/src/options/builder.ts:147
+Defined in: [core/src/options/builder.ts:147](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/options/builder.ts#L147)
 
 Conditionally applies a transformation if a predicate is true.
 Useful for applying different transformations based on other values.
@@ -4812,7 +4812,7 @@ function getPrinter(
 ): Promise<typeof IPrinter>;
 ```
 
-Defined in: core/src/printer.ts:65
+Defined in: [core/src/printer.ts:65](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/printer.ts#L65)
 
 Loads and initializes a printer module for GraphQL schema documentation.
 
@@ -4891,7 +4891,7 @@ if (queryType) {
 
 ## Renderer \{#renderer\}
 
-Defined in: core/src/renderer.ts:335
+Defined in: [core/src/renderer.ts:342](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/renderer.ts#L342)
 
 Core renderer class responsible for generating documentation files from GraphQL schema entities.
 Handles the conversion of schema types to markdown/MDX documentation with proper organization.
@@ -4924,7 +4924,7 @@ new Renderer(
    mdxExtension): Renderer;
 ```
 
-Defined in: core/src/renderer.ts:359
+Defined in: [core/src/renderer.ts:366](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/renderer.ts#L366)
 
 Creates a new Renderer instance.
 
@@ -4990,7 +4990,7 @@ Optional MDX file extension to use
 readonly baseURL: string;
 ```
 
-Defined in: core/src/renderer.ts:338
+Defined in: [core/src/renderer.ts:345](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/renderer.ts#L345)
 
 #### group \{#group\}
 
@@ -4998,7 +4998,7 @@ Defined in: core/src/renderer.ts:338
 readonly group: Maybe<Partial<Record<SchemaEntity, Record<string, Maybe<string>>>>>;
 ```
 
-Defined in: core/src/renderer.ts:336
+Defined in: [core/src/renderer.ts:343](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/renderer.ts#L343)
 
 #### mdxExtension \{#mdxextension\}
 
@@ -5006,7 +5006,7 @@ Defined in: core/src/renderer.ts:336
 readonly mdxExtension: string;
 ```
 
-Defined in: core/src/renderer.ts:341
+Defined in: [core/src/renderer.ts:348](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/renderer.ts#L348)
 
 #### options \{#options\}
 
@@ -5014,7 +5014,7 @@ Defined in: core/src/renderer.ts:341
 readonly options: Maybe<RendererDocOptions>;
 ```
 
-Defined in: core/src/renderer.ts:340
+Defined in: [core/src/renderer.ts:347](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/renderer.ts#L347)
 
 #### outputDir \{#outputdir\}
 
@@ -5022,7 +5022,7 @@ Defined in: core/src/renderer.ts:340
 readonly outputDir: string;
 ```
 
-Defined in: core/src/renderer.ts:337
+Defined in: [core/src/renderer.ts:344](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/renderer.ts#L344)
 
 #### prettify \{#prettify\}
 
@@ -5030,7 +5030,7 @@ Defined in: core/src/renderer.ts:337
 readonly prettify: boolean;
 ```
 
-Defined in: core/src/renderer.ts:339
+Defined in: [core/src/renderer.ts:346](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/renderer.ts#L346)
 
 ### Methods
 
@@ -5043,7 +5043,7 @@ generateCategoryMetafileType(
    rootTypeName): Promise<string>;
 ```
 
-Defined in: core/src/renderer.ts:462
+Defined in: [core/src/renderer.ts:469](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/renderer.ts#L469)
 
 Generates the directory path and metafiles for a specific schema entity type.
 Creates the appropriate directory structure based on configuration options.
@@ -5089,7 +5089,7 @@ generateIndexMetafile(
    options?): Promise<void>;
 ```
 
-Defined in: core/src/renderer.ts:407
+Defined in: [core/src/renderer.ts:414](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/renderer.ts#L414)
 
 Generates an index metafile for a category directory if MDX support is available.
 
@@ -5134,7 +5134,7 @@ await renderer.generateIndexMetafile("docs/types", "Types", {
 preCollectCategories(rootTypeNames): void;
 ```
 
-Defined in: core/src/renderer.ts:752
+Defined in: [core/src/renderer.ts:759](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/renderer.ts#L759)
 
 Pre-collects all category names that will be generated during rendering.
 This allows the position manager to assign consistent positions before
@@ -5170,7 +5170,7 @@ Array of root type names from the schema
 renderHomepage(homepageLocation): Promise<void>;
 ```
 
-Defined in: core/src/renderer.ts:802
+Defined in: [core/src/renderer.ts:809](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/renderer.ts#L809)
 
 Renders the homepage for the documentation from a template file.
 Replaces placeholders in the template with actual values.
@@ -5201,7 +5201,7 @@ Promise that resolves when the homepage is rendered
 renderRootTypes(rootTypeName, type): Promise<Maybe<Maybe<Category>[]>>;
 ```
 
-Defined in: core/src/renderer.ts:546
+Defined in: [core/src/renderer.ts:553](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/renderer.ts#L553)
 
 Renders all types within a root type category (e.g., all Query types).
 
@@ -5241,7 +5241,7 @@ renderTypeEntities(
    operationNamespaceParts?): Promise<Maybe<Category>>;
 ```
 
-Defined in: core/src/renderer.ts:613
+Defined in: [core/src/renderer.ts:620](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/renderer.ts#L620)
 
 Renders documentation for a specific type entity and saves it to a file.
 
@@ -5285,7 +5285,7 @@ The category information for the rendered entity or undefined
 
 ## CategoryMetafileOptions \{#categorymetafileoptions\}
 
-Defined in: core/src/renderer.ts:219
+Defined in: [core/src/renderer.ts:223](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/renderer.ts#L223)
 
 Configuration options for category metafiles in the documentation.
 These options control the appearance and behavior of category sections in the sidebar.
@@ -5311,7 +5311,7 @@ const options: CategoryMetafileOptions = {
 optional collapsed?: boolean;
 ```
 
-Defined in: core/src/renderer.ts:221
+Defined in: [core/src/renderer.ts:225](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/renderer.ts#L225)
 
 Whether the category should be initially collapsed
 
@@ -5321,7 +5321,7 @@ Whether the category should be initially collapsed
 optional collapsible?: boolean;
 ```
 
-Defined in: core/src/renderer.ts:220
+Defined in: [core/src/renderer.ts:224](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/renderer.ts#L224)
 
 Whether the category should be collapsible in the sidebar
 
@@ -5331,7 +5331,7 @@ Whether the category should be collapsible in the sidebar
 optional sidebarPosition?: number;
 ```
 
-Defined in: core/src/renderer.ts:222
+Defined in: [core/src/renderer.ts:226](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/renderer.ts#L226)
 
 Custom position in the sidebar (lower numbers appear first)
 
@@ -5341,7 +5341,7 @@ Custom position in the sidebar (lower numbers appear first)
 optional styleClass?: string;
 ```
 
-Defined in: core/src/renderer.ts:223
+Defined in: [core/src/renderer.ts:227](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/renderer.ts#L227)
 
 CSS class to apply to the category for styling
 
@@ -5353,7 +5353,7 @@ CSS class to apply to the category for styling
 const API_GROUPS: Required<ApiGroupOverrideType>;
 ```
 
-Defined in: core/src/renderer.ts:124
+Defined in: [core/src/renderer.ts:126](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/renderer.ts#L126)
 
 Default group names for API types and non-API types.
 This constant provides the base folder structure for organizing GraphQL schema entities.
@@ -5382,7 +5382,7 @@ const customGroups = { ...API_GROUPS, operations: "queries-and-mutations" };
 function getApiGroupFolder(type, groups?): string;
 ```
 
-Defined in: core/src/renderer.ts:145
+Defined in: [core/src/renderer.ts:149](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/renderer.ts#L149)
 
 Determines the appropriate folder for a GraphQL schema entity based on its type.
 
@@ -5432,7 +5432,7 @@ function getRenderer(
 ): Promise<Renderer>;
 ```
 
-Defined in: core/src/renderer.ts:1034
+Defined in: [core/src/renderer.ts:1041](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/renderer.ts#L1041)
 
 Factory function to create and initialize a Renderer instance.
 Creates the output directory and returns a configured renderer.
@@ -5509,7 +5509,7 @@ Provides utilities to compare GraphQL schemas and detect changes.
 
 ## CompareMethod \{#comparemethod\}
 
-Defined in: index.ts:32
+Defined in: [index.ts:32](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/diff/src/index.ts#L32)
 
 Comparison methods used to determine if a schema has changed.
 
@@ -5521,7 +5521,7 @@ Comparison methods used to determine if a schema has changed.
 DIFF: "SCHEMA-DIFF";
 ```
 
-Defined in: index.ts:34
+Defined in: [index.ts:34](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/diff/src/index.ts#L34)
 
 Compare schemas by diffing the content
 
@@ -5531,7 +5531,7 @@ Compare schemas by diffing the content
 FORCE: "FORCE";
 ```
 
-Defined in: index.ts:38
+Defined in: [index.ts:38](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/diff/src/index.ts#L38)
 
 Force regeneration regardless of changes
 
@@ -5541,7 +5541,7 @@ Force regeneration regardless of changes
 HASH: "SCHEMA-HASH";
 ```
 
-Defined in: index.ts:36
+Defined in: [index.ts:36](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/diff/src/index.ts#L36)
 
 Compare schemas by comparing hash values
 
@@ -5551,7 +5551,7 @@ Compare schemas by comparing hash values
 NONE: "NONE";
 ```
 
-Defined in: index.ts:40
+Defined in: [index.ts:40](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/diff/src/index.ts#L40)
 
 Skip comparison and assume no changes
 
@@ -5563,7 +5563,7 @@ Skip comparison and assume no changes
 const checkSchemaChanges: FunctionCheckSchemaChanges;
 ```
 
-Defined in: index.ts:80
+Defined in: [index.ts:80](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/diff/src/index.ts#L80)
 
 Checks if a schema has changed compared to a previous version.
 Uses either diff or hash-based comparison methods based on the method parameter.
@@ -5598,7 +5598,7 @@ A promise resolving to a boolean indicating whether the schema has changed
 const SCHEMA_HASH_FILE: ".schema";
 ```
 
-Defined in: index.ts:25
+Defined in: [index.ts:25](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/diff/src/index.ts#L25)
 
 File name for storing schema hash
 
@@ -5610,7 +5610,7 @@ File name for storing schema hash
 const SCHEMA_REF: "schema.graphql";
 ```
 
-Defined in: index.ts:27
+Defined in: [index.ts:27](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/diff/src/index.ts#L27)
 
 File name for storing schema reference
 
@@ -5622,7 +5622,7 @@ File name for storing schema reference
 function getDiff(schemaNew, schemaOldLocation): Promise<Change<any>[]>;
 ```
 
-Defined in: index.ts:61
+Defined in: [index.ts:61](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/diff/src/index.ts#L61)
 
 Compares a new schema against an existing schema file and returns the differences.
 
@@ -5654,7 +5654,7 @@ A promise resolving to an array of schema changes
 function getSchemaHash(schema): string;
 ```
 
-Defined in: index.ts:49
+Defined in: [index.ts:49](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/diff/src/index.ts#L49)
 
 Generates a SHA-256 hash for a GraphQL schema.
 
@@ -5684,7 +5684,7 @@ Docusaurus integration for running GraphQL-Markdown and wiring CLI commands.
 function default(_, options): Promise<Plugin>;
 ```
 
-Defined in: docusaurus/src/index.ts:28
+Defined in: [docusaurus/src/index.ts:28](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/docusaurus/src/index.ts#L28)
 
 Docusaurus plugin wrapper that wires GraphQL-Markdown into the build,
 optionally running the CLI during `docusaurus build` and registering
@@ -5720,7 +5720,7 @@ A configured Docusaurus plugin instance.
 function beforeGenerateIndexMetafileHook(event): Promise<void>;
 ```
 
-Defined in: docusaurus/src/mdx/category.ts:31
+Defined in: [docusaurus/src/mdx/category.ts:31](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/docusaurus/src/mdx/category.ts#L31)
 
 Hook that materializes a `_category_.yml` file before Docusaurus indexes
 a directory, ensuring generated bundles have labels, ordering, and
@@ -6036,7 +6036,7 @@ Individual formatters import what they need and override only what differs.
 function formatMDXAdmonition(admonition, _meta): MDXString;
 ```
 
-Defined in: defaults.ts:42
+Defined in: [defaults.ts:42](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/defaults.ts#L42)
 
 Formats an admonition as an HTML `<fieldset>` element with `gqlmd-mdx-admonition-*` CSS classes.
 
@@ -6068,7 +6068,7 @@ Formatted admonition string
 function formatMDXBadge(badge): MDXString;
 ```
 
-Defined in: defaults.ts:32
+Defined in: [defaults.ts:32](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/defaults.ts#L32)
 
 Formats a badge using an HTML `<mark>` element with a `gqlmd-mdx-badge` CSS class.
 
@@ -6094,7 +6094,7 @@ Formatted badge string
 function formatMDXBullet(text?): MDXString;
 ```
 
-Defined in: defaults.ts:54
+Defined in: [defaults.ts:54](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/defaults.ts#L54)
 
 Formats a bullet point separator using a `` with a `gqlmd-mdx-bullet` CSS class.
 
@@ -6120,7 +6120,7 @@ Formatted bullet string
 function formatMDXDetails(option): MDXString;
 ```
 
-Defined in: defaults.ts:64
+Defined in: [defaults.ts:64](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/defaults.ts#L64)
 
 Formats a collapsible block as an HTML `<details>` element with a `gqlmd-mdx-details` CSS class.
 The summary label is uppercase; the close label is rendered as ``.
@@ -6147,7 +6147,7 @@ Formatted details element string
 function formatMDXFrontmatter(_props, formatted): MDXString;
 ```
 
-Defined in: defaults.ts:77
+Defined in: [defaults.ts:77](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/defaults.ts#L77)
 
 Formats YAML front matter wrapped in `---` delimiters.
 
@@ -6179,7 +6179,7 @@ Formatted front matter block, or empty string if no lines provided
 function formatMDXLink(link): TypeLink;
 ```
 
-Defined in: defaults.ts:93
+Defined in: [defaults.ts:93](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/defaults.ts#L93)
 
 Formats a type link — returns the link unchanged (identity passthrough).
 
@@ -6205,7 +6205,7 @@ The unmodified `TypeLink` object
 function formatMDXNameEntity(name, parentType?): MDXString;
 ```
 
-Defined in: defaults.ts:103
+Defined in: [defaults.ts:103](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/defaults.ts#L103)
 
 Formats a named entity using `` and `<code>` elements with `gqlmd-mdx-entity-*` CSS classes.
 
@@ -6237,7 +6237,7 @@ Formatted entity reference string
 function formatMDXSpecifiedByLink(url): MDXString;
 ```
 
-Defined in: defaults.ts:119
+Defined in: [defaults.ts:119](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/defaults.ts#L119)
 
 Formats a "specified by" link as an HTML `` with a `gqlmd-mdx-specifiedby` CSS class
 containing an anchor that opens in a new tab.
@@ -6272,7 +6272,7 @@ Uses DocFX alert syntax for admonitions and injects the required
 const afterRenderTypeEntitiesHook: RenderTypeEntitiesHook;
 ```
 
-Defined in: docfx/index.ts:284
+Defined in: [docfx/index.ts:284](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/docfx/index.ts#L284)
 
 Builds DocFX `toc.yml` navigation files as each entity page is written.
 
@@ -6288,7 +6288,7 @@ are prepended as an "Overview" entry on first encounter.
 const BADGE_CLASS_MAP: Record<string, string>;
 ```
 
-Defined in: docfx/index.ts:55
+Defined in: [docfx/index.ts:55](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/docfx/index.ts#L55)
 
 Maps graphql-markdown badge classnames to Bootstrap 5 contextual badge classes.
 
@@ -6300,7 +6300,7 @@ Maps graphql-markdown badge classnames to Bootstrap 5 contextual badge classes.
 const mdxExtension: ".md";
 ```
 
-Defined in: docfx/index.ts:149
+Defined in: [docfx/index.ts:149](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/docfx/index.ts#L149)
 
 ---
 
@@ -6310,7 +6310,7 @@ Defined in: docfx/index.ts:149
 function createMDXFormatter(_meta?): Formatter;
 ```
 
-Defined in: docfx/index.ts:136
+Defined in: [docfx/index.ts:136](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/docfx/index.ts#L136)
 
 Creates a DocFX formatter.
 
@@ -6336,7 +6336,7 @@ A complete Formatter implementation for DocFX output
 function formatMDXAdmonition(admonition, _meta): MDXString;
 ```
 
-Defined in: docfx/index.ts:78
+Defined in: [docfx/index.ts:78](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/docfx/index.ts#L78)
 
 Formats an admonition using DocFX alert syntax (`> [!TYPE]`).
 
@@ -6368,7 +6368,7 @@ Formatted admonition string
 function formatMDXBadge(badge): MDXString;
 ```
 
-Defined in: docfx/index.ts:66
+Defined in: [docfx/index.ts:66](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/docfx/index.ts#L66)
 
 Formats a badge using Bootstrap 5 badge classes available in DocFX's modern template.
 
@@ -6394,7 +6394,7 @@ Formatted badge string
 function formatMDXFrontmatter(props, formatted): MDXString;
 ```
 
-Defined in: docfx/index.ts:94
+Defined in: [docfx/index.ts:94](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/docfx/index.ts#L94)
 
 Formats YAML front matter, injecting a `uid` field required by DocFX
 for cross-reference resolution between pages.
@@ -6427,7 +6427,7 @@ Formatted front matter block, or empty string if no lines provided
 function formatMDXLink(link): TypeLink;
 ```
 
-Defined in: docfx/index.ts:120
+Defined in: [docfx/index.ts:120](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/docfx/index.ts#L120)
 
 Returns the link unchanged — DocFX resolves `.md` links natively.
 
@@ -6460,7 +6460,7 @@ using Badge, Bullet, SpecifiedBy components and native admonition syntax.
 const mdxDeclaration: MDXString;
 ```
 
-Defined in: docusaurus/index.ts:36
+Defined in: [docusaurus/index.ts:36](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/docusaurus/index.ts#L36)
 
 MDX component definitions prepended to every generated file.
 
@@ -6472,7 +6472,7 @@ MDX component definitions prepended to every generated file.
 function createMDXFormatter(meta?): Formatter;
 ```
 
-Defined in: docusaurus/index.ts:162
+Defined in: [docusaurus/index.ts:162](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/docusaurus/index.ts#L162)
 
 Creates a Docusaurus formatter.
 Captures `meta` in closure so `formatMDXAdmonition` can detect the Docusaurus version.
@@ -6499,7 +6499,7 @@ A complete Formatter implementation for Docusaurus MDX output
 function formatMDXAdmonition(admonition, meta): MDXString;
 ```
 
-Defined in: docusaurus/index.ts:65
+Defined in: [docusaurus/index.ts:65](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/docusaurus/index.ts#L65)
 
 Formats an admonition using Docusaurus native `:::type` callout syntax.
 Detects Docusaurus v2 (via `meta`) and uses `:::caution` instead of `:::warning`.
@@ -6532,7 +6532,7 @@ Formatted admonition string
 function formatMDXBadge(badge): MDXString;
 ```
 
-Defined in: docusaurus/index.ts:52
+Defined in: [docusaurus/index.ts:52](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/docusaurus/index.ts#L52)
 
 Formats a badge using the inline `<Badge>` component defined in `mdxDeclaration`.
 Appends a CSS class derived from `classname` (e.g. `badge--deprecated`).
@@ -6559,7 +6559,7 @@ Formatted Badge component string
 function formatMDXBullet(text?): MDXString;
 ```
 
-Defined in: docusaurus/index.ts:82
+Defined in: [docusaurus/index.ts:82](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/docusaurus/index.ts#L82)
 
 Formats a bullet point using the inline `<Bullet/>` component defined in `mdxDeclaration`.
 
@@ -6585,7 +6585,7 @@ Formatted Bullet component string
 function formatMDXDetails(option): MDXString;
 ```
 
-Defined in: docusaurus/index.ts:93
+Defined in: [docusaurus/index.ts:93](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/docusaurus/index.ts#L93)
 
 Formats a collapsible block as an HTML `<details>` element with
 toggle labels that swap via the `hidden` attribute.
@@ -6613,7 +6613,7 @@ Formatted details element string
 function formatMDXFrontmatter(_props, formatted): MDXString;
 ```
 
-Defined in: docusaurus/index.ts:145
+Defined in: [docusaurus/index.ts:145](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/docusaurus/index.ts#L145)
 
 Formats YAML front matter wrapped in `---` delimiters.
 
@@ -6645,7 +6645,7 @@ Formatted front matter block, or empty string if no lines provided
 function formatMDXLink(link): TypeLink;
 ```
 
-Defined in: docusaurus/index.ts:132
+Defined in: [docusaurus/index.ts:132](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/docusaurus/index.ts#L132)
 
 Appends `.mdx` to internal link URLs.
 
@@ -6671,7 +6671,7 @@ Link with `.mdx` extension appended to the URL
 function formatMDXNameEntity(name, parentType?): MDXString;
 ```
 
-Defined in: docusaurus/index.ts:119
+Defined in: [docusaurus/index.ts:119](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/docusaurus/index.ts#L119)
 
 Formats a named entity as an inline `<code>` element with the parent type
 in normal weight and the entity name in bold.
@@ -6705,7 +6705,7 @@ Formatted JSX code element string
 function formatMDXSpecifiedByLink(url): MDXString;
 ```
 
-Defined in: docusaurus/index.ts:107
+Defined in: [docusaurus/index.ts:107](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/docusaurus/index.ts#L107)
 
 Formats a "specified by" link using the inline `<SpecifiedBy>` component.
 
@@ -6738,7 +6738,7 @@ Callout component for admonitions and Material UI Chip for badges.
 const mdxDeclaration: MDXString;
 ```
 
-Defined in: fumadocs/index.ts:33
+Defined in: [fumadocs/index.ts:33](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/fumadocs/index.ts#L33)
 
 MDX import statement prepended to every generated file to register Fumadocs and MUI components.
 
@@ -6750,7 +6750,7 @@ MDX import statement prepended to every generated file to register Fumadocs and 
 const mdxExtension: ".mdx";
 ```
 
-Defined in: fumadocs/index.ts:30
+Defined in: [fumadocs/index.ts:30](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/fumadocs/index.ts#L30)
 
 File extension used for generated pages.
 
@@ -6762,7 +6762,7 @@ File extension used for generated pages.
 function createMDXFormatter(_meta?): Formatter;
 ```
 
-Defined in: fumadocs/index.ts:89
+Defined in: [fumadocs/index.ts:89](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/fumadocs/index.ts#L89)
 
 Creates a Fumadocs formatter.
 
@@ -6788,7 +6788,7 @@ A complete Formatter implementation for Fumadocs MDX output
 function formatMDXAdmonition(admonition, _meta): MDXString;
 ```
 
-Defined in: fumadocs/index.ts:56
+Defined in: [fumadocs/index.ts:56](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/fumadocs/index.ts#L56)
 
 Formats an admonition using the Fumadocs `<Callout>` component.
 Maps `warning` type to `warn`; all other types use `info`.
@@ -6821,7 +6821,7 @@ Formatted Fumadocs Callout component string
 function formatMDXBadge(badge): MDXString;
 ```
 
-Defined in: fumadocs/index.ts:44
+Defined in: [fumadocs/index.ts:44](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/fumadocs/index.ts#L44)
 
 Formats a badge using the Material UI `<Chip>` component.
 Maps `DEPRECATED` classname to `warning` color; all others use `info`.
@@ -6848,7 +6848,7 @@ Formatted MUI Chip component string
 function formatMDXLink(link): TypeLink;
 ```
 
-Defined in: fumadocs/index.ts:69
+Defined in: [fumadocs/index.ts:69](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/fumadocs/index.ts#L69)
 
 Appends `.mdx` to internal link URLs.
 
@@ -6881,7 +6881,7 @@ Internal links are converted to .html paths.
 const __default: object;
 ```
 
-Defined in: honkit/index.ts:30
+Defined in: [honkit/index.ts:30](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/honkit/index.ts#L30)
 
 ### Type Declaration
 
@@ -6915,7 +6915,7 @@ Formatted bullet string
 const mdxExtension: ".md";
 ```
 
-Defined in: honkit/index.ts:33
+Defined in: [honkit/index.ts:33](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/honkit/index.ts#L33)
 
 File extension used for generated pages — HonKit renders plain Markdown to HTML.
 
@@ -6927,7 +6927,7 @@ File extension used for generated pages — HonKit renders plain Markdown to HTM
 function createMDXFormatter(_meta?): Formatter;
 ```
 
-Defined in: honkit/index.ts:171
+Defined in: [honkit/index.ts:171](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/honkit/index.ts#L171)
 
 Creates a HonKit formatter.
 
@@ -6953,7 +6953,7 @@ A complete Formatter implementation for HonKit output
 function formatMDXAdmonition(admonition, _meta): MDXString;
 ```
 
-Defined in: honkit/index.ts:62
+Defined in: [honkit/index.ts:62](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/honkit/index.ts#L62)
 
 Formats an admonition as a Markdown blockquote with a bold prefix label.
 Maps `warning` type to `WARNING`; all other types use `INFO`.
@@ -6986,7 +6986,7 @@ Formatted blockquote string
 function formatMDXBadge(badge): MDXString;
 ```
 
-Defined in: honkit/index.ts:48
+Defined in: [honkit/index.ts:48](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/honkit/index.ts#L48)
 
 Formats a badge as an inline HTML `` with a shared default style.
 Users can customize badge colors by providing their own `formatMDXBadge` implementation.
@@ -7013,7 +7013,7 @@ Formatted inline HTML span string
 function formatMDXDetails(option): MDXString;
 ```
 
-Defined in: honkit/index.ts:75
+Defined in: [honkit/index.ts:75](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/honkit/index.ts#L75)
 
 Formats a collapsible block as an HTML `<details>` element.
 
@@ -7039,7 +7039,7 @@ Formatted details element string
 function formatMDXFrontmatter(props, formatted): MDXString;
 ```
 
-Defined in: honkit/index.ts:91
+Defined in: [honkit/index.ts:91](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/honkit/index.ts#L91)
 
 Formats YAML front matter and appends an H1 heading derived from the `title` prop.
 Merges `props` entries with `formatted` lines (formatted lines take precedence).
@@ -7074,7 +7074,7 @@ Formatted front matter block with optional H1, or empty string
 function formatMDXLink(link): TypeLink;
 ```
 
-Defined in: honkit/index.ts:120
+Defined in: [honkit/index.ts:120](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/honkit/index.ts#L120)
 
 Converts internal link URLs to `.html` paths for HonKit static output.
 Absolute paths without an `.html` extension are suffixed with `.html`.
@@ -7102,7 +7102,7 @@ Link with `.html` extension applied to absolute internal paths
 function formatMDXNameEntity(name, parentType?): MDXString;
 ```
 
-Defined in: honkit/index.ts:149
+Defined in: [honkit/index.ts:149](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/honkit/index.ts#L149)
 
 Formats a named entity as plain text (no markup).
 HonKit renders plain Markdown — no JSX or code spans needed.
@@ -7135,7 +7135,7 @@ Formatted entity reference string
 function formatMDXSpecifiedByLink(url): MDXString;
 ```
 
-Defined in: honkit/index.ts:162
+Defined in: [honkit/index.ts:162](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/honkit/index.ts#L162)
 
 Formats a "specified by" link as plain text with the raw URL.
 HonKit does not render custom JSX components.
@@ -7170,7 +7170,7 @@ strips file extensions from internal links to match Hugo's URL routing.
 const beforeGenerateIndexMetafileHook: GenerateIndexMetafileHook;
 ```
 
-Defined in: hugo/index.ts:179
+Defined in: [hugo/index.ts:179](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/hugo/index.ts#L179)
 
 Lifecycle hook that generates a Hugo-compatible `_index.md` section index file.
 The file is (re)created on every run with YAML frontmatter:
@@ -7193,7 +7193,7 @@ Hook event whose `data` contains `dirPath` (target directory) and `category` (se
 const mdxExtension: ".md";
 ```
 
-Defined in: hugo/index.ts:169
+Defined in: [hugo/index.ts:169](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/hugo/index.ts#L169)
 
 File extension used for generated pages — Hugo uses standard Markdown (.md) files.
 
@@ -7205,7 +7205,7 @@ File extension used for generated pages — Hugo uses standard Markdown (.md) fi
 function createMDXFormatter(_meta?): Formatter;
 ```
 
-Defined in: hugo/index.ts:155
+Defined in: [hugo/index.ts:155](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/hugo/index.ts#L155)
 
 Creates a Hugo formatter.
 
@@ -7231,7 +7231,7 @@ A complete Formatter implementation for Hugo output
 function formatMDXAdmonition(text, _meta): MDXString;
 ```
 
-Defined in: hugo/index.ts:77
+Defined in: [hugo/index.ts:77](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/hugo/index.ts#L77)
 
 Formats an admonition using Hugo GitHub-style alert syntax (`> [!TYPE]`).
 Requires Hugo 0.132 or later.
@@ -7264,7 +7264,7 @@ Formatted blockquote alert string
 function formatMDXBadge(badge): MDXString;
 ```
 
-Defined in: hugo/index.ts:64
+Defined in: [hugo/index.ts:64](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/hugo/index.ts#L64)
 
 Formats a badge as a styled span element.
 
@@ -7290,7 +7290,7 @@ HTML `` string with the `gqlmd-badge` class
 function formatMDXDetails(dataOpen): MDXString;
 ```
 
-Defined in: hugo/index.ts:92
+Defined in: [hugo/index.ts:92](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/hugo/index.ts#L92)
 
 Formats a collapsible block as an HTML `<details>` element.
 
@@ -7316,7 +7316,7 @@ HTML `<details>`/`<summary>` block string
 function formatMDXFrontmatter(props, formatted): MDXString;
 ```
 
-Defined in: hugo/index.ts:108
+Defined in: [hugo/index.ts:108](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/hugo/index.ts#L108)
 
 Formats YAML front matter wrapped in `---` delimiters, with page title rendered as H1 heading.
 Falls back to serializing `props` via [formatFrontMatterObject](../utils/frontmatter.md#formatfrontmatterobject) when `formatted` is not provided.
@@ -7351,7 +7351,7 @@ Formatted front matter block with H1 title heading, or empty string if no data
 function formatMDXLink(text): TypeLink;
 ```
 
-Defined in: hugo/index.ts:137
+Defined in: [hugo/index.ts:137](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/hugo/index.ts#L137)
 
 Strips the `.md` extension from internal links.
 Hugo serves pages at extensionless URLs — links with `.md` would 404 in the built site.
@@ -7387,7 +7387,7 @@ Exports `afterRenderFilesHook` to build `SUMMARY.md` after all pages are written
 const afterRenderFilesHook: RenderFilesHook;
 ```
 
-Defined in: mdbook/index.ts:222
+Defined in: [mdbook/index.ts:222](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/mdbook/index.ts#L222)
 
 Builds `src/SUMMARY.md` after all pages have been written.
 
@@ -7403,7 +7403,7 @@ by top-level section (Operations / Types) and category, then writes the file.
 const afterRenderTypeEntitiesHook: RenderTypeEntitiesHook;
 ```
 
-Defined in: mdbook/index.ts:162
+Defined in: [mdbook/index.ts:162](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/mdbook/index.ts#L162)
 
 Rewrites absolute generated doc links to page-relative `.md` paths after each page is rendered.
 
@@ -7422,7 +7422,7 @@ work correctly regardless of where the book is hosted.
 const mdxExtension: ".md" = ".md";
 ```
 
-Defined in: mdbook/index.ts:104
+Defined in: [mdbook/index.ts:104](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/mdbook/index.ts#L104)
 
 mdBook expects `.md` files; override the default `.mdx` extension.
 
@@ -7434,7 +7434,7 @@ mdBook expects `.md` files; override the default `.mdx` extension.
 function createMDXFormatter(_meta?): Formatter;
 ```
 
-Defined in: mdbook/index.ts:189
+Defined in: [mdbook/index.ts:189](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/mdbook/index.ts#L189)
 
 Creates an mdBook formatter.
 
@@ -7460,7 +7460,7 @@ A complete Formatter implementation for mdBook output
 function formatMDXAdmonition(admonition, _meta): MDXString;
 ```
 
-Defined in: mdbook/index.ts:62
+Defined in: [mdbook/index.ts:62](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/mdbook/index.ts#L62)
 
 Formats an admonition using mdBook's native admonition syntax (`> [!TYPE]`).
 Uses `type` for the admonition tag and `title` as an optional override label.
@@ -7493,7 +7493,7 @@ Formatted admonition string
 function formatMDXBadge(badge): MDXString;
 ```
 
-Defined in: mdbook/index.ts:51
+Defined in: [mdbook/index.ts:51](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/mdbook/index.ts#L51)
 
 Formats a badge as Markdown bold text — mdBook has no badge component.
 
@@ -7519,7 +7519,7 @@ Formatted bold text string
 function formatMDXDetails(option): MDXString;
 ```
 
-Defined in: mdbook/index.ts:83
+Defined in: [mdbook/index.ts:83](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/mdbook/index.ts#L83)
 
 Renders a deprecated section as a bold inline label.
 
@@ -7552,7 +7552,7 @@ Bold label + split marker
 function formatMDXFrontmatter(_props, formatted): MDXString;
 ```
 
-Defined in: mdbook/index.ts:95
+Defined in: [mdbook/index.ts:95](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/mdbook/index.ts#L95)
 
 Replaces front matter with an H1 title heading.
 mdBook renders `---` YAML blocks as literal content, so front matter is
@@ -7582,7 +7582,7 @@ suppressed entirely. The page title is emitted as `# Title` instead.
 function formatMDXLink(link): TypeLink;
 ```
 
-Defined in: mdbook/index.ts:111
+Defined in: [mdbook/index.ts:111](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/mdbook/index.ts#L111)
 
 Returns the link unchanged — mdBook resolves `.md` links natively.
 
@@ -7615,7 +7615,7 @@ and visible page headings.
 const __default: object;
 ```
 
-Defined in: mkdocs/index.ts:34
+Defined in: [mkdocs/index.ts:34](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/mkdocs/index.ts#L34)
 
 ### Type Declaration
 
@@ -7671,7 +7671,7 @@ The unmodified `TypeLink` object
 const afterRenderTypeEntitiesHook: RenderTypeEntitiesHook;
 ```
 
-Defined in: mkdocs/index.ts:154
+Defined in: [mkdocs/index.ts:154](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/mkdocs/index.ts#L154)
 
 Lifecycle hook that rewrites generated absolute GraphQL-Markdown links
 into page-relative `.md` links compatible with MkDocs validation.
@@ -7690,7 +7690,7 @@ Hook payload containing the current file path and renderer output context
 const mdxExtension: ".md";
 ```
 
-Defined in: mkdocs/index.ts:147
+Defined in: [mkdocs/index.ts:147](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/mkdocs/index.ts#L147)
 
 File extension used for generated pages — MkDocs uses standard Markdown (.md) files.
 
@@ -7702,7 +7702,7 @@ File extension used for generated pages — MkDocs uses standard Markdown (.md) 
 function createMDXFormatter(_meta?): Formatter;
 ```
 
-Defined in: mkdocs/index.ts:183
+Defined in: [mkdocs/index.ts:183](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/mkdocs/index.ts#L183)
 
 Creates an MkDocs Material formatter.
 
@@ -7728,7 +7728,7 @@ A complete Formatter implementation for MkDocs Material output
 function formatMDXAdmonition(admonition, _meta): MDXString;
 ```
 
-Defined in: mkdocs/index.ts:88
+Defined in: [mkdocs/index.ts:88](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/mkdocs/index.ts#L88)
 
 Formats an admonition using MkDocs Material `!!!` block syntax.
 Content is indented by 4 spaces as required by the spec.
@@ -7761,7 +7761,7 @@ Formatted admonition string
 function formatMDXBadge(badge): MDXString;
 ```
 
-Defined in: mkdocs/index.ts:77
+Defined in: [mkdocs/index.ts:77](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/mkdocs/index.ts#L77)
 
 Formats a badge as an inline HTML mark element.
 
@@ -7787,7 +7787,7 @@ Formatted badge string
 function formatMDXDetails(option): MDXString;
 ```
 
-Defined in: mkdocs/index.ts:102
+Defined in: [mkdocs/index.ts:102](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/mkdocs/index.ts#L102)
 
 Formats a collapsible block as an HTML `<details>` element.
 
@@ -7813,7 +7813,7 @@ Formatted collapsible string
 function formatMDXFrontmatter(_props, formatted): MDXString;
 ```
 
-Defined in: mkdocs/index.ts:115
+Defined in: [mkdocs/index.ts:115](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/mkdocs/index.ts#L115)
 
 Formats page title as a visible H1 heading.
 
@@ -7845,7 +7845,7 @@ Visible heading string, or empty string if no title is available
 function formatMDXNameEntity(name, parentType?): MDXString;
 ```
 
-Defined in: mkdocs/index.ts:129
+Defined in: [mkdocs/index.ts:129](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/mkdocs/index.ts#L129)
 
 Formats a named entity as a backtick code span.
 
@@ -7877,7 +7877,7 @@ Formatted entity reference string
 function formatMDXSpecifiedByLink(url): MDXString;
 ```
 
-Defined in: mkdocs/index.ts:142
+Defined in: [mkdocs/index.ts:142](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/mkdocs/index.ts#L142)
 
 Formats a "specified by" link as a standard Markdown link.
 
@@ -7911,7 +7911,7 @@ index files for each category directory.
 const mdxDeclaration: MDXString;
 ```
 
-Defined in: starlight/index.ts:42
+Defined in: [starlight/index.ts:42](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/starlight/index.ts#L42)
 
 MDX import statement prepended to every generated file to register Starlight components.
 
@@ -7923,7 +7923,7 @@ MDX import statement prepended to every generated file to register Starlight com
 const mdxExtension: ".mdx";
 ```
 
-Defined in: starlight/index.ts:39
+Defined in: [starlight/index.ts:39](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/starlight/index.ts#L39)
 
 File extension used for generated pages.
 
@@ -7935,7 +7935,7 @@ File extension used for generated pages.
 function afterRenderTypeEntitiesHook(event): Promise<void>;
 ```
 
-Defined in: starlight/index.ts:117
+Defined in: [starlight/index.ts:117](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/starlight/index.ts#L117)
 
 Lifecycle hook that appends a link entry to the category `index.md`
 after each type entity page is rendered.
@@ -7973,7 +7973,7 @@ Hook payload containing the entity name and its output file path
 function beforeGenerateIndexMetafileHook(event): Promise<void>;
 ```
 
-Defined in: starlight/index.ts:97
+Defined in: [starlight/index.ts:97](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/starlight/index.ts#L97)
 
 Lifecycle hook that creates an `index.md` file for a category directory
 before Starlight indexes it. Skips creation if the file already exists.
@@ -8011,7 +8011,7 @@ Hook payload containing the target directory and category name
 function createMDXFormatter(_meta?): Formatter;
 ```
 
-Defined in: starlight/index.ts:134
+Defined in: [starlight/index.ts:134](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/starlight/index.ts#L134)
 
 Creates an Astro Starlight formatter.
 
@@ -8037,7 +8037,7 @@ A complete Formatter implementation for Starlight MDX output
 function formatMDXAdmonition(admonition, _meta): MDXString;
 ```
 
-Defined in: starlight/index.ts:64
+Defined in: [starlight/index.ts:64](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/starlight/index.ts#L64)
 
 Formats an admonition using the Starlight `<Aside>` component.
 Maps `warning` type to `caution`; all other types use `note`.
@@ -8070,7 +8070,7 @@ Formatted Starlight Aside component string
 function formatMDXBadge(badge): MDXString;
 ```
 
-Defined in: starlight/index.ts:52
+Defined in: [starlight/index.ts:52](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/starlight/index.ts#L52)
 
 Formats a badge using the Starlight `<Badge>` component.
 Maps `DEPRECATED` classname to the `caution` variant; all others use `default`.
@@ -8097,7 +8097,7 @@ Formatted Starlight Badge component string
 function formatMDXLink(link): TypeLink;
 ```
 
-Defined in: starlight/index.ts:78
+Defined in: [starlight/index.ts:78](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/starlight/index.ts#L78)
 
 Returns the link unchanged — Starlight routes `page.mdx` to `page/` so
 links must not include the `.mdx` extension.
@@ -8131,7 +8131,7 @@ and Material UI Chip components for badges.
 const mdxDeclaration: MDXString;
 ```
 
-Defined in: vocs/index.ts:28
+Defined in: [vocs/index.ts:28](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/vocs/index.ts#L28)
 
 MDX import statement and inline component definitions prepended to every generated file.
 
@@ -8143,7 +8143,7 @@ MDX import statement and inline component definitions prepended to every generat
 const mdxExtension: ".mdx";
 ```
 
-Defined in: vocs/index.ts:35
+Defined in: [vocs/index.ts:35](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/vocs/index.ts#L35)
 
 File extension used for generated pages.
 
@@ -8155,7 +8155,7 @@ File extension used for generated pages.
 function createMDXFormatter(_meta?): Formatter;
 ```
 
-Defined in: vocs/index.ts:111
+Defined in: [vocs/index.ts:111](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/vocs/index.ts#L111)
 
 Creates a Vocs formatter.
 
@@ -8181,7 +8181,7 @@ A complete Formatter implementation for Vocs MDX output
 function formatMDXAdmonition(admonition, _meta): MDXString;
 ```
 
-Defined in: vocs/index.ts:55
+Defined in: [vocs/index.ts:55](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/vocs/index.ts#L55)
 
 Formats an admonition using Vocs native callout syntax (`:::type[title]`).
 Maps `warning` type to `warning`; all other types use `info`.
@@ -8214,7 +8214,7 @@ Formatted Vocs callout string
 function formatMDXBadge(badge): MDXString;
 ```
 
-Defined in: vocs/index.ts:43
+Defined in: [vocs/index.ts:43](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/vocs/index.ts#L43)
 
 Formats a badge using the Material UI `<Chip>` component.
 Maps `DEPRECATED` classname to `warning` color; all others use `info`.
@@ -8241,7 +8241,7 @@ Formatted MUI Chip component string
 function formatMDXBullet(text?): MDXString;
 ```
 
-Defined in: vocs/index.ts:68
+Defined in: [vocs/index.ts:68](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/vocs/index.ts#L68)
 
 Formats a bullet point using the inline `<Bullet/>` component defined in `mdxDeclaration`.
 
@@ -8267,7 +8267,7 @@ Formatted Bullet component string
 function formatMDXLink(link): TypeLink;
 ```
 
-Defined in: vocs/index.ts:77
+Defined in: [vocs/index.ts:77](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/vocs/index.ts#L77)
 
 Appends `.mdx` to internal link URLs.
 
@@ -8293,7 +8293,7 @@ Link with `.mdx` extension appended to the URL
 function formatMDXNameEntity(name, parentType?): MDXString;
 ```
 
-Defined in: vocs/index.ts:90
+Defined in: [vocs/index.ts:90](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/vocs/index.ts#L90)
 
 Formats a named entity as a JSX span with styled code elements.
 
@@ -8333,7 +8333,7 @@ Library supporting `customDirective` for directive based customization.
 const WILDCARD_DIRECTIVE: "*";
 ```
 
-Defined in: packages/graphql/src/directive.ts:29
+Defined in: [packages/graphql/src/directive.ts:29](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/graphql/src/directive.ts#L29)
 
 Wildcard `*` character for matching any directive name.
 
@@ -8350,7 +8350,7 @@ function getConstDirectiveMap(
 ): Maybe<CustomDirectiveMap>;
 ```
 
-Defined in: packages/graphql/src/directive.ts:249
+Defined in: [packages/graphql/src/directive.ts:249](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/graphql/src/directive.ts#L249)
 
 Returns a map of custom directives for a schema entity.
 
@@ -8432,7 +8432,7 @@ function getCustomDirectiveOptions(
 ): Maybe<Partial<Record<CustomDirectiveResolver, CustomDirectiveFunction>>>;
 ```
 
-Defined in: packages/graphql/src/directive.ts:77
+Defined in: [packages/graphql/src/directive.ts:77](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/graphql/src/directive.ts#L77)
 
 Returns a record set of custom handlers from a directive by name.
 
@@ -8485,7 +8485,7 @@ function getCustomDirectives(
 ): Maybe<CustomDirectiveMap>;
 ```
 
-Defined in: packages/graphql/src/directive.ts:151
+Defined in: [packages/graphql/src/directive.ts:151](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/graphql/src/directive.ts#L151)
 
 Returns a custom directives map with custom handlers from `customDirective`.
 
@@ -8569,7 +8569,7 @@ function isCustomDirective(
 ): boolean;
 ```
 
-Defined in: packages/graphql/src/directive.ts:40
+Defined in: [packages/graphql/src/directive.ts:40](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/graphql/src/directive.ts#L40)
 
 Checks if a directive name is referenced in `customDirective` option.
 
@@ -8605,7 +8605,7 @@ Internal library of helpers for formatting GraphQL values.
 function getFormattedDefaultValue<T>(entity): Maybe<string | T>;
 ```
 
-Defined in: packages/graphql/src/formatter.ts:130
+Defined in: [packages/graphql/src/formatter.ts:130](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/graphql/src/formatter.ts#L130)
 
 Returns a printable formatted value for a GraphQL type.
 This is the generic function.
@@ -8646,7 +8646,7 @@ Library supporting `groupByDirective` for grouping GraphQL schema entities.
 function getGroupName<T>(type, groupByDirective): Maybe<string>;
 ```
 
-Defined in: packages/graphql/src/group.ts:72
+Defined in: [packages/graphql/src/group.ts:72](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/graphql/src/group.ts#L72)
 
 Gets the group name for a schema type based on the directive information.
 
@@ -8723,7 +8723,7 @@ function getGroups(
 ): Maybe<Partial<Record<SchemaEntity, Record<string, Maybe<string>>>>>;
 ```
 
-Defined in: packages/graphql/src/group.ts:173
+Defined in: [packages/graphql/src/group.ts:173](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/graphql/src/group.ts#L173)
 
 Parses a GraphQL schema to build a map of entities with matching `groupByDirective` option.
 
@@ -8813,7 +8813,7 @@ Custom GraphQL type guards and property guards.
 function executableDirectiveLocation(directive): boolean;
 ```
 
-Defined in: packages/graphql/src/guard.ts:104
+Defined in: [packages/graphql/src/guard.ts:104](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/graphql/src/guard.ts#L104)
 
 Checks if a directive is executable (related to operations).
 
@@ -8837,7 +8837,7 @@ a GraphQL directive.
 function instanceOf<T>(obj, type): obj is () => T;
 ```
 
-Defined in: packages/graphql/src/guard.ts:58
+Defined in: [packages/graphql/src/guard.ts:58](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/graphql/src/guard.ts#L58)
 
 Checks if a GraphQL named type is of generic type `T`.
 
@@ -8875,7 +8875,7 @@ the GraphQL type `T`.
 function isApiType(type): boolean;
 ```
 
-Defined in: packages/graphql/src/guard.ts:140
+Defined in: [packages/graphql/src/guard.ts:140](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/graphql/src/guard.ts#L140)
 
 Checks if a type belongs to API (operation related).
 
@@ -8899,7 +8899,7 @@ a GraphQL type.
 function isDeprecated<T>(obj): obj is DeprecatedType<T>;
 ```
 
-Defined in: packages/graphql/src/guard.ts:79
+Defined in: [packages/graphql/src/guard.ts:79](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/graphql/src/guard.ts#L79)
 
 Checks if a GraphQL named type is deprecated.
 
@@ -8933,7 +8933,7 @@ function isGraphQLFieldType(
 ): type is GraphQLField<unknown, unknown, unknown>;
 ```
 
-Defined in: packages/graphql/src/guard.ts:39
+Defined in: [packages/graphql/src/guard.ts:39](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/graphql/src/guard.ts#L39)
 
 Checks if a GraphQL named type is of type `GraphQLField`.
 
@@ -8957,7 +8957,7 @@ a GraphQL type.
 function isOperation(type): type is GraphQLOperationType;
 ```
 
-Defined in: packages/graphql/src/guard.ts:94
+Defined in: [packages/graphql/src/guard.ts:94](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/graphql/src/guard.ts#L94)
 
 Checks if a GraphQL type a GraphQL operation (query, mutation, subscription).
 
@@ -8981,7 +8981,7 @@ a GraphQL type.
 function isSystemType(type): boolean;
 ```
 
-Defined in: packages/graphql/src/guard.ts:153
+Defined in: [packages/graphql/src/guard.ts:153](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/graphql/src/guard.ts#L153)
 
 Checks if a type belongs to schema (schema type definition excluding operations related types).
 
@@ -9005,7 +9005,7 @@ a GraphQL type.
 function typeSystemDirectiveLocation(directive): boolean;
 ```
 
-Defined in: packages/graphql/src/guard.ts:127
+Defined in: [packages/graphql/src/guard.ts:127](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/graphql/src/guard.ts#L127)
 
 Checks if a directive is system (related to schema definition).
 
@@ -9030,7 +9030,7 @@ The entry point method is [getSchemaMap](#getschemamap).
 
 ## IntrospectionError \{#introspectionerror\}
 
-Defined in: packages/graphql/src/introspection.ts:51
+Defined in: [packages/graphql/src/introspection.ts:51](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/graphql/src/introspection.ts#L51)
 
 ### Example
 
@@ -9108,7 +9108,7 @@ function _getFields<T, V>(
 ): Record<string, unknown> | V;
 ```
 
-Defined in: packages/graphql/src/introspection.ts:310
+Defined in: [packages/graphql/src/introspection.ts:310](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/graphql/src/introspection.ts#L310)
 
 **`Internal`**
 
@@ -9160,7 +9160,7 @@ a map of fields as k/v records, or `fallback` value if no fields available.
 function getDirective(entity, directives): GraphQLDirective[];
 ```
 
-Defined in: packages/graphql/src/introspection.ts:221
+Defined in: [packages/graphql/src/introspection.ts:221](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/graphql/src/introspection.ts#L221)
 
 Returns a schema entity's list of directives matching a defined set.
 
@@ -9192,7 +9192,7 @@ a list of GraphQL directives matching the set, else `false`.
 function getDirectiveLocationForASTPath(appliedTo): DirectiveLocation;
 ```
 
-Defined in: packages/graphql/src/introspection.ts:120
+Defined in: [packages/graphql/src/introspection.ts:120](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/graphql/src/introspection.ts#L120)
 
 ### Parameters
 
@@ -9212,7 +9212,7 @@ Defined in: packages/graphql/src/introspection.ts:120
 function getFields(type): unknown[];
 ```
 
-Defined in: packages/graphql/src/introspection.ts:574
+Defined in: [packages/graphql/src/introspection.ts:574](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/graphql/src/introspection.ts#L574)
 
 Returns fields map for a GraphQL schema type.
 
@@ -9243,7 +9243,7 @@ function getOperation(
 ): Record<string, GraphQLOperationType>;
 ```
 
-Defined in: packages/graphql/src/introspection.ts:537
+Defined in: [packages/graphql/src/introspection.ts:537](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/graphql/src/introspection.ts#L537)
 
 **`Internal`**
 
@@ -9279,7 +9279,7 @@ a map of fields as k/v records.
 function getSchemaMap(schema): SchemaMap;
 ```
 
-Defined in: packages/graphql/src/introspection.ts:652
+Defined in: [packages/graphql/src/introspection.ts:652](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/graphql/src/introspection.ts#L652)
 
 Returns an introspection map of the GraphQL schema.
 This is the entry point for GraphQL-Markdown schema parsing features.
@@ -9368,7 +9368,7 @@ function getTypeDirectiveArgValue(
 ): Maybe<string | Record<string, unknown>>;
 ```
 
-Defined in: packages/graphql/src/introspection.ts:282
+Defined in: [packages/graphql/src/introspection.ts:282](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/graphql/src/introspection.ts#L282)
 
 Returns one directive's argument's value linked to a GraphQL schema type.
 It calls [getTypeDirectiveValues](#gettypedirectivevalues) and returns a matching record.
@@ -9410,7 +9410,7 @@ function getTypeDirectiveValues(
 ): Maybe<Record<string, unknown>>;
 ```
 
-Defined in: packages/graphql/src/introspection.ts:251
+Defined in: [packages/graphql/src/introspection.ts:251](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/graphql/src/introspection.ts#L251)
 
 Returns all directive's arguments' values linked to a GraphQL schema type.
 
@@ -9442,7 +9442,7 @@ a record k/v with arguments' name as keys and arguments' value.
 function getTypeFromSchema<T>(schema, type): Maybe<Record<string, T>>;
 ```
 
-Defined in: packages/graphql/src/introspection.ts:67
+Defined in: [packages/graphql/src/introspection.ts:67](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/graphql/src/introspection.ts#L67)
 
 **`Internal`**
 
@@ -9487,7 +9487,7 @@ a map of GraphQL named types for the matching GraphQL type, or `undefined` if no
 function getTypeName(type, defaultName?): string;
 ```
 
-Defined in: packages/graphql/src/introspection.ts:372
+Defined in: [packages/graphql/src/introspection.ts:372](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/graphql/src/introspection.ts#L372)
 
 Resolves the name of a GraphQL schema type.
 
@@ -9519,7 +9519,7 @@ the type's name, or `defaultName`.
 function hasAstNode<T>(node): node is AstNodeType<T>;
 ```
 
-Defined in: packages/graphql/src/introspection.ts:113
+Defined in: [packages/graphql/src/introspection.ts:113](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/graphql/src/introspection.ts#L113)
 
 **`Internal`**
 
@@ -9553,7 +9553,7 @@ a GraphQL schema named type.
 function hasDirective(entity, directives, fallback?): boolean;
 ```
 
-Defined in: packages/graphql/src/introspection.ts:186
+Defined in: [packages/graphql/src/introspection.ts:186](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/graphql/src/introspection.ts#L186)
 
 Checks if a schema entity as a directive belonging to a defined set.
 
@@ -9591,7 +9591,7 @@ default value if the entity type is not a valid location for directives.
 function isValidDirectiveLocation(entity, directive): boolean;
 ```
 
-Defined in: packages/graphql/src/introspection.ts:165
+Defined in: [packages/graphql/src/introspection.ts:165](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/graphql/src/introspection.ts#L165)
 
 Check if a directive can be applied to specific schema entity location.
 
@@ -9627,7 +9627,7 @@ Library for GraphQL schema loading and `loaders` config processing.
 function getDocumentLoaders(loadersList): Promise<Maybe<LoadSchemaOptions>>;
 ```
 
-Defined in: packages/graphql/src/loader.ts:111
+Defined in: [packages/graphql/src/loader.ts:111](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/graphql/src/loader.ts#L111)
 
 ### Parameters
 
@@ -9647,7 +9647,7 @@ Defined in: packages/graphql/src/loader.ts:111
 function loadSchema(schemaLocation, options): Promise<GraphQLSchema>;
 ```
 
-Defined in: packages/graphql/src/loader.ts:48
+Defined in: [packages/graphql/src/loader.ts:48](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/graphql/src/loader.ts#L48)
 
 ### Parameters
 
@@ -9679,7 +9679,7 @@ Library for displaying relations between GraphQL schema entities.
 const getRelationOfField: IGetRelation<RelationOfField>;
 ```
 
-Defined in: packages/graphql/src/relation.ts:169
+Defined in: [packages/graphql/src/relation.ts:169](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/graphql/src/relation.ts#L169)
 
 Returns a map of fields and arguments where the GraphQL schema type matches the type.
 
@@ -9723,7 +9723,7 @@ a record map of fields and arguments relations.
 const getRelationOfImplementation: IGetRelation<RelationOfImplementation>;
 ```
 
-Defined in: packages/graphql/src/relation.ts:371
+Defined in: [packages/graphql/src/relation.ts:371](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/graphql/src/relation.ts#L371)
 
 Returns a map of types (unions or interfaces) where the GraphQL schema type is implemented.
 
@@ -9767,7 +9767,7 @@ a record map of unions or interfaces relations.
 const getRelationOfInterface: IGetRelation<RelationOfInterface>;
 ```
 
-Defined in: packages/graphql/src/relation.ts:314
+Defined in: [packages/graphql/src/relation.ts:314](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/graphql/src/relation.ts#L314)
 
 Returns a map of interfaces where the GraphQL schema type is extended.
 
@@ -9811,7 +9811,7 @@ a record map of interfaces relations.
 const getRelationOfReturn: IGetRelation<GraphQLOperationType>;
 ```
 
-Defined in: packages/graphql/src/relation.ts:106
+Defined in: [packages/graphql/src/relation.ts:106](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/graphql/src/relation.ts#L106)
 
 Returns a map of operations (queries, mutations, subscriptions) where the GraphQL schema type is the return type.
 
@@ -9855,7 +9855,7 @@ a record map of operations relations.
 const getRelationOfUnion: IGetRelation<GraphQLUnionType>;
 ```
 
-Defined in: packages/graphql/src/relation.ts:258
+Defined in: [packages/graphql/src/relation.ts:258](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/graphql/src/relation.ts#L258)
 
 Returns a map of unions where the GraphQL schema type is part of it.
 
@@ -9907,7 +9907,7 @@ Custom directive `descriptor` helper.
 function directiveDescriptor(directive, type?, descriptionTemplate?): string;
 ```
 
-Defined in: directives/descriptor.ts:83
+Defined in: [directives/descriptor.ts:83](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/helpers/src/directives/descriptor.ts#L83)
 
 Helper for rendering custom description from schema directive on type.
 This is an example on how to build a custom `descriptor` callback.
@@ -10021,7 +10021,7 @@ Custom directive `tag` helper.
 function directiveTag(directive, type?, classname?): Badge;
 ```
 
-Defined in: directives/tag.ts:51
+Defined in: [directives/tag.ts:51](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/helpers/src/directives/tag.ts#L51)
 
 Helper for rendering custom description from schema directive on type.
 This is an example on how to build a custom `tag` callback.
@@ -10095,7 +10095,7 @@ Shared markdown-oriented helpers used by formatter presets.
 function appendExtensionToAbsolutePathWithoutExtension(url, extension): string;
 ```
 
-Defined in: formatters/markdown.ts:159
+Defined in: [formatters/markdown.ts:159](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/helpers/src/formatters/markdown.ts#L159)
 
 Appends an extension only when URL is an absolute path without a file extension.
 
@@ -10129,7 +10129,7 @@ Updated or original URL depending on path shape.
 function appendLinkExtension(url, extension): string;
 ```
 
-Defined in: formatters/markdown.ts:146
+Defined in: [formatters/markdown.ts:146](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/helpers/src/formatters/markdown.ts#L146)
 
 Appends an extension to a link URL.
 
@@ -10161,7 +10161,7 @@ URL with appended extension.
 function extractFrontmatterTitle(formatted): string;
 ```
 
-Defined in: formatters/markdown.ts:64
+Defined in: [formatters/markdown.ts:64](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/helpers/src/formatters/markdown.ts#L64)
 
 Extracts a title value from pre-formatted frontmatter lines.
 
@@ -10187,7 +10187,7 @@ Parsed title value, or an empty string when no `title:` line exists.
 function formatMarkdownFrontmatter(formatted, delimiter?, eol?): string;
 ```
 
-Defined in: formatters/markdown.ts:127
+Defined in: [formatters/markdown.ts:127](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/helpers/src/formatters/markdown.ts#L127)
 
 Formats a markdown frontmatter block from preformatted lines.
 
@@ -10225,7 +10225,7 @@ Complete frontmatter block or an empty string when input is absent.
 function indentMarkdownLines(text, spaces, eol?): string;
 ```
 
-Defined in: formatters/markdown.ts:178
+Defined in: [formatters/markdown.ts:178](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/helpers/src/formatters/markdown.ts#L178)
 
 Indents non-empty markdown lines by a fixed amount of spaces.
 
@@ -10263,7 +10263,7 @@ Indented multiline string.
 function mergeFrontmatterLines(props, formatted): string[];
 ```
 
-Defined in: formatters/markdown.ts:84
+Defined in: [formatters/markdown.ts:84](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/helpers/src/formatters/markdown.ts#L84)
 
 Merges frontmatter object entries with preformatted frontmatter lines.
 
@@ -10298,7 +10298,7 @@ Merged frontmatter lines in insertion order.
 function parseFrontmatterTitleLine(line): string;
 ```
 
-Defined in: formatters/markdown.ts:34
+Defined in: [formatters/markdown.ts:34](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/helpers/src/formatters/markdown.ts#L34)
 
 Parses a YAML-like frontmatter title line and returns its string value.
 
@@ -10327,7 +10327,7 @@ Parsed title value, or an empty string when the line is not a title.
 function quoteMarkdownLines(text, eol?): string;
 ```
 
-Defined in: formatters/markdown.ts:16
+Defined in: [formatters/markdown.ts:16](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/helpers/src/formatters/markdown.ts#L16)
 
 Prefixes each line with a Markdown blockquote marker.
 
@@ -10363,7 +10363,7 @@ Helpers utility functions library.
 function getObjPath(path, obj, fallback?): unknown;
 ```
 
-Defined in: utils/interpolate.ts:31
+Defined in: [utils/interpolate.ts:31](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/helpers/src/utils/interpolate.ts#L31)
 
 **`Internal`**
 
@@ -10412,7 +10412,7 @@ getObjPath("foo.bak", { foo: { bar: 42 } }, "fallback"); // Returns "fallback"
 function interpolate(template, variables, fallback?): string;
 ```
 
-Defined in: utils/interpolate.ts:64
+Defined in: [utils/interpolate.ts:64](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/helpers/src/utils/interpolate.ts#L64)
 
 Interpolate a template literal-like string.
 
@@ -10518,7 +10518,7 @@ Logger singleton module.
 
 ## LogLevel \{#loglevel\}
 
-Defined in: index.ts:23
+Defined in: [index.ts:23](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/logger/src/index.ts#L23)
 
 Log levels supported by the logger.
 
@@ -10535,7 +10535,7 @@ for framework-specific integrations like Docusaurus.
 debug: "debug";
 ```
 
-Defined in: index.ts:24
+Defined in: [index.ts:24](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/logger/src/index.ts#L24)
 
 #### error \{#error\}
 
@@ -10543,7 +10543,7 @@ Defined in: index.ts:24
 error: "error";
 ```
 
-Defined in: index.ts:25
+Defined in: [index.ts:25](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/logger/src/index.ts#L25)
 
 #### info \{#info\}
 
@@ -10551,7 +10551,7 @@ Defined in: index.ts:25
 info: "info";
 ```
 
-Defined in: index.ts:26
+Defined in: [index.ts:26](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/logger/src/index.ts#L26)
 
 #### log \{#log\}
 
@@ -10559,7 +10559,7 @@ Defined in: index.ts:26
 log: "log";
 ```
 
-Defined in: index.ts:27
+Defined in: [index.ts:27](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/logger/src/index.ts#L27)
 
 #### success \{#success\}
 
@@ -10567,7 +10567,7 @@ Defined in: index.ts:27
 success: "success";
 ```
 
-Defined in: index.ts:28
+Defined in: [index.ts:28](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/logger/src/index.ts#L28)
 
 #### warn \{#warn\}
 
@@ -10575,7 +10575,7 @@ Defined in: index.ts:28
 warn: "warn";
 ```
 
-Defined in: index.ts:29
+Defined in: [index.ts:29](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/logger/src/index.ts#L29)
 
 ---
 
@@ -10585,7 +10585,7 @@ Defined in: index.ts:29
 const __internal: object;
 ```
 
-Defined in: index.ts:183
+Defined in: [index.ts:183](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/logger/src/index.ts#L183)
 
 **`Internal`**
 
@@ -10669,7 +10669,7 @@ Handles various module export patterns:
 function log(message, level?): void;
 ```
 
-Defined in: index.ts:168
+Defined in: [index.ts:168](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/logger/src/index.ts#L168)
 
 Logs a message by calling the active logger instance.
 
@@ -10716,7 +10716,7 @@ log("Info message"); // Expected console output "Info message"
 function Logger(moduleName?): Promise<void>;
 ```
 
-Defined in: index.ts:111
+Defined in: [index.ts:111](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/logger/src/index.ts#L111)
 
 Instantiate a logger module.
 By default, the logger module uses `globalThis.console`
@@ -10757,7 +10757,7 @@ and their properties like deprecation status, nullability, and relationships.
 const CSS_BADGE_CLASSNAME: object;
 ```
 
-Defined in: printer-legacy/src/badge.ts:32
+Defined in: [printer-legacy/src/badge.ts:32](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/badge.ts#L32)
 
 ### Type Declaration
 
@@ -10787,7 +10787,7 @@ RELATION: string = "RELATION";
 function formatBadges(badges, options): string | MDXString;
 ```
 
-Defined in: printer-legacy/src/badge.ts:119
+Defined in: [printer-legacy/src/badge.ts:121](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/badge.ts#L121)
 
 Formats an array of badges into a space-joined MDX string.
 
@@ -10819,7 +10819,7 @@ Space-joined MDX string of all badges, or empty string if none
 function getTypeBadges(type, groups?): Badge[];
 ```
 
-Defined in: printer-legacy/src/badge.ts:44
+Defined in: [printer-legacy/src/badge.ts:46](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/badge.ts#L46)
 
 Gets an array of badges for a given GraphQL type.
 
@@ -10851,7 +10851,7 @@ Array of Badge objects containing text and optional classnames
 function printBadge(badge, options): MDXString;
 ```
 
-Defined in: printer-legacy/src/badge.ts:97
+Defined in: [printer-legacy/src/badge.ts:99](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/badge.ts#L99)
 
 Formats a single badge into MDX string format.
 
@@ -10883,7 +10883,7 @@ Formatted MDX string representation of the badge
 function printBadges(type, options): string | MDXString;
 ```
 
-Defined in: printer-legacy/src/badge.ts:139
+Defined in: [printer-legacy/src/badge.ts:141](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/badge.ts#L141)
 
 Generates and formats all applicable badges for a GraphQL type.
 
@@ -10921,7 +10921,7 @@ with proper indentation and deprecation notices.
 function printCodeArguments(type, indentationLevel?): string;
 ```
 
-Defined in: printer-legacy/src/code.ts:41
+Defined in: [printer-legacy/src/code.ts:41](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/code.ts#L41)
 
 Generates a string representation of GraphQL arguments with proper formatting and indentation.
 
@@ -10963,7 +10963,7 @@ printCodeArguments({ args: [{ name: 'id', type: 'ID!' }] })
 function printCodeField(type, options?, indentationLevel?): string | MDXString;
 ```
 
-Defined in: printer-legacy/src/code.ts:87
+Defined in: [printer-legacy/src/code.ts:87](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/code.ts#L87)
 
 Generates a string representation of a GraphQL field including its arguments,
 return type, and deprecation status.
@@ -11015,7 +11015,7 @@ Common printer utility functions for handling descriptions, directives, and warn
 function getCustomDirectivesText(type, options?): string;
 ```
 
-Defined in: printer-legacy/src/common.ts:33
+Defined in: [printer-legacy/src/common.ts:35](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/common.ts#L35)
 
 Prints documentation for custom directives applied to a type.
 
@@ -11047,7 +11047,7 @@ Formatted directive documentation string
 function printDeprecation(type, options): string;
 ```
 
-Defined in: printer-legacy/src/common.ts:114
+Defined in: [printer-legacy/src/common.ts:120](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/common.ts#L120)
 
 Prints deprecation information for a GraphQL type if it is deprecated.
 
@@ -11079,7 +11079,7 @@ Formatted deprecation warning as MDX string, or empty string if not deprecated
 function printDescription(type, options, noText?): string | MDXString;
 ```
 
-Defined in: printer-legacy/src/common.ts:140
+Defined in: [printer-legacy/src/common.ts:146](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/common.ts#L146)
 
 Prints the complete description for a GraphQL type, including deprecation warnings and custom directives.
 
@@ -11117,7 +11117,7 @@ Combined description, deprecation notices, and custom directives as MDX content
 function printWarning(warningConfig, options): string;
 ```
 
-Defined in: printer-legacy/src/common.ts:93
+Defined in: [printer-legacy/src/common.ts:97](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/common.ts#L97)
 
 Generates a warning message block in MDX format.
 
@@ -11153,7 +11153,7 @@ Formatted warning message as MDX string
 
 ## SectionLevels \{#sectionlevels\}
 
-Defined in: printer-legacy/src/const/options.ts:32
+Defined in: [printer-legacy/src/const/options.ts:31](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/const/options.ts#L31)
 
 ### Enumeration Members
 
@@ -11163,7 +11163,7 @@ Defined in: printer-legacy/src/const/options.ts:32
 LEVEL: "#";
 ```
 
-Defined in: printer-legacy/src/const/options.ts:38
+Defined in: [printer-legacy/src/const/options.ts:38](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/const/options.ts#L38)
 
 #### ~~NONE~~ \{#none\}
 
@@ -11171,7 +11171,7 @@ Defined in: printer-legacy/src/const/options.ts:38
 NONE: "";
 ```
 
-Defined in: printer-legacy/src/const/options.ts:37
+Defined in: [printer-legacy/src/const/options.ts:37](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/const/options.ts#L37)
 
 ##### Deprecated
 
@@ -11181,7 +11181,7 @@ Use `SectionLevels.LEVEL` instead.
 
 ## TypeHierarchy \{#typehierarchy\}
 
-Defined in: printer-legacy/src/const/options.ts:23
+Defined in: [printer-legacy/src/const/options.ts:23](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/const/options.ts#L23)
 
 ### Enumeration Members
 
@@ -11191,7 +11191,7 @@ Defined in: printer-legacy/src/const/options.ts:23
 API: "api";
 ```
 
-Defined in: printer-legacy/src/const/options.ts:24
+Defined in: [printer-legacy/src/const/options.ts:24](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/const/options.ts#L24)
 
 #### ENTITY \{#entity\}
 
@@ -11199,7 +11199,7 @@ Defined in: printer-legacy/src/const/options.ts:24
 ENTITY: "entity";
 ```
 
-Defined in: printer-legacy/src/const/options.ts:28
+Defined in: [printer-legacy/src/const/options.ts:27](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/const/options.ts#L27)
 
 #### FLAT \{#flat\}
 
@@ -11207,7 +11207,7 @@ Defined in: printer-legacy/src/const/options.ts:28
 FLAT: "flat";
 ```
 
-Defined in: printer-legacy/src/const/options.ts:29
+Defined in: [printer-legacy/src/const/options.ts:28](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/const/options.ts#L28)
 
 ---
 
@@ -11244,7 +11244,7 @@ const DEFAULT_OPTIONS: Required<
   object;
 ```
 
-Defined in: printer-legacy/src/const/options.ts:57
+Defined in: [printer-legacy/src/const/options.ts:57](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/const/options.ts#L57)
 
 Clean runtime options passed through the printer.
 
@@ -11309,7 +11309,7 @@ const PRINT_TYPE_DEFAULT_OPTIONS: Required<
   object;
 ```
 
-Defined in: printer-legacy/src/const/options.ts:41
+Defined in: [printer-legacy/src/const/options.ts:41](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/const/options.ts#L41)
 
 ### Type Declaration
 
@@ -11332,7 +11332,7 @@ Markdown fragments for GraphQL schemas.
 const DEPRECATED: "deprecated";
 ```
 
-Defined in: printer-legacy/src/const/strings.ts:34
+Defined in: [printer-legacy/src/const/strings.ts:34](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/const/strings.ts#L34)
 
 Label used when a schema element is flagged as deprecated.
 
@@ -11356,7 +11356,7 @@ Standard indentation for code blocks (2 spaces).
 const MARKDOWN_EOC: "\n``\n";
 ```
 
-Defined in: printer-legacy/src/const/strings.ts:46
+Defined in: [printer-legacy/src/const/strings.ts:46](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/const/strings.ts#L46)
 
 Helper for inserting the code-block end delimiter in generated Markdown.
 
@@ -11392,7 +11392,7 @@ End of paragraph (double newline) for Markdown.
 const MARKDOWN_SOC: "\n``graphql\n";
 ```
 
-Defined in: printer-legacy/src/const/strings.ts:50
+Defined in: [printer-legacy/src/const/strings.ts:50](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/const/strings.ts#L50)
 
 Helper for inserting the code-block start delimiter targeting GraphQL syntax.
 
@@ -11404,7 +11404,7 @@ Helper for inserting the code-block start delimiter targeting GraphQL syntax.
 const NO_DESCRIPTION_TEXT: "No description";
 ```
 
-Defined in: printer-legacy/src/const/strings.ts:43
+Defined in: [printer-legacy/src/const/strings.ts:43](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/const/strings.ts#L43)
 
 Default placeholder when no schema description is provided.
 
@@ -11416,7 +11416,7 @@ Default placeholder when no schema description is provided.
 const NON_NULL: "non-null";
 ```
 
-Defined in: printer-legacy/src/const/strings.ts:37
+Defined in: [printer-legacy/src/const/strings.ts:37](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/const/strings.ts#L37)
 
 Copy fragment describing a non-null GraphQL modifier.
 
@@ -11428,7 +11428,7 @@ Copy fragment describing a non-null GraphQL modifier.
 const ROOT_TYPE_LOCALE: RootTypeLocale;
 ```
 
-Defined in: printer-legacy/src/const/strings.ts:19
+Defined in: [printer-legacy/src/const/strings.ts:19](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/const/strings.ts#L19)
 
 Human-readable labels for each GraphQL root type used when rendering copy or badges.
 
@@ -11449,7 +11449,7 @@ function getCustomDirectiveResolver(
 ): Maybe<string>;
 ```
 
-Defined in: printer-legacy/src/directive.ts:31
+Defined in: [printer-legacy/src/directive.ts:31](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/directive.ts#L31)
 
 Resolves a custom directive using the provided resolver function
 
@@ -11493,7 +11493,7 @@ The resolved directive value or `fallback`/`undefined`
 function getCustomTags(type, options): Badge[];
 ```
 
-Defined in: printer-legacy/src/directive.ts:125
+Defined in: [printer-legacy/src/directive.ts:129](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/directive.ts#L129)
 
 Extracts custom tags from directives for a given type
 
@@ -11529,7 +11529,7 @@ function printCustomDirective(
 ): Maybe<string>;
 ```
 
-Defined in: printer-legacy/src/directive.ts:57
+Defined in: [printer-legacy/src/directive.ts:59](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/directive.ts#L59)
 
 Prints a custom directive as a Markdown string
 
@@ -11567,7 +11567,7 @@ Formatted Markdown string for the directive or `undefined`
 function printCustomDirectives(type, options): Maybe<PageSection>;
 ```
 
-Defined in: printer-legacy/src/directive.ts:85
+Defined in: [printer-legacy/src/directive.ts:87](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/directive.ts#L87)
 
 Prints all custom directives for a type as a Markdown section
 
@@ -11599,7 +11599,7 @@ A "Directives" PageSection, or undefined when no directives are printable
 function printCustomTags(type, options): string | MDXString;
 ```
 
-Defined in: printer-legacy/src/directive.ts:157
+Defined in: [printer-legacy/src/directive.ts:161](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/directive.ts#L161)
 
 Prints custom directive tags as Markdown badges
 
@@ -11635,7 +11635,7 @@ Event classes for print operations that allow handlers to modify the generated o
 
 ### BeforeComposePageTypeEvent \{#beforecomposepagetypeevent\}
 
-Defined in: printer-legacy/src/events.ts:114
+Defined in: [printer-legacy/src/events.ts:114](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/events.ts#L114)
 
 Event emitted before composing page sections for a GraphQL type.
 
@@ -11677,7 +11677,7 @@ new BeforeComposePageTypeEvent(
    options?): BeforeComposePageTypeEvent;
 ```
 
-Defined in: printer-legacy/src/events.ts:118
+Defined in: [printer-legacy/src/events.ts:118](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/events.ts#L118)
 
 ###### Parameters
 
@@ -11896,7 +11896,7 @@ Handlers registered after the current one will not execute.
 
 ### PrintCodeEvent \{#printcodeevent\}
 
-Defined in: printer-legacy/src/events.ts:48
+Defined in: [printer-legacy/src/events.ts:48](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/events.ts#L48)
 
 Event emitted around code block generation for a GraphQL type.
 
@@ -11931,7 +11931,7 @@ new PrintCodeEvent(
    options?): PrintCodeEvent;
 ```
 
-Defined in: printer-legacy/src/events.ts:52
+Defined in: [printer-legacy/src/events.ts:52](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/events.ts#L52)
 
 ###### Parameters
 
@@ -12198,7 +12198,7 @@ IPrintCodeEvent.stopPropagation;
 
 ### PrintTypeEvent \{#printtypeevent\}
 
-Defined in: printer-legacy/src/events.ts:77
+Defined in: [printer-legacy/src/events.ts:77](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/events.ts#L77)
 
 Event emitted around full documentation generation for a GraphQL type.
 
@@ -12233,7 +12233,7 @@ new PrintTypeEvent(
    options?): PrintTypeEvent;
 ```
 
-Defined in: printer-legacy/src/events.ts:81
+Defined in: [printer-legacy/src/events.ts:81](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/events.ts#L81)
 
 ###### Parameters
 
@@ -12500,7 +12500,7 @@ IPrintTypeEvent.stopPropagation;
 
 ### ComposePageTypeEventData \{#composepagetypeeventdata\}
 
-Defined in: types/src/printer.d.ts:109
+Defined in: [types/src/printer.d.ts:109](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/types/src/printer.d.ts#L109)
 
 Data payload for compose page type events.
 
@@ -12512,7 +12512,7 @@ Data payload for compose page type events.
 readonly name: Maybe<string>;
 ```
 
-Defined in: types/src/printer.d.ts:113
+Defined in: [types/src/printer.d.ts:113](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/types/src/printer.d.ts#L113)
 
 The name identifier for the type
 
@@ -12522,7 +12522,7 @@ The name identifier for the type
 readonly options: PrintTypeOptions;
 ```
 
-Defined in: types/src/printer.d.ts:115
+Defined in: [types/src/printer.d.ts:115](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/types/src/printer.d.ts#L115)
 
 The print options in effect
 
@@ -12532,7 +12532,7 @@ The print options in effect
 readonly sections: PageSections;
 ```
 
-Defined in: types/src/printer.d.ts:117
+Defined in: [types/src/printer.d.ts:117](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/types/src/printer.d.ts#L117)
 
 The map of all page sections (mutable in BEFORE event)
 
@@ -12542,7 +12542,7 @@ The map of all page sections (mutable in BEFORE event)
 readonly type: unknown;
 ```
 
-Defined in: types/src/printer.d.ts:111
+Defined in: [types/src/printer.d.ts:111](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/types/src/printer.d.ts#L111)
 
 The GraphQL type being composed
 
@@ -12550,7 +12550,7 @@ The GraphQL type being composed
 
 ### PageSection \{#pagesection\}
 
-Defined in: types/src/printer.d.ts:24
+Defined in: [types/src/printer.d.ts:24](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/types/src/printer.d.ts#L24)
 
 Represents a single section of a page with optional title and content.
 
@@ -12566,7 +12566,7 @@ optional content?:
   | PageSection[];
 ```
 
-Defined in: types/src/printer.d.ts:30
+Defined in: [types/src/printer.d.ts:30](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/types/src/printer.d.ts#L30)
 
 The section content
 
@@ -12576,7 +12576,7 @@ The section content
 optional level?: number;
 ```
 
-Defined in: types/src/printer.d.ts:28
+Defined in: [types/src/printer.d.ts:28](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/types/src/printer.d.ts#L28)
 
 Optional section level for hierarchical structuring
 
@@ -12586,7 +12586,7 @@ Optional section level for hierarchical structuring
 optional title?: string | MDXString;
 ```
 
-Defined in: types/src/printer.d.ts:26
+Defined in: [types/src/printer.d.ts:26](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/types/src/printer.d.ts#L26)
 
 Optional title/heading for the section
 
@@ -12594,7 +12594,7 @@ Optional title/heading for the section
 
 ### PageSections \{#pagesections\}
 
-Defined in: types/src/printer.d.ts:36
+Defined in: [types/src/printer.d.ts:36](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/types/src/printer.d.ts#L36)
 
 Map of all available sections in a type page.
 
@@ -12614,7 +12614,7 @@ Additional custom sections can be added by event handlers
 optional code?: PageSection;
 ```
 
-Defined in: types/src/printer.d.ts:50
+Defined in: [types/src/printer.d.ts:50](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/types/src/printer.d.ts#L50)
 
 GraphQL code block
 
@@ -12624,7 +12624,7 @@ GraphQL code block
 optional customDirectives?: PageSection;
 ```
 
-Defined in: types/src/printer.d.ts:52
+Defined in: [types/src/printer.d.ts:52](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/types/src/printer.d.ts#L52)
 
 Custom directives
 
@@ -12634,7 +12634,7 @@ Custom directives
 optional description?: PageSection;
 ```
 
-Defined in: types/src/printer.d.ts:48
+Defined in: [types/src/printer.d.ts:48](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/types/src/printer.d.ts#L48)
 
 Type description from GraphQL comments
 
@@ -12644,7 +12644,7 @@ Type description from GraphQL comments
 optional example?: PageSection;
 ```
 
-Defined in: types/src/printer.d.ts:56
+Defined in: [types/src/printer.d.ts:56](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/types/src/printer.d.ts#L56)
 
 Usage examples
 
@@ -12654,7 +12654,7 @@ Usage examples
 optional header?: PageHeader;
 ```
 
-Defined in: types/src/printer.d.ts:40
+Defined in: [types/src/printer.d.ts:40](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/types/src/printer.d.ts#L40)
 
 YAML frontmatter or top-level heading
 
@@ -12664,7 +12664,7 @@ YAML frontmatter or top-level heading
 optional mdxDeclaration?: PageHeader;
 ```
 
-Defined in: types/src/printer.d.ts:44
+Defined in: [types/src/printer.d.ts:44](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/types/src/printer.d.ts#L44)
 
 MDX import declarations
 
@@ -12674,7 +12674,7 @@ MDX import declarations
 optional metadata?: PageSection;
 ```
 
-Defined in: types/src/printer.d.ts:54
+Defined in: [types/src/printer.d.ts:54](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/types/src/printer.d.ts#L54)
 
 Type metadata (fields, arguments, etc.)
 
@@ -12684,7 +12684,7 @@ Type metadata (fields, arguments, etc.)
 optional metatags?: PageHeader;
 ```
 
-Defined in: types/src/printer.d.ts:42
+Defined in: [types/src/printer.d.ts:42](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/types/src/printer.d.ts#L42)
 
 HTML meta tags
 
@@ -12694,7 +12694,7 @@ HTML meta tags
 optional relations?: PageSection;
 ```
 
-Defined in: types/src/printer.d.ts:58
+Defined in: [types/src/printer.d.ts:58](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/types/src/printer.d.ts#L58)
 
 Related types
 
@@ -12704,7 +12704,7 @@ Related types
 optional tags?: PageSection;
 ```
 
-Defined in: types/src/printer.d.ts:46
+Defined in: [types/src/printer.d.ts:46](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/types/src/printer.d.ts#L46)
 
 Custom tags (e.g., @deprecated)
 
@@ -12712,7 +12712,7 @@ Custom tags (e.g., @deprecated)
 
 ### PrintCodeEventData \{#printcodeeventdata-1\}
 
-Defined in: types/src/printer.d.ts:64
+Defined in: [types/src/printer.d.ts:64](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/types/src/printer.d.ts#L64)
 
 Data payload for print code events.
 
@@ -12724,7 +12724,7 @@ Data payload for print code events.
 readonly options: PrintTypeOptions;
 ```
 
-Defined in: types/src/printer.d.ts:70
+Defined in: [types/src/printer.d.ts:70](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/types/src/printer.d.ts#L70)
 
 The print options in effect
 
@@ -12734,7 +12734,7 @@ The print options in effect
 readonly type: unknown;
 ```
 
-Defined in: types/src/printer.d.ts:66
+Defined in: [types/src/printer.d.ts:66](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/types/src/printer.d.ts#L66)
 
 The GraphQL type being printed
 
@@ -12744,7 +12744,7 @@ The GraphQL type being printed
 readonly typeName: string;
 ```
 
-Defined in: types/src/printer.d.ts:68
+Defined in: [types/src/printer.d.ts:68](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/types/src/printer.d.ts#L68)
 
 The name of the type
 
@@ -12752,7 +12752,7 @@ The name of the type
 
 ### PrintTypeEventData \{#printtypeeventdata-1\}
 
-Defined in: types/src/printer.d.ts:76
+Defined in: [types/src/printer.d.ts:76](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/types/src/printer.d.ts#L76)
 
 Data payload for print type events.
 
@@ -12764,7 +12764,7 @@ Data payload for print type events.
 readonly name: Maybe<string>;
 ```
 
-Defined in: types/src/printer.d.ts:80
+Defined in: [types/src/printer.d.ts:80](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/types/src/printer.d.ts#L80)
 
 The name identifier for the type
 
@@ -12774,7 +12774,7 @@ The name identifier for the type
 readonly options: PrintTypeOptions;
 ```
 
-Defined in: types/src/printer.d.ts:82
+Defined in: [types/src/printer.d.ts:82](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/types/src/printer.d.ts#L82)
 
 The print options in effect
 
@@ -12784,7 +12784,7 @@ The print options in effect
 readonly type: unknown;
 ```
 
-Defined in: types/src/printer.d.ts:78
+Defined in: [types/src/printer.d.ts:78](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/types/src/printer.d.ts#L78)
 
 The GraphQL type being printed
 
@@ -12800,7 +12800,7 @@ Module providing utilities for handling GraphQL example directives and printing 
 function getDirectiveExampleOption(options): Maybe<TypeDirectiveExample>;
 ```
 
-Defined in: printer-legacy/src/example.ts:44
+Defined in: [printer-legacy/src/example.ts:46](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/example.ts#L46)
 
 Retrieves directive example options from the provided print type options.
 
@@ -12826,7 +12826,7 @@ The directive example configuration if valid, otherwise `undefined`
 function printExample(type, options): Maybe<string>;
 ```
 
-Defined in: printer-legacy/src/example.ts:252
+Defined in: [printer-legacy/src/example.ts:254](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/example.ts#L254)
 
 Prints an example value for a given GraphQL type or operation.
 
@@ -12874,7 +12874,7 @@ The default formatter produces HTML-like markup suitable for most Markdown proce
 function createDefaultFormatter(): Formatter;
 ```
 
-Defined in: printer-legacy/src/formatter.ts:40
+Defined in: [printer-legacy/src/formatter.ts:40](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/formatter.ts#L40)
 
 Creates a default formatter for documentation output.
 
@@ -12909,7 +12909,7 @@ Provides utilities for formatting and printing frontmatter content.
 function printFrontMatter(title, props, options): string;
 ```
 
-Defined in: printer-legacy/src/frontmatter.ts:21
+Defined in: [printer-legacy/src/frontmatter.ts:21](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/frontmatter.ts#L21)
 
 Generates a formatted frontmatter string for Markdown/MDX documents.
 
@@ -12953,7 +12953,7 @@ including their metadata, arguments, and locations.
 function printCodeDirective(type, options?): string;
 ```
 
-Defined in: printer-legacy/src/graphql/directive.ts:67
+Defined in: [printer-legacy/src/graphql/directive.ts:67](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/graphql/directive.ts#L67)
 
 Generates a string representation of a complete GraphQL directive definition.
 
@@ -12985,7 +12985,7 @@ A formatted string containing the complete directive definition
 function printDirectiveMetadata(type, options): Maybe<PageSection>;
 ```
 
-Defined in: printer-legacy/src/graphql/directive.ts:49
+Defined in: [printer-legacy/src/graphql/directive.ts:49](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/graphql/directive.ts#L49)
 
 Prints metadata information for a GraphQL directive, focusing on its arguments.
 
@@ -13021,7 +13021,7 @@ Provides utilities for printing GraphQL enum types to Markdown/MDX format
 function printCodeEnum(type, options?): string;
 ```
 
-Defined in: printer-legacy/src/graphql/enum.ts:47
+Defined in: [printer-legacy/src/graphql/enum.ts:47](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/graphql/enum.ts#L47)
 
 Generates a GraphQL SDL code block for an enum type.
 
@@ -13053,7 +13053,7 @@ A string containing the enum type definition in GraphQL SDL, or empty string if 
 function printEnumMetadata(type, options): Maybe<PageSection>;
 ```
 
-Defined in: printer-legacy/src/graphql/enum.ts:29
+Defined in: [printer-legacy/src/graphql/enum.ts:29](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/graphql/enum.ts#L29)
 
 Prints the metadata section for a GraphQL enum type.
 
@@ -13089,7 +13089,7 @@ Legacy printer helpers for rendering GraphQL input types.
 function printCodeInput(type, options): string;
 ```
 
-Defined in: printer-legacy/src/graphql/input.ts:20
+Defined in: [printer-legacy/src/graphql/input.ts:20](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/graphql/input.ts#L20)
 
 Renders the Markdown code snippet for a GraphQL `input` type by delegating
 to the generic object printer while forcing the `input` kind.
@@ -13126,7 +13126,7 @@ Contains utilities for printing GraphQL interface types as Markdown documentatio
 function printCodeInterface(type, options): string;
 ```
 
-Defined in: printer-legacy/src/graphql/interface.ts:23
+Defined in: [printer-legacy/src/graphql/interface.ts:23](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/graphql/interface.ts#L23)
 
 Generates a code block representation of a GraphQL interface type.
 
@@ -13162,7 +13162,7 @@ GraphQL Object Type printing utilities
 function printCodeObject(type, options): string;
 ```
 
-Defined in: printer-legacy/src/graphql/object.ts:108
+Defined in: [printer-legacy/src/graphql/object.ts:108](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/graphql/object.ts#L108)
 
 Prints a GraphQL object type definition as a code block
 
@@ -13194,7 +13194,7 @@ GraphQL object type definition as a code block string
 function printCodeType(type, entity, options): string;
 ```
 
-Defined in: printer-legacy/src/graphql/object.ts:68
+Defined in: [printer-legacy/src/graphql/object.ts:68](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/graphql/object.ts#L68)
 
 Prints the GraphQL type definition as a code block
 
@@ -13232,7 +13232,7 @@ GraphQL type definition as a code block string
 function printObjectMetadata(type, options): Maybe<PageSection[]>;
 ```
 
-Defined in: printer-legacy/src/graphql/object.ts:46
+Defined in: [printer-legacy/src/graphql/object.ts:46](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/graphql/object.ts#L46)
 
 Prints the complete metadata section for a GraphQL object type
 
@@ -13269,7 +13269,7 @@ Provides utilities to print operation types, metadata, and code representations.
 function printCodeOperation(type, options?): string | MDXString;
 ```
 
-Defined in: printer-legacy/src/graphql/operation.ts:94
+Defined in: [printer-legacy/src/graphql/operation.ts:94](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/graphql/operation.ts#L94)
 
 Prints the code representation of an operation.
 
@@ -13295,7 +13295,7 @@ Prints the code representation of an operation.
 function printOperationMetadata(type, options): Maybe<PageSection[]>;
 ```
 
-Defined in: printer-legacy/src/graphql/operation.ts:45
+Defined in: [printer-legacy/src/graphql/operation.ts:45](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/graphql/operation.ts#L45)
 
 Prints the operation metadata including arguments and type information.
 
@@ -13331,7 +13331,7 @@ Provides utility functions for handling GraphQL scalar types in markdown generat
 function printCodeScalar(type, options?): string;
 ```
 
-Defined in: printer-legacy/src/graphql/scalar.ts:60
+Defined in: [printer-legacy/src/graphql/scalar.ts:62](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/graphql/scalar.ts#L62)
 
 Generates the GraphQL SDL representation of a scalar type.
 
@@ -13363,7 +13363,7 @@ SDL string representation of the scalar type
 function printScalarMetadata(type, options): Maybe<PageSection>;
 ```
 
-Defined in: printer-legacy/src/graphql/scalar.ts:47
+Defined in: [printer-legacy/src/graphql/scalar.ts:49](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/graphql/scalar.ts#L49)
 
 Prints metadata information for a scalar type.
 Currently only includes the specification URL if available.
@@ -13396,7 +13396,7 @@ A scalar metadata PageSection, or undefined when not available
 function printSpecification(type, options): Maybe<PageSection>;
 ```
 
-Defined in: printer-legacy/src/graphql/scalar.ts:19
+Defined in: [printer-legacy/src/graphql/scalar.ts:21](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/graphql/scalar.ts#L21)
 
 Generates markdown documentation for a scalar type's specification URL.
 
@@ -13432,7 +13432,7 @@ Module for handling GraphQL Union type printing operations.
 function printCodeUnion(type, options?): string;
 ```
 
-Defined in: printer-legacy/src/graphql/union.ts:43
+Defined in: [printer-legacy/src/graphql/union.ts:43](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/graphql/union.ts#L43)
 
 Generates GraphQL SDL code representation of a Union type.
 
@@ -13464,7 +13464,7 @@ SDL string representation of the union type
 function printUnionMetadata(type, options): Maybe<PageSection>;
 ```
 
-Defined in: printer-legacy/src/graphql/union.ts:23
+Defined in: [printer-legacy/src/graphql/union.ts:23](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/graphql/union.ts#L23)
 
 Generates metadata documentation for a GraphQL Union type.
 
@@ -13506,7 +13506,7 @@ Utility module for handling GraphQL schema entity grouping.
 function getGroup(type, groups, typeCategory): string;
 ```
 
-Defined in: printer-legacy/src/group.ts:24
+Defined in: [printer-legacy/src/group.ts:24](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/group.ts#L24)
 
 Retrieves the group name for a given GraphQL type based on its category and group mapping.
 
@@ -13549,7 +13549,7 @@ Provides utilities for creating, formatting, and managing links to GraphQL types
 const API_GROUPS: Required<ApiGroupOverrideType>;
 ```
 
-Defined in: printer-legacy/src/link.ts:51
+Defined in: [printer-legacy/src/link.ts:53](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/link.ts#L53)
 
 ---
 
@@ -13559,7 +13559,7 @@ Defined in: printer-legacy/src/link.ts:51
 function getCategoryLocale(type): Maybe<TypeLocale>;
 ```
 
-Defined in: printer-legacy/src/link.ts:102
+Defined in: [printer-legacy/src/link.ts:104](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/link.ts#L104)
 
 Gets the locale category for a given GraphQL type.
 
@@ -13585,7 +13585,7 @@ The locale category for the type, or `undefined` if not found
 function getLinkApiGroupFolder(type, groups?): string;
 ```
 
-Defined in: printer-legacy/src/link.ts:188
+Defined in: [printer-legacy/src/link.ts:198](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/link.ts#L198)
 
 Gets the folder name for an API group based on the GraphQL type and group options.
 
@@ -13617,7 +13617,7 @@ The folder name for the API group
 function getLinkCategoryFolder(type, operationLocale?): Maybe<string>;
 ```
 
-Defined in: printer-legacy/src/link.ts:131
+Defined in: [printer-legacy/src/link.ts:135](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/link.ts#L135)
 
 Gets the folder name for a link category based on the GraphQL type and operation locale.
 
@@ -13649,7 +13649,7 @@ The folder name for the link category, or `undefined` if not found
 function getRelationLink(category, type, options): Maybe<TypeLink>;
 ```
 
-Defined in: printer-legacy/src/link.ts:326
+Defined in: [printer-legacy/src/link.ts:336](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/link.ts#L336)
 
 Gets the link for a relation based on the category, type, and options.
 
@@ -13687,7 +13687,7 @@ The link object for the relation, or `undefined` if not found
 function hasOptionParentType(options): boolean;
 ```
 
-Defined in: printer-legacy/src/link.ts:172
+Defined in: [printer-legacy/src/link.ts:180](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/link.ts#L180)
 
 Checks if the options include the `parentTypePrefix` attribute.
 
@@ -13713,7 +13713,7 @@ The options to check
 function hasOptionWithAttributes(options): boolean;
 ```
 
-Defined in: printer-legacy/src/link.ts:162
+Defined in: [printer-legacy/src/link.ts:168](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/link.ts#L168)
 
 Checks if the options include the `withAttributes` attribute.
 
@@ -13739,7 +13739,7 @@ The options to check
 function hasPrintableDirective(type, options?): boolean;
 ```
 
-Defined in: printer-legacy/src/link.ts:63
+Defined in: [printer-legacy/src/link.ts:65](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/link.ts#L65)
 
 Checks if a type has printable directives based on the provided options.
 
@@ -13771,7 +13771,7 @@ Configuration options for directive printing (`deprecated`, `onlyDocDirectives`,
 function printLink<T>(arg, options): string;
 ```
 
-Defined in: printer-legacy/src/link.ts:397
+Defined in: [printer-legacy/src/link.ts:409](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/link.ts#L409)
 
 Prints a link for a GraphQL type based on the provided options.
 
@@ -13809,7 +13809,7 @@ The formatted link as a string
 function printLinkAttributes(type, text?): string;
 ```
 
-Defined in: printer-legacy/src/link.ts:349
+Defined in: [printer-legacy/src/link.ts:361](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/link.ts#L361)
 
 Prints the attributes of a link based on the GraphQL type.
 
@@ -13841,7 +13841,7 @@ The text with appended attributes
 function printParentLink(type, options): string | MDXString;
 ```
 
-Defined in: printer-legacy/src/link.ts:441
+Defined in: [printer-legacy/src/link.ts:453](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/link.ts#L453)
 
 Prints a parent link for a GraphQL type based on the provided options.
 
@@ -13873,7 +13873,7 @@ The formatted parent link as a string or MDX string
 function toLink(type, name, operation, options): TypeLink;
 ```
 
-Defined in: printer-legacy/src/link.ts:229
+Defined in: [printer-legacy/src/link.ts:239](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/link.ts#L239)
 
 Converts a GraphQL type to a link object.
 
@@ -13920,7 +13920,7 @@ It includes utilities for handling various GraphQL types, custom directives, and
 
 ## Printer \{#printer\}
 
-Defined in: printer-legacy/src/printer.ts:167
+Defined in: [printer-legacy/src/printer.ts:167](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/printer.ts#L167)
 
 The Printer class implements the core functionality for generating Markdown documentation
 from GraphQL schema types.
@@ -13966,7 +13966,7 @@ new Printer(): Printer;
 readonly static printCustomDirectives: (type, options) => Maybe<PageSection>;
 ```
 
-Defined in: printer-legacy/src/printer.ts:176
+Defined in: [printer-legacy/src/printer.ts:176](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/printer.ts#L176)
 
 Prints custom directives
 
@@ -13998,7 +13998,7 @@ A "Directives" PageSection, or undefined when no directives are printable
 readonly static printCustomTags: (type, options) => string | MDXString;
 ```
 
-Defined in: printer-legacy/src/printer.ts:181
+Defined in: [printer-legacy/src/printer.ts:181](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/printer.ts#L181)
 
 Prints custom tags
 
@@ -14030,7 +14030,7 @@ Formatted Markdown string of badges or empty string
 readonly static printDescription: (type, options, noText?) => string | MDXString;
 ```
 
-Defined in: printer-legacy/src/printer.ts:171
+Defined in: [printer-legacy/src/printer.ts:171](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/printer.ts#L171)
 
 Prints type descriptions
 
@@ -14072,7 +14072,7 @@ Combined description, deprecation notices, and custom directives as MDX content
 get static eventEmitter(): Maybe<PrinterEventEmitter>;
 ```
 
-Defined in: printer-legacy/src/printer.ts:201
+Defined in: [printer-legacy/src/printer.ts:201](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/printer.ts#L201)
 
 Optional event emitter for print events.
 When set, the printer will emit events before/after printCode and printType,
@@ -14088,7 +14088,7 @@ allowing external code to intercept and modify the output.
 set static eventEmitter(eventEmitter): void;
 ```
 
-Defined in: printer-legacy/src/printer.ts:216
+Defined in: [printer-legacy/src/printer.ts:216](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/printer.ts#L216)
 
 ###### Parameters
 
@@ -14108,7 +14108,7 @@ Defined in: printer-legacy/src/printer.ts:216
 get static mdxDeclaration(): Readonly<Maybe<string>>;
 ```
 
-Defined in: printer-legacy/src/printer.ts:208
+Defined in: [printer-legacy/src/printer.ts:208](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/printer.ts#L208)
 
 Prints mdx modules import declaration
 
@@ -14122,7 +14122,7 @@ Prints mdx modules import declaration
 set static mdxDeclaration(mdxDeclaration): void;
 ```
 
-Defined in: printer-legacy/src/printer.ts:220
+Defined in: [printer-legacy/src/printer.ts:220](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/printer.ts#L220)
 
 ###### Parameters
 
@@ -14142,7 +14142,7 @@ Defined in: printer-legacy/src/printer.ts:220
 get static options(): Readonly<Maybe<PrintTypeOptions>>;
 ```
 
-Defined in: printer-legacy/src/printer.ts:192
+Defined in: [printer-legacy/src/printer.ts:192](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/printer.ts#L192)
 
 Global printer configuration options
 
@@ -14156,7 +14156,7 @@ Global printer configuration options
 set static options(options): void;
 ```
 
-Defined in: printer-legacy/src/printer.ts:212
+Defined in: [printer-legacy/src/printer.ts:212](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/printer.ts#L212)
 
 ###### Parameters
 
@@ -14183,7 +14183,7 @@ static init(
    eventEmitter?): Promise<void>;
 ```
 
-Defined in: printer-legacy/src/printer.ts:235
+Defined in: [printer-legacy/src/printer.ts:235](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/printer.ts#L235)
 
 Initializes the printer with the given schema and configuration.
 
@@ -14241,7 +14241,7 @@ Optional event emitter for print events interception
 readonly static printCode(type, options): string;
 ```
 
-Defined in: printer-legacy/src/printer.ts:323
+Defined in: [printer-legacy/src/printer.ts:323](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/printer.ts#L323)
 
 Prints the GraphQL type definition as code block
 
@@ -14274,7 +14274,7 @@ readonly static printCodeAsync(
    options): Promise<string>;
 ```
 
-Defined in: printer-legacy/src/printer.ts:379
+Defined in: [printer-legacy/src/printer.ts:379](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/printer.ts#L379)
 
 Prints the GraphQL type definition as code block with event emission support.
 
@@ -14323,7 +14323,7 @@ Event handlers can:
 readonly static printExample(type, options): Maybe<PageSection>;
 ```
 
-Defined in: printer-legacy/src/printer.ts:424
+Defined in: [printer-legacy/src/printer.ts:424](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/printer.ts#L424)
 
 Prints example usage of the type if available
 
@@ -14356,7 +14356,7 @@ readonly static printHeader(
    options): string;
 ```
 
-Defined in: printer-legacy/src/printer.ts:302
+Defined in: [printer-legacy/src/printer.ts:302](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/printer.ts#L302)
 
 Prints the header section of a type documentation
 
@@ -14392,7 +14392,7 @@ Formatted header string with optional frontmatter
 readonly static printMetaTags(_type, options): string | MDXString;
 ```
 
-Defined in: printer-legacy/src/printer.ts:494
+Defined in: [printer-legacy/src/printer.ts:494](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/printer.ts#L494)
 
 Prints HTML meta tags for the documentation
 
@@ -14422,7 +14422,7 @@ Formatted HTML meta tags string
 readonly static printRelations(type, options): string | MDXString;
 ```
 
-Defined in: printer-legacy/src/printer.ts:480
+Defined in: [printer-legacy/src/printer.ts:480](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/printer.ts#L480)
 
 Prints related type information
 
@@ -14455,7 +14455,7 @@ readonly static printType(
    options?): Promise<Maybe<MDXString>>;
 ```
 
-Defined in: printer-legacy/src/printer.ts:544
+Defined in: [printer-legacy/src/printer.ts:544](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/printer.ts#L544)
 
 Main method to print complete documentation for a GraphQL type
 
@@ -14520,7 +14520,7 @@ readonly static printTypeMetadata(type, options): Maybe<
   | PageSection[]>;
 ```
 
-Defined in: printer-legacy/src/printer.ts:447
+Defined in: [printer-legacy/src/printer.ts:447](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/printer.ts#L447)
 
 Prints metadata information for a GraphQL type
 
@@ -14559,7 +14559,7 @@ including return types, member fields, and implementations, in a formatted MDX s
 function getRootTypeLocaleFromString(text): Maybe<TypeLocale>;
 ```
 
-Defined in: printer-legacy/src/relation.ts:40
+Defined in: [printer-legacy/src/relation.ts:42](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/relation.ts#L42)
 
 Converts a string representation of a root type to its corresponding `TypeLocale`
 
@@ -14596,7 +14596,7 @@ function printRelationOf<T>(
 ): string | MDXString;
 ```
 
-Defined in: printer-legacy/src/relation.ts:65
+Defined in: [printer-legacy/src/relation.ts:69](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/relation.ts#L69)
 
 Prints the relation section for a specific type and relation category
 
@@ -14658,7 +14658,7 @@ const mdx = printRelationOf(type, "Member Of", getRelationOfField, options);
 function printRelations(type, options): string | MDXString;
 ```
 
-Defined in: printer-legacy/src/relation.ts:134
+Defined in: [printer-legacy/src/relation.ts:138](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/relation.ts#L138)
 
 Prints all relations (return types, member fields, and implementations) for a given type
 
@@ -14713,7 +14713,7 @@ function printMetadataSection<T, V>(
 ): Maybe<PageSection>;
 ```
 
-Defined in: printer-legacy/src/section.ts:193
+Defined in: [printer-legacy/src/section.ts:197](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/section.ts#L197)
 
 Prints a metadata section with special handling for deprecated items.
 
@@ -14771,7 +14771,7 @@ Formatted MDX string containing the metadata section
 function printSection<V>(values, section, options): Maybe<PageSection>;
 ```
 
-Defined in: printer-legacy/src/section.ts:140
+Defined in: [printer-legacy/src/section.ts:144](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/section.ts#L144)
 
 Prints a complete section with title and content.
 
@@ -14817,7 +14817,7 @@ Formatted MDX string containing the complete section
 function printSectionItem<T>(type, options): string | MDXString;
 ```
 
-Defined in: printer-legacy/src/section.ts:46
+Defined in: [printer-legacy/src/section.ts:48](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/section.ts#L48)
 
 Prints a single section item with its associated metadata.
 
@@ -14857,7 +14857,7 @@ Formatted MDX string containing the section item
 function printSectionItems<V>(values, options): string | MDXString;
 ```
 
-Defined in: printer-legacy/src/section.ts:108
+Defined in: [printer-legacy/src/section.ts:112](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/section.ts#L112)
 
 Prints an array of section items with consistent formatting.
 
@@ -14901,7 +14901,7 @@ Internal library of helpers for manipulating array and list.
 function convertArrayToMapObject<T>(list): Maybe<Record<string, T>>;
 ```
 
-Defined in: array.ts:75
+Defined in: [array.ts:75](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/array.ts#L75)
 
 **`Internal`**
 
@@ -14955,7 +14955,7 @@ convertArrayToMapObject([
 function toArray(recordMap): Maybe<unknown[]>;
 ```
 
-Defined in: array.ts:35
+Defined in: [array.ts:35](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/array.ts#L35)
 
 **`Internal`**
 
@@ -15000,7 +15000,7 @@ Base event class and utilities for GraphQL-Markdown events.
 
 ### `abstract` CancellableEvent \{#abstract-cancellableevent\}
 
-Defined in: events.ts:55
+Defined in: [events.ts:55](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/events.ts#L55)
 
 Base class for all cancellable events in GraphQL-Markdown.
 
@@ -15027,7 +15027,7 @@ Provides common functionality:
 new CancellableEvent(options?): CancellableEvent;
 ```
 
-Defined in: events.ts:88
+Defined in: [events.ts:88](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/events.ts#L88)
 
 Creates a new CancellableEvent.
 
@@ -15058,7 +15058,7 @@ options.defaultAction defines an optional function to execute as default action.
 get defaultAction(): DefaultAction | undefined;
 ```
 
-Defined in: events.ts:110
+Defined in: [events.ts:110](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/events.ts#L110)
 
 Gets the default action function if one was provided.
 
@@ -15080,7 +15080,7 @@ ICancellableEvent.defaultAction;
 get defaultPrevented(): boolean;
 ```
 
-Defined in: events.ts:96
+Defined in: [events.ts:96](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/events.ts#L96)
 
 Gets whether the default action has been prevented.
 
@@ -15094,7 +15094,7 @@ Gets whether the default action has been prevented.
 set defaultPrevented(value): void;
 ```
 
-Defined in: events.ts:117
+Defined in: [events.ts:117](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/events.ts#L117)
 
 Allows setting defaultPrevented to true directly.
 
@@ -15122,7 +15122,7 @@ ICancellableEvent.defaultPrevented;
 get propagationStopped(): boolean;
 ```
 
-Defined in: events.ts:103
+Defined in: [events.ts:103](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/events.ts#L103)
 
 Gets whether propagation has been stopped.
 
@@ -15136,7 +15136,7 @@ Gets whether propagation has been stopped.
 set propagationStopped(value): void;
 ```
 
-Defined in: events.ts:126
+Defined in: [events.ts:126](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/events.ts#L126)
 
 Allows setting propagationStopped to true directly.
 
@@ -15164,7 +15164,7 @@ ICancellableEvent.propagationStopped;
 preventDefault(): void;
 ```
 
-Defined in: events.ts:136
+Defined in: [events.ts:136](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/events.ts#L136)
 
 Prevents the default action from executing.
 Only works if the event is cancellable.
@@ -15185,7 +15185,7 @@ ICancellableEvent.preventDefault;
 runDefaultAction(): Promise<void>;
 ```
 
-Defined in: events.ts:153
+Defined in: [events.ts:153](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/events.ts#L153)
 
 Executes the default action for an event if it hasn't been prevented.
 
@@ -15205,7 +15205,7 @@ ICancellableEvent.runDefaultAction;
 stopPropagation(): void;
 ```
 
-Defined in: events.ts:146
+Defined in: [events.ts:146](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/events.ts#L146)
 
 Stops propagation to remaining event handlers.
 Handlers registered after the current one will not execute.
@@ -15224,7 +15224,7 @@ ICancellableEvent.stopPropagation;
 
 ### `abstract` DataEvent \{#abstract-dataevent\}
 
-Defined in: events.ts:168
+Defined in: [events.ts:168](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/events.ts#L168)
 
 Abstract base for events that carry a typed, read-only data payload.
 
@@ -15259,7 +15259,7 @@ Type of the event data payload.
 new DataEvent<TData>(data, options?): DataEvent<TData>;
 ```
 
-Defined in: events.ts:172
+Defined in: [events.ts:172](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/events.ts#L172)
 
 ###### Parameters
 
@@ -15287,7 +15287,7 @@ Defined in: events.ts:172
 readonly data: TData;
 ```
 
-Defined in: events.ts:170
+Defined in: [events.ts:170](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/events.ts#L170)
 
 Read-only event data payload.
 
@@ -15301,7 +15301,7 @@ Read-only event data payload.
 get defaultAction(): DefaultAction | undefined;
 ```
 
-Defined in: events.ts:110
+Defined in: [events.ts:110](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/events.ts#L110)
 
 Gets the default action function if one was provided.
 
@@ -15321,7 +15321,7 @@ Gets the default action function if one was provided.
 get defaultPrevented(): boolean;
 ```
 
-Defined in: events.ts:96
+Defined in: [events.ts:96](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/events.ts#L96)
 
 Gets whether the default action has been prevented.
 
@@ -15335,7 +15335,7 @@ Gets whether the default action has been prevented.
 set defaultPrevented(value): void;
 ```
 
-Defined in: events.ts:117
+Defined in: [events.ts:117](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/events.ts#L117)
 
 Allows setting defaultPrevented to true directly.
 
@@ -15361,7 +15361,7 @@ Allows setting defaultPrevented to true directly.
 get propagationStopped(): boolean;
 ```
 
-Defined in: events.ts:103
+Defined in: [events.ts:103](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/events.ts#L103)
 
 Gets whether propagation has been stopped.
 
@@ -15375,7 +15375,7 @@ Gets whether propagation has been stopped.
 set propagationStopped(value): void;
 ```
 
-Defined in: events.ts:126
+Defined in: [events.ts:126](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/events.ts#L126)
 
 Allows setting propagationStopped to true directly.
 
@@ -15401,7 +15401,7 @@ Allows setting propagationStopped to true directly.
 preventDefault(): void;
 ```
 
-Defined in: events.ts:136
+Defined in: [events.ts:136](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/events.ts#L136)
 
 Prevents the default action from executing.
 Only works if the event is cancellable.
@@ -15420,7 +15420,7 @@ Only works if the event is cancellable.
 runDefaultAction(): Promise<void>;
 ```
 
-Defined in: events.ts:153
+Defined in: [events.ts:153](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/events.ts#L153)
 
 Executes the default action for an event if it hasn't been prevented.
 
@@ -15438,7 +15438,7 @@ Executes the default action for an event if it hasn't been prevented.
 stopPropagation(): void;
 ```
 
-Defined in: events.ts:146
+Defined in: [events.ts:146](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/events.ts#L146)
 
 Stops propagation to remaining event handlers.
 Handlers registered after the current one will not execute.
@@ -15455,7 +15455,7 @@ Handlers registered after the current one will not execute.
 
 ### `abstract` DataOutputEvent \{#abstract-dataoutputevent\}
 
-Defined in: events.ts:186
+Defined in: [events.ts:186](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/events.ts#L186)
 
 Abstract base for events that carry typed data and a mutable output value.
 
@@ -15494,7 +15494,7 @@ new DataOutputEvent<TData, TOutput>(
    options?): DataOutputEvent<TData, TOutput>;
 ```
 
-Defined in: events.ts:193
+Defined in: [events.ts:193](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/events.ts#L193)
 
 ###### Parameters
 
@@ -15526,7 +15526,7 @@ Defined in: events.ts:193
 readonly data: TData;
 ```
 
-Defined in: events.ts:170
+Defined in: [events.ts:170](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/events.ts#L170)
 
 Read-only event data payload.
 
@@ -15540,7 +15540,7 @@ Read-only event data payload.
 output: TOutput;
 ```
 
-Defined in: events.ts:191
+Defined in: [events.ts:191](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/events.ts#L191)
 
 The generated output.
 Handlers can modify this property to change the final result.
@@ -15555,7 +15555,7 @@ Handlers can modify this property to change the final result.
 get defaultAction(): DefaultAction | undefined;
 ```
 
-Defined in: events.ts:110
+Defined in: [events.ts:110](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/events.ts#L110)
 
 Gets the default action function if one was provided.
 
@@ -15575,7 +15575,7 @@ Gets the default action function if one was provided.
 get defaultPrevented(): boolean;
 ```
 
-Defined in: events.ts:96
+Defined in: [events.ts:96](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/events.ts#L96)
 
 Gets whether the default action has been prevented.
 
@@ -15589,7 +15589,7 @@ Gets whether the default action has been prevented.
 set defaultPrevented(value): void;
 ```
 
-Defined in: events.ts:117
+Defined in: [events.ts:117](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/events.ts#L117)
 
 Allows setting defaultPrevented to true directly.
 
@@ -15615,7 +15615,7 @@ Allows setting defaultPrevented to true directly.
 get propagationStopped(): boolean;
 ```
 
-Defined in: events.ts:103
+Defined in: [events.ts:103](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/events.ts#L103)
 
 Gets whether propagation has been stopped.
 
@@ -15629,7 +15629,7 @@ Gets whether propagation has been stopped.
 set propagationStopped(value): void;
 ```
 
-Defined in: events.ts:126
+Defined in: [events.ts:126](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/events.ts#L126)
 
 Allows setting propagationStopped to true directly.
 
@@ -15655,7 +15655,7 @@ Allows setting propagationStopped to true directly.
 preventDefault(): void;
 ```
 
-Defined in: events.ts:136
+Defined in: [events.ts:136](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/events.ts#L136)
 
 Prevents the default action from executing.
 Only works if the event is cancellable.
@@ -15674,7 +15674,7 @@ Only works if the event is cancellable.
 runDefaultAction(): Promise<void>;
 ```
 
-Defined in: events.ts:153
+Defined in: [events.ts:153](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/events.ts#L153)
 
 Executes the default action for an event if it hasn't been prevented.
 
@@ -15692,7 +15692,7 @@ Executes the default action for an event if it hasn't been prevented.
 stopPropagation(): void;
 ```
 
-Defined in: events.ts:146
+Defined in: [events.ts:146](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/events.ts#L146)
 
 Stops propagation to remaining event handlers.
 Handlers registered after the current one will not execute.
@@ -15709,7 +15709,7 @@ Handlers registered after the current one will not execute.
 
 ### CancellableEventOptions \{#cancellableeventoptions\}
 
-Defined in: events.ts:39
+Defined in: [events.ts:39](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/events.ts#L39)
 
 #### Properties
 
@@ -15719,7 +15719,7 @@ Defined in: events.ts:39
 optional cancellable?: boolean;
 ```
 
-Defined in: events.ts:41
+Defined in: [events.ts:41](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/events.ts#L41)
 
 ##### defaultAction? \{#defaultaction-3\}
 
@@ -15727,7 +15727,7 @@ Defined in: events.ts:41
 optional defaultAction?: DefaultAction;
 ```
 
-Defined in: events.ts:40
+Defined in: [events.ts:40](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/events.ts#L40)
 
 ---
 
@@ -15737,7 +15737,7 @@ Defined in: events.ts:40
 function deepFreeze<T>(obj): T;
 ```
 
-Defined in: events.ts:23
+Defined in: [events.ts:23](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/events.ts#L23)
 
 Deep freezes an object to make it immutable at runtime.
 Recursively freezes all nested objects and arrays.
@@ -15782,7 +15782,7 @@ Routines for serializing data structures into Markdown frontmatter blocks.
 function formatFrontMatterList(prop, indentation?, prefix?): string[];
 ```
 
-Defined in: frontmatter.ts:84
+Defined in: [frontmatter.ts:84](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/frontmatter.ts#L84)
 
 Formats an array into a front matter YAML-like structure as string array.
 
@@ -15831,7 +15831,7 @@ formatFrontMatterList(list);
 function formatFrontMatterObject(props, indentation?, prefix?): string[];
 ```
 
-Defined in: frontmatter.ts:44
+Defined in: [frontmatter.ts:44](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/frontmatter.ts#L44)
 
 Formats an object into a front matter YAML-like structure as string array.
 
@@ -15882,7 +15882,7 @@ formatFrontMatterObject(obj);
 function formatFrontMatterProp(prop, indentation?, prefix?): string[];
 ```
 
-Defined in: frontmatter.ts:127
+Defined in: [frontmatter.ts:127](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/frontmatter.ts#L127)
 
 Formats a single property into a front matter YAML-like structure as string array.
 
@@ -15934,7 +15934,7 @@ Library of helper functions for handling files and folders.
 function ensureDir(location, options?): Promise<void>;
 ```
 
-Defined in: fs.ts:60
+Defined in: [fs.ts:60](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/fs.ts#L60)
 
 Asynchronously create a folder structure if it does not exist.
 
@@ -15971,7 +15971,7 @@ await ensureDir("./.temp/local");
 function fileExists(location): Promise<boolean>;
 ```
 
-Defined in: fs.ts:35
+Defined in: [fs.ts:35](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/fs.ts#L35)
 
 Asynchronously check if a file or folder exists at the path location.
 
@@ -16006,7 +16006,7 @@ await fileExists("./.temp/local");
 function saveFile(location, content, prettify?): Promise<void>;
 ```
 
-Defined in: fs.ts:97
+Defined in: [fs.ts:97](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/fs.ts#L97)
 
 Asynchronously save a file with a string content at specified location in local FS.
 Override the file content if the file already exists.
@@ -16064,7 +16064,7 @@ the codebase for validating GraphQL schema objects and other entities.
 function hasArrayProperty<K>(obj, key): obj is Record<K, unknown[]>;
 ```
 
-Defined in: guards.ts:111
+Defined in: [guards.ts:111](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/guards.ts#L111)
 
 Type guard to check if an object has an array property.
 
@@ -16110,7 +16110,7 @@ if (hasArrayProperty(type, "args")) {
 function hasArrayProperty(obj, key): obj is Record<PropertyKey, unknown[]>;
 ```
 
-Defined in: guards.ts:116
+Defined in: [guards.ts:116](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/guards.ts#L116)
 
 Type guard to check if an object has an array property.
 
@@ -16157,7 +16157,7 @@ function hasFunctionProperty<K>(
 ): obj is Record<K, (args: unknown[]) => unknown>;
 ```
 
-Defined in: guards.ts:213
+Defined in: [guards.ts:213](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/guards.ts#L213)
 
 Type guard to check if an object has a function property.
 
@@ -16206,7 +16206,7 @@ function hasFunctionProperty(
 ): obj is Record<PropertyKey, (args: unknown[]) => unknown>;
 ```
 
-Defined in: guards.ts:218
+Defined in: [guards.ts:218](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/guards.ts#L218)
 
 Type guard to check if an object has a function property.
 
@@ -16250,7 +16250,7 @@ if (hasFunctionProperty(directive, "descriptor")) {
 function hasNonEmptyArrayProperty<K>(obj, key): obj is Record<K, unknown[]>;
 ```
 
-Defined in: guards.ts:145
+Defined in: [guards.ts:145](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/guards.ts#L145)
 
 Type guard to check if an object has a non-empty array property.
 
@@ -16299,7 +16299,7 @@ function hasNonEmptyArrayProperty(
 ): obj is Record<PropertyKey, unknown[]>;
 ```
 
-Defined in: guards.ts:150
+Defined in: [guards.ts:150](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/guards.ts#L150)
 
 Type guard to check if an object has a non-empty array property.
 
@@ -16341,7 +16341,7 @@ if (hasNonEmptyArrayProperty(type, "args")) {
 function hasProperties<K>(obj, ...keys): obj is Record<K, unknown>;
 ```
 
-Defined in: guards.ts:82
+Defined in: [guards.ts:82](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/guards.ts#L82)
 
 Type guard to check if an object has multiple specific properties.
 
@@ -16391,7 +16391,7 @@ if (hasProperties(type, "name", "description")) {
 function hasProperty<K>(obj, key): obj is Record<K, unknown>;
 ```
 
-Defined in: guards.ts:48
+Defined in: [guards.ts:48](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/guards.ts#L48)
 
 Type guard to check if an object has a specific property.
 
@@ -16437,7 +16437,7 @@ if (hasProperty(type, "args")) {
 function hasProperty(obj, key): obj is Record<PropertyKey, unknown>;
 ```
 
-Defined in: guards.ts:53
+Defined in: [guards.ts:53](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/guards.ts#L53)
 
 Type guard to check if an object has a specific property.
 
@@ -16481,7 +16481,7 @@ if (hasProperty(type, "args")) {
 function hasStringProperty<K>(obj, key): obj is Record<K, string>;
 ```
 
-Defined in: guards.ts:179
+Defined in: [guards.ts:179](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/guards.ts#L179)
 
 Type guard to check if an object has a string property.
 
@@ -16527,7 +16527,7 @@ if (hasStringProperty(type, "description")) {
 function hasStringProperty(obj, key): obj is Record<PropertyKey, string>;
 ```
 
-Defined in: guards.ts:184
+Defined in: [guards.ts:184](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/guards.ts#L184)
 
 Type guard to check if an object has a string property.
 
@@ -16569,7 +16569,7 @@ if (hasStringProperty(type, "description")) {
 function isNonEmptyArray(value): value is unknown[];
 ```
 
-Defined in: guards.ts:246
+Defined in: [guards.ts:246](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/guards.ts#L246)
 
 Type guard to check if a value is a non-empty array.
 
@@ -16605,7 +16605,7 @@ if (isNonEmptyArray(values)) {
 function isTypeObject(obj): obj is Record<string, unknown>;
 ```
 
-Defined in: guards.ts:27
+Defined in: [guards.ts:27](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/guards.ts#L27)
 
 Type guard to check if a value is an object but not an array.
 
@@ -16646,7 +16646,7 @@ Shared Markdown constants used across packages.
 const FRONT_MATTER_DELIMITER: "---";
 ```
 
-Defined in: markdown.ts:20
+Defined in: [markdown.ts:20](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/markdown.ts#L20)
 
 Frontmatter delimiter for YAML frontmatter blocks.
 
@@ -16658,7 +16658,7 @@ Frontmatter delimiter for YAML frontmatter blocks.
 const MARKDOWN_CODE_INDENTATION: "  ";
 ```
 
-Defined in: markdown.ts:30
+Defined in: [markdown.ts:30](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/markdown.ts#L30)
 
 Standard indentation for code blocks (2 spaces).
 
@@ -16670,7 +16670,7 @@ Standard indentation for code blocks (2 spaces).
 const MARKDOWN_CODE_SNIPPET: "``";
 ```
 
-Defined in: markdown.ts:25
+Defined in: [markdown.ts:25](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/markdown.ts#L25)
 
 Code snippet delimiter for fenced code blocks.
 
@@ -16682,7 +16682,7 @@ Code snippet delimiter for fenced code blocks.
 const MARKDOWN_EOL: "\n";
 ```
 
-Defined in: markdown.ts:10
+Defined in: [markdown.ts:10](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/markdown.ts#L10)
 
 End of line character for Markdown.
 
@@ -16694,7 +16694,7 @@ End of line character for Markdown.
 const MARKDOWN_EOP: string;
 ```
 
-Defined in: markdown.ts:15
+Defined in: [markdown.ts:15](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/markdown.ts#L15)
 
 End of paragraph (double newline) for Markdown.
 
@@ -16710,7 +16710,7 @@ Internal library of helpers for manipulating objects.
 function isEmpty<T>(obj): obj is Exclude<unknown, T>;
 ```
 
-Defined in: object.ts:34
+Defined in: [object.ts:34](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/object.ts#L34)
 
 **`Internal`**
 
@@ -16765,7 +16765,7 @@ Internal library for prettifying files using `prettier`.
 function prettify(content, parser): Promise<string | undefined>;
 ```
 
-Defined in: prettier.ts:25
+Defined in: [prettier.ts:25](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/prettier.ts#L25)
 
 **`Internal`**
 
@@ -16808,7 +16808,7 @@ This function logs a warning message on error.
 function prettifyMarkdown(content): Promise<string | undefined>;
 ```
 
-Defined in: prettier.ts:67
+Defined in: [prettier.ts:67](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/prettier.ts#L67)
 
 **`Internal`**
 
@@ -16848,7 +16848,7 @@ Library of helpers for formatting strings.
 const slugify: (str) => string = kebabCase;
 ```
 
-Defined in: string.ts:283
+Defined in: [string.ts:283](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/string.ts#L283)
 
 Returns a lowercase string with `-` as replacement for non alphanum characters using [stringCaseBuilder](#stringcasebuilder).
 
@@ -16882,7 +16882,7 @@ kebabCase("The quick brown Fox");
 const toString: StringConstructor = String;
 ```
 
-Defined in: string.ts:293
+Defined in: [string.ts:293](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/string.ts#L293)
 
 Returns a stringified version of the variable.
 
@@ -16904,7 +16904,7 @@ a string
 function capitalize(str): string;
 ```
 
-Defined in: string.ts:224
+Defined in: [string.ts:224](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/string.ts#L224)
 
 Returns a string in lowercase excepted for the 1st character capitalized using [firstUppercase](#firstuppercase).
 
@@ -16938,7 +16938,7 @@ capitalize("the quick Brown Fox");
 function escapeMDX(str): string;
 ```
 
-Defined in: string.ts:177
+Defined in: [string.ts:177](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/string.ts#L177)
 
 **`Internal`**
 
@@ -16979,7 +16979,7 @@ escapeMDX("`{MDX}` `<special>` characters");
 function firstUppercase(str): string;
 ```
 
-Defined in: string.ts:200
+Defined in: [string.ts:200](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/string.ts#L200)
 
 Returns a string with the 1st character in uppercase.
 
@@ -17013,7 +17013,7 @@ firstUppercase("the quick Brown Fox");
 function kebabCase(str): string;
 ```
 
-Defined in: string.ts:267
+Defined in: [string.ts:267](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/string.ts#L267)
 
 Returns a lowercase string with `-` as replacement for non alphanum characters using [stringCaseBuilder](#stringcasebuilder).
 
@@ -17047,7 +17047,7 @@ kebabCase("The quick brown Fox");
 function prune(str, substr?): string;
 ```
 
-Defined in: string.ts:58
+Defined in: [string.ts:58](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/string.ts#L58)
 
 **`Internal`**
 
@@ -17091,7 +17091,7 @@ prune(text, "**");
 function replaceDiacritics(str): string;
 ```
 
-Defined in: string.ts:27
+Defined in: [string.ts:27](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/string.ts#L27)
 
 Replaces diacritics by non-diacritic equivalent characters.
 
@@ -17130,7 +17130,7 @@ replaceDiacritics("Âéêś"); // Expected result: "Aees"
 function startCase(str): string;
 ```
 
-Defined in: string.ts:246
+Defined in: [string.ts:246](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/string.ts#L246)
 
 Applies [firstUppercase](#firstuppercase) using [stringCaseBuilder](#stringcasebuilder) to every word of a string with `space` character as separator.
 
@@ -17164,7 +17164,7 @@ startCase("the quick Brown Fox");
 function stringCaseBuilder(str, transformation?, separator?, splitter?): string;
 ```
 
-Defined in: string.ts:100
+Defined in: [string.ts:100](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/string.ts#L100)
 
 **`Internal`**
 
@@ -17224,7 +17224,7 @@ stringCaseBuilder(text, transformation, " ");
 function toHTMLUnicode(char): string;
 ```
 
-Defined in: string.ts:146
+Defined in: [string.ts:146](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/string.ts#L146)
 
 **`Internal`**
 
@@ -17259,7 +17259,7 @@ Alias `path.posix` to normalize URL handling on Windows.
 
 ## RelativeGeneratedDocLinkOptions \{#relativegenerateddoclinkoptions\}
 
-Defined in: url.ts:15
+Defined in: [url.ts:15](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/url.ts#L15)
 
 ### Properties
 
@@ -17269,7 +17269,7 @@ Defined in: url.ts:15
 baseURL: string;
 ```
 
-Defined in: url.ts:16
+Defined in: [url.ts:16](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/url.ts#L16)
 
 #### currentFilePath \{#currentfilepath\}
 
@@ -17277,7 +17277,7 @@ Defined in: url.ts:16
 currentFilePath: string;
 ```
 
-Defined in: url.ts:17
+Defined in: [url.ts:17](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/url.ts#L17)
 
 #### extension? \{#extension\}
 
@@ -17285,7 +17285,7 @@ Defined in: url.ts:17
 optional extension?: string;
 ```
 
-Defined in: url.ts:18
+Defined in: [url.ts:18](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/url.ts#L18)
 
 #### outputDir \{#outputdir\}
 
@@ -17293,7 +17293,7 @@ Defined in: url.ts:18
 outputDir: string;
 ```
 
-Defined in: url.ts:19
+Defined in: [url.ts:19](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/url.ts#L19)
 
 #### targetUrlPath \{#targeturlpath\}
 
@@ -17301,7 +17301,7 @@ Defined in: url.ts:19
 targetUrlPath: string;
 ```
 
-Defined in: url.ts:20
+Defined in: [url.ts:20](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/url.ts#L20)
 
 ---
 
@@ -17311,7 +17311,7 @@ Defined in: url.ts:20
 function toRelativeGeneratedDocLink(__namedParameters): string | undefined;
 ```
 
-Defined in: url.ts:34
+Defined in: [url.ts:34](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/url.ts#L34)
 
 Converts a generated absolute GraphQL-Markdown doc URL into a page-relative file path.
 Returns `undefined` when the target URL does not belong to the configured `baseURL`.
