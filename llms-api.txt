@@ -9108,7 +9108,7 @@ function _getFields<T, V>(
 ): Record<string, unknown> | V;
 ```
 
-Defined in: [packages/graphql/src/introspection.ts:310](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/graphql/src/introspection.ts#L310)
+Defined in: [packages/graphql/src/introspection.ts:340](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/graphql/src/introspection.ts#L340)
 
 **`Internal`**
 
@@ -9160,7 +9160,7 @@ a map of fields as k/v records, or `fallback` value if no fields available.
 function getDirective(entity, directives): GraphQLDirective[];
 ```
 
-Defined in: [packages/graphql/src/introspection.ts:221](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/graphql/src/introspection.ts#L221)
+Defined in: [packages/graphql/src/introspection.ts:251](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/graphql/src/introspection.ts#L251)
 
 Returns a schema entity's list of directives matching a defined set.
 
@@ -9192,7 +9192,7 @@ a list of GraphQL directives matching the set, else `false`.
 function getDirectiveLocationForASTPath(appliedTo): DirectiveLocation;
 ```
 
-Defined in: [packages/graphql/src/introspection.ts:120](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/graphql/src/introspection.ts#L120)
+Defined in: [packages/graphql/src/introspection.ts:169](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/graphql/src/introspection.ts#L169)
 
 ### Parameters
 
@@ -9212,7 +9212,7 @@ Defined in: [packages/graphql/src/introspection.ts:120](https://github.com/graph
 function getFields(type): unknown[];
 ```
 
-Defined in: [packages/graphql/src/introspection.ts:574](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/graphql/src/introspection.ts#L574)
+Defined in: [packages/graphql/src/introspection.ts:604](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/graphql/src/introspection.ts#L604)
 
 Returns fields map for a GraphQL schema type.
 
@@ -9243,7 +9243,7 @@ function getOperation(
 ): Record<string, GraphQLOperationType>;
 ```
 
-Defined in: [packages/graphql/src/introspection.ts:537](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/graphql/src/introspection.ts#L537)
+Defined in: [packages/graphql/src/introspection.ts:567](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/graphql/src/introspection.ts#L567)
 
 **`Internal`**
 
@@ -9279,7 +9279,7 @@ a map of fields as k/v records.
 function getSchemaMap(schema): SchemaMap;
 ```
 
-Defined in: [packages/graphql/src/introspection.ts:652](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/graphql/src/introspection.ts#L652)
+Defined in: [packages/graphql/src/introspection.ts:682](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/graphql/src/introspection.ts#L682)
 
 Returns an introspection map of the GraphQL schema.
 This is the entry point for GraphQL-Markdown schema parsing features.
@@ -9368,7 +9368,7 @@ function getTypeDirectiveArgValue(
 ): Maybe<string | Record<string, unknown>>;
 ```
 
-Defined in: [packages/graphql/src/introspection.ts:282](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/graphql/src/introspection.ts#L282)
+Defined in: [packages/graphql/src/introspection.ts:312](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/graphql/src/introspection.ts#L312)
 
 Returns one directive's argument's value linked to a GraphQL schema type.
 It calls [getTypeDirectiveValues](#gettypedirectivevalues) and returns a matching record.
@@ -9410,7 +9410,7 @@ function getTypeDirectiveValues(
 ): Maybe<Record<string, unknown>>;
 ```
 
-Defined in: [packages/graphql/src/introspection.ts:251](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/graphql/src/introspection.ts#L251)
+Defined in: [packages/graphql/src/introspection.ts:281](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/graphql/src/introspection.ts#L281)
 
 Returns all directive's arguments' values linked to a GraphQL schema type.
 
@@ -9487,7 +9487,7 @@ a map of GraphQL named types for the matching GraphQL type, or `undefined` if no
 function getTypeName(type, defaultName?): string;
 ```
 
-Defined in: [packages/graphql/src/introspection.ts:372](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/graphql/src/introspection.ts#L372)
+Defined in: [packages/graphql/src/introspection.ts:402](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/graphql/src/introspection.ts#L402)
 
 Resolves the name of a GraphQL schema type.
 
@@ -9553,7 +9553,7 @@ a GraphQL schema named type.
 function hasDirective(entity, directives, fallback?): boolean;
 ```
 
-Defined in: [packages/graphql/src/introspection.ts:186](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/graphql/src/introspection.ts#L186)
+Defined in: [packages/graphql/src/introspection.ts:216](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/graphql/src/introspection.ts#L216)
 
 Checks if a schema entity as a directive belonging to a defined set.
 
@@ -9591,7 +9591,7 @@ default value if the entity type is not a valid location for directives.
 function isValidDirectiveLocation(entity, directive): boolean;
 ```
 
-Defined in: [packages/graphql/src/introspection.ts:165](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/graphql/src/introspection.ts#L165)
+Defined in: [packages/graphql/src/introspection.ts:191](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/graphql/src/introspection.ts#L191)
 
 Check if a directive can be applied to specific schema entity location.
 
@@ -11217,18 +11217,6 @@ Defined in: [printer-legacy/src/const/options.ts:28](https://github.com/graphql-
 const DEFAULT_OPTIONS: Required<
   Omit<
     PrintTypeOptions,
-    | "afterDiffCheckHook"
-    | "afterGenerateIndexMetafileHook"
-    | "afterRenderHomepageHook"
-    | "afterRenderRootTypesHook"
-    | "afterRenderTypeEntitiesHook"
-    | "afterSchemaLoadHook"
-    | "beforeDiffCheckHook"
-    | "beforeGenerateIndexMetafileHook"
-    | "beforeRenderHomepageHook"
-    | "beforeRenderRootTypesHook"
-    | "beforeRenderTypeEntitiesHook"
-    | "beforeSchemaLoadHook"
     | "collapsible"
     | "exampleSection"
     | "formatCategoryFolderName"

@@ -77,7 +77,7 @@ Then continue with [Integration with Frameworks](/docs/advanced/integration-with
 
 ### Requirements
 
-Node.js version [20.0](https://nodejs.org/en/download/) or above (which can be checked by running `node -v`) is required.
+Node.js version [22.12](https://nodejs.org/en/download/) or above (which can be checked by running `node -v`) is required.
 
 :::info[Package managers]
 
@@ -142,7 +142,7 @@ These requirements are specific to Docusaurus integration. See our [Framework In
 
 Your project needs to meet the following requirements:
 
-- Node.js version [20.0](https://nodejs.org/en/download/) or above
+- Node.js version [22.12](https://nodejs.org/en/download/) or above
 - [Docusaurus](https://docusaurus.io/) instance version 2.0 or above with the [docs plugin](https://docusaurus.io/docs/docs-introduction) enabled
 - [GraphQL.js](https://graphql.org/graphql-js/) version 16.0 or above
 
@@ -212,6 +212,30 @@ Edit the configuration in `graphql.config.mjs`.
 Fork our [demo repo](https://github.com/graphql-markdown/demo-honkit) to try with your own GraphQL schema.
 
 Edit the configuration in `graphql.config.mjs`.
+
+## Hugo
+
+Fork our [demo repo](https://github.com/graphql-markdown/demo-hugo) to try with your own GraphQL schema.
+
+Edit the configuration in `.graphqlrc.yml`.
+
+## MkDocs
+
+Fork our [demo repo](https://github.com/graphql-markdown/demo-mkdocs) to try with your own GraphQL schema.
+
+Edit the configuration in `scripts/generate-docs.mjs`.
+
+## mdBook
+
+Fork our [demo repo](https://github.com/graphql-markdown/demo-mdbook) to try with your own GraphQL schema.
+
+Edit the configuration in `scripts/generate-docs.mjs`.
+
+## DocFX
+
+Fork our [demo repo](https://github.com/graphql-markdown/demo-docfx) to try with your own GraphQL schema.
+
+Edit the configuration in `scripts/generate-docs.mjs`.
 
 ---
 
@@ -319,18 +343,19 @@ For formatter-based setups, prefer `formatter`. The older `mdxParser` setting an
 | ---------- | -------- | ---------- | --------------------------------------------------------- |
 | `schema`   | `string` | —          | **Required**. Path to schema file or introspection result |
 | `rootPath` | `string` | `./docs`   | Root folder for documentation generation                  |
-| `baseURL`  | `string` | `/graphql` | Base URL path for generated documentation                 |
+| `baseURL`  | `string` | `schema`   | Base URL path and output folder name under `rootPath`     |
 
 ## Document Structure
 
-| Option         | Type                     | Default | Description                                                           |
-| -------------- | ------------------------ | ------- | --------------------------------------------------------------------- |
-| `linkRoot`     | `string`                 | `/`     | Root path used for type cross-links in generated documentation        |
-| `homepage`     | `string`                 | —       | Custom homepage content file                                          |
-| `hierarchy`    | `string`                 | `api`   | Documentation structure: `api`, `entity`, or `flat`                   |
-| `index`        | `boolean`                | `false` | Generate category indices                                             |
-| `categorySort` | `string` \| `function`   | —       | Sort categories: `"natural"` for alphabetical or custom function      |
-| `pretty`       | `boolean`                | `false` | Format generated Markdown files                                       |
+| Option             | Type                   | Default        | Description                                                      |
+| ------------------ | ---------------------- | -------------- | ---------------------------------------------------------------- |
+| `linkRoot`         | `string`               | `/`            | Root path used for type cross-links in generated documentation   |
+| `homepage`         | `string` \| `false`    | `generated.md` | Custom homepage content file, `false` to disable                 |
+| `hierarchy`        | `string`               | `api`          | Documentation structure: `api`, `entity`, or `flat`              |
+| `index`            | `boolean`              | `false`        | Generate category indices                                        |
+| `categorySort`     | `string` \| `function` | —              | Sort categories: `"natural"` for alphabetical or custom function |
+| `sectionHeaderId`  | `boolean`              | `true`         | Generate custom section header IDs for permalinks                |
+| `pretty`           | `boolean`              | `false`        | Format generated Markdown files                                  |
 
 ## Content Options
 
@@ -360,7 +385,7 @@ For formatter-based setups, prefer `formatter`. The older `mdxParser` setting an
 
 ## CLI Flags
 
-All config options can be passed as CLI flags to `npx docusaurus graphql-to-doc` or `npx graphql-markdown`.
+All config options can be passed as CLI flags to `npx docusaurus graphql-to-doc` (Docusaurus plugin) or `npx gqlmd graphql-to-doc` (standalone CLI).
 
 | Flag                              | Config option                         | Description                                    |
 | --------------------------------- | ------------------------------------- | ---------------------------------------------- |
@@ -377,13 +402,16 @@ All config options can be passed as CLI flags to `npx docusaurus graphql-to-doc`
 | `--deprecated <option>`           | `printTypeOptions.deprecated`         | `default`, `group`, or `skip`                  |
 | `--noParentType`                  | `printTypeOptions.parentTypePrefix`   | Hide parent type prefix on fields              |
 | `--noTypeBadges`                  | `printTypeOptions.typeBadges`         | Hide type attribute badges                     |
+| `--noSectionId`                   | `docOptions.sectionHeaderId`          | Disable section header IDs for permalinks      |
 | `--only <@directive...>`          | `onlyDocDirective`                    | Include only types with these directives       |
 | `--skip <@directive...>`          | `skipDocDirective`                    | Exclude types with these directives            |
-| `-gdb, --groupByDirective <expr>` | `groupByDirective`                    | Group by directive: `@dir(field\|=fallback)`   |
+| `--groupByDirective <expr>`       | `groupByDirective`                    | Group by directive: `@dir(field\|=fallback)`   |
 | `--pretty`                        | `pretty`                              | Format output with Prettier                    |
-| `--formatter <pkg>`               | `formatter`                           | Formatter package name or path                 |
-| `--mdxParser <pkg>`               | ~~`mdxParser`~~ (deprecated)          | Deprecated alias for `formatter`               |
+| `--formatter <pkg>`[^1]           | `formatter`                           | Formatter package name or path                 |
+| `--mdxParser <pkg>`[^1]           | ~~`mdxParser`~~ (deprecated)          | Deprecated alias for `formatter`               |
 | `--config`                        | —                                     | Print resolved config (debug)                  |
+
+[^1]: The `--formatter` and `--mdxParser` flags are only registered when the CLI is set up with a default formatter package, as done by `@graphql-markdown/docusaurus`. The standalone `gqlmd` command does not expose them &mdash; set `formatter` in your configuration file instead.
 
 ---
 
@@ -721,7 +749,7 @@ plugins: [
 You can use **`"*"` as a wildcard** for the directive name. This will allow all directives not declared with their name under `customDirective` to be handled by the wildcard `descriptor` and/or `tag`.
 
 ```js title="docusaurus.config.js"
-const { directiveDescriptor, tagDescriptor } = require("@graphql-markdown/helpers");
+const { directiveDescriptor, directiveTag } = require("@graphql-markdown/helpers");
 
 //...//
 
@@ -735,7 +763,7 @@ plugins: [
         // highlight-start
         "*": {
           descriptor: directiveDescriptor,
-          tag: tagDescriptor,
+          tag: directiveTag,
         },
         // highlight-end
         // ... optionally specific custom directive options
@@ -762,7 +790,7 @@ npm i @graphql-markdown/helpers
 ### `@graphql-markdown/helpers`
 
 - [`directiveDescriptor`](/api/helpers/directives/descriptor)
-- [`tagDescriptor`](/api/helpers/directives/tag)
+- [`directiveTag`](/api/helpers/directives/tag)
 
 ### `@graphql-markdown/graphql`
 
@@ -816,7 +844,7 @@ plugins: [
 ## Examples
 
 
-By enabling the option [`printTypeOptions.exampleSection`](/docs/settings#printtypeoptions), you can add examples to types documentation.
+Examples are added to types documentation as soon as the schema declares an `@example` directive. The option [`printTypeOptions.exampleSection`](/docs/settings#printtypeoptions) is only needed when the directive name, its field, or the value parsing has to be customized (see [advanced options](#advanced-options)).
 
 ## Usage
 
@@ -861,7 +889,7 @@ Examples can be inherited, this is why in the above example there is no example 
 
 ## Advanced options
 
-Example directive definition and parser behavior can be customized through the configuration using a `TypeDirectiveExample` object instead of a boolean value for `printTypeOptions.exampleSection`:
+Example directive definition and parser behavior can be customized through the configuration by setting `printTypeOptions.exampleSection` to a `TypeExampleSectionOption` object (any other value is ignored, and the defaults `@example(value: ...)` apply):
 
 ```ts
 interface TypeExampleSectionOption {
@@ -1342,14 +1370,36 @@ Then select your framework:
 
 ### Quick Example
 
+Declare the settings in your GraphQL Config file, then run the CLI:
+
+```yaml title=".graphqlrc"
+schema: ./schema.graphql
+extensions:
+  graphql-markdown:
+    rootPath: ./docs
+    baseURL: api
+    formatter: "@graphql-markdown/formatters/docusaurus" # or your framework
+```
+
+```bash
+npx gqlmd graphql-to-doc
+```
+
+The command name is `graphql-to-doc` for the default project, and `graphql-to-doc:<id>` for each additional [GraphQL Config project](/docs/advanced/additional-schema#graphql-config).
+
+You can also call the generator programmatically. `runGraphQLMarkdown` takes the configuration as first argument, and CLI-style overrides as second argument:
+
 ```js
 
-await runGraphQLMarkdown({
-  schema: './schema.graphql',
-  rootPath: './docs',
-  baseURL: 'api',
-  formatter: '@graphql-markdown/formatters/docusaurus', // or your framework
-});
+await runGraphQLMarkdown(
+  {
+    schema: "./schema.graphql",
+    rootPath: "./docs",
+    baseURL: "api",
+    formatter: "@graphql-markdown/formatters/docusaurus", // or your framework
+  },
+  {}, // CLI flags overrides, eg `{ force: true }`
+);
 ```
 
 ## 3rd Party Packages
@@ -1772,7 +1822,7 @@ Use a GraphQL directive for creating documentation categories (see [documentatio
 
 | Setting            | CLI flag                                                                        | Default     |
 | ------------------ | ------------------------------------------------------------------------------- | ----------- |
-| `groupByDirective` | <code>-gdb, --groupByDirective &lt;&#64;directive(field&#124;=fallback)></code> | `undefined` |
+| `groupByDirective` | <code>--groupByDirective &lt;&#64;directive(field&#124;=fallback)></code>       | `undefined` |
 
 ## `homepage`
 
@@ -1795,6 +1845,14 @@ Set `homepage: false` to disable the homepage generation.
 The GraphQL-Markdown template for Docusaurus provides a customized homepage located at `static/index.md`.
 
 :::
+
+## `id`
+
+The identifier of the configuration instance. It is used for supporting [additional schemas](/docs/advanced/additional-schema): each instance gets its own command `graphql-to-doc:<id>`, and it maps to the [GraphQL Config](/docs/configuration#graphql-config) project of the same name.
+
+| Setting | CLI flag        | Default     |
+| ------- | --------------- | ----------- |
+| `id`    | _not supported_ | `default`   |
 
 ## `linkRoot`
 
@@ -1823,6 +1881,12 @@ Provide a custom module for formatting output content. You can also use built-in
 :::note
 
 The `mdxParser` setting and `--mdxParser` CLI flag are deprecated aliases for `formatter` / `--formatter`. They still work but emit a deprecation warning. Migrate to `formatter`.
+
+:::
+
+:::caution
+
+The `--formatter` and `--mdxParser` CLI flags are only registered when the CLI is set up with a default formatter package, which is what `@graphql-markdown/docusaurus` does. The standalone `gqlmd` command does not expose them, so set `formatter` in your configuration file instead.
 
 :::
 
@@ -2118,7 +2182,7 @@ Add a `resolutions` entry to your `package.json`:
 ```json title="package.json"
 "resolutions": 
 {
-  "graphql": "16.9.0"
+  "graphql": "16.14.2"
 }
 ```
 
@@ -2290,7 +2354,7 @@ function _getFields<T, V>(
 ): Record<string, unknown> | V;
 ```
 
-Defined in: [packages/graphql/src/introspection.ts:310](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/graphql/src/introspection.ts#L310)
+Defined in: [packages/graphql/src/introspection.ts:340](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/graphql/src/introspection.ts#L340)
 
 **`Internal`**
 
@@ -2342,7 +2406,7 @@ a map of fields as k/v records, or `fallback` value if no fields available.
 function getDirective(entity, directives): GraphQLDirective[];
 ```
 
-Defined in: [packages/graphql/src/introspection.ts:221](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/graphql/src/introspection.ts#L221)
+Defined in: [packages/graphql/src/introspection.ts:251](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/graphql/src/introspection.ts#L251)
 
 Returns a schema entity's list of directives matching a defined set.
 
@@ -2374,7 +2438,7 @@ a list of GraphQL directives matching the set, else `false`.
 function getDirectiveLocationForASTPath(appliedTo): DirectiveLocation;
 ```
 
-Defined in: [packages/graphql/src/introspection.ts:120](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/graphql/src/introspection.ts#L120)
+Defined in: [packages/graphql/src/introspection.ts:169](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/graphql/src/introspection.ts#L169)
 
 ### Parameters
 
@@ -2394,7 +2458,7 @@ Defined in: [packages/graphql/src/introspection.ts:120](https://github.com/graph
 function getFields(type): unknown[];
 ```
 
-Defined in: [packages/graphql/src/introspection.ts:574](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/graphql/src/introspection.ts#L574)
+Defined in: [packages/graphql/src/introspection.ts:604](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/graphql/src/introspection.ts#L604)
 
 Returns fields map for a GraphQL schema type.
 
@@ -2425,7 +2489,7 @@ function getOperation(
 ): Record<string, GraphQLOperationType>;
 ```
 
-Defined in: [packages/graphql/src/introspection.ts:537](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/graphql/src/introspection.ts#L537)
+Defined in: [packages/graphql/src/introspection.ts:567](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/graphql/src/introspection.ts#L567)
 
 **`Internal`**
 
@@ -2461,7 +2525,7 @@ a map of fields as k/v records.
 function getSchemaMap(schema): SchemaMap;
 ```
 
-Defined in: [packages/graphql/src/introspection.ts:652](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/graphql/src/introspection.ts#L652)
+Defined in: [packages/graphql/src/introspection.ts:682](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/graphql/src/introspection.ts#L682)
 
 Returns an introspection map of the GraphQL schema.
 This is the entry point for GraphQL-Markdown schema parsing features.
@@ -2550,7 +2614,7 @@ function getTypeDirectiveArgValue(
 ): Maybe<string | Record<string, unknown>>;
 ```
 
-Defined in: [packages/graphql/src/introspection.ts:282](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/graphql/src/introspection.ts#L282)
+Defined in: [packages/graphql/src/introspection.ts:312](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/graphql/src/introspection.ts#L312)
 
 Returns one directive's argument's value linked to a GraphQL schema type.
 It calls [getTypeDirectiveValues](#gettypedirectivevalues) and returns a matching record.
@@ -2592,7 +2656,7 @@ function getTypeDirectiveValues(
 ): Maybe<Record<string, unknown>>;
 ```
 
-Defined in: [packages/graphql/src/introspection.ts:251](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/graphql/src/introspection.ts#L251)
+Defined in: [packages/graphql/src/introspection.ts:281](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/graphql/src/introspection.ts#L281)
 
 Returns all directive's arguments' values linked to a GraphQL schema type.
 
@@ -2669,7 +2733,7 @@ a map of GraphQL named types for the matching GraphQL type, or `undefined` if no
 function getTypeName(type, defaultName?): string;
 ```
 
-Defined in: [packages/graphql/src/introspection.ts:372](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/graphql/src/introspection.ts#L372)
+Defined in: [packages/graphql/src/introspection.ts:402](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/graphql/src/introspection.ts#L402)
 
 Resolves the name of a GraphQL schema type.
 
@@ -2735,7 +2799,7 @@ a GraphQL schema named type.
 function hasDirective(entity, directives, fallback?): boolean;
 ```
 
-Defined in: [packages/graphql/src/introspection.ts:186](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/graphql/src/introspection.ts#L186)
+Defined in: [packages/graphql/src/introspection.ts:216](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/graphql/src/introspection.ts#L216)
 
 Checks if a schema entity as a directive belonging to a defined set.
 
@@ -2773,7 +2837,7 @@ default value if the entity type is not a valid location for directives.
 function isValidDirectiveLocation(entity, directive): boolean;
 ```
 
-Defined in: [packages/graphql/src/introspection.ts:165](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/graphql/src/introspection.ts#L165)
+Defined in: [packages/graphql/src/introspection.ts:191](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/graphql/src/introspection.ts#L191)
 
 Check if a directive can be applied to specific schema entity location.
 
@@ -13418,18 +13482,6 @@ Defined in: [printer-legacy/src/const/options.ts:28](https://github.com/graphql-
 const DEFAULT_OPTIONS: Required<
   Omit<
     PrintTypeOptions,
-    | "afterDiffCheckHook"
-    | "afterGenerateIndexMetafileHook"
-    | "afterRenderHomepageHook"
-    | "afterRenderRootTypesHook"
-    | "afterRenderTypeEntitiesHook"
-    | "afterSchemaLoadHook"
-    | "beforeDiffCheckHook"
-    | "beforeGenerateIndexMetafileHook"
-    | "beforeRenderHomepageHook"
-    | "beforeRenderRootTypesHook"
-    | "beforeRenderTypeEntitiesHook"
-    | "beforeSchemaLoadHook"
     | "collapsible"
     | "exampleSection"
     | "formatCategoryFolderName"
