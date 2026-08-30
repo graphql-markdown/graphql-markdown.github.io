@@ -7603,7 +7603,8 @@ builder.transform("path", (p) => resolve(p));
 transformIf<K>(
    key,
    predicate,
-   fn): this;
+   fn
+): this;
 ```
 
 Defined in: [core/src/options/builder.ts:147](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/options/builder.ts#L147)
@@ -7780,7 +7781,8 @@ new Renderer(
    group,
    prettify,
    docOptions,
-   mdxExtension): Renderer;
+   mdxExtension
+): Renderer;
 ```
 
 Defined in: [core/src/renderer.ts:366](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/renderer.ts#L366)
@@ -7899,7 +7901,8 @@ Defined in: [core/src/renderer.ts:346](https://github.com/graphql-markdown/graph
 generateCategoryMetafileType(
    type,
    name,
-   rootTypeName): Promise<string>;
+   rootTypeName
+): Promise<string>;
 ```
 
 Defined in: [core/src/renderer.ts:469](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/renderer.ts#L469)
@@ -7945,7 +7948,8 @@ The generated directory path
 generateIndexMetafile(
    dirPath,
    category,
-   options?): Promise<void>;
+   options?
+): Promise<void>;
 ```
 
 Defined in: [core/src/renderer.ts:414](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/renderer.ts#L414)
@@ -8097,7 +8101,8 @@ renderTypeEntities(
    dirPath,
    name,
    type,
-   operationNamespaceParts?): Promise<Maybe<Category>>;
+   operationNamespaceParts?
+): Promise<Maybe<Category>>;
 ```
 
 Defined in: [core/src/renderer.ts:620](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/renderer.ts#L620)
@@ -9597,7 +9602,7 @@ Callout component for admonitions and Material UI Chip for badges.
 const mdxDeclaration: MDXString;
 ```
 
-Defined in: [fumadocs/index.ts:33](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/fumadocs/index.ts#L33)
+Defined in: [fumadocs/index.ts:32](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/fumadocs/index.ts#L32)
 
 MDX import statement prepended to every generated file to register Fumadocs and MUI components.
 
@@ -9609,7 +9614,7 @@ MDX import statement prepended to every generated file to register Fumadocs and 
 const mdxExtension: ".mdx";
 ```
 
-Defined in: [fumadocs/index.ts:30](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/fumadocs/index.ts#L30)
+Defined in: [fumadocs/index.ts:29](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/fumadocs/index.ts#L29)
 
 File extension used for generated pages.
 
@@ -9621,7 +9626,7 @@ File extension used for generated pages.
 function createMDXFormatter(_meta?): Formatter;
 ```
 
-Defined in: [fumadocs/index.ts:89](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/fumadocs/index.ts#L89)
+Defined in: [fumadocs/index.ts:86](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/fumadocs/index.ts#L86)
 
 Creates a Fumadocs formatter.
 
@@ -9647,7 +9652,7 @@ A complete Formatter implementation for Fumadocs MDX output
 function formatMDXAdmonition(admonition, _meta): MDXString;
 ```
 
-Defined in: [fumadocs/index.ts:56](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/fumadocs/index.ts#L56)
+Defined in: [fumadocs/index.ts:55](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/fumadocs/index.ts#L55)
 
 Formats an admonition using the Fumadocs `<Callout>` component.
 Maps `warning` type to `warn`; all other types use `info`.
@@ -9680,7 +9685,7 @@ Formatted Fumadocs Callout component string
 function formatMDXBadge(badge): MDXString;
 ```
 
-Defined in: [fumadocs/index.ts:44](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/fumadocs/index.ts#L44)
+Defined in: [fumadocs/index.ts:43](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/fumadocs/index.ts#L43)
 
 Formats a badge using the Material UI `<Chip>` component.
 Maps `DEPRECATED` classname to `warning` color; all others use `info`.
@@ -9709,7 +9714,8 @@ function formatMDXLink(link): TypeLink;
 
 Defined in: [fumadocs/index.ts:69](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/fumadocs/index.ts#L69)
 
-Appends `.mdx` to internal link URLs.
+Returns the link unchanged — Fumadocs routes `page.mdx` to `page` so
+links must not include the `.mdx` extension.
 
 ### Parameters
 
@@ -9723,7 +9729,7 @@ Link data with URL and text
 
 `TypeLink`
 
-Link with `.mdx` extension appended to the URL
+Unmodified link
 
 ---
 
@@ -10770,7 +10776,7 @@ index files for each category directory.
 const mdxDeclaration: MDXString;
 ```
 
-Defined in: [starlight/index.ts:42](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/starlight/index.ts#L42)
+Defined in: [starlight/index.ts:33](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/starlight/index.ts#L33)
 
 MDX import statement prepended to every generated file to register Starlight components.
 
@@ -10782,85 +10788,9 @@ MDX import statement prepended to every generated file to register Starlight com
 const mdxExtension: ".mdx";
 ```
 
-Defined in: [starlight/index.ts:39](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/starlight/index.ts#L39)
+Defined in: [starlight/index.ts:30](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/starlight/index.ts#L30)
 
 File extension used for generated pages.
-
----
-
-## afterRenderTypeEntitiesHook() \{#afterrendertypeentitieshook\}
-
-```ts
-function afterRenderTypeEntitiesHook(event): Promise<void>;
-```
-
-Defined in: [starlight/index.ts:117](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/starlight/index.ts#L117)
-
-Lifecycle hook that appends a link entry to the category `index.md`
-after each type entity page is rendered.
-
-### Parameters
-
-#### event
-
-Hook payload containing the entity name and its output file path
-
-##### data
-
-\{
-`filePath`: `string`;
-`name`: `string`;
-\}
-
-##### data.filePath
-
-`string`
-
-##### data.name
-
-`string`
-
-### Returns
-
-`Promise`&lt;`void`&gt;
-
----
-
-## beforeGenerateIndexMetafileHook() \{#beforegenerateindexmetafilehook\}
-
-```ts
-function beforeGenerateIndexMetafileHook(event): Promise<void>;
-```
-
-Defined in: [starlight/index.ts:97](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/starlight/index.ts#L97)
-
-Lifecycle hook that creates an `index.md` file for a category directory
-before Starlight indexes it. Skips creation if the file already exists.
-
-### Parameters
-
-#### event
-
-Hook payload containing the target directory and category name
-
-##### data
-
-\{
-`category`: `string`;
-`dirPath`: `string`;
-\}
-
-##### data.category
-
-`string`
-
-##### data.dirPath
-
-`string`
-
-### Returns
-
-`Promise`&lt;`void`&gt;
 
 ---
 
@@ -10870,7 +10800,7 @@ Hook payload containing the target directory and category name
 function createMDXFormatter(_meta?): Formatter;
 ```
 
-Defined in: [starlight/index.ts:134](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/starlight/index.ts#L134)
+Defined in: [starlight/index.ts:86](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/starlight/index.ts#L86)
 
 Creates an Astro Starlight formatter.
 
@@ -10896,7 +10826,7 @@ A complete Formatter implementation for Starlight MDX output
 function formatMDXAdmonition(admonition, _meta): MDXString;
 ```
 
-Defined in: [starlight/index.ts:64](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/starlight/index.ts#L64)
+Defined in: [starlight/index.ts:55](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/starlight/index.ts#L55)
 
 Formats an admonition using the Starlight `<Aside>` component.
 Maps `warning` type to `caution`; all other types use `note`.
@@ -10929,7 +10859,7 @@ Formatted Starlight Aside component string
 function formatMDXBadge(badge): MDXString;
 ```
 
-Defined in: [starlight/index.ts:52](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/starlight/index.ts#L52)
+Defined in: [starlight/index.ts:43](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/starlight/index.ts#L43)
 
 Formats a badge using the Starlight `<Badge>` component.
 Maps `DEPRECATED` classname to the `caution` variant; all others use `default`.
@@ -10956,7 +10886,7 @@ Formatted Starlight Badge component string
 function formatMDXLink(link): TypeLink;
 ```
 
-Defined in: [starlight/index.ts:78](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/starlight/index.ts#L78)
+Defined in: [starlight/index.ts:69](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/starlight/index.ts#L69)
 
 Returns the link unchanged — Starlight routes `page.mdx` to `page/` so
 links must not include the `.mdx` extension.
@@ -10982,7 +10912,6 @@ Unmodified link
 Vocs formatter for GraphQL documentation output.
 
 Produces MDX compatible with Vite/Vocs using its native callout syntax
-and Material UI Chip components for badges.
 
 ## mdxDeclaration \{#mdxdeclaration\}
 
@@ -10990,7 +10919,7 @@ and Material UI Chip components for badges.
 const mdxDeclaration: MDXString;
 ```
 
-Defined in: [vocs/index.ts:28](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/vocs/index.ts#L28)
+Defined in: [vocs/index.ts:27](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/vocs/index.ts#L27)
 
 MDX import statement and inline component definitions prepended to every generated file.
 
@@ -11002,7 +10931,7 @@ MDX import statement and inline component definitions prepended to every generat
 const mdxExtension: ".mdx";
 ```
 
-Defined in: [vocs/index.ts:35](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/vocs/index.ts#L35)
+Defined in: [vocs/index.ts:32](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/vocs/index.ts#L32)
 
 File extension used for generated pages.
 
@@ -11014,7 +10943,7 @@ File extension used for generated pages.
 function createMDXFormatter(_meta?): Formatter;
 ```
 
-Defined in: [vocs/index.ts:111](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/vocs/index.ts#L111)
+Defined in: [vocs/index.ts:108](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/vocs/index.ts#L108)
 
 Creates a Vocs formatter.
 
@@ -11040,7 +10969,7 @@ A complete Formatter implementation for Vocs MDX output
 function formatMDXAdmonition(admonition, _meta): MDXString;
 ```
 
-Defined in: [vocs/index.ts:55](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/vocs/index.ts#L55)
+Defined in: [vocs/index.ts:52](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/vocs/index.ts#L52)
 
 Formats an admonition using Vocs native callout syntax (`:::type[title]`).
 Maps `warning` type to `warning`; all other types use `info`.
@@ -11073,10 +11002,10 @@ Formatted Vocs callout string
 function formatMDXBadge(badge): MDXString;
 ```
 
-Defined in: [vocs/index.ts:43](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/vocs/index.ts#L43)
+Defined in: [vocs/index.ts:40](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/vocs/index.ts#L40)
 
-Formats a badge using the Material UI `<Chip>` component.
-Maps `DEPRECATED` classname to `warning` color; all others use `info`.
+Formats a badge using Vocs native text directive (`:badge[...]`).
+Maps `DEPRECATED` classname to `warning` color; all others use default.
 
 ### Parameters
 
@@ -11090,7 +11019,7 @@ Badge data containing text and optional classname
 
 `MDXString`
 
-Formatted MUI Chip component string
+Formatted Vocs badge string
 
 ---
 
@@ -11100,7 +11029,7 @@ Formatted MUI Chip component string
 function formatMDXBullet(text?): MDXString;
 ```
 
-Defined in: [vocs/index.ts:68](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/vocs/index.ts#L68)
+Defined in: [vocs/index.ts:65](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/vocs/index.ts#L65)
 
 Formats a bullet point using the inline `<Bullet/>` component defined in `mdxDeclaration`.
 
@@ -11126,7 +11055,7 @@ Formatted Bullet component string
 function formatMDXLink(link): TypeLink;
 ```
 
-Defined in: [vocs/index.ts:77](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/vocs/index.ts#L77)
+Defined in: [vocs/index.ts:74](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/vocs/index.ts#L74)
 
 Appends `.mdx` to internal link URLs.
 
@@ -11152,7 +11081,7 @@ Link with `.mdx` extension appended to the URL
 function formatMDXNameEntity(name, parentType?): MDXString;
 ```
 
-Defined in: [vocs/index.ts:90](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/vocs/index.ts#L90)
+Defined in: [vocs/index.ts:87](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/vocs/index.ts#L87)
 
 Formats a named entity as a JSX span with styled code elements.
 
@@ -13927,7 +13856,8 @@ events.on(
 new BeforeComposePageTypeEvent(
    data,
    initialOutput,
-   options?): BeforeComposePageTypeEvent;
+   options?
+): BeforeComposePageTypeEvent;
 ```
 
 Defined in: [printer-legacy/src/events.ts:118](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/events.ts#L118)
@@ -14181,7 +14111,8 @@ events.on(PrintTypeEvents.AFTER_PRINT_CODE, (event: PrintCodeEvent) => {
 new PrintCodeEvent(
    data,
    initialOutput,
-   options?): PrintCodeEvent;
+   options?
+): PrintCodeEvent;
 ```
 
 Defined in: [printer-legacy/src/events.ts:52](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/events.ts#L52)
@@ -14483,7 +14414,8 @@ events.on(PrintTypeEvents.AFTER_PRINT_TYPE, (event: PrintTypeEvent) => {
 new PrintTypeEvent(
    data,
    initialOutput,
-   options?): PrintTypeEvent;
+   options?
+): PrintTypeEvent;
 ```
 
 Defined in: [printer-legacy/src/events.ts:81](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/events.ts#L81)
@@ -16173,7 +16105,7 @@ It includes utilities for handling various GraphQL types, custom directives, and
 
 ## Printer \{#printer\}
 
-Defined in: [printer-legacy/src/printer.ts:167](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/printer.ts#L167)
+Defined in: [printer-legacy/src/printer.ts:181](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/printer.ts#L181)
 
 The Printer class implements the core functionality for generating Markdown documentation
 from GraphQL schema types.
@@ -16219,7 +16151,7 @@ new Printer(): Printer;
 readonly static printCustomDirectives: (type, options) => Maybe<PageSection>;
 ```
 
-Defined in: [printer-legacy/src/printer.ts:176](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/printer.ts#L176)
+Defined in: [printer-legacy/src/printer.ts:190](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/printer.ts#L190)
 
 Prints custom directives
 
@@ -16251,7 +16183,7 @@ A "Directives" PageSection, or undefined when no directives are printable
 readonly static printCustomTags: (type, options) => string | MDXString;
 ```
 
-Defined in: [printer-legacy/src/printer.ts:181](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/printer.ts#L181)
+Defined in: [printer-legacy/src/printer.ts:195](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/printer.ts#L195)
 
 Prints custom tags
 
@@ -16283,7 +16215,7 @@ Formatted Markdown string of badges or empty string
 readonly static printDescription: (type, options, noText?) => string | MDXString;
 ```
 
-Defined in: [printer-legacy/src/printer.ts:171](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/printer.ts#L171)
+Defined in: [printer-legacy/src/printer.ts:185](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/printer.ts#L185)
 
 Prints type descriptions
 
@@ -16325,7 +16257,7 @@ Combined description, deprecation notices, and custom directives as MDX content
 get static eventEmitter(): Maybe<PrinterEventEmitter>;
 ```
 
-Defined in: [printer-legacy/src/printer.ts:201](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/printer.ts#L201)
+Defined in: [printer-legacy/src/printer.ts:215](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/printer.ts#L215)
 
 Optional event emitter for print events.
 When set, the printer will emit events before/after printCode and printType,
@@ -16341,7 +16273,7 @@ allowing external code to intercept and modify the output.
 set static eventEmitter(eventEmitter): void;
 ```
 
-Defined in: [printer-legacy/src/printer.ts:216](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/printer.ts#L216)
+Defined in: [printer-legacy/src/printer.ts:230](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/printer.ts#L230)
 
 ###### Parameters
 
@@ -16361,7 +16293,7 @@ Defined in: [printer-legacy/src/printer.ts:216](https://github.com/graphql-markd
 get static mdxDeclaration(): Readonly<Maybe<string>>;
 ```
 
-Defined in: [printer-legacy/src/printer.ts:208](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/printer.ts#L208)
+Defined in: [printer-legacy/src/printer.ts:222](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/printer.ts#L222)
 
 Prints mdx modules import declaration
 
@@ -16375,7 +16307,7 @@ Prints mdx modules import declaration
 set static mdxDeclaration(mdxDeclaration): void;
 ```
 
-Defined in: [printer-legacy/src/printer.ts:220](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/printer.ts#L220)
+Defined in: [printer-legacy/src/printer.ts:234](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/printer.ts#L234)
 
 ###### Parameters
 
@@ -16395,7 +16327,7 @@ Defined in: [printer-legacy/src/printer.ts:220](https://github.com/graphql-markd
 get static options(): Readonly<Maybe<PrintTypeOptions>>;
 ```
 
-Defined in: [printer-legacy/src/printer.ts:192](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/printer.ts#L192)
+Defined in: [printer-legacy/src/printer.ts:206](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/printer.ts#L206)
 
 Global printer configuration options
 
@@ -16409,7 +16341,7 @@ Global printer configuration options
 set static options(options): void;
 ```
 
-Defined in: [printer-legacy/src/printer.ts:212](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/printer.ts#L212)
+Defined in: [printer-legacy/src/printer.ts:226](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/printer.ts#L226)
 
 ###### Parameters
 
@@ -16433,10 +16365,11 @@ static init(
    options?,
    formatter?,
    mdxDeclaration?,
-   eventEmitter?): Promise<void>;
+   eventEmitter?
+): Promise<void>;
 ```
 
-Defined in: [printer-legacy/src/printer.ts:235](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/printer.ts#L235)
+Defined in: [printer-legacy/src/printer.ts:249](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/printer.ts#L249)
 
 Initializes the printer with the given schema and configuration.
 
@@ -16494,7 +16427,7 @@ Optional event emitter for print events interception
 readonly static printCode(type, options): string;
 ```
 
-Defined in: [printer-legacy/src/printer.ts:323](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/printer.ts#L323)
+Defined in: [printer-legacy/src/printer.ts:337](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/printer.ts#L337)
 
 Prints the GraphQL type definition as code block
 
@@ -16524,10 +16457,11 @@ Formatted code block string with type definition
 readonly static printCodeAsync(
    type,
    typeName,
-   options): Promise<string>;
+   options
+): Promise<string>;
 ```
 
-Defined in: [printer-legacy/src/printer.ts:379](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/printer.ts#L379)
+Defined in: [printer-legacy/src/printer.ts:393](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/printer.ts#L393)
 
 Prints the GraphQL type definition as code block with event emission support.
 
@@ -16576,7 +16510,7 @@ Event handlers can:
 readonly static printExample(type, options): Maybe<PageSection>;
 ```
 
-Defined in: [printer-legacy/src/printer.ts:424](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/printer.ts#L424)
+Defined in: [printer-legacy/src/printer.ts:438](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/printer.ts#L438)
 
 Prints example usage of the type if available
 
@@ -16606,10 +16540,11 @@ Example page section or undefined when no example is available
 readonly static printHeader(
    id,
    title,
-   options): string;
+   options
+): string;
 ```
 
-Defined in: [printer-legacy/src/printer.ts:302](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/printer.ts#L302)
+Defined in: [printer-legacy/src/printer.ts:316](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/printer.ts#L316)
 
 Prints the header section of a type documentation
 
@@ -16645,7 +16580,7 @@ Formatted header string with optional frontmatter
 readonly static printMetaTags(_type, options): string | MDXString;
 ```
 
-Defined in: [printer-legacy/src/printer.ts:494](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/printer.ts#L494)
+Defined in: [printer-legacy/src/printer.ts:508](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/printer.ts#L508)
 
 Prints HTML meta tags for the documentation
 
@@ -16675,7 +16610,7 @@ Formatted HTML meta tags string
 readonly static printRelations(type, options): string | MDXString;
 ```
 
-Defined in: [printer-legacy/src/printer.ts:480](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/printer.ts#L480)
+Defined in: [printer-legacy/src/printer.ts:494](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/printer.ts#L494)
 
 Prints related type information
 
@@ -16705,10 +16640,11 @@ Formatted relations section as MDX or plain string
 readonly static printType(
    name,
    type,
-   options?): Promise<Maybe<MDXString>>;
+   options?
+): Promise<Maybe<MDXString>>;
 ```
 
-Defined in: [printer-legacy/src/printer.ts:544](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/printer.ts#L544)
+Defined in: [printer-legacy/src/printer.ts:558](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/printer.ts#L558)
 
 Main method to print complete documentation for a GraphQL type
 
@@ -16773,7 +16709,7 @@ readonly static printTypeMetadata(type, options): Maybe<
   | PageSection[]>;
 ```
 
-Defined in: [printer-legacy/src/printer.ts:447](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/printer.ts#L447)
+Defined in: [printer-legacy/src/printer.ts:461](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/printer.ts#L461)
 
 Prints metadata information for a GraphQL type
 
@@ -17744,7 +17680,8 @@ Type of the mutable output value.
 new DataOutputEvent<TData, TOutput>(
    data,
    initialOutput,
-   options?): DataOutputEvent<TData, TOutput>;
+   options?
+): DataOutputEvent<TData, TOutput>;
 ```
 
 Defined in: [events.ts:193](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/events.ts#L193)
