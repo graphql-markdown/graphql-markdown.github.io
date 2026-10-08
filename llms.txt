@@ -23,6 +23,7 @@ This index exposes the documentation set that powers graphql-markdown.dev so LLM
 - [Hooks Recipes](https://graphql-markdown.dev/docs/advanced/hook-recipes): Customize GraphQL-Markdown with lifecycle hooks. Examples for modifying output, adding custom processing, and integrating with build pipelines.
 - [Integration with Frameworks](https://graphql-markdown.dev/docs/advanced/integration-with-frameworks): Integrate GraphQL-Markdown with popular documentation frameworks using formatter presets or create custom formatters.
 - [Namespaced operations](https://graphql-markdown.dev/docs/advanced/namespaced-operations): Documents namespaced GraphQL operations for nested query, mutation, and subscription fields.
+- [Nuxt Theme](https://graphql-markdown.dev/docs/advanced/nuxt-theme): Scaffold or extend a Nuxt-based GraphQL API reference site with the @graphql-markdown/nuxt-theme layer and its create-graphql-markdown-docs CLI.
 - [Output Adapter](https://graphql-markdown.dev/docs/advanced/output-adapter): Send generated GraphQL documentation somewhere other than the local filesystem. Write a custom output adapter for an object store, a CMS, or an in-...
 - [Schema loading](https://graphql-markdown.dev/docs/advanced/schema-loading): Load GraphQL schemas from files, URLs, or introspection endpoints. Configure custom loaders for different schema sources.
 - [Settings](https://graphql-markdown.dev/docs/settings): Complete reference of all GraphQL-Markdown settings, CLI flags, and configuration options with default values and examples.
@@ -38,6 +39,8 @@ This index exposes the documentation set that powers graphql-markdown.dev so LLM
 - [event-emitter](https://graphql-markdown.dev/api/core/event-emitter): Defined in: [packages/core/src/event-emitter.ts:34](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/event-emitter....
 - [event-handlers](https://graphql-markdown.dev/api/core/event-handlers): MDX event handler registration functionality.
 - [event-map](https://graphql-markdown.dev/api/core/event-map): Event callback mapping configuration.
+- [config-build-events](https://graphql-markdown.dev/api/core/events/config-build-events): Config build event constants.
+- [config-build](https://graphql-markdown.dev/api/core/events/config-build): Config build event class.
 - [diff-check](https://graphql-markdown.dev/api/core/events/diff-check): Diff checking event class.
 - [diff-events](https://graphql-markdown.dev/api/core/events/diff-events): Diff checking event constants.
 - [generate-index-metafile-events](https://graphql-markdown.dev/api/core/events/generate-index-metafile-events): Generate index metafile event constants.
