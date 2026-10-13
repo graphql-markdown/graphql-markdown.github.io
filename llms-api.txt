@@ -13,13 +13,33 @@ It exports utilities to run the documentation generator both programmatically an
 
 [GraphQL Markdown Documentation](https://graphql-markdown.dev)
 
+## RunContext \{#runcontext\}
+
+Defined in: [index.ts:38](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/cli/src/index.ts#L38)
+
+Internal context set by GraphQL-Markdown entry points.
+
+### Properties
+
+#### trigger? \{#trigger\}
+
+```ts
+optional trigger?: TelemetryTrigger;
+```
+
+Defined in: [index.ts:40](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/cli/src/index.ts#L40)
+
+Entry point reported by anonymous telemetry.
+
+---
+
 ## GraphQLMarkdownCliType \{#graphqlmarkdownclitype\}
 
 ```ts
 type GraphQLMarkdownCliType = Command;
 ```
 
-Defined in: [index.ts:32](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/cli/src/index.ts#L32)
+Defined in: [index.ts:33](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/cli/src/index.ts#L33)
 
 Type representing the GraphQL Markdown CLI.
 
@@ -36,10 +56,11 @@ function getGraphQLMarkdownCli(
   options,
   loggerModule?,
   customFormatter?,
+  context?,
 ): Command;
 ```
 
-Defined in: [index.ts:89](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/cli/src/index.ts#L89)
+Defined in: [index.ts:101](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/cli/src/index.ts#L101)
 
 Configures and returns the GraphQL Markdown CLI.
 
@@ -64,6 +85,12 @@ Optional logger module to use.
 Optional default formatter package name. When provided, registers
 `--formatter` and `--mdxParser` (deprecated) flags with this value as the default.
 
+#### context?
+
+[`RunContext`](#runcontext)
+
+Optional internal context (telemetry trigger).
+
 ### Returns
 
 `Command`
@@ -86,10 +113,15 @@ await cli.parseAsync(process.argv);
 ## runGraphQLMarkdown() \{#rungraphqlmarkdown\}
 
 ```ts
-function runGraphQLMarkdown(options, cliOptions?, loggerModule?): Promise<void>;
+function runGraphQLMarkdown(
+  options,
+  cliOptions?,
+  loggerModule?,
+  context?,
+): Promise<void>;
 ```
 
-Defined in: [index.ts:50](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/cli/src/index.ts#L50)
+Defined in: [index.ts:60](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/cli/src/index.ts#L60)
 
 Runs the GraphQL Markdown CLI to generate documentation from a GraphQL schema.
 
@@ -112,6 +144,12 @@ Optional command-line options passed to the CLI.
 `string`
 
 Optional logger module to use.
+
+#### context?
+
+[`RunContext`](#runcontext)
+
+Optional internal context (telemetry trigger).
 
 ### Returns
 
@@ -140,7 +178,7 @@ Loads configuration from graphql-config and sets up command-line interface.
 const EXTENSION_NAME: "graphql-markdown";
 ```
 
-Defined in: [main.ts:23](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/cli/src/main.ts#L23)
+Defined in: [main.ts:24](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/cli/src/main.ts#L24)
 
 Name of the GraphQL Markdown extension for graphql-config
 
@@ -152,13 +190,42 @@ Name of the GraphQL Markdown extension for graphql-config
 const graphQLConfigExtension: GraphQLExtensionDeclaration;
 ```
 
-Defined in: [main.ts:29](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/cli/src/main.ts#L29)
+Defined in: [main.ts:30](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/cli/src/main.ts#L30)
 
 GraphQL config extension declaration for GraphQL Markdown
 
 ### Returns
 
 Extension configuration object
+
+---
+
+## telemetry-command
+
+`telemetry <enable|disable|status>` command.
+All output goes to stderr so piped stdout stays clean.
+
+## getTelemetryCommand() \{#gettelemetrycommand\}
+
+```ts
+function getTelemetryCommand(env?): Command;
+```
+
+Defined in: [telemetry-command.ts:54](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/cli/src/telemetry-command.ts#L54)
+
+Builds the `telemetry` command.
+
+### Parameters
+
+#### env?
+
+`ProcessEnv` = `process.env`
+
+Environment, injectable for tests.
+
+### Returns
+
+`Command`
 
 ---
 
@@ -182,7 +249,7 @@ The configuration follows this precedence (highest to lowest):
 
 ## DeprecatedOption \{#deprecatedoption\}
 
-Defined in: [packages/core/src/config.ts:102](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L102)
+Defined in: [packages/core/src/config.ts:104](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L104)
 
 Options for handling deprecated items in the schema.
 
@@ -204,7 +271,7 @@ const deprecatedHandling = DeprecatedOption.GROUP;
 DEFAULT: "default";
 ```
 
-Defined in: [packages/core/src/config.ts:103](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L103)
+Defined in: [packages/core/src/config.ts:105](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L105)
 
 #### GROUP \{#group\}
 
@@ -212,7 +279,7 @@ Defined in: [packages/core/src/config.ts:103](https://github.com/graphql-markdow
 GROUP: "group";
 ```
 
-Defined in: [packages/core/src/config.ts:104](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L104)
+Defined in: [packages/core/src/config.ts:106](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L106)
 
 #### SKIP \{#skip\}
 
@@ -220,13 +287,13 @@ Defined in: [packages/core/src/config.ts:104](https://github.com/graphql-markdow
 SKIP: "skip";
 ```
 
-Defined in: [packages/core/src/config.ts:105](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L105)
+Defined in: [packages/core/src/config.ts:107](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L107)
 
 ---
 
 ## DiffMethod \{#diffmethod\}
 
-Defined in: [packages/core/src/config.ts:84](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L84)
+Defined in: [packages/core/src/config.ts:86](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L86)
 
 Diff methods used to determine how schema changes are processed.
 
@@ -247,7 +314,7 @@ const diffMethod = DiffMethod.FORCE;
 FORCE: "FORCE";
 ```
 
-Defined in: [packages/core/src/config.ts:86](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L86)
+Defined in: [packages/core/src/config.ts:88](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L88)
 
 #### NONE \{#none\}
 
@@ -255,13 +322,13 @@ Defined in: [packages/core/src/config.ts:86](https://github.com/graphql-markdown
 NONE: "NONE";
 ```
 
-Defined in: [packages/core/src/config.ts:85](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L85)
+Defined in: [packages/core/src/config.ts:87](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L87)
 
 ---
 
 ## TypeHierarchy \{#typehierarchy\}
 
-Defined in: [packages/core/src/config.ts:66](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L66)
+Defined in: [packages/core/src/config.ts:68](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L68)
 
 Type hierarchy options for organizing schema documentation.
 
@@ -283,7 +350,7 @@ const hierarchy = TypeHierarchy.API;
 API: "api";
 ```
 
-Defined in: [packages/core/src/config.ts:67](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L67)
+Defined in: [packages/core/src/config.ts:69](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L69)
 
 #### ENTITY \{#entity\}
 
@@ -291,7 +358,7 @@ Defined in: [packages/core/src/config.ts:67](https://github.com/graphql-markdown
 ENTITY: "entity";
 ```
 
-Defined in: [packages/core/src/config.ts:68](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L68)
+Defined in: [packages/core/src/config.ts:70](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L70)
 
 #### FLAT \{#flat\}
 
@@ -299,7 +366,7 @@ Defined in: [packages/core/src/config.ts:68](https://github.com/graphql-markdown
 FLAT: "flat";
 ```
 
-Defined in: [packages/core/src/config.ts:69](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L69)
+Defined in: [packages/core/src/config.ts:71](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L71)
 
 ---
 
@@ -309,7 +376,7 @@ Defined in: [packages/core/src/config.ts:69](https://github.com/graphql-markdown
 const ASSET_HOMEPAGE_LOCATION: string;
 ```
 
-Defined in: [packages/core/src/config.ts:123](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L123)
+Defined in: [packages/core/src/config.ts:125](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L125)
 
 Location of the default homepage template.
 
@@ -321,7 +388,7 @@ Location of the default homepage template.
 const DEFAULT_HIERARCHY: object;
 ```
 
-Defined in: [packages/core/src/config.ts:134](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L134)
+Defined in: [packages/core/src/config.ts:136](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L136)
 
 Default hierarchy configuration using the API hierarchy type.
 
@@ -358,13 +425,14 @@ const DEFAULT_OPTIONS: Readonly<
         | "mdxParser"
         | "outputAdapter"
         | "printTypeOptions"
+        | "telemetry"
       >
     >
 > &
   object;
 ```
 
-Defined in: [packages/core/src/config.ts:146](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L146)
+Defined in: [packages/core/src/config.ts:148](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L148)
 
 Default configuration options used when no user options are provided.
 These values serve as fallbacks for any missing configuration.
@@ -405,7 +473,7 @@ Options for the complete configuration interface
 const DOCS_URL: "https://graphql-markdown.dev/docs";
 ```
 
-Defined in: [packages/core/src/config.ts:112](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L112)
+Defined in: [packages/core/src/config.ts:114](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L114)
 
 Documentation website URL for reference in error messages and help text.
 
@@ -417,7 +485,7 @@ Documentation website URL for reference in error messages and help text.
 const PACKAGE_NAME: "@graphql-markdown/docusaurus";
 ```
 
-Defined in: [packages/core/src/config.ts:118](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L118)
+Defined in: [packages/core/src/config.ts:120](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L120)
 
 Default package name used for temporary directory creation and identification.
 
@@ -426,10 +494,10 @@ Default package name used for temporary directory creation and identification.
 ## buildConfig() \{#buildconfig\}
 
 ```ts
-function buildConfig(configFileOpts, cliOpts?, id?): Promise<Options>;
+function buildConfig(configFileOpts, cliOpts?, id?, context?): Promise<Options>;
 ```
 
-Defined in: [packages/core/src/config.ts:987](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L987)
+Defined in: [packages/core/src/config.ts:998](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L998)
 
 ### Parameters
 
@@ -444,6 +512,10 @@ Defined in: [packages/core/src/config.ts:987](https://github.com/graphql-markdow
 #### id?
 
 `Maybe`&lt;`string`&gt; = `"default"`
+
+#### context?
+
+[`BuildConfigContext`](telemetry.md#buildconfigcontext)
 
 ### Returns
 
@@ -460,7 +532,7 @@ function getCustomDirectives(
 ): Maybe<CustomDirective>;
 ```
 
-Defined in: [packages/core/src/config.ts:412](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L412)
+Defined in: [packages/core/src/config.ts:415](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L415)
 
 Processes custom directives, filtering out any that should be skipped.
 Validates that each custom directive has the correct format with required functions.
@@ -523,7 +595,7 @@ getCustomDirectives({ example: { invalid: true } }, []);
 function getDecoratorsOption(decorators): Maybe<Decorators>;
 ```
 
-Defined in: [packages/core/src/config.ts:815](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L815)
+Defined in: [packages/core/src/config.ts:818](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L818)
 
 Validates the top-level `decorators` option.
 
@@ -573,7 +645,7 @@ getDecoratorsOption({
 function getDiffMethod(diff): TypeDiffMethod;
 ```
 
-Defined in: [packages/core/src/config.ts:472](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L472)
+Defined in: [packages/core/src/config.ts:475](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L475)
 
 ### Parameters
 
@@ -593,7 +665,7 @@ Defined in: [packages/core/src/config.ts:472](https://github.com/graphql-markdow
 function getDocDirective(name): DirectiveName;
 ```
 
-Defined in: [packages/core/src/config.ts:236](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L236)
+Defined in: [packages/core/src/config.ts:239](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L239)
 
 Retrieves a directive name from a string by parsing and validating the format.
 Directive names should be prefixed with '@' (e.g., '@example').
@@ -634,7 +706,7 @@ getDocDirective("example"); // Error: Invalid "example"
 function getDocOptions(cliOpts?, configOptions?): Required<ConfigDocOptions>;
 ```
 
-Defined in: [packages/core/src/config.ts:526](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L526)
+Defined in: [packages/core/src/config.ts:529](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L529)
 
 ### Parameters
 
@@ -658,7 +730,7 @@ Defined in: [packages/core/src/config.ts:526](https://github.com/graphql-markdow
 function getForcedDiffMethod(): TypeDiffMethod;
 ```
 
-Defined in: [packages/core/src/config.ts:463](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L463)
+Defined in: [packages/core/src/config.ts:466](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L466)
 
 Returns FORCE as the diff method.
 This function is used when documentation should be forcefully regenerated.
@@ -688,7 +760,7 @@ console.log(method); // "FORCE"
 function getOnlyDocDirectives(cliOpts, configFileOpts): DirectiveName[];
 ```
 
-Defined in: [packages/core/src/config.ts:267](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L267)
+Defined in: [packages/core/src/config.ts:270](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L270)
 
 Retrieves the list of "only" directives from CLI and config options.
 These directives specify which schema elements should be included in the documentation.
@@ -735,7 +807,7 @@ console.log(onlyDirectives); // ["example", "internal", "auth"]
 function getSkipDocDirectives(cliOpts, configFileOpts): DirectiveName[];
 ```
 
-Defined in: [packages/core/src/config.ts:302](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L302)
+Defined in: [packages/core/src/config.ts:305](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L305)
 
 Retrieves the list of "skip" directives from CLI and config options.
 These directives specify which schema elements should be excluded from the documentation.
@@ -787,7 +859,7 @@ function getTypeHierarchyOption(
 ): Maybe<Partial<Record<TypeHierarchyValueType, TypeHierarchyTypeOptions>>>;
 ```
 
-Defined in: [packages/core/src/config.ts:581](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L581)
+Defined in: [packages/core/src/config.ts:584](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L584)
 
 Resolves the type hierarchy configuration by merging CLI and config file options.
 Validates that CLI and config don't specify conflicting hierarchy types.
@@ -846,7 +918,7 @@ getTypeHierarchyOption("api", { entity: {} });
 function getVisibilityDirectives(cliOpts, configFileOpts): object;
 ```
 
-Defined in: [packages/core/src/config.ts:356](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L356)
+Defined in: [packages/core/src/config.ts:359](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L359)
 
 Combines and validates visibility directives (only and skip) from both CLI and config sources.
 Ensures that no directive appears in both "only" and "skip" lists simultaneously.
@@ -919,7 +991,7 @@ function parseDeprecatedDocOptions(
 ): Record<string, never>;
 ```
 
-Defined in: [packages/core/src/config.ts:477](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L477)
+Defined in: [packages/core/src/config.ts:480](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L480)
 
 ### Parameters
 
@@ -946,7 +1018,7 @@ function parseDeprecatedFormatterOption(
 ): Maybe<string>;
 ```
 
-Defined in: [packages/core/src/config.ts:626](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L626)
+Defined in: [packages/core/src/config.ts:629](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L629)
 
 ### Parameters
 
@@ -973,7 +1045,7 @@ function parseDeprecatedPrintTypeOptions(
 ): Record<string, never>;
 ```
 
-Defined in: [packages/core/src/config.ts:647](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L647)
+Defined in: [packages/core/src/config.ts:650](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L650)
 
 ### Parameters
 
@@ -997,7 +1069,7 @@ Defined in: [packages/core/src/config.ts:647](https://github.com/graphql-markdow
 function parseGroupByOption(groupOptions): Maybe<GroupByDirectiveOptions>;
 ```
 
-Defined in: [packages/core/src/config.ts:898](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L898)
+Defined in: [packages/core/src/config.ts:908](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L908)
 
 Parses and validates the groupByDirective option string format.
 The format should be @directive(field|=fallback) where:
@@ -1050,7 +1122,7 @@ parseGroupByOption("invalid-format");
 function parseHomepageOption(cliHomepage, configHomepage): Maybe<string>;
 ```
 
-Defined in: [packages/core/src/config.ts:919](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L919)
+Defined in: [packages/core/src/config.ts:929](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/config.ts#L929)
 
 ### Parameters
 
@@ -1729,7 +1801,7 @@ Features:
 new CancellableEventEmitter(options?): CancellableEventEmitter;
 ```
 
-Defined in: node_modules/.bun/@types+node@26.6.4/node_modules/@types/node/events.d.ts:54
+Defined in: node_modules/.bun/@types+node@26.6.5/node_modules/@types/node/events.d.ts:54
 
 ###### Parameters
 
@@ -3905,6 +3977,8 @@ Event emitted before/after rendering type entities.
 - [`DataEvent`](../../utils/events.md#abstract-dataevent)&lt;\{
   `baseURL`: `string`;
   `filePath`: `string`;
+  `knownDocPaths?`: `ReadonlySet`&lt;`string`&gt;;
+  `linkRoot?`: `string`;
   `name`: `string`;
   `outputAdapter?`: `OutputAdapter`;
   `outputDir`: `string`;
@@ -3918,7 +3992,7 @@ Event emitted before/after rendering type entities.
 new RenderTypeEntitiesEvent(data, options?): RenderTypeEntitiesEvent;
 ```
 
-Defined in: [packages/core/src/events/render-type-entities.ts:24](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/events/render-type-entities.ts#L24)
+Defined in: [packages/core/src/events/render-type-entities.ts:28](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/events/render-type-entities.ts#L28)
 
 ###### Parameters
 
@@ -3929,6 +4003,14 @@ Defined in: [packages/core/src/events/render-type-entities.ts:24](https://github
 `string`
 
 ###### filePath
+
+`string`
+
+###### knownDocPaths?
+
+`ReadonlySet`&lt;`string`&gt;
+
+###### linkRoot?
 
 `string`
 
@@ -3979,6 +4061,22 @@ baseURL: string;
 ```ts
 filePath: string;
 ```
+
+###### knownDocPaths?
+
+```ts
+optional knownDocPaths?: ReadonlySet<string>;
+```
+
+Root-level generated doc paths, known before concurrent pages are written.
+
+###### linkRoot?
+
+```ts
+optional linkRoot?: string;
+```
+
+Root for documentation links, as used when printing them.
 
 ###### name
 
@@ -4495,7 +4593,7 @@ function checkSchemaDifferences(
 ): Promise<boolean>;
 ```
 
-Defined in: [packages/core/src/generator.ts:274](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/generator.ts#L274)
+Defined in: [packages/core/src/generator.ts:275](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/generator.ts#L275)
 
 Checks if there are differences in the GraphQL schema compared to a previous version.
 
@@ -4544,7 +4642,7 @@ When no changes are detected, a log message is generated indicating that the sch
 function generateDocFromSchema(options): Promise<void>;
 ```
 
-Defined in: [packages/core/src/generator.ts:347](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/generator.ts#L347)
+Defined in: [packages/core/src/generator.ts:621](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/generator.ts#L621)
 
 Main entry point for generating Markdown documentation from a GraphQL schema.
 
@@ -4581,7 +4679,7 @@ function getFormatterFromMDXModule(
 ): Partial<Formatter> | undefined;
 ```
 
-Defined in: [packages/core/src/generator.ts:178](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/generator.ts#L178)
+Defined in: [packages/core/src/generator.ts:179](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/generator.ts#L179)
 
 **`Internal`**
 
@@ -4620,7 +4718,7 @@ A partial Formatter with the found functions, or undefined if none found
 function getMDXModuleProperty<T>(mdxModule, propertyName): T | undefined;
 ```
 
-Defined in: [packages/core/src/generator.ts:141](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/generator.ts#L141)
+Defined in: [packages/core/src/generator.ts:142](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/generator.ts#L142)
 
 **`Internal`**
 
@@ -4665,7 +4763,7 @@ function loadGraphqlSchema(
 ): Promise<Maybe<GraphQLSchema>>;
 ```
 
-Defined in: [packages/core/src/generator.ts:242](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/generator.ts#L242)
+Defined in: [packages/core/src/generator.ts:243](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/generator.ts#L243)
 
 **`Internal`**
 
@@ -4702,7 +4800,7 @@ A promise that resolves to the loaded GraphQL schema, or undefined if:
 function loadMDXModule(mdxParser): Promise<unknown>;
 ```
 
-Defined in: [packages/core/src/generator.ts:99](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/generator.ts#L99)
+Defined in: [packages/core/src/generator.ts:100](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/generator.ts#L100)
 
 **`Internal`**
 
@@ -4737,7 +4835,7 @@ function resolveSkipAndOnlyDirectives(
 ): GraphQLDirective[][];
 ```
 
-Defined in: [packages/core/src/generator.ts:306](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/generator.ts#L306)
+Defined in: [packages/core/src/generator.ts:307](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/generator.ts#L307)
 
 Resolves and retrieves GraphQL directive objects from the schema based on their names.
 
@@ -5402,7 +5500,7 @@ if (queryType) {
 
 ## Renderer \{#renderer\}
 
-Defined in: [packages/core/src/renderer.ts:376](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/renderer.ts#L376)
+Defined in: [packages/core/src/renderer.ts:378](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/renderer.ts#L378)
 
 Core renderer class responsible for generating documentation files from GraphQL schema entities.
 Handles the conversion of schema types to markdown/MDX documentation with proper organization.
@@ -5428,7 +5526,7 @@ Each level has its own CategoryPositionManager that restarts numbering at 1.
 new Renderer(options): Renderer;
 ```
 
-Defined in: [packages/core/src/renderer.ts:395](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/renderer.ts#L395)
+Defined in: [packages/core/src/renderer.ts:399](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/renderer.ts#L399)
 
 Creates a new Renderer instance.
 
@@ -5458,7 +5556,7 @@ Renderer construction options
 readonly baseURL: string;
 ```
 
-Defined in: [packages/core/src/renderer.ts:379](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/renderer.ts#L379)
+Defined in: [packages/core/src/renderer.ts:381](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/renderer.ts#L381)
 
 #### group \{#group\}
 
@@ -5466,7 +5564,15 @@ Defined in: [packages/core/src/renderer.ts:379](https://github.com/graphql-markd
 readonly group: Maybe<Partial<Record<SchemaEntity, Record<string, Maybe<string>>>>>;
 ```
 
-Defined in: [packages/core/src/renderer.ts:377](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/renderer.ts#L377)
+Defined in: [packages/core/src/renderer.ts:379](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/renderer.ts#L379)
+
+#### linkRoot? \{#linkroot\}
+
+```ts
+readonly optional linkRoot?: string;
+```
+
+Defined in: [packages/core/src/renderer.ts:382](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/renderer.ts#L382)
 
 #### mdxExtension \{#mdxextension\}
 
@@ -5474,7 +5580,7 @@ Defined in: [packages/core/src/renderer.ts:377](https://github.com/graphql-markd
 readonly mdxExtension: string;
 ```
 
-Defined in: [packages/core/src/renderer.ts:382](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/renderer.ts#L382)
+Defined in: [packages/core/src/renderer.ts:385](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/renderer.ts#L385)
 
 #### options \{#options\}
 
@@ -5482,7 +5588,7 @@ Defined in: [packages/core/src/renderer.ts:382](https://github.com/graphql-markd
 readonly options: Maybe<RendererDocOptions>;
 ```
 
-Defined in: [packages/core/src/renderer.ts:381](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/renderer.ts#L381)
+Defined in: [packages/core/src/renderer.ts:384](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/renderer.ts#L384)
 
 #### outputAdapter \{#outputadapter\}
 
@@ -5490,7 +5596,7 @@ Defined in: [packages/core/src/renderer.ts:381](https://github.com/graphql-markd
 readonly outputAdapter: OutputAdapter;
 ```
 
-Defined in: [packages/core/src/renderer.ts:383](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/renderer.ts#L383)
+Defined in: [packages/core/src/renderer.ts:386](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/renderer.ts#L386)
 
 #### outputDir \{#outputdir\}
 
@@ -5498,7 +5604,7 @@ Defined in: [packages/core/src/renderer.ts:383](https://github.com/graphql-markd
 readonly outputDir: string;
 ```
 
-Defined in: [packages/core/src/renderer.ts:378](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/renderer.ts#L378)
+Defined in: [packages/core/src/renderer.ts:380](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/renderer.ts#L380)
 
 #### prettify \{#prettify\}
 
@@ -5506,7 +5612,7 @@ Defined in: [packages/core/src/renderer.ts:378](https://github.com/graphql-markd
 readonly prettify: boolean;
 ```
 
-Defined in: [packages/core/src/renderer.ts:380](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/renderer.ts#L380)
+Defined in: [packages/core/src/renderer.ts:383](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/renderer.ts#L383)
 
 ### Methods
 
@@ -5520,7 +5626,7 @@ generateCategoryMetafileType(
 ): Promise<string>;
 ```
 
-Defined in: [packages/core/src/renderer.ts:500](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/renderer.ts#L500)
+Defined in: [packages/core/src/renderer.ts:508](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/renderer.ts#L508)
 
 Generates the directory path and metafiles for a specific schema entity type.
 Creates the appropriate directory structure based on configuration options.
@@ -5567,7 +5673,7 @@ generateIndexMetafile(
 ): Promise<void>;
 ```
 
-Defined in: [packages/core/src/renderer.ts:445](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/renderer.ts#L445)
+Defined in: [packages/core/src/renderer.ts:453](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/renderer.ts#L453)
 
 Generates an index metafile for a category directory if MDX support is available.
 
@@ -5612,7 +5718,7 @@ await renderer.generateIndexMetafile("docs/types", "Types", {
 preCollectCategories(rootTypeNames): void;
 ```
 
-Defined in: [packages/core/src/renderer.ts:804](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/renderer.ts#L804)
+Defined in: [packages/core/src/renderer.ts:835](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/renderer.ts#L835)
 
 Pre-collects all category names that will be generated during rendering.
 This allows the position manager to assign consistent positions before
@@ -5642,13 +5748,35 @@ Array of root type names from the schema
 
 `void`
 
+#### preCollectGeneratedDocPaths() \{#precollectgenerateddocpaths\}
+
+```ts
+preCollectGeneratedDocPaths(rootTypes): void;
+```
+
+Defined in: [packages/core/src/renderer.ts:801](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/renderer.ts#L801)
+
+Pre-collects root-level generated document paths for flat hierarchy.
+
+##### Parameters
+
+###### rootTypes
+
+`object`
+
+Map of schema entity names to their generated types
+
+##### Returns
+
+`void`
+
 #### renderHomepage() \{#renderhomepage\}
 
 ```ts
 renderHomepage(homepageLocation): Promise<void>;
 ```
 
-Defined in: [packages/core/src/renderer.ts:854](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/renderer.ts#L854)
+Defined in: [packages/core/src/renderer.ts:885](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/renderer.ts#L885)
 
 Renders the homepage for the documentation from a template file.
 Replaces placeholders in the template with actual values.
@@ -5679,7 +5807,7 @@ Promise that resolves when the homepage is rendered
 renderRootTypes(rootTypeName, type): Promise<Maybe<Maybe<Category>[]>>;
 ```
 
-Defined in: [packages/core/src/renderer.ts:584](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/renderer.ts#L584)
+Defined in: [packages/core/src/renderer.ts:592](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/renderer.ts#L592)
 
 Renders all types within a root type category (e.g., all Query types).
 
@@ -5721,7 +5849,7 @@ renderTypeEntities(
 ): Promise<Maybe<Category>>;
 ```
 
-Defined in: [packages/core/src/renderer.ts:654](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/renderer.ts#L654)
+Defined in: [packages/core/src/renderer.ts:662](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/renderer.ts#L662)
 
 Renders documentation for a specific type entity and saves it to a file.
 
@@ -5859,7 +5987,7 @@ Base URL for the documentation
 docOptions: Maybe<RendererDocOptions>;
 ```
 
-Defined in: [packages/core/src/renderer.ts:356](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/renderer.ts#L356)
+Defined in: [packages/core/src/renderer.ts:358](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/renderer.ts#L358)
 
 Additional documentation options
 
@@ -5869,9 +5997,19 @@ Additional documentation options
 group: Maybe<Partial<Record<SchemaEntity, Record<string, Maybe<string>>>>>;
 ```
 
-Defined in: [packages/core/src/renderer.ts:352](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/renderer.ts#L352)
+Defined in: [packages/core/src/renderer.ts:354](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/renderer.ts#L354)
 
 Optional grouping configuration for schema entities
+
+#### linkRoot? \{#linkroot-1\}
+
+```ts
+optional linkRoot?: string;
+```
+
+Defined in: [packages/core/src/renderer.ts:352](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/renderer.ts#L352)
+
+Root for documentation links, forwarded to render hooks
 
 #### mdxExtension \{#mdxextension-1\}
 
@@ -5879,7 +6017,7 @@ Optional grouping configuration for schema entities
 mdxExtension: string;
 ```
 
-Defined in: [packages/core/src/renderer.ts:358](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/renderer.ts#L358)
+Defined in: [packages/core/src/renderer.ts:360](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/renderer.ts#L360)
 
 Optional MDX file extension to use
 
@@ -5889,7 +6027,7 @@ Optional MDX file extension to use
 optional outputAdapter?: OutputAdapter | null;
 ```
 
-Defined in: [packages/core/src/renderer.ts:360](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/renderer.ts#L360)
+Defined in: [packages/core/src/renderer.ts:362](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/renderer.ts#L362)
 
 Destination for generated pages; defaults to the local filesystem
 
@@ -5909,7 +6047,7 @@ Directory where documentation will be generated
 prettify: boolean;
 ```
 
-Defined in: [packages/core/src/renderer.ts:354](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/renderer.ts#L354)
+Defined in: [packages/core/src/renderer.ts:356](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/renderer.ts#L356)
 
 Whether to format the generated markdown
 
@@ -6002,7 +6140,7 @@ const folder = getApiGroupFolder(objectType, { operations: "queries" }); // Retu
 function getRenderer(options): Promise<Renderer>;
 ```
 
-Defined in: [packages/core/src/renderer.ts:1102](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/renderer.ts#L1102)
+Defined in: [packages/core/src/renderer.ts:1133](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/renderer.ts#L1133)
 
 Factory function to create and initialize a Renderer instance.
 Creates the output directory and returns a configured renderer.
@@ -6067,6 +6205,246 @@ Errors collected from the handlers
 ### Returns
 
 `void`
+
+---
+
+## telemetry
+
+Anonymous usage telemetry hook for `buildConfig`.
+
+Fire and forget: nothing here can throw, reject or delay the caller.
+
+## BuildConfigContext \{#buildconfigcontext\}
+
+Defined in: [packages/core/src/telemetry.ts:18](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/telemetry.ts#L18)
+
+Internal context passed by our own entry points.
+
+### Properties
+
+#### trigger? \{#trigger\}
+
+```ts
+optional trigger?: TelemetryTrigger;
+```
+
+Defined in: [packages/core/src/telemetry.ts:19](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/telemetry.ts#L19)
+
+---
+
+## GenerationReport \{#generationreport\}
+
+Defined in: [packages/core/src/telemetry.ts:37](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/telemetry.ts#L37)
+
+Outcome of a documentation generation run.
+
+### Properties
+
+#### durationMs \{#durationms\}
+
+```ts
+durationMs: number;
+```
+
+Defined in: [packages/core/src/telemetry.ts:40](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/telemetry.ts#L40)
+
+#### error? \{#error\}
+
+```ts
+optional error?: unknown;
+```
+
+Defined in: [packages/core/src/telemetry.ts:42](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/telemetry.ts#L42)
+
+Error thrown by the run, if any.
+
+#### errorType? \{#errortype\}
+
+```ts
+optional errorType?: string;
+```
+
+Defined in: [packages/core/src/telemetry.ts:44](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/telemetry.ts#L44)
+
+Explicit error type, takes precedence over `error`.
+
+#### noSchema? \{#noschema\}
+
+```ts
+optional noSchema?: boolean;
+```
+
+Defined in: [packages/core/src/telemetry.ts:46](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/telemetry.ts#L46)
+
+The run failed without throwing because the schema could not be loaded.
+
+#### pages \{#pages\}
+
+```ts
+pages: number;
+```
+
+Defined in: [packages/core/src/telemetry.ts:39](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/telemetry.ts#L39)
+
+#### postError? \{#posterror\}
+
+```ts
+optional postError?: unknown;
+```
+
+Defined in: [packages/core/src/telemetry.ts:48](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/telemetry.ts#L48)
+
+First post-processing error, when the run completed incompletely.
+
+#### telemetry? \{#telemetry\}
+
+```ts
+optional telemetry?: TelemetryContext;
+```
+
+Defined in: [packages/core/src/telemetry.ts:38](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/telemetry.ts#L38)
+
+---
+
+## TelemetryContext \{#telemetrycontext\}
+
+Defined in: [packages/core/src/telemetry.ts:31](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/telemetry.ts#L31)
+
+Telemetry decision made once by `buildConfig`, reused at generation time.
+
+### Properties
+
+#### option? \{#option\}
+
+```ts
+optional option?: boolean;
+```
+
+Defined in: [packages/core/src/telemetry.ts:33](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/telemetry.ts#L33)
+
+#### trigger? \{#trigger-1\}
+
+```ts
+optional trigger?: TelemetryTrigger;
+```
+
+Defined in: [packages/core/src/telemetry.ts:32](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/telemetry.ts#L32)
+
+---
+
+## TelemetryReport \{#telemetryreport\}
+
+Defined in: [packages/core/src/telemetry.ts:22](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/telemetry.ts#L22)
+
+### Properties
+
+#### cliOpts \{#cliopts\}
+
+```ts
+cliOpts: Maybe<CliOptions>;
+```
+
+Defined in: [packages/core/src/telemetry.ts:25](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/telemetry.ts#L25)
+
+#### configFileOpts \{#configfileopts\}
+
+```ts
+configFileOpts: Maybe<ConfigOptions>;
+```
+
+Defined in: [packages/core/src/telemetry.ts:23](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/telemetry.ts#L23)
+
+#### extension \{#extension\}
+
+```ts
+extension: Maybe<ConfigOptions>;
+```
+
+Defined in: [packages/core/src/telemetry.ts:24](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/telemetry.ts#L24)
+
+#### id? \{#id\}
+
+```ts
+optional id?: Maybe<string>;
+```
+
+Defined in: [packages/core/src/telemetry.ts:26](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/telemetry.ts#L26)
+
+#### trigger? \{#trigger-2\}
+
+```ts
+optional trigger?: TelemetryTrigger;
+```
+
+Defined in: [packages/core/src/telemetry.ts:27](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/telemetry.ts#L27)
+
+---
+
+## reportGeneration() \{#reportgeneration\}
+
+```ts
+function reportGeneration(report): Promise<void>;
+```
+
+Defined in: [packages/core/src/telemetry.ts:199](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/telemetry.ts#L199)
+
+Reports the outcome of a generation run.
+Never throws and never rejects.
+
+### Parameters
+
+#### report
+
+[`GenerationReport`](#generationreport)
+
+### Returns
+
+`Promise`&lt;`void`&gt;
+
+---
+
+## reportTelemetry() \{#reporttelemetry\}
+
+```ts
+function reportTelemetry(report): Promise<void>;
+```
+
+Defined in: [packages/core/src/telemetry.ts:155](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/telemetry.ts#L155)
+
+Reports the resolved configuration once per distinct config and process.
+Never throws and never rejects.
+
+### Parameters
+
+#### report
+
+[`TelemetryReport`](#telemetryreport)
+
+### Returns
+
+`Promise`&lt;`void`&gt;
+
+---
+
+## resolveTelemetryContext() \{#resolvetelemetrycontext\}
+
+```ts
+function resolveTelemetryContext(report): TelemetryContext;
+```
+
+Defined in: [packages/core/src/telemetry.ts:100](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/telemetry.ts#L100)
+
+Resolves the telemetry opt-in and trigger from the configuration sources.
+
+### Parameters
+
+#### report
+
+`Pick`&lt;[`TelemetryReport`](#telemetryreport), `"cliOpts"` \| `"configFileOpts"` \| `"extension"` \| `"trigger"`&gt;
+
+### Returns
+
+[`TelemetryContext`](#telemetrycontext)
 
 ---
 
@@ -6252,11 +6630,10 @@ Docusaurus integration for running GraphQL-Markdown and wiring CLI commands.
 function default(_, options): Promise<Plugin>;
 ```
 
-Defined in: [docusaurus/src/index.ts:60](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/docusaurus/src/index.ts#L60)
+Defined in: [docusaurus/src/index.ts:59](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/docusaurus/src/index.ts#L59)
 
-Docusaurus plugin wrapper that wires GraphQL-Markdown into the build,
-optionally running the CLI during `docusaurus build` and registering
-the `graphql-to-doc` command on the local CLI.
+Docusaurus plugin wrapper that registers the GraphQL-Markdown
+`graphql-to-doc` command on the local CLI.
 
 ### Parameters
 
@@ -6944,7 +7321,7 @@ Uses DocFX alert syntax for admonitions and injects the required
 const afterRenderTypeEntitiesHook: RenderTypeEntitiesHook;
 ```
 
-Defined in: [docfx/index.ts:401](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/docfx/index.ts#L401)
+Defined in: [docfx/index.ts:405](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/docfx/index.ts#L405)
 
 ---
 
@@ -8154,7 +8531,7 @@ Exports `afterRenderFilesHook` to build `SUMMARY.md` after all pages are written
 const afterRenderFilesHook: RenderFilesHook;
 ```
 
-Defined in: [mdbook/index.ts:208](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/mdbook/index.ts#L208)
+Defined in: [mdbook/index.ts:190](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/mdbook/index.ts#L190)
 
 Builds `src/SUMMARY.md` after all pages have been written.
 
@@ -8170,7 +8547,7 @@ by top-level section (Operations / Types) and category, then writes the file.
 const afterRenderTypeEntitiesHook: RenderTypeEntitiesHook;
 ```
 
-Defined in: [mdbook/index.ts:163](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/mdbook/index.ts#L163)
+Defined in: [mdbook/index.ts:145](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/mdbook/index.ts#L145)
 
 Rewrites absolute generated doc links to page-relative `.md` paths after each page is rendered.
 
@@ -8189,7 +8566,7 @@ work correctly regardless of where the book is hosted.
 const mdxExtension: ".md" = ".md";
 ```
 
-Defined in: [mdbook/index.ts:104](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/mdbook/index.ts#L104)
+Defined in: [mdbook/index.ts:107](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/mdbook/index.ts#L107)
 
 mdBook expects `.md` files; override the default `.mdx` extension.
 
@@ -8201,7 +8578,7 @@ mdBook expects `.md` files; override the default `.mdx` extension.
 function createMDXFormatter(_meta?): Formatter;
 ```
 
-Defined in: [mdbook/index.ts:174](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/mdbook/index.ts#L174)
+Defined in: [mdbook/index.ts:156](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/mdbook/index.ts#L156)
 
 Creates an mdBook formatter.
 
@@ -8227,7 +8604,7 @@ A complete Formatter implementation for mdBook output
 function formatMDXAdmonition(admonition, _meta): MDXString;
 ```
 
-Defined in: [mdbook/index.ts:63](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/mdbook/index.ts#L63)
+Defined in: [mdbook/index.ts:66](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/mdbook/index.ts#L66)
 
 Formats an admonition using mdBook's native admonition syntax (`> [!TYPE]`).
 Uses `type` for the admonition tag and `title` as an optional override label.
@@ -8260,7 +8637,7 @@ Formatted admonition string
 function formatMDXBadge(badge): MDXString;
 ```
 
-Defined in: [mdbook/index.ts:52](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/mdbook/index.ts#L52)
+Defined in: [mdbook/index.ts:55](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/mdbook/index.ts#L55)
 
 Formats a badge as Markdown bold text — mdBook has no badge component.
 
@@ -8286,7 +8663,7 @@ Formatted bold text string
 function formatMDXDetails(option): MDXString;
 ```
 
-Defined in: [mdbook/index.ts:84](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/mdbook/index.ts#L84)
+Defined in: [mdbook/index.ts:87](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/mdbook/index.ts#L87)
 
 Renders a deprecated section as a bold inline label.
 
@@ -8319,7 +8696,7 @@ Bold label + split marker
 function formatMDXFrontmatter(_props, formatted): MDXString;
 ```
 
-Defined in: [mdbook/index.ts:96](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/mdbook/index.ts#L96)
+Defined in: [mdbook/index.ts:99](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/mdbook/index.ts#L99)
 
 Replaces front matter with an H1 title heading.
 mdBook renders `---` YAML blocks as literal content, so front matter is
@@ -8349,7 +8726,7 @@ suppressed entirely. The page title is emitted as `# Title` instead.
 function formatMDXLink(link): TypeLink;
 ```
 
-Defined in: [mdbook/index.ts:111](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/mdbook/index.ts#L111)
+Defined in: [mdbook/index.ts:114](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/mdbook/index.ts#L114)
 
 Returns the link unchanged — mdBook resolves `.md` links natively.
 
@@ -8369,6 +8746,198 @@ The link with `.md` appended to extensionless absolute paths
 
 ---
 
+## mdx(Formatters)
+
+Generic MDX formatter for GraphQL documentation output.
+
+Produces framework-neutral `.mdx` pages: plain Markdown and JSX-safe HTML,
+with no framework components and no `import` declarations.
+Header permalinks are escaped (`\{#id\}`) so that they remain valid MDX.
+YAML front matter is kept, and internal links are rewritten to page-relative paths.
+
+## afterRenderTypeEntitiesHook \{#afterrendertypeentitieshook\}
+
+```ts
+const afterRenderTypeEntitiesHook: RenderTypeEntitiesHook;
+```
+
+Defined in: [mdx/index.ts:104](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/mdx/index.ts#L104)
+
+Rewrites absolute generated doc links to page-relative `.mdx` paths after each page is rendered.
+
+---
+
+## formatMDXPermalink \{#formatmdxpermalink\}
+
+```ts
+const formatMDXPermalink: (id) => MDXString = formatMDXEscapedPermalink;
+```
+
+Defined in: [mdx/index.ts:97](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/mdx/index.ts#L97)
+
+Formats a header permalink with escaped braces (`\{#id\}`), valid in MDX.
+
+Formats a permalink for a section header using the classic `{#id}` syntax,
+escaped so that it stays valid MDX.
+
+MDX parses an unescaped `{` as the start of an expression, and `{#id}` is not
+a valid one, so presets generating `.mdx` pages must use this variant.
+
+### Parameters
+
+#### id
+
+`string`
+
+The ID of the section header
+
+### Returns
+
+`MDXString`
+
+Formatted permalink string
+
+### Example
+
+```js
+formatMDXEscapedPermalink("my-id"); // \{#my-id\}
+```
+
+### Param
+
+**id**
+
+The ID of the section header
+
+### Returns
+
+Escaped permalink string
+
+---
+
+## mdxExtension \{#mdxextension\}
+
+```ts
+const mdxExtension: ".mdx" = ".mdx";
+```
+
+Defined in: [mdx/index.ts:38](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/mdx/index.ts#L38)
+
+Generic MDX pages use the `.mdx` extension.
+
+---
+
+## createMDXFormatter() \{#createmdxformatter\}
+
+```ts
+function createMDXFormatter(_meta?): Formatter;
+```
+
+Defined in: [mdx/index.ts:115](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/mdx/index.ts#L115)
+
+Creates a generic MDX formatter.
+
+### Parameters
+
+#### \_meta?
+
+`Maybe`&lt;`MetaInfo`&gt;
+
+Unused metadata parameter
+
+### Returns
+
+`Formatter`
+
+A complete Formatter implementation for generic MDX output
+
+---
+
+## formatMDXAdmonition() \{#formatmdxadmonition\}
+
+```ts
+function formatMDXAdmonition(admonition, _meta): MDXString;
+```
+
+Defined in: [mdx/index.ts:46](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/mdx/index.ts#L46)
+
+Formats an admonition as a Markdown blockquote with a bold type/title label.
+
+### Parameters
+
+#### admonition
+
+`AdmonitionType`
+
+Admonition data with text, title, and type
+
+#### \_meta
+
+`Maybe`&lt;`MetaInfo`&gt;
+
+Unused metadata parameter
+
+### Returns
+
+`MDXString`
+
+Formatted admonition string
+
+---
+
+## formatMDXDetails() \{#formatmdxdetails\}
+
+```ts
+function formatMDXDetails(option): MDXString;
+```
+
+Defined in: [mdx/index.ts:60](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/mdx/index.ts#L60)
+
+Formats a collapsible block as an HTML `<details>` element.
+The output is split on `\r` by the printer into [openSection, closeSection].
+
+### Parameters
+
+#### option
+
+`CollapsibleOption`
+
+Configuration for open/close label text
+
+### Returns
+
+`MDXString`
+
+Formatted collapsible string
+
+---
+
+## formatMDXLink() \{#formatmdxlink\}
+
+```ts
+function formatMDXLink(link): TypeLink;
+```
+
+Defined in: [mdx/index.ts:72](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/mdx/index.ts#L72)
+
+Rewrites extensionless absolute links so they point to `.mdx` pages.
+
+### Parameters
+
+#### link
+
+`TypeLink`
+
+Link data with URL and text
+
+### Returns
+
+`TypeLink`
+
+The link with `.mdx` appended to extensionless absolute paths
+
+---
+
 ## mkdocs
 
 MkDocs formatter for GraphQL documentation output.
@@ -8382,7 +8951,7 @@ and visible page headings.
 const __default: object;
 ```
 
-Defined in: [mkdocs/index.ts:35](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/mkdocs/index.ts#L35)
+Defined in: [mkdocs/index.ts:31](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/mkdocs/index.ts#L31)
 
 ### Type Declaration
 
@@ -8464,7 +9033,7 @@ Formatted permalink string
 const afterRenderTypeEntitiesHook: RenderTypeEntitiesHook;
 ```
 
-Defined in: [mkdocs/index.ts:155](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/mkdocs/index.ts#L155)
+Defined in: [mkdocs/index.ts:131](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/mkdocs/index.ts#L131)
 
 Lifecycle hook that rewrites generated absolute GraphQL-Markdown links
 into page-relative `.md` links compatible with MkDocs validation.
@@ -8483,7 +9052,7 @@ Hook payload containing the current file path and renderer output context
 const mdxExtension: ".md";
 ```
 
-Defined in: [mkdocs/index.ts:148](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/mkdocs/index.ts#L148)
+Defined in: [mkdocs/index.ts:124](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/mkdocs/index.ts#L124)
 
 File extension used for generated pages — MkDocs uses standard Markdown (.md) files.
 
@@ -8495,7 +9064,7 @@ File extension used for generated pages — MkDocs uses standard Markdown (.md) 
 function createMDXFormatter(_meta?): Formatter;
 ```
 
-Defined in: [mkdocs/index.ts:168](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/mkdocs/index.ts#L168)
+Defined in: [mkdocs/index.ts:144](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/mkdocs/index.ts#L144)
 
 Creates an MkDocs Material formatter.
 
@@ -8521,7 +9090,7 @@ A complete Formatter implementation for MkDocs Material output
 function formatMDXAdmonition(admonition, _meta): MDXString;
 ```
 
-Defined in: [mkdocs/index.ts:90](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/mkdocs/index.ts#L90)
+Defined in: [mkdocs/index.ts:66](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/mkdocs/index.ts#L66)
 
 Formats an admonition using MkDocs Material `!!!` block syntax.
 Content is indented by 4 spaces as required by the spec.
@@ -8554,7 +9123,7 @@ Formatted admonition string
 function formatMDXBadge(badge): MDXString;
 ```
 
-Defined in: [mkdocs/index.ts:79](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/mkdocs/index.ts#L79)
+Defined in: [mkdocs/index.ts:55](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/mkdocs/index.ts#L55)
 
 Formats a badge as an inline HTML mark element.
 
@@ -8580,7 +9149,7 @@ Formatted badge string
 function formatMDXDetails(option): MDXString;
 ```
 
-Defined in: [mkdocs/index.ts:104](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/mkdocs/index.ts#L104)
+Defined in: [mkdocs/index.ts:80](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/mkdocs/index.ts#L80)
 
 Formats a collapsible block as an HTML `<details>` element.
 
@@ -8606,7 +9175,7 @@ Formatted collapsible string
 function formatMDXFrontmatter(_props, formatted): MDXString;
 ```
 
-Defined in: [mkdocs/index.ts:117](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/mkdocs/index.ts#L117)
+Defined in: [mkdocs/index.ts:93](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/mkdocs/index.ts#L93)
 
 Formats page title as a visible H1 heading.
 
@@ -8638,7 +9207,7 @@ Visible heading string, or empty string if no title is available
 function formatMDXNameEntity(name, parentType?): MDXString;
 ```
 
-Defined in: [mkdocs/index.ts:130](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/mkdocs/index.ts#L130)
+Defined in: [mkdocs/index.ts:106](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/mkdocs/index.ts#L106)
 
 Formats a named entity as a backtick code span.
 
@@ -8670,7 +9239,7 @@ Formatted entity reference string
 function formatMDXSpecifiedByLink(url): MDXString;
 ```
 
-Defined in: [mkdocs/index.ts:143](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/mkdocs/index.ts#L143)
+Defined in: [mkdocs/index.ts:119](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/mkdocs/index.ts#L119)
 
 Formats a "specified by" link as a standard Markdown link.
 
@@ -8699,6 +9268,34 @@ through the same destination the renderer used. Reaching for the filesystem
 directly works only as long as the default adapter is in play, and silently
 misses every page when the output is redirected elsewhere.
 
+## createInternalLinksRewriter() \{#createinternallinksrewriter\}
+
+```ts
+function createInternalLinksRewriter(
+  extension?,
+): (content, filePath, outputDir, baseURL, linkRoot?, knownDocPaths?) => string;
+```
+
+Defined in: [output.ts:183](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/output.ts#L183)
+
+Creates a rewriter turning absolute generated doc links into page-relative ones.
+
+### Parameters
+
+#### extension?
+
+`string`
+
+Page extension to resolve targets with (defaults to `.md`)
+
+### Returns
+
+A rewrite function usable with [rewriteRenderedPage](#rewriterenderedpage)
+
+(`content`, `filePath`, `outputDir`, `baseURL`, `linkRoot?`, `knownDocPaths?`) => `string`
+
+---
+
 ## readOptionalOutput() \{#readoptionaloutput\}
 
 ```ts
@@ -8708,7 +9305,7 @@ function readOptionalOutput(
 ): Promise<string | undefined>;
 ```
 
-Defined in: [output.ts:84](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/output.ts#L84)
+Defined in: [output.ts:87](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/output.ts#L87)
 
 Reads a file the formatter maintains itself, where absence is expected.
 
@@ -8744,7 +9341,7 @@ The file content, or `undefined` when there is none
 function readOutput(filePath, outputAdapter): Promise<string | undefined>;
 ```
 
-Defined in: [output.ts:52](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/output.ts#L52)
+Defined in: [output.ts:55](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/output.ts#L55)
 
 Reads back a page the renderer has written, through its output destination.
 
@@ -8786,7 +9383,7 @@ skipped post-processing surfaces once instead of once per page.
 function rewriteRenderedPage(event, rewrite): Promise<void>;
 ```
 
-Defined in: [output.ts:123](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/output.ts#L123)
+Defined in: [output.ts:126](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/output.ts#L126)
 
 Rewrites the content of a page a formatter has just rendered.
 
@@ -8804,7 +9401,7 @@ The hook event, carrying the page path and its destination
 
 #### rewrite
 
-(`content`, `filePath`, `outputDir`, `baseURL`) => `string`
+(`content`, `filePath`, `outputDir`, `baseURL`, `linkRoot?`, `knownDocPaths?`) => `string`
 
 Returns the new content, or the content unchanged to skip
 
@@ -8820,7 +9417,7 @@ Returns the new content, or the content unchanged to skip
 function writeOutput(filePath, content, outputAdapter, dirPath?): Promise<void>;
 ```
 
-Defined in: [output.ts:98](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/output.ts#L98)
+Defined in: [output.ts:101](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/output.ts#L101)
 
 Writes a file through the output destination, creating its directory first.
 
@@ -16685,6 +17282,2252 @@ Formatted MDX string containing all section items
 
 ---
 
+## ci
+
+## CiInfo \{#ciinfo\}
+
+Defined in: [ci.ts:25](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/ci.ts#L25)
+
+### Properties
+
+#### ci \{#ci\}
+
+```ts
+ci: boolean;
+```
+
+Defined in: [ci.ts:26](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/ci.ts#L26)
+
+#### ciProvider? \{#ciprovider\}
+
+```ts
+optional ciProvider?: CiProvider;
+```
+
+Defined in: [ci.ts:27](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/ci.ts#L27)
+
+---
+
+## detectCi() \{#detectci\}
+
+```ts
+function detectCi(env?): CiInfo;
+```
+
+Defined in: [ci.ts:30](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/ci.ts#L30)
+
+### Parameters
+
+#### env?
+
+`ProcessEnv` = `process.env`
+
+### Returns
+
+[`CiInfo`](#ciinfo)
+
+---
+
+## config-dir
+
+## resolveConfigDir() \{#resolveconfigdir\}
+
+```ts
+function resolveConfigDir(platform?, env?, home?): string;
+```
+
+Defined in: [config-dir.ts:15](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/config-dir.ts#L15)
+
+Resolves the OS config directory, like `env-paths` without the dependency.
+
+### Parameters
+
+#### platform?
+
+`Platform` = `process.platform`
+
+Node platform, defaults to `process.platform`.
+
+#### env?
+
+`ProcessEnv` = `process.env`
+
+Environment variables, defaults to `process.env`.
+
+#### home?
+
+`string` = `...`
+
+Home directory, defaults to `os.homedir()`.
+
+### Returns
+
+`string`
+
+---
+
+## constants
+
+## DEFAULT_ENDPOINT \{#default_endpoint\}
+
+```ts
+const DEFAULT_ENDPOINT: "https://gqlmd-telemetry.graphql-markdown.workers.dev/v1/event" =
+  "https://gqlmd-telemetry.graphql-markdown.workers.dev/v1/event";
+```
+
+Defined in: [constants.ts:9](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/constants.ts#L9)
+
+Telemetry endpoint: the Cloudflare Worker ingest (workers.dev, see
+github.com/graphql-markdown/telemetry). Overridable with
+`GRAPHQL_MARKDOWN_TELEMETRY_ENDPOINT`.
+
+---
+
+## GZIP_THRESHOLD \{#gzip_threshold\}
+
+```ts
+const GZIP_THRESHOLD: 1024 = 1024;
+```
+
+Defined in: [constants.ts:16](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/constants.ts#L16)
+
+Body size (bytes) above which the request is gzipped.
+
+---
+
+## MAX_SENT_CONFIGS \{#max_sent_configs\}
+
+```ts
+const MAX_SENT_CONFIGS: 20 = 20;
+```
+
+Defined in: [constants.ts:13](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/constants.ts#L13)
+
+Number of config fingerprints kept in `telemetry.json`.
+
+---
+
+## NOTICE_VERSION \{#notice_version\}
+
+```ts
+const NOTICE_VERSION: 1 = 1;
+```
+
+Defined in: [constants.ts:2](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/constants.ts#L2)
+
+Current consent notice version; bump when a new category of data is added.
+
+---
+
+## TIMEOUT_MS \{#timeout_ms\}
+
+```ts
+const TIMEOUT_MS: 1000 = 1000;
+```
+
+Defined in: [constants.ts:19](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/constants.ts#L19)
+
+Request timeout in milliseconds.
+
+---
+
+## disclaimer
+
+## FULL_NOTICE \{#full_notice\}
+
+```ts
+const FULL_NOTICE: "ℹ GraphQL-Markdown collects anonymous usage data to help improve the tool.\n  Sent: package/Node versions, OS, schema loader type, the settings you use,\n  and the page count, duration and error type of each run.\n  Custom strings, URLs and paths are masked; schema content is never sent.\n  Details: https://graphql-markdown.dev/docs/telemetry\n  Opt out: `gqlmd telemetry disable` or DO_NOT_TRACK=1\n";
+```
+
+Defined in: [disclaimer.ts:5](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/disclaimer.ts#L5)
+
+---
+
+## isNoticeDue() \{#isnoticedue\}
+
+```ts
+function isNoticeDue(state, ci?): boolean;
+```
+
+Defined in: [disclaimer.ts:17](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/disclaimer.ts#L17)
+
+Whether the full notice is due (never in CI, where it is not recorded).
+
+### Parameters
+
+#### state
+
+[`TelemetryState`](state.md#telemetrystate) \| `null` \| `undefined`
+
+#### ci?
+
+[`CiInfo`](ci.md#ciinfo) = `...`
+
+### Returns
+
+`boolean`
+
+---
+
+## printDisclaimer() \{#printdisclaimer\}
+
+```ts
+function printDisclaimer(state, ci, onFullNotice?): boolean;
+```
+
+Defined in: [disclaimer.ts:39](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/disclaimer.ts#L39)
+
+Writes the notice straight to stderr, bypassing the logger, at most once per process.
+
+When `onFullNotice` is given, the full notice is passed to it instead.
+
+### Parameters
+
+#### state
+
+[`TelemetryState`](state.md#telemetrystate) \| `null` \| `undefined`
+
+#### ci
+
+[`CiInfo`](ci.md#ciinfo)
+
+#### onFullNotice?
+
+(`notice`) => `void`
+
+### Returns
+
+`boolean`
+
+`true` when the full notice is due, shown now or earlier in this
+process (it must then be recorded before anything is sent).
+
+---
+
+## resetDisclaimer() \{#resetdisclaimer\}
+
+```ts
+function resetDisclaimer(): void;
+```
+
+Defined in: [disclaimer.ts:27](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/disclaimer.ts#L27)
+
+**`Internal`**
+
+Resets the once-per-process guard.
+
+### Returns
+
+`void`
+
+---
+
+## enabled
+
+## EnabledContext \{#enabledcontext\}
+
+Defined in: [enabled.ts:6](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/enabled.ts#L6)
+
+### Properties
+
+#### env? \{#env\}
+
+```ts
+optional env?: ProcessEnv;
+```
+
+Defined in: [enabled.ts:13](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/enabled.ts#L13)
+
+#### option? \{#option\}
+
+```ts
+optional option?: boolean;
+```
+
+Defined in: [enabled.ts:10](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/enabled.ts#L10)
+
+Value of the `telemetry` option (config, programmatic or CLI).
+
+#### state? \{#state\}
+
+```ts
+optional state?: TelemetryState | null;
+```
+
+Defined in: [enabled.ts:12](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/enabled.ts#L12)
+
+State file content; `null` means corrupt, `undefined` means absent.
+
+#### trigger? \{#trigger\}
+
+```ts
+optional trigger?: TelemetryTrigger;
+```
+
+Defined in: [enabled.ts:8](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/enabled.ts#L8)
+
+Entry point; without it only `telemetry: true` enables (programmatic).
+
+---
+
+## getEndpoint() \{#getendpoint\}
+
+```ts
+function getEndpoint(env?): string;
+```
+
+Defined in: [enabled.ts:16](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/enabled.ts#L16)
+
+### Parameters
+
+#### env?
+
+`ProcessEnv` = `process.env`
+
+### Returns
+
+`string`
+
+---
+
+## isEnabled() \{#isenabled\}
+
+```ts
+function isEnabled(ctx?):
+  | {
+      enabled: false;
+    }
+  | {
+      enabled: true;
+      trigger: TelemetryTrigger;
+    };
+```
+
+Defined in: [enabled.ts:30](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/enabled.ts#L30)
+
+Resolves whether telemetry is enabled and with which trigger.
+User-level and environment signals always beat project config.
+
+### Parameters
+
+#### ctx?
+
+[`EnabledContext`](#enabledcontext) = `{}`
+
+### Returns
+
+\| \{
+`enabled`: `false`;
+\}
+\| \{
+`enabled`: `true`;
+`trigger`: `TelemetryTrigger`;
+\}
+
+---
+
+## error-type
+
+## ERROR_TYPES \{#error_types\}
+
+```ts
+const ERROR_TYPES: readonly [
+  "Error",
+  "TypeError",
+  "RangeError",
+  "SyntaxError",
+  "ReferenceError",
+  "GraphQLError",
+  "AggregateError",
+  "AbortError",
+  "SystemError",
+];
+```
+
+Defined in: [error-type.ts:2](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/error-type.ts#L2)
+
+Error class names that may be reported as-is.
+
+---
+
+## NO_SCHEMA_ERROR \{#no_schema_error\}
+
+```ts
+const NO_SCHEMA_ERROR: "<no-schema>" = "<no-schema>";
+```
+
+Defined in: [error-type.ts:15](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/error-type.ts#L15)
+
+Reported when no schema could be loaded.
+
+---
+
+## POST_ERROR_PREFIX \{#post_error_prefix\}
+
+```ts
+const POST_ERROR_PREFIX: "post:" = "post:";
+```
+
+Defined in: [error-type.ts:18](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/error-type.ts#L18)
+
+Prefix for failures happening after generation (post-generation hooks).
+
+---
+
+## errorTypeOf() \{#errortypeof\}
+
+```ts
+function errorTypeOf(error): string;
+```
+
+Defined in: [error-type.ts:29](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/error-type.ts#L29)
+
+Maps any thrown value to an anonymous error type: an allowlisted class
+name (optionally suffixed with a system code), or `<custom-error>`.
+Never throws.
+
+### Parameters
+
+#### error
+
+`unknown`
+
+### Returns
+
+`string`
+
+---
+
+## index(Telemetry)
+
+
+
+---
+
+## loader(Telemetry)
+
+## LoaderKind \{#loaderkind\}
+
+```ts
+type LoaderKind =
+  | "code-file"
+  | "file-json"
+  | "file-sdl"
+  | "git"
+  | "github"
+  | "glob"
+  | "inline-sdl"
+  | "unknown"
+  | "url";
+```
+
+Defined in: [loader.ts:1](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/loader.ts#L1)
+
+---
+
+## classifyPointer() \{#classifypointer\}
+
+```ts
+function classifyPointer(pointer): LoaderKind | LoaderKind[];
+```
+
+Defined in: [loader.ts:70](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/loader.ts#L70)
+
+Classifies a schema pointer; the pointer itself is never returned.
+
+### Parameters
+
+#### pointer
+
+`unknown`
+
+### Returns
+
+[`LoaderKind`](#loaderkind) \| [`LoaderKind`](#loaderkind)[]
+
+---
+
+## maskPointer() \{#maskpointer\}
+
+```ts
+function maskPointer(pointer): string | string[];
+```
+
+Defined in: [loader.ts:93](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/loader.ts#L93)
+
+Classifies a schema pointer into mask token(s) for the config slot.
+
+### Parameters
+
+#### pointer
+
+`unknown`
+
+### Returns
+
+`string` \| `string`[]
+
+---
+
+## payload
+
+## PayloadInput \{#payloadinput\}
+
+Defined in: [payload.ts:16](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/payload.ts#L16)
+
+### Properties
+
+#### cli? \{#cli\}
+
+```ts
+optional cli?: CliOptions;
+```
+
+Defined in: [payload.ts:24](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/payload.ts#L24)
+
+#### config? \{#config\}
+
+```ts
+optional config?: ConfigOptions;
+```
+
+Defined in: [payload.ts:23](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/payload.ts#L23)
+
+#### durationMs? \{#durationms\}
+
+```ts
+optional durationMs?: number;
+```
+
+Defined in: [payload.ts:30](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/payload.ts#L30)
+
+#### env? \{#env\}
+
+```ts
+optional env?: ProcessEnv;
+```
+
+Defined in: [payload.ts:34](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/payload.ts#L34)
+
+#### errorType? \{#errortype\}
+
+```ts
+optional errorType?: string;
+```
+
+Defined in: [payload.ts:31](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/payload.ts#L31)
+
+#### event? \{#event\}
+
+```ts
+optional event?: TelemetryEvent;
+```
+
+Defined in: [payload.ts:17](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/payload.ts#L17)
+
+#### graphqlMajor? \{#graphqlmajor\}
+
+```ts
+optional graphqlMajor?: unknown;
+```
+
+Defined in: [payload.ts:22](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/payload.ts#L22)
+
+`versionInfo.major` of the loaded `graphql`.
+
+#### mode? \{#mode\}
+
+```ts
+optional mode?: "scaffold" | "wire";
+```
+
+Defined in: [payload.ts:27](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/payload.ts#L27)
+
+#### noStateBefore? \{#nostatebefore\}
+
+```ts
+optional noStateBefore?: boolean;
+```
+
+Defined in: [payload.ts:33](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/payload.ts#L33)
+
+True only when no state file existed before this run.
+
+#### pages? \{#pages\}
+
+```ts
+optional pages?: number;
+```
+
+Defined in: [payload.ts:29](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/payload.ts#L29)
+
+Generate events only.
+
+#### pkg \{#pkg\}
+
+```ts
+pkg: string;
+```
+
+Defined in: [payload.ts:19](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/payload.ts#L19)
+
+#### pkgVersion \{#pkgversion\}
+
+```ts
+pkgVersion: string;
+```
+
+Defined in: [payload.ts:20](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/payload.ts#L20)
+
+#### target? \{#target\}
+
+```ts
+optional target?: string;
+```
+
+Defined in: [payload.ts:26](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/payload.ts#L26)
+
+Create events only.
+
+#### trigger \{#trigger\}
+
+```ts
+trigger: TelemetryTrigger;
+```
+
+Defined in: [payload.ts:18](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/payload.ts#L18)
+
+---
+
+## buildPayload() \{#buildpayload\}
+
+```ts
+function buildPayload(input): TelemetryPayload;
+```
+
+Defined in: [payload.ts:101](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/payload.ts#L101)
+
+### Parameters
+
+#### input
+
+[`PayloadInput`](#payloadinput)
+
+### Returns
+
+`TelemetryPayload`
+
+---
+
+## fingerprint() \{#fingerprint\}
+
+```ts
+function fingerprint(payload): string;
+```
+
+Defined in: [payload.ts:179](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/payload.ts#L179)
+
+SHA-256 of the canonical sorted-key JSON, excluding `firstRun`.
+
+### Parameters
+
+#### payload
+
+`TelemetryPayload`
+
+### Returns
+
+`string`
+
+---
+
+## sanitize
+
+## SanitizeResult \{#sanitizeresult\}
+
+Defined in: [sanitize.ts:26](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/sanitize.ts#L26)
+
+### Properties
+
+#### unknownKeys \{#unknownkeys\}
+
+```ts
+unknownKeys: number;
+```
+
+Defined in: [sanitize.ts:28](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/sanitize.ts#L28)
+
+#### value \{#value\}
+
+```ts
+value: Record<string, unknown>;
+```
+
+Defined in: [sanitize.ts:27](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/sanitize.ts#L27)
+
+---
+
+## Rule \{#rule\}
+
+```ts
+type Rule =
+  | {
+      kind: "any";
+    }
+  | {
+      kind: "enum";
+      values: readonly string[];
+    }
+  | {
+      kind: "formatter";
+    }
+  | {
+      kind: "loaders";
+    }
+  | {
+      kind: "map";
+      value: Rule;
+    }
+  | {
+      fields: Record<string, Rule>;
+      kind: "object";
+    }
+  | {
+      kind: "opaque";
+    }
+  | {
+      kind: "path";
+    }
+  | {
+      kind: "pointer";
+    }
+  | {
+      kind: "scalar";
+    }
+  | {
+      kind: "string";
+    }
+  | {
+      kind: "url";
+    };
+```
+
+Defined in: [sanitize.ts:12](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/sanitize.ts#L12)
+
+---
+
+## CLI_RULES \{#cli_rules\}
+
+```ts
+const CLI_RULES: object;
+```
+
+Defined in: [sanitize.ts:93](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/sanitize.ts#L93)
+
+### Type Declaration
+
+#### base \{#base\}
+
+```ts
+readonly base: object = url;
+```
+
+##### base.kind
+
+```ts
+kind: "url";
+```
+
+#### config \{#config\}
+
+```ts
+readonly config: object = scalar;
+```
+
+##### config.kind
+
+```ts
+kind: "scalar";
+```
+
+#### deprecated \{#deprecated\}
+
+```ts
+deprecated: Rule;
+```
+
+#### diff \{#diff\}
+
+```ts
+readonly diff: Rule;
+```
+
+#### force \{#force\}
+
+```ts
+readonly force: object = scalar;
+```
+
+##### force.kind
+
+```ts
+kind: "scalar";
+```
+
+#### formatter \{#formatter\}
+
+```ts
+formatter: object;
+```
+
+##### formatter.kind
+
+```ts
+kind: "formatter";
+```
+
+#### groupByDirective \{#groupbydirective\}
+
+```ts
+readonly groupByDirective: object = string;
+```
+
+##### groupByDirective.kind
+
+```ts
+kind: "string";
+```
+
+#### hierarchy \{#hierarchy\}
+
+```ts
+readonly hierarchy: Rule;
+```
+
+#### homepage \{#homepage\}
+
+```ts
+readonly homepage: object = path;
+```
+
+##### homepage.kind
+
+```ts
+kind: "path";
+```
+
+#### index \{#index\}
+
+```ts
+readonly index: object = scalar;
+```
+
+##### index.kind
+
+```ts
+kind: "scalar";
+```
+
+#### link \{#link\}
+
+```ts
+readonly link: object = path;
+```
+
+##### link.kind
+
+```ts
+kind: "path";
+```
+
+#### mdxParser \{#mdxparser\}
+
+```ts
+readonly mdxParser: object = formatter;
+```
+
+##### mdxParser.kind
+
+```ts
+kind: "formatter";
+```
+
+#### noParentType \{#noparenttype\}
+
+```ts
+readonly noParentType: object = scalar;
+```
+
+##### noParentType.kind
+
+```ts
+kind: "scalar";
+```
+
+#### noSectionId \{#nosectionid\}
+
+```ts
+readonly noSectionId: object = scalar;
+```
+
+##### noSectionId.kind
+
+```ts
+kind: "scalar";
+```
+
+#### noTypeBadges \{#notypebadges\}
+
+```ts
+readonly noTypeBadges: object = scalar;
+```
+
+##### noTypeBadges.kind
+
+```ts
+kind: "scalar";
+```
+
+#### only \{#only\}
+
+```ts
+readonly only: object = string;
+```
+
+##### only.kind
+
+```ts
+kind: "string";
+```
+
+#### pretty \{#pretty\}
+
+```ts
+readonly pretty: object = scalar;
+```
+
+##### pretty.kind
+
+```ts
+kind: "scalar";
+```
+
+#### root \{#root\}
+
+```ts
+readonly root: object = path;
+```
+
+##### root.kind
+
+```ts
+kind: "path";
+```
+
+#### schema \{#schema\}
+
+```ts
+readonly schema: object = pointer;
+```
+
+##### schema.kind
+
+```ts
+kind: "pointer";
+```
+
+#### skip \{#skip\}
+
+```ts
+readonly skip: object = string;
+```
+
+##### skip.kind
+
+```ts
+kind: "string";
+```
+
+#### telemetry \{#telemetry\}
+
+```ts
+readonly telemetry: object = scalar;
+```
+
+##### telemetry.kind
+
+```ts
+kind: "scalar";
+```
+
+#### tmp \{#tmp\}
+
+```ts
+readonly tmp: object = path;
+```
+
+##### tmp.kind
+
+```ts
+kind: "path";
+```
+
+---
+
+## CONFIG_RULES \{#config_rules\}
+
+```ts
+const CONFIG_RULES: object;
+```
+
+Defined in: [sanitize.ts:45](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/sanitize.ts#L45)
+
+### Type Declaration
+
+#### baseURL \{#baseurl\}
+
+```ts
+readonly baseURL: object = url;
+```
+
+##### baseURL.kind
+
+```ts
+kind: "url";
+```
+
+#### customDirective \{#customdirective\}
+
+```ts
+readonly customDirective: object;
+```
+
+##### customDirective.kind
+
+```ts
+readonly kind: "map" = "map";
+```
+
+##### customDirective.value
+
+```ts
+readonly value: object = any;
+```
+
+##### customDirective.value.kind
+
+```ts
+kind: "any";
+```
+
+#### decorators \{#decorators\}
+
+```ts
+readonly decorators: object;
+```
+
+##### decorators.kind
+
+```ts
+readonly kind: "map" = "map";
+```
+
+##### decorators.value
+
+```ts
+readonly value: object = any;
+```
+
+##### decorators.value.kind
+
+```ts
+kind: "any";
+```
+
+#### diffMethod \{#diffmethod\}
+
+```ts
+readonly diffMethod: Rule;
+```
+
+#### docOptions \{#docoptions\}
+
+```ts
+readonly docOptions: object;
+```
+
+##### docOptions.fields
+
+```ts
+readonly fields: object;
+```
+
+##### docOptions.fields.categorySort
+
+```ts
+readonly categorySort: object;
+```
+
+##### docOptions.fields.categorySort.kind
+
+```ts
+readonly kind: "enum" = "enum";
+```
+
+##### docOptions.fields.categorySort.values
+
+```ts
+readonly values: readonly ["natural"];
+```
+
+##### docOptions.fields.frontMatter
+
+```ts
+readonly frontMatter: object;
+```
+
+##### docOptions.fields.frontMatter.kind
+
+```ts
+readonly kind: "map" = "map";
+```
+
+##### docOptions.fields.frontMatter.value
+
+```ts
+readonly value: object = any;
+```
+
+##### docOptions.fields.frontMatter.value.kind
+
+```ts
+kind: "any";
+```
+
+##### docOptions.fields.generatorFrameworkName
+
+```ts
+readonly generatorFrameworkName: object = string;
+```
+
+##### docOptions.fields.generatorFrameworkName.kind
+
+```ts
+kind: "string";
+```
+
+##### docOptions.fields.generatorFrameworkVersion
+
+```ts
+readonly generatorFrameworkVersion: object = string;
+```
+
+##### docOptions.fields.generatorFrameworkVersion.kind
+
+```ts
+kind: "string";
+```
+
+##### docOptions.fields.index
+
+```ts
+readonly index: object = scalar;
+```
+
+##### docOptions.fields.index.kind
+
+```ts
+kind: "scalar";
+```
+
+##### docOptions.fields.sectionHeaderId
+
+```ts
+readonly sectionHeaderId: object = scalar;
+```
+
+##### docOptions.fields.sectionHeaderId.kind
+
+```ts
+kind: "scalar";
+```
+
+##### docOptions.kind
+
+```ts
+readonly kind: "object" = "object";
+```
+
+#### force \{#force-1\}
+
+```ts
+readonly force: object = scalar;
+```
+
+##### force.kind
+
+```ts
+kind: "scalar";
+```
+
+#### formatter \{#formatter-1\}
+
+```ts
+formatter: object;
+```
+
+##### formatter.kind
+
+```ts
+kind: "formatter";
+```
+
+#### groupByDirective \{#groupbydirective-1\}
+
+```ts
+readonly groupByDirective: object;
+```
+
+##### groupByDirective.fields
+
+```ts
+readonly fields: object;
+```
+
+##### groupByDirective.fields.directive
+
+```ts
+readonly directive: object = string;
+```
+
+##### groupByDirective.fields.directive.kind
+
+```ts
+kind: "string";
+```
+
+##### groupByDirective.fields.fallback
+
+```ts
+readonly fallback: object = string;
+```
+
+##### groupByDirective.fields.fallback.kind
+
+```ts
+kind: "string";
+```
+
+##### groupByDirective.fields.field
+
+```ts
+readonly field: object = string;
+```
+
+##### groupByDirective.fields.field.kind
+
+```ts
+kind: "string";
+```
+
+##### groupByDirective.kind
+
+```ts
+readonly kind: "object" = "object";
+```
+
+#### homepage \{#homepage-1\}
+
+```ts
+readonly homepage: object = path;
+```
+
+##### homepage.kind
+
+```ts
+kind: "path";
+```
+
+#### id \{#id\}
+
+```ts
+readonly id: object = string;
+```
+
+##### id.kind
+
+```ts
+kind: "string";
+```
+
+#### linkRoot \{#linkroot\}
+
+```ts
+readonly linkRoot: object = path;
+```
+
+##### linkRoot.kind
+
+```ts
+kind: "path";
+```
+
+#### loaders \{#loaders\}
+
+```ts
+readonly loaders: object;
+```
+
+##### loaders.kind
+
+```ts
+readonly kind: "loaders" = "loaders";
+```
+
+#### mdxParser \{#mdxparser-1\}
+
+```ts
+readonly mdxParser: object = formatter;
+```
+
+##### mdxParser.kind
+
+```ts
+kind: "formatter";
+```
+
+#### metatags \{#metatags\}
+
+```ts
+readonly metatags: object;
+```
+
+##### metatags.kind
+
+```ts
+readonly kind: "map" = "map";
+```
+
+##### metatags.value
+
+```ts
+readonly value: object = string;
+```
+
+##### metatags.value.kind
+
+```ts
+kind: "string";
+```
+
+#### onlyDocDirective \{#onlydocdirective\}
+
+```ts
+readonly onlyDocDirective: object = string;
+```
+
+##### onlyDocDirective.kind
+
+```ts
+kind: "string";
+```
+
+#### outputAdapter \{#outputadapter\}
+
+```ts
+readonly outputAdapter: object;
+```
+
+##### outputAdapter.kind
+
+```ts
+readonly kind: "opaque" = "opaque";
+```
+
+#### pretty \{#pretty-1\}
+
+```ts
+readonly pretty: object = scalar;
+```
+
+##### pretty.kind
+
+```ts
+kind: "scalar";
+```
+
+#### printTypeOptions \{#printtypeoptions\}
+
+```ts
+readonly printTypeOptions: object;
+```
+
+##### printTypeOptions.fields
+
+```ts
+readonly fields: object;
+```
+
+##### printTypeOptions.fields.deprecated
+
+```ts
+deprecated: Rule;
+```
+
+##### printTypeOptions.fields.exampleSection
+
+```ts
+readonly exampleSection: object;
+```
+
+##### printTypeOptions.fields.exampleSection.kind
+
+```ts
+readonly kind: "map" = "map";
+```
+
+##### printTypeOptions.fields.exampleSection.value
+
+```ts
+readonly value: object = string;
+```
+
+##### printTypeOptions.fields.exampleSection.value.kind
+
+```ts
+kind: "string";
+```
+
+##### printTypeOptions.fields.hierarchy
+
+```ts
+readonly hierarchy: Rule;
+```
+
+##### printTypeOptions.fields.parentTypePrefix
+
+```ts
+readonly parentTypePrefix: object = scalar;
+```
+
+##### printTypeOptions.fields.parentTypePrefix.kind
+
+```ts
+kind: "scalar";
+```
+
+##### printTypeOptions.fields.typeBadges
+
+```ts
+readonly typeBadges: object = scalar;
+```
+
+##### printTypeOptions.fields.typeBadges.kind
+
+```ts
+kind: "scalar";
+```
+
+##### printTypeOptions.kind
+
+```ts
+readonly kind: "object" = "object";
+```
+
+#### rootPath \{#rootpath\}
+
+```ts
+readonly rootPath: object = path;
+```
+
+##### rootPath.kind
+
+```ts
+kind: "path";
+```
+
+#### schema \{#schema-1\}
+
+```ts
+readonly schema: object = pointer;
+```
+
+##### schema.kind
+
+```ts
+kind: "pointer";
+```
+
+#### skipDocDirective \{#skipdocdirective\}
+
+```ts
+readonly skipDocDirective: object = string;
+```
+
+##### skipDocDirective.kind
+
+```ts
+kind: "string";
+```
+
+#### telemetry \{#telemetry-1\}
+
+```ts
+readonly telemetry: object = scalar;
+```
+
+##### telemetry.kind
+
+```ts
+kind: "scalar";
+```
+
+#### tmpDir \{#tmpdir\}
+
+```ts
+readonly tmpDir: object = path;
+```
+
+##### tmpDir.kind
+
+```ts
+kind: "path";
+```
+
+---
+
+## sanitizeConfig() \{#sanitizeconfig\}
+
+```ts
+function sanitizeConfig(value, rules): SanitizeResult;
+```
+
+Defined in: [sanitize.ts:300](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/sanitize.ts#L300)
+
+Sanitizes a config source. Top-level keys without a rule are dropped and
+counted in `unknownKeys`.
+
+### Parameters
+
+#### value
+
+`unknown`
+
+#### rules
+
+`Record`&lt;`string`, [`Rule`](#rule)&gt;
+
+### Returns
+
+[`SanitizeResult`](#sanitizeresult)
+
+---
+
+## schema
+
+## ALLOWLIST \{#allowlist\}
+
+```ts
+const ALLOWLIST: object;
+```
+
+Defined in: [schema.ts:104](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/schema.ts#L104)
+
+### Type Declaration
+
+#### ciProviders \{#ciproviders\}
+
+```ts
+readonly ciProviders: readonly ["github-actions", "gitlab", "circleci", "azure-pipelines", "jenkins", "bitbucket", "buildkite", "travis", "vercel", "netlify", "cloudflare-pages", "aws-codebuild", "teamcity", "appveyor", "drone", "render", "other"] = CI_PROVIDERS;
+```
+
+#### deprecatedOptions \{#deprecatedoptions\}
+
+```ts
+readonly deprecatedOptions: readonly ["default", "group", "skip"] = DEPRECATED_OPTIONS;
+```
+
+#### diffMethods \{#diffmethods\}
+
+```ts
+readonly diffMethods: readonly ["FORCE", "NONE"] = DIFF_METHODS;
+```
+
+#### events \{#events\}
+
+```ts
+readonly events: readonly ["config", "create_scaffold", "create_wire"] = EVENTS;
+```
+
+#### formatterPackagePattern \{#formatterpackagepattern\}
+
+```ts
+readonly formatterPackagePattern: "^@graphql-markdown/[a-z0-9-]+(/[a-z0-9-]+)*$" = "^@graphql-markdown/[a-z0-9-]+(/[a-z0-9-]+)*$";
+```
+
+#### formatterPresets \{#formatterpresets\}
+
+```ts
+readonly formatterPresets: readonly ["docfx", "docusaurus", "fumadocs", "honkit", "hugo", "mdbook", "mdx", "mkdocs", "starlight", "vocs"] = FORMATTER_PRESETS;
+```
+
+#### graphqlMajorUnknown \{#graphqlmajorunknown\}
+
+```ts
+readonly graphqlMajorUnknown: "unknown" = "unknown";
+```
+
+#### hierarchies \{#hierarchies\}
+
+```ts
+readonly hierarchies: readonly ["api", "entity", "flat"] = HIERARCHIES;
+```
+
+#### keyTokenPattern \{#keytokenpattern\}
+
+```ts
+readonly keyTokenPattern: string = KEY_TOKEN_PATTERN;
+```
+
+#### knownLoaders \{#knownloaders\}
+
+```ts
+readonly knownLoaders: readonly ["UrlLoader", "JsonFileLoader", "GraphQLFileLoader", "CodeFileLoader", "GitLoader", "GithubLoader", "ApolloEngineLoader", "PrismaLoader", "@graphql-tools/url-loader", "@graphql-tools/json-file-loader", "@graphql-tools/graphql-file-loader", "@graphql-tools/code-file-loader", "@graphql-tools/git-loader", "@graphql-tools/github-loader", "@graphql-tools/apollo-engine-loader", "@graphql-tools/prisma-loader"] = KNOWN_LOADERS;
+```
+
+#### loaderKinds \{#loaderkinds\}
+
+```ts
+readonly loaderKinds: readonly ["url", "file-sdl", "file-json", "git", "github", "glob", "code-file", "inline-sdl", "unknown"] = LOADER_KINDS;
+```
+
+#### maskTokens \{#masktokens\}
+
+```ts
+readonly maskTokens: readonly ["<url>", "<path>", "<string>", "<function>", "<object>", "<custom-loader>", "<custom-formatter>", "<git>", "<github>", "<file:sdl>", "<file:json>", "<file:code>", "<glob>", "<inline-sdl>", "<unknown>"] = MASK_TOKENS;
+```
+
+#### modes \{#modes\}
+
+```ts
+readonly modes: readonly ["scaffold", "wire"] = MODES;
+```
+
+#### packageManagers \{#packagemanagers\}
+
+```ts
+readonly packageManagers: readonly ["npm", "pnpm", "yarn", "bun", "unknown"] = PACKAGE_MANAGERS;
+```
+
+#### triggers \{#triggers\}
+
+```ts
+readonly triggers: readonly ["cli", "create", "docusaurus", "nuxt", "programmatic"] = TRIGGERS;
+```
+
+---
+
+## CI_PROVIDERS \{#ci_providers\}
+
+```ts
+const CI_PROVIDERS: readonly [
+  "github-actions",
+  "gitlab",
+  "circleci",
+  "azure-pipelines",
+  "jenkins",
+  "bitbucket",
+  "buildkite",
+  "travis",
+  "vercel",
+  "netlify",
+  "cloudflare-pages",
+  "aws-codebuild",
+  "teamcity",
+  "appveyor",
+  "drone",
+  "render",
+  "other",
+];
+```
+
+Defined in: [schema.ts:13](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/schema.ts#L13)
+
+---
+
+## DEPRECATED_OPTIONS \{#deprecated_options\}
+
+```ts
+const DEPRECATED_OPTIONS: readonly ["default", "group", "skip"];
+```
+
+Defined in: [schema.ts:52](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/schema.ts#L52)
+
+---
+
+## DIFF_METHODS \{#diff_methods\}
+
+```ts
+const DIFF_METHODS: readonly ["FORCE", "NONE"];
+```
+
+Defined in: [schema.ts:51](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/schema.ts#L51)
+
+---
+
+## EVENTS \{#events-1\}
+
+```ts
+const EVENTS: readonly ["config", "create_scaffold", "create_wire"];
+```
+
+Defined in: [schema.ts:5](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/schema.ts#L5)
+
+Allowlist of every string a payload may carry, as plain data: enums plus
+mask tokens. Shared with the Worker, which rejects anything else.
+
+---
+
+## FORMATTER_PRESETS \{#formatter_presets\}
+
+```ts
+const FORMATTER_PRESETS: readonly [
+  "docfx",
+  "docusaurus",
+  "fumadocs",
+  "honkit",
+  "hugo",
+  "mdbook",
+  "mdx",
+  "mkdocs",
+  "starlight",
+  "vocs",
+];
+```
+
+Defined in: [schema.ts:54](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/schema.ts#L54)
+
+---
+
+## HIERARCHIES \{#hierarchies-1\}
+
+```ts
+const HIERARCHIES: readonly ["api", "entity", "flat"];
+```
+
+Defined in: [schema.ts:53](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/schema.ts#L53)
+
+---
+
+## KEY_TOKEN_PATTERN \{#key_token_pattern\}
+
+```ts
+const KEY_TOKEN_PATTERN: string;
+```
+
+Defined in: [schema.ts:102](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/schema.ts#L102)
+
+Pattern of masked object keys, e.g. `<key:0>`.
+
+---
+
+## KNOWN_LOADERS \{#known_loaders\}
+
+```ts
+const KNOWN_LOADERS: readonly [
+  "UrlLoader",
+  "JsonFileLoader",
+  "GraphQLFileLoader",
+  "CodeFileLoader",
+  "GitLoader",
+  "GithubLoader",
+  "ApolloEngineLoader",
+  "PrismaLoader",
+  "@graphql-tools/url-loader",
+  "@graphql-tools/json-file-loader",
+  "@graphql-tools/graphql-file-loader",
+  "@graphql-tools/code-file-loader",
+  "@graphql-tools/git-loader",
+  "@graphql-tools/github-loader",
+  "@graphql-tools/apollo-engine-loader",
+  "@graphql-tools/prisma-loader",
+];
+```
+
+Defined in: [schema.ts:66](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/schema.ts#L66)
+
+---
+
+## LOADER_KINDS \{#loader_kinds\}
+
+```ts
+const LOADER_KINDS: readonly [
+  "url",
+  "file-sdl",
+  "file-json",
+  "git",
+  "github",
+  "glob",
+  "code-file",
+  "inline-sdl",
+  "unknown",
+];
+```
+
+Defined in: [schema.ts:39](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/schema.ts#L39)
+
+---
+
+## MASK_TOKENS \{#mask_tokens\}
+
+```ts
+const MASK_TOKENS: readonly [
+  "<url>",
+  "<path>",
+  "<string>",
+  "<function>",
+  "<object>",
+  "<custom-loader>",
+  "<custom-formatter>",
+  "<git>",
+  "<github>",
+  "<file:sdl>",
+  "<file:json>",
+  "<file:code>",
+  "<glob>",
+  "<inline-sdl>",
+  "<unknown>",
+];
+```
+
+Defined in: [schema.ts:84](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/schema.ts#L84)
+
+---
+
+## MODES \{#modes-1\}
+
+```ts
+const MODES: readonly ["scaffold", "wire"];
+```
+
+Defined in: [schema.ts:50](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/schema.ts#L50)
+
+---
+
+## PACKAGE_MANAGERS \{#package_managers\}
+
+```ts
+const PACKAGE_MANAGERS: readonly ["npm", "pnpm", "yarn", "bun", "unknown"];
+```
+
+Defined in: [schema.ts:32](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/schema.ts#L32)
+
+---
+
+## TRIGGERS \{#triggers-1\}
+
+```ts
+const TRIGGERS: readonly [
+  "cli",
+  "create",
+  "docusaurus",
+  "nuxt",
+  "programmatic",
+];
+```
+
+Defined in: [schema.ts:6](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/schema.ts#L6)
+
+---
+
+## state
+
+## TelemetryState \{#telemetrystate\}
+
+Defined in: [state.ts:14](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/state.ts#L14)
+
+### Properties
+
+#### enabled \{#enabled\}
+
+```ts
+enabled: boolean;
+```
+
+Defined in: [state.ts:15](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/state.ts#L15)
+
+#### lastSentConfigs \{#lastsentconfigs\}
+
+```ts
+lastSentConfigs: string[];
+```
+
+Defined in: [state.ts:17](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/state.ts#L17)
+
+#### noticeVersion \{#noticeversion\}
+
+```ts
+noticeVersion: number;
+```
+
+Defined in: [state.ts:16](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/state.ts#L16)
+
+#### reason? \{#reason\}
+
+```ts
+optional reason?: string;
+```
+
+Defined in: [state.ts:18](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/state.ts#L18)
+
+---
+
+## getStatePath() \{#getstatepath\}
+
+```ts
+function getStatePath(dir?): string;
+```
+
+Defined in: [state.ts:21](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/state.ts#L21)
+
+### Parameters
+
+#### dir?
+
+`string` = `...`
+
+### Returns
+
+`string`
+
+---
+
+## readState() \{#readstate\}
+
+```ts
+function readState(path?): TelemetryState | null | undefined;
+```
+
+Defined in: [state.ts:47](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/state.ts#L47)
+
+Reads the state file.
+
+### Parameters
+
+#### path?
+
+`string` = `...`
+
+### Returns
+
+[`TelemetryState`](#telemetrystate) \| `null` \| `undefined`
+
+the state, `undefined` when the file does not exist, or `null` when
+it is unreadable or corrupt (telemetry is then disabled for this run).
+
+---
+
+## writeState() \{#writestate\}
+
+```ts
+function writeState(next, path?): TelemetryState;
+```
+
+Defined in: [state.ts:69](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/state.ts#L69)
+
+Atomically writes the state (temp file + rename). Re-reads the current file
+and merges `lastSentConfigs` first so parallel runs do not lose entries.
+
+### Parameters
+
+#### next
+
+`Partial`&lt;[`TelemetryState`](#telemetrystate)&gt;
+
+#### path?
+
+`string` = `...`
+
+### Returns
+
+[`TelemetryState`](#telemetrystate)
+
+the state that was written.
+
+---
+
+## track
+
+## TrackInput \{#trackinput\}
+
+Defined in: [track.ts:11](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/track.ts#L11)
+
+### Extends
+
+- `Omit`&lt;[`PayloadInput`](payload.md#payloadinput), `"noStateBefore"`&gt;
+
+### Properties
+
+#### cli? \{#cli\}
+
+```ts
+optional cli?: CliOptions;
+```
+
+Defined in: [payload.ts:24](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/payload.ts#L24)
+
+##### Inherited from
+
+[`PayloadInput`](payload.md#payloadinput).[`cli`](payload.md#cli)
+
+#### config? \{#config\}
+
+```ts
+optional config?: ConfigOptions;
+```
+
+Defined in: [payload.ts:23](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/payload.ts#L23)
+
+##### Inherited from
+
+[`PayloadInput`](payload.md#payloadinput).[`config`](payload.md#config)
+
+#### durationMs? \{#durationms\}
+
+```ts
+optional durationMs?: number;
+```
+
+Defined in: [payload.ts:30](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/payload.ts#L30)
+
+##### Inherited from
+
+[`PayloadInput`](payload.md#payloadinput).[`durationMs`](payload.md#durationms)
+
+#### env? \{#env\}
+
+```ts
+optional env?: ProcessEnv;
+```
+
+Defined in: [payload.ts:34](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/payload.ts#L34)
+
+##### Inherited from
+
+[`PayloadInput`](payload.md#payloadinput).[`env`](payload.md#env)
+
+#### errorType? \{#errortype\}
+
+```ts
+optional errorType?: string;
+```
+
+Defined in: [payload.ts:31](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/payload.ts#L31)
+
+##### Inherited from
+
+[`PayloadInput`](payload.md#payloadinput).[`errorType`](payload.md#errortype)
+
+#### event? \{#event\}
+
+```ts
+optional event?: TelemetryEvent;
+```
+
+Defined in: [payload.ts:17](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/payload.ts#L17)
+
+##### Inherited from
+
+[`PayloadInput`](payload.md#payloadinput).[`event`](payload.md#event)
+
+#### graphqlMajor? \{#graphqlmajor\}
+
+```ts
+optional graphqlMajor?: unknown;
+```
+
+Defined in: [payload.ts:22](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/payload.ts#L22)
+
+`versionInfo.major` of the loaded `graphql`.
+
+##### Inherited from
+
+[`PayloadInput`](payload.md#payloadinput).[`graphqlMajor`](payload.md#graphqlmajor)
+
+#### mode? \{#mode\}
+
+```ts
+optional mode?: "scaffold" | "wire";
+```
+
+Defined in: [payload.ts:27](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/payload.ts#L27)
+
+##### Inherited from
+
+[`PayloadInput`](payload.md#payloadinput).[`mode`](payload.md#mode)
+
+#### onFullNotice? \{#onfullnotice\}
+
+```ts
+optional onFullNotice?: (notice) => void;
+```
+
+Defined in: [track.ts:17](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/track.ts#L17)
+
+Receives the full notice instead of stderr (e.g. a prompt UI).
+
+##### Parameters
+
+###### notice
+
+`string`
+
+##### Returns
+
+`void`
+
+#### option? \{#option\}
+
+```ts
+optional option?: boolean;
+```
+
+Defined in: [track.ts:13](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/track.ts#L13)
+
+Value of the `telemetry` option.
+
+#### pages? \{#pages\}
+
+```ts
+optional pages?: number;
+```
+
+Defined in: [payload.ts:29](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/payload.ts#L29)
+
+Generate events only.
+
+##### Inherited from
+
+[`PayloadInput`](payload.md#payloadinput).[`pages`](payload.md#pages)
+
+#### pkg \{#pkg\}
+
+```ts
+pkg: string;
+```
+
+Defined in: [payload.ts:19](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/payload.ts#L19)
+
+##### Inherited from
+
+[`PayloadInput`](payload.md#payloadinput).[`pkg`](payload.md#pkg)
+
+#### pkgVersion \{#pkgversion\}
+
+```ts
+pkgVersion: string;
+```
+
+Defined in: [payload.ts:20](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/payload.ts#L20)
+
+##### Inherited from
+
+[`PayloadInput`](payload.md#payloadinput).[`pkgVersion`](payload.md#pkgversion)
+
+#### statePath? \{#statepath\}
+
+```ts
+optional statePath?: string;
+```
+
+Defined in: [track.ts:15](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/track.ts#L15)
+
+Override of the `telemetry.json` location (tests).
+
+#### target? \{#target\}
+
+```ts
+optional target?: string;
+```
+
+Defined in: [payload.ts:26](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/payload.ts#L26)
+
+Create events only.
+
+##### Inherited from
+
+[`PayloadInput`](payload.md#payloadinput).[`target`](payload.md#target)
+
+#### trigger \{#trigger\}
+
+```ts
+trigger: TelemetryTrigger;
+```
+
+Defined in: [payload.ts:18](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/payload.ts#L18)
+
+##### Inherited from
+
+[`PayloadInput`](payload.md#payloadinput).[`trigger`](payload.md#trigger)
+
+---
+
+## encodeBody() \{#encodebody\}
+
+```ts
+function encodeBody(json): object;
+```
+
+Defined in: [track.ts:21](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/track.ts#L21)
+
+Builds the request body, gzipped above the size threshold.
+
+### Parameters
+
+#### json
+
+`string`
+
+### Returns
+
+`object`
+
+#### body
+
+```ts
+body: BodyInit;
+```
+
+#### headers
+
+```ts
+headers: Record<string, string>;
+```
+
+---
+
+## track() \{#track\}
+
+```ts
+function track(input): Promise<void>;
+```
+
+Defined in: [track.ts:37](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/track.ts#L37)
+
+Sends one anonymous config event. Never throws and never rejects.
+
+### Parameters
+
+#### input
+
+[`TrackInput`](#trackinput)
+
+### Returns
+
+`Promise`&lt;`void`&gt;
+
+---
+
 ## array
 
 Internal library of helpers for manipulating array and list.
@@ -19108,7 +21951,7 @@ Alias `path.posix` to normalize URL handling on Windows.
 
 ## RelativeGeneratedDocLinkOptions \{#relativegenerateddoclinkoptions\}
 
-Defined in: [url.ts:15](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/url.ts#L15)
+Defined in: [url.ts:16](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/url.ts#L16)
 
 ### Properties
 
@@ -19118,7 +21961,7 @@ Defined in: [url.ts:15](https://github.com/graphql-markdown/graphql-markdown/blo
 baseURL: string;
 ```
 
-Defined in: [url.ts:16](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/url.ts#L16)
+Defined in: [url.ts:17](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/url.ts#L17)
 
 #### currentFilePath \{#currentfilepath\}
 
@@ -19126,7 +21969,7 @@ Defined in: [url.ts:16](https://github.com/graphql-markdown/graphql-markdown/blo
 currentFilePath: string;
 ```
 
-Defined in: [url.ts:17](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/url.ts#L17)
+Defined in: [url.ts:18](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/url.ts#L18)
 
 #### extension? \{#extension\}
 
@@ -19134,7 +21977,27 @@ Defined in: [url.ts:17](https://github.com/graphql-markdown/graphql-markdown/blo
 optional extension?: string;
 ```
 
-Defined in: [url.ts:18](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/url.ts#L18)
+Defined in: [url.ts:19](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/url.ts#L19)
+
+#### knownDocPaths? \{#knowndocpaths\}
+
+```ts
+optional knownDocPaths?: ReadonlySet<string>;
+```
+
+Defined in: [url.ts:23](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/url.ts#L23)
+
+Root-level generated doc paths (without extensions), known before they are written.
+
+#### linkRoot? \{#linkroot\}
+
+```ts
+optional linkRoot?: string;
+```
+
+Defined in: [url.ts:21](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/url.ts#L21)
+
+Optional URL prefix (e.g. `/docs`) the printer puts before generated paths.
 
 #### outputDir \{#outputdir\}
 
@@ -19142,7 +22005,7 @@ Defined in: [url.ts:18](https://github.com/graphql-markdown/graphql-markdown/blo
 outputDir: string;
 ```
 
-Defined in: [url.ts:19](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/url.ts#L19)
+Defined in: [url.ts:24](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/url.ts#L24)
 
 #### targetUrlPath \{#targeturlpath\}
 
@@ -19150,7 +22013,7 @@ Defined in: [url.ts:19](https://github.com/graphql-markdown/graphql-markdown/blo
 targetUrlPath: string;
 ```
 
-Defined in: [url.ts:20](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/url.ts#L20)
+Defined in: [url.ts:25](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/url.ts#L25)
 
 ---
 
@@ -19160,7 +22023,7 @@ Defined in: [url.ts:20](https://github.com/graphql-markdown/graphql-markdown/blo
 function toRelativeGeneratedDocLink(__namedParameters): string | undefined;
 ```
 
-Defined in: [url.ts:44](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/url.ts#L44)
+Defined in: [url.ts:91](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/url.ts#L91)
 
 Converts a generated absolute GraphQL-Markdown doc URL into a page-relative file path.
 Returns `undefined` when the target URL does not belong to the configured `baseURL`.
