@@ -1145,7 +1145,7 @@ Defined in: [packages/core/src/config.ts:929](https://github.com/graphql-markdow
 ## DEFAULT_HOMEPAGE_TEMPLATE \{#default_homepage_template\}
 
 ```ts
-const DEFAULT_HOMEPAGE_TEMPLATE: "---\nid: schema\nslug: ##baseURL##\ntitle: Schema Documentation\nsidebar_position: 1\nhide_table_of_contents: true\npagination_next: null\npagination_prev: null\nsidebar_class_name: navbar__toggle\n---\n\nThis documentation has been automatically generated from the GraphQL schema with GraphQL-Markdown.\n";
+const DEFAULT_HOMEPAGE_TEMPLATE: "---\nid: schema\nslug: ##baseURL##\ntitle: Schema Documentation\nsidebar_position: 1\nhide_table_of_contents: true\npagination_next: null\npagination_prev: null\nsidebar_class_name: navbar__toggle\n---\n\nThis documentation has been automatically generated from the GraphQL schema with [GraphQL-Markdown](https://graphql-markdown.dev/).\n";
 ```
 
 Defined in: [packages/core/src/const/homepage.ts:15](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/const/homepage.ts#L15)
@@ -4728,7 +4728,7 @@ This handles the differences between ESM and CommonJS module exports when dynami
 
 ### Type Parameters
 
-#### T
+#### T \{#t\}
 
 `T`
 
@@ -5093,7 +5093,7 @@ const options = new OptionBuilder<MyOptions>()
 
 ### Type Parameters
 
-#### T
+#### T \{#t\}
 
 `T` _extends_ `Record`&lt;`string`, `unknown`&gt;
 
@@ -5127,7 +5127,7 @@ This method can be called at any time; precedence is enforced semantically.
 
 ##### Type Parameters
 
-###### K
+###### K \{#k\}
 
 `K` _extends_ `string` \| `number` \| `symbol`
 
@@ -5171,7 +5171,7 @@ This method can be called at any time; precedence is enforced semantically.
 
 ##### Type Parameters
 
-###### K
+###### K \{#k-1\}
 
 `K` _extends_ `string` \| `number` \| `symbol`
 
@@ -5215,7 +5215,7 @@ This method can be called at any time; precedence is enforced semantically.
 
 ##### Type Parameters
 
-###### K
+###### K \{#k-2\}
 
 `K` _extends_ `string` \| `number` \| `symbol`
 
@@ -5283,7 +5283,7 @@ Note: Nested objects and arrays are not deep copied.
 
 ##### Type Parameters
 
-###### K
+###### K \{#k-3\}
 
 `K` _extends_ `string` \| `number` \| `symbol`
 
@@ -5314,7 +5314,7 @@ Useful for processing values after they've been set.
 
 ##### Type Parameters
 
-###### K
+###### K \{#k-4\}
 
 `K` _extends_ `string` \| `number` \| `symbol`
 
@@ -5361,7 +5361,7 @@ Useful for applying different transformations based on other values.
 
 ##### Type Parameters
 
-###### K
+###### K \{#k-5\}
 
 `K` _extends_ `string` \| `number` \| `symbol`
 
@@ -10343,7 +10343,7 @@ This is the generic function.
 
 ### Type Parameters
 
-#### T
+#### T \{#t\}
 
 `T`
 
@@ -10383,7 +10383,7 @@ Gets the group name for a schema type based on the directive information.
 
 ### Type Parameters
 
-#### T
+#### T \{#t\}
 
 `T`
 
@@ -10578,7 +10578,7 @@ Checks if a GraphQL named type is of generic type `T`.
 
 ### Type Parameters
 
-#### T
+#### T \{#t\}
 
 `T`
 
@@ -10640,7 +10640,7 @@ Checks if a GraphQL named type is deprecated.
 
 ### Type Parameters
 
-#### T
+#### T \{#t-1\}
 
 `T`
 
@@ -10853,11 +10853,11 @@ see [getOperation](#getoperation), [getFields](#getfields)
 
 ### Type Parameters
 
-#### T
+#### T \{#t\}
 
 `T`
 
-#### V
+#### V \{#v\}
 
 `V`
 
@@ -11271,7 +11271,7 @@ When parsing the entities, internal GraphQL entities (starting with `__`) are ex
 
 ### Type Parameters
 
-#### T
+#### T \{#t-1\}
 
 `T`
 
@@ -11347,7 +11347,7 @@ Type guard for type with an AST node property.
 
 ### Type Parameters
 
-#### T
+#### T \{#t-2\}
 
 `T`
 
@@ -12444,7 +12444,7 @@ Frontmatter delimiter marker.
 
 #### eol?
 
-`string` = "\n"
+`string` = "\\n"
 
 End-of-line separator.
 
@@ -12482,7 +12482,7 @@ Number of spaces to prepend to non-empty lines.
 
 #### eol?
 
-`string` = "\n"
+`string` = "\\n"
 
 Line separator used to split and join lines.
 
@@ -12578,7 +12578,7 @@ Multiline text to transform into blockquote content.
 
 #### eol?
 
-`string` = "\n"
+`string` = "\\n"
 
 Line separator used to split and join lines.
 
@@ -12928,7 +12928,7 @@ a string to be logged.
 \| `"log"`
 \| `"success"`
 \| `"warn"`
-\| [`LogLevel`](#loglevel)
+\| [`LogLevel`](#loglevel) = `LogLevel.info`
 
 optional log level, `"info"` by default.
 
@@ -13566,9 +13566,9 @@ Standard indentation for code blocks (2 spaces).
 
 ## MARKDOWN_EOC \{#markdown_eoc\}
 
-```ts
-const MARKDOWN_EOC: "\n``\n";
-```
+````ts
+const MARKDOWN_EOC: "\n```\n";
+````
 
 Defined in: [printer-legacy/src/const/strings.ts:46](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/const/strings.ts#L46)
 
@@ -13602,9 +13602,9 @@ End of paragraph (double newline) for Markdown.
 
 ## MARKDOWN_SOC \{#markdown_soc\}
 
-```ts
-const MARKDOWN_SOC: "\n``graphql\n";
-```
+````ts
+const MARKDOWN_SOC: "\n```graphql\n";
+````
 
 Defined in: [printer-legacy/src/const/strings.ts:50](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/const/strings.ts#L50)
 
@@ -14041,7 +14041,7 @@ events.on(
 
 #### Extends
 
-- [`DataOutputEvent`](../utils/events.md#abstract-dataoutputevent)&lt;[`ComposePageTypeEventData`](#composepagetypeeventdata), keyof [`PageSections`](#pagesections)[]&gt;
+- [`DataOutputEvent`](../utils/events.md#abstract-dataoutputevent)&lt;[`ComposePageTypeEventData`](#composepagetypeeventdata), (keyof [`PageSections`](#pagesections))[]&gt;
 
 #### Constructors
 
@@ -14065,7 +14065,7 @@ Defined in: [printer-legacy/src/events.ts:118](https://github.com/graphql-markdo
 
 ###### initialOutput
 
-keyof [`PageSections`](#pagesections)[]
+(keyof [`PageSections`](#pagesections))[]
 
 ###### options?
 
@@ -14098,7 +14098,7 @@ Read-only event data payload.
 ##### output \{#output\}
 
 ```ts
-output: keyof PageSections[];
+output: (keyof PageSections)[];
 ```
 
 Defined in: utils/dist/events.d.ts:127
@@ -16158,7 +16158,7 @@ Prints a link for a GraphQL type based on the provided options.
 
 ### Type Parameters
 
-#### T
+#### T \{#t\}
 
 `T`
 
@@ -16993,7 +16993,7 @@ Prints the relation section for a specific type and relation category
 
 ### Type Parameters
 
-#### T
+#### T \{#t\}
 
 `T`
 
@@ -17110,13 +17110,13 @@ Prints a metadata section with special handling for deprecated items.
 
 ### Type Parameters
 
-#### T
+#### T \{#t\}
 
 `T`
 
 Type of the parent element
 
-#### V
+#### V \{#v\}
 
 `V`
 
@@ -17168,7 +17168,7 @@ Prints a complete section with title and content.
 
 ### Type Parameters
 
-#### V
+#### V \{#v-1\}
 
 `V`
 
@@ -17214,7 +17214,7 @@ Prints a single section item with its associated metadata.
 
 ### Type Parameters
 
-#### T
+#### T \{#t-1\}
 
 `T`
 
@@ -17254,7 +17254,7 @@ Prints an array of section items with consistent formatting.
 
 ### Type Parameters
 
-#### V
+#### V \{#v-2\}
 
 `V`
 
@@ -18022,7 +18022,7 @@ Defined in: [sanitize.ts:12](https://github.com/graphql-markdown/graphql-markdow
 const CLI_RULES: object;
 ```
 
-Defined in: [sanitize.ts:93](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/sanitize.ts#L93)
+Defined in: [sanitize.ts:107](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/sanitize.ts#L107)
 
 ### Type Declaration
 
@@ -18280,7 +18280,7 @@ kind: "path";
 const CONFIG_RULES: object;
 ```
 
-Defined in: [sanitize.ts:45](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/sanitize.ts#L45)
+Defined in: [sanitize.ts:59](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/sanitize.ts#L59)
 
 ### Type Declaration
 
@@ -18802,7 +18802,7 @@ kind: "path";
 function sanitizeConfig(value, rules): SanitizeResult;
 ```
 
-Defined in: [sanitize.ts:300](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/sanitize.ts#L300)
+Defined in: [sanitize.ts:314](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/sanitize.ts#L314)
 
 Sanitizes a config source. Top-level keys without a rule are dropped and
 counted in `unknownKeys`.
@@ -19546,7 +19546,7 @@ Returns a k/v object from an array of objects with a `name` property.
 
 ### Type Parameters
 
-#### T
+#### T \{#t\}
 
 `T`
 
@@ -19885,7 +19885,7 @@ Abstract base for events that carry a typed, read-only data payload.
 
 #### Type Parameters
 
-##### TData
+##### TData \{#tdata\}
 
 `TData`
 
@@ -20111,13 +20111,13 @@ Abstract base for events that carry typed data and a mutable output value.
 
 #### Type Parameters
 
-##### TData
+##### TData \{#tdata-1\}
 
 `TData`
 
 Type of the event data payload.
 
-##### TOutput
+##### TOutput \{#toutput\}
 
 `TOutput`
 
@@ -20385,7 +20385,7 @@ Recursively freezes all nested objects and arrays.
 
 #### Type Parameters
 
-##### T
+##### T \{#t\}
 
 `T` _extends_ `Record`&lt;`PropertyKey`, `any`&gt;
 
@@ -20738,7 +20738,7 @@ Type guard to check if an object has an array property.
 
 #### Type Parameters
 
-##### K
+##### K \{#k\}
 
 `K` _extends_ `PropertyKey`
 
@@ -20833,7 +20833,7 @@ Type guard to check if an object has a function property.
 
 #### Type Parameters
 
-##### K
+##### K \{#k-1\}
 
 `K` _extends_ `PropertyKey`
 
@@ -20928,7 +20928,7 @@ Type guard to check if an object has a non-empty array property.
 
 #### Type Parameters
 
-##### K
+##### K \{#k-2\}
 
 `K` _extends_ `PropertyKey`
 
@@ -21021,7 +21021,7 @@ Type guard to check if an object has multiple specific properties.
 
 ### Type Parameters
 
-#### K
+#### K \{#k-3\}
 
 `K` _extends_ `PropertyKey`
 
@@ -21072,7 +21072,7 @@ Type guard to check if an object has a specific property.
 
 #### Type Parameters
 
-##### K
+##### K \{#k-4\}
 
 `K` _extends_ `PropertyKey`
 
@@ -21164,7 +21164,7 @@ Type guard to check if an object has a string property.
 
 #### Type Parameters
 
-##### K
+##### K \{#k-5\}
 
 `K` _extends_ `PropertyKey`
 
@@ -21348,7 +21348,7 @@ Standard indentation for code blocks (2 spaces).
 ## MARKDOWN_CODE_SNIPPET \{#markdown_code_snippet\}
 
 ```ts
-const MARKDOWN_CODE_SNIPPET: "``";
+const MARKDOWN_CODE_SNIPPET:  "" `;
 ```
 
 Defined in: [markdown.ts:25](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/markdown.ts#L25)
@@ -21399,7 +21399,7 @@ Check if an object contains key/value records.
 
 ### Type Parameters
 
-#### T
+#### T \{#t\}
 
 `T` _extends_ `Record`&lt;`string`, `unknown`&gt;
 
@@ -21885,7 +21885,7 @@ optional character separator for word-based transformation.
 
 #### splitter?
 
-`string` \| `RegExp`
+`string` \| `RegExp` = `...`
 
 optional regex or string rule for splitting string into word.
 
