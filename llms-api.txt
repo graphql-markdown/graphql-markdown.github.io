@@ -1826,7 +1826,7 @@ Features:
 new CancellableEventEmitter(options?): CancellableEventEmitter;
 ```
 
-Defined in: node\_modules/.bun/@types+node@26.6.5/node\_modules/@types/node/events.d.ts:54
+Defined in: node\_modules/.bun/@types+node@26.6.6/node\_modules/@types/node/events.d.ts:54
 
 ###### Parameters
 
@@ -6397,10 +6397,10 @@ extension: Maybe<ConfigOptions>;
 
 Defined in: [packages/core/src/telemetry.ts:24](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/telemetry.ts#L24)
 
-#### id? \{#id\}
+#### id \{#id\}
 
 ```ts
-id?: Maybe<string>;
+id: Maybe<string>;
 ```
 
 Defined in: [packages/core/src/telemetry.ts:26](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/telemetry.ts#L26)
@@ -6488,7 +6488,7 @@ Resolves the telemetry opt-in and trigger from the configuration sources.
 ## VERSION \{#version\}
 
 ```ts
-const VERSION: string = "1.26.0";
+const VERSION: string = "1.26.1";
 ```
 
 Defined in: [packages/core/src/version.ts:5](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/version.ts#L5)
@@ -9713,7 +9713,7 @@ const formatMDXPermalink: typeof formatMDXEscapedPermalink =
   formatMDXEscapedPermalink;
 ```
 
-Defined in: [vocs/index.ts:40](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/vocs/index.ts#L40)
+Defined in: [vocs/index.ts:42](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/vocs/index.ts#L42)
 
 Formats a permalink for a section header, using the classic `{#id}` syntax
 escaped to remain valid MDX.
@@ -9744,7 +9744,7 @@ Formatted permalink string
 const mdxDeclaration: MDXString;
 ```
 
-Defined in: [vocs/index.ts:44](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/vocs/index.ts#L44)
+Defined in: [vocs/index.ts:46](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/vocs/index.ts#L46)
 
 MDX import statement and inline component definitions prepended to every generated file.
 
@@ -9756,7 +9756,7 @@ MDX import statement and inline component definitions prepended to every generat
 const mdxExtension: ".mdx";
 ```
 
-Defined in: [vocs/index.ts:49](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/vocs/index.ts#L49)
+Defined in: [vocs/index.ts:51](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/vocs/index.ts#L51)
 
 File extension used for generated pages.
 
@@ -9768,7 +9768,7 @@ File extension used for generated pages.
 function createMDXFormatter(_meta?): Formatter;
 ```
 
-Defined in: [vocs/index.ts:125](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/vocs/index.ts#L125)
+Defined in: [vocs/index.ts:148](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/vocs/index.ts#L148)
 
 Creates a Vocs formatter.
 
@@ -9794,7 +9794,7 @@ A complete Formatter implementation for Vocs MDX output
 function formatMDXAdmonition(admonition, _meta): MDXString;
 ```
 
-Defined in: [vocs/index.ts:69](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/vocs/index.ts#L69)
+Defined in: [vocs/index.ts:96](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/vocs/index.ts#L96)
 
 Formats an admonition using Vocs native callout syntax (`:::type[title]`).
 Maps `warning` type to `warning`; all other types use `info`.
@@ -9827,7 +9827,7 @@ Formatted Vocs callout string
 function formatMDXBadge(badge): MDXString;
 ```
 
-Defined in: [vocs/index.ts:57](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/vocs/index.ts#L57)
+Defined in: [vocs/index.ts:84](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/vocs/index.ts#L84)
 
 Formats a badge using Vocs native text directive (`:badge[...]`).
 Maps `DEPRECATED` classname to `warning` color; all others use default.
@@ -9854,7 +9854,7 @@ Formatted Vocs badge string
 function formatMDXBullet(text?): MDXString;
 ```
 
-Defined in: [vocs/index.ts:82](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/vocs/index.ts#L82)
+Defined in: [vocs/index.ts:109](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/vocs/index.ts#L109)
 
 Formats a bullet point using the inline `<Bullet/>` component defined in `mdxDeclaration`.
 
@@ -9874,13 +9874,53 @@ Formatted Bullet component string
 
 ---
 
+## formatMDXFrontmatter() \{#formatmdxfrontmatter\}
+
+```ts
+function formatMDXFrontmatter(props, formatted): MDXString;
+```
+
+Defined in: [vocs/index.ts:66](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/vocs/index.ts#L66)
+
+Formats YAML front matter followed by a visible `# Title` heading.
+
+Vocs only uses the front matter `title` for the document `<title>`; the
+page heading must be written in Markdown, so without it generated pages
+have no visible title.
+
+### Parameters
+
+#### props
+
+`Maybe`&lt;`FrontMatterOptions`&gt;
+
+Front matter options
+
+#### formatted
+
+`Maybe`&lt;`string`[]&gt;
+
+Pre-formatted front matter lines
+
+### Returns
+
+`MDXString`
+
+Front matter block and title heading, or empty string if no lines provided
+
+### See
+
+https://vocs.dev/docs/markdown
+
+---
+
 ## formatMDXLink() \{#formatmdxlink\}
 
 ```ts
 function formatMDXLink(link): TypeLink;
 ```
 
-Defined in: [vocs/index.ts:91](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/vocs/index.ts#L91)
+Defined in: [vocs/index.ts:118](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/vocs/index.ts#L118)
 
 Appends `.mdx` to internal link URLs.
 
@@ -9906,7 +9946,7 @@ Link with `.mdx` extension appended to the URL
 function formatMDXNameEntity(name, parentType?): MDXString;
 ```
 
-Defined in: [vocs/index.ts:104](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/vocs/index.ts#L104)
+Defined in: [vocs/index.ts:131](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/vocs/index.ts#L131)
 
 Formats a named entity as a JSX span with styled code elements.
 
@@ -17561,9 +17601,11 @@ Defined in: [loader.ts:1](https://github.com/graphql-markdown/graphql-markdown/b
 function classifyPointer(pointer): LoaderKind | LoaderKind[];
 ```
 
-Defined in: [loader.ts:70](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/loader.ts#L70)
+Defined in: [loader.ts:74](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/loader.ts#L74)
 
-Classifies a schema pointer; the pointer itself is never returned.
+Classifies a schema pointer; the pointer itself is never returned. Kinds are
+distinct, and a single kind is not wrapped in a list: the number of pointers
+could single out a user.
 
 ### Parameters
 
@@ -17583,7 +17625,7 @@ Classifies a schema pointer; the pointer itself is never returned.
 function maskPointer(pointer): string | string[];
 ```
 
-Defined in: [loader.ts:93](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/loader.ts#L93)
+Defined in: [loader.ts:98](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/loader.ts#L98)
 
 Classifies a schema pointer into mask token(s) for the config slot.
 
@@ -17735,7 +17777,7 @@ Defined in: [payload.ts:18](https://github.com/graphql-markdown/graphql-markdown
 function buildPayload(input): TelemetryPayload;
 ```
 
-Defined in: [payload.ts:101](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/payload.ts#L101)
+Defined in: [payload.ts:112](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/payload.ts#L112)
 
 ### Parameters
 
@@ -17755,7 +17797,7 @@ Defined in: [payload.ts:101](https://github.com/graphql-markdown/graphql-markdow
 function fingerprint(payload): string;
 ```
 
-Defined in: [payload.ts:179](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/payload.ts#L179)
+Defined in: [payload.ts:190](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/payload.ts#L190)
 
 SHA-256 of the canonical sorted-key JSON, excluding `firstRun`.
 
@@ -20646,7 +20688,7 @@ Library of helpers for formatting strings.
 const slugify: typeof kebabCase = kebabCase;
 ```
 
-Defined in: [string.ts:283](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/string.ts#L283)
+Defined in: [string.ts:284](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/string.ts#L284)
 
 ---
 
@@ -20656,7 +20698,7 @@ Defined in: [string.ts:283](https://github.com/graphql-markdown/graphql-markdown
 const toString: StringConstructor = String;
 ```
 
-Defined in: [string.ts:293](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/string.ts#L293)
+Defined in: [string.ts:294](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/string.ts#L294)
 
 Returns a stringified version of the variable.
 
@@ -20678,7 +20720,7 @@ a string
 function capitalize(str): string;
 ```
 
-Defined in: [string.ts:224](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/string.ts#L224)
+Defined in: [string.ts:225](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/string.ts#L225)
 
 Returns a string in lowercase excepted for the 1st character capitalized using [firstUppercase](#firstuppercase).
 
@@ -20713,7 +20755,7 @@ capitalize("the quick Brown Fox");
 function escapeMDX(str): string;
 ```
 
-Defined in: [string.ts:177](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/string.ts#L177)
+Defined in: [string.ts:178](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/string.ts#L178)
 
 **`Internal`**
 
@@ -20755,7 +20797,7 @@ escapeMDX("`{MDX}` `<special>` characters");
 function firstUppercase(str): string;
 ```
 
-Defined in: [string.ts:200](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/string.ts#L200)
+Defined in: [string.ts:201](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/string.ts#L201)
 
 Returns a string with the 1st character in uppercase.
 
@@ -20790,7 +20832,7 @@ firstUppercase("the quick Brown Fox");
 function kebabCase(str): string;
 ```
 
-Defined in: [string.ts:267](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/string.ts#L267)
+Defined in: [string.ts:268](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/string.ts#L268)
 
 Returns a lowercase string with `-` as replacement for non alphanum characters using [stringCaseBuilder](#stringcasebuilder).
 
@@ -20910,7 +20952,7 @@ replaceDiacritics("Âéêś"); // Expected result: "Aees"
 function startCase(str): string;
 ```
 
-Defined in: [string.ts:246](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/string.ts#L246)
+Defined in: [string.ts:247](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/string.ts#L247)
 
 Applies [firstUppercase](#firstuppercase) using [stringCaseBuilder](#stringcasebuilder) to every word of a string with `space` character as separator.
 
@@ -21006,7 +21048,7 @@ stringCaseBuilder(text, transformation, " ");
 function toHTMLUnicode(char): string;
 ```
 
-Defined in: [string.ts:146](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/string.ts#L146)
+Defined in: [string.ts:147](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/string.ts#L147)
 
 **`Internal`**
 

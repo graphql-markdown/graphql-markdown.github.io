@@ -315,11 +315,15 @@ In a Nuxt site, generation runs automatically on `npm run dev`, `npm run generat
 
 ## Docusaurus
 
+See the generated docs in the [live demo](https://graphql-markdown.dev/demo-docusaurus/).
+
 Use the [CodeSandbox template](https://codesandbox.io/p/sandbox/github/graphql-markdown/demo-docusaurus/tree/main?file=/.graphqlrc) or fork our [demo repo](https://github.com/graphql-markdown/demo-docusaurus) to try with your own GraphQL schema.
 
 Edit the configuration in `.graphqlrc`.
 
 ## Astro/Starlight
+
+See the generated docs in the [live demo](https://graphql-markdown.dev/demo-astro-starlight/).
 
 Use the [CodeSandbox template](https://codesandbox.io/p/sandbox/github/graphql-markdown/demo-astro-starlight/tree/main?file=/graphql.config.mjs) or fork our [demo repo](https://github.com/graphql-markdown/demo-astro-starlight) to try with your own GraphQL schema.
 
@@ -327,11 +331,15 @@ Edit the configuration in `graphql.config.mjs`.
 
 ## Astro/Starlight on Cloudflare R2
 
+See the generated docs in the [live demo](https://graphql-markdown.dev/demo-astro-r2/).
+
 Fork our [demo repo](https://github.com/graphql-markdown/demo-astro-r2) to see the [`outputAdapter`](/docs/settings#outputadapter) setting write the generated docs straight into a Cloudflare R2 bucket. It runs locally with Wrangler's R2 emulation, no Cloudflare account needed.
 
 Edit the configuration in `graphql.config.ts`.
 
 ## Next.js/Fumadocs
+
+See the generated docs in the [live demo](https://graphql-markdown.dev/demo-nextjs-fumadocs/).
 
 Use the [CodeSandbox template](https://codesandbox.io/p/sandbox/github/graphql-markdown/demo-nextjs-fumadocs/tree/main?file=/graphql.config.mjs) or fork our [demo repo](https://github.com/graphql-markdown/demo-nextjs-fumadocs) to try with your own GraphQL schema.
 
@@ -339,11 +347,15 @@ Edit the configuration in `graphql.config.mjs`.
 
 ## Nuxt
 
+See the generated docs in the [live demo](https://graphql-markdown.dev/demo-nuxt/).
+
 Use the [CodeSandbox template](https://codesandbox.io/p/sandbox/github/graphql-markdown/demo-nuxt/tree/main?file=/generate-docs.ts) or fork our [demo repo](https://github.com/graphql-markdown/demo-nuxt) to try with your own GraphQL schema. The demo uses the `@graphql-markdown/nuxt-theme` layer.
 
 Edit the configuration in `generate-docs.ts`.
 
 ## Nuxt/Docus
+
+See the generated docs in the [live demo](https://graphql-markdown.dev/demo-docus/).
 
 Use the [CodeSandbox template](https://codesandbox.io/p/sandbox/github/graphql-markdown/demo-docus/tree/main?file=/graphql.config.mjs) or fork our [demo repo](https://github.com/graphql-markdown/demo-docus) to try with your own GraphQL schema.
 
@@ -351,11 +363,15 @@ Edit the configuration in `graphql.config.mjs`.
 
 ## Vite/Vocs
 
+See the generated docs in the [live demo](https://graphql-markdown.dev/demo-vite-vocs/).
+
 Use the [CodeSandbox template](https://codesandbox.io/p/sandbox/github/graphql-markdown/demo-vite-vocs/tree/main?file=/graphql.config.mjs) or fork our [demo repo](https://github.com/graphql-markdown/demo-vite-vocs) to try with your own GraphQL schema.
 
 Edit the configuration in `graphql.config.mjs`.
 
 ## HonKit / GitBook legacy
+
+See the generated docs in the [live demo](https://graphql-markdown.dev/demo-honkit/).
 
 Fork our [demo repo](https://github.com/graphql-markdown/demo-honkit) to try with your own GraphQL schema.
 
@@ -363,11 +379,15 @@ Edit the configuration in `graphql.config.mjs`.
 
 ## Hugo
 
+See the generated docs in the [live demo](https://graphql-markdown.dev/demo-hugo/).
+
 Fork our [demo repo](https://github.com/graphql-markdown/demo-hugo) to try with your own GraphQL schema.
 
 Edit the configuration in `.graphqlrc.yml`.
 
 ## MkDocs
+
+See the generated docs in the [live demo](https://graphql-markdown.dev/demo-mkdocs/).
 
 Fork our [demo repo](https://github.com/graphql-markdown/demo-mkdocs) to try with your own GraphQL schema.
 
@@ -375,11 +395,15 @@ Edit the configuration in `scripts/generate-docs.mjs`.
 
 ## mdBook
 
+See the generated docs in the [live demo](https://graphql-markdown.dev/demo-mdbook/).
+
 Fork our [demo repo](https://github.com/graphql-markdown/demo-mdbook) to try with your own GraphQL schema.
 
 Edit the configuration in `scripts/generate-docs.mjs`.
 
 ## DocFX
+
+See the generated docs in the [live demo](https://graphql-markdown.dev/demo-docfx/).
 
 Fork our [demo repo](https://github.com/graphql-markdown/demo-docfx) to try with your own GraphQL schema.
 
@@ -3970,7 +3994,7 @@ One event is sent for each distinct configuration, at most once per process. The
   "v": 1,
   "event": "config",
   "pkg": "@graphql-markdown/core",
-  "pkgVersion": "0.1.0",
+  "pkgVersion": "0.1",
   "nodeMajor": 24,
   "graphqlMajor": 16,
   "os": "darwin",
@@ -3997,12 +4021,7 @@ One event is sent for each distinct configuration, at most once per process. The
       "deprecated": "group",
       "typeBadges": true
     },
-    "metatags": [
-      {
-        "<key:0>": "<string>",
-        "<key:1>": "<string>"
-      }
-    ],
+    "metatags": "<object>",
     "loaders": {
       "UrlLoader": "@graphql-tools/url-loader"
     }
@@ -4014,19 +4033,20 @@ One event is sent for each distinct configuration, at most once per process. The
 }
 ```
 
-| Field                       | Meaning                                                                                                                                                                       |
-| --------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `v`                         | Payload schema version.                                                                                                                                                       |
-| `event`                     | `config`, `generate`, `create_scaffold` or `create_wire`.                                                                                                                     |
-| `pkg`, `pkgVersion`         | Package that reported the event and its version.                                                                                                                              |
-| `nodeMajor`, `graphqlMajor` | Major versions only.                                                                                                                                                          |
-| `os`, `pm`                  | Platform (`darwin`, `linux`, `win32`) and package manager (`npm`, `pnpm`, `yarn`, `bun`).                                                                                     |
-| `ci`, `ciProvider`          | Whether a CI environment was detected, and which one (see [CI behaviour](#ci-behaviour)).                                                                                     |
-| `firstRun`                  | `true` only when no telemetry preference file existed before the run. Never `true` in CI.                                                                                     |
-| `trigger`                   | Entry point: `cli`, `create`, `docusaurus`, `nuxt` or `programmatic`.                                                                                                         |
-| `container`, `wsl`          | Running in a container or in WSL.                                                                                                                                             |
-| `loader`                    | Kind of schema pointer: `url`, `git`, `github`, `file-sdl`, `file-json`, `code-file` (`.ts`, `.tsx`, `.js`, `.vue`, `.svelte`, `.astro`…), `glob`, `inline-sdl` or `unknown`. |
-| `config`, `cli`             | The settings used, from the config sources and from CLI flags, with custom values masked.                                                                                     |
+| Field                       | Meaning                                                                                                                                                                                                                                                                      |
+| --------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `v`                         | Payload schema version.                                                                                                                                                                                                                                                      |
+| `event`                     | `config`, `generate`, `create_scaffold` or `create_wire`.                                                                                                                                                                                                                    |
+| `pkg`, `pkgVersion`         | Package that reported the event and its version, sent as major.minor only (no patch or prerelease).                                                                                                                                                                          |
+| `nodeMajor`, `graphqlMajor` | Major versions only.                                                                                                                                                                                                                                                         |
+| `os`, `pm`                  | Platform (`darwin`, `linux`, `win32`) and package manager (`npm`, `pnpm`, `yarn`, `bun`).                                                                                                                                                                                    |
+| `ci`, `ciProvider`          | Whether a CI environment was detected, and which one (see [CI behaviour](#ci-behaviour)).                                                                                                                                                                                    |
+| `firstRun`                  | `true` only when no telemetry preference file existed before the run. Never `true` in CI.                                                                                                                                                                                    |
+| `trigger`                   | Entry point: `cli`, `create`, `docusaurus`, `nuxt` or `programmatic`.                                                                                                                                                                                                        |
+| `container`, `wsl`          | Running in a container or in WSL.                                                                                                                                                                                                                                            |
+| `loader`                    | Kind of schema pointer: `url`, `git`, `github`, `file-sdl`, `file-json`, `code-file` (`.ts`, `.tsx`, `.js`, `.vue`, `.svelte`, `.astro`…), `glob`, `inline-sdl` or `unknown`. Several pointers of one kind give that single kind; mixed kinds give a list of distinct kinds. |
+| `config`, `cli`             | The settings used, from the config sources and from CLI flags, with custom values masked.                                                                                                                                                                                    |
+| `target`, `mode`            | `create_scaffold` and `create_wire` events only: the framework preset and the scaffolder mode.                                                                                                                                                                               |
 
 ### Generate event
 
@@ -4037,7 +4057,7 @@ When generation ends, one `generate` event is sent per run, with the same header
   "v": 1,
   "event": "generate",
   "pkg": "@graphql-markdown/core",
-  "pkgVersion": "1.40.0",
+  "pkgVersion": "1.40",
   "trigger": "cli",
   "pages": 182,
   "durationMs": 2300
@@ -4054,25 +4074,27 @@ When generation ends, one `generate` event is sent per run, with the same header
 
 Settings are sent with their values, but every custom string, URL and path is replaced by a mask token. The rules are allowlist-first: anything not covered is masked.
 
-| Value kind                                                                                                                                                                         | Sent as                                                                                                                             |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| boolean, number, `null`                                                                                                                                                            | as-is                                                                                                                               |
-| string in a known enum (`diffMethod`, `printTypeOptions.deprecated`, `hierarchy`, `docOptions.*` enums, `formatter` presets and `@graphql-markdown/*` packages, `homepage: false`) | as-is                                                                                                                               |
-| URL-like string (`baseURL`, schema URL, any `scheme://`)                                                                                                                           | `"<url>"`                                                                                                                           |
-| schema pointer (`schema`): a URL, git ref, GitHub repo, file, glob, code file or inline SDL. Local paths, git refs, URLs and request headers are never sent                        | `"<url>"`, `"<git>"`, `"<github>"`, `"<file:sdl>"`, `"<file:json>"`, `"<file:code>"`, `"<glob>"`, `"<inline-sdl>"` or `"<unknown>"` |
-| path-like string (`rootPath`, `linkRoot`, `tmpDir`, `homepage`, anything containing `/`, `\` or a leading `.`)                                                                     | `"<path>"`                                                                                                                          |
-| `formatter` or `mdxParser` outside the `@graphql-markdown` ecosystem (a third-party package, a local path or a URL)                                                                | `"<custom-formatter>"`                                                                                                              |
-| schema loaders outside `@graphql-tools` (`loaders`)                                                                                                                                | `"<custom-loader>"`                                                                                                                 |
-| any other string (directive names, `id`, `metatags`, `fallback`, front matter values)                                                                                              | `"<string>"`                                                                                                                        |
-| array                                                                                                                                                                              | array of sanitized items (length preserved)                                                                                         |
-| object with user-defined keys (`customDirective`, `decorators`, `metatags`, `frontMatter`, loader options)                                                                         | keys replaced with `"<key:n>"`, values sanitized                                                                                    |
-| function or class instance (`outputAdapter`, hooks, decorator predicates)                                                                                                          | `"<function>"` or `"<object>"`                                                                                                      |
-| top-level key that is not a known setting                                                                                                                                          | dropped (only a count is kept, `unknownKeys`)                                                                                       |
+| Value kind                                                                                                                                                                                                                                                                          | Sent as                                                                                                                             |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| boolean, number, `null`                                                                                                                                                                                                                                                             | as-is                                                                                                                               |
+| string in a known enum (`diffMethod`, `printTypeOptions.deprecated`, `hierarchy`, `docOptions.*` enums, `formatter` presets and `@graphql-markdown/*` packages, `homepage: false`)                                                                                                  | as-is                                                                                                                               |
+| URL-like string (`baseURL`, schema URL, any `scheme://`)                                                                                                                                                                                                                            | `"<url>"`                                                                                                                           |
+| schema pointer (`schema`): a URL, git ref, GitHub repo, file, glob, code file or inline SDL. Local paths, git refs, URLs and request headers are never sent. A list gives its distinct tokens, and a single token when only one kind is left, so the number of pointers is not sent | `"<url>"`, `"<git>"`, `"<github>"`, `"<file:sdl>"`, `"<file:json>"`, `"<file:code>"`, `"<glob>"`, `"<inline-sdl>"` or `"<unknown>"` |
+| path-like string (`rootPath`, `linkRoot`, `tmpDir`, `homepage`, anything containing `/`, `\` or a leading `.`)                                                                                                                                                                      | `"<path>"`                                                                                                                          |
+| `formatter` or `mdxParser` outside the `@graphql-markdown` ecosystem (a third-party package, a local path or a URL)                                                                                                                                                                 | `"<custom-formatter>"`                                                                                                              |
+| schema loaders outside `@graphql-tools` (`loaders`)                                                                                                                                                                                                                                 | `"<custom-loader>"`                                                                                                                 |
+| any other string (directive names, `id`, `fallback`, front matter values)                                                                                                                                                                                                           | `"<string>"`                                                                                                                        |
+| `metatags`: the number of tags and their shape are not sent                                                                                                                                                                                                                         | `"<object>"`                                                                                                                        |
+| any other array                                                                                                                                                                                                                                                                     | array of sanitized items (length preserved)                                                                                         |
+| object with user-defined keys (`customDirective`, `decorators`, `frontMatter`, loader options)                                                                                                                                                                                      | keys replaced with `"<key:n>"`, values sanitized                                                                                    |
+| function or class instance (`outputAdapter`, hooks, decorator predicates)                                                                                                                                                                                                           | `"<function>"` or `"<object>"`                                                                                                      |
+| top-level key that is not a known setting                                                                                                                                                                                                                                           | dropped (only a count is kept, `unknownKeys`)                                                                                       |
 
 ## What is never sent
 
 - schema content: type, field or directive names, descriptions, counts
 - raw paths, URLs or host names
+- the number of schema pointers, or the number and shape of metatags
 - git remotes, project names or package names of your project
 - error messages, stack traces or custom error class names
 - environment variable values (only the presence of a CI vendor variable is checked)
@@ -4085,6 +4107,7 @@ The data is designed to be anonymous: nothing can be linked to a person, a devic
 - No identifiers are collected, and no IP address is read, logged, hashed or stored by the collection endpoint. Cloudflare, as network provider, sees the IP address in transit only, which is transient transport processing and not collection.
 - Values are coarse (enums, booleans, major versions or mask tokens). Timestamps are stored to the hour.
 - The masked configuration is stored with its keys sorted alphabetically at every level, so the order in which you wrote your settings is not kept.
+- The collection endpoint applies the same `schema`, `loader` and `metatags` rules to every event it receives.
 - Raw events are kept for about 3 months and then deleted automatically. After that, only aggregate daily counts remain.
 - The only thing stored on your machine is `telemetry.json` in the OS config directory, with your preference, the version of the notice you saw and fingerprints of already-masked configurations used for de-duplication. It is never sent.
 - As nothing is linkable to a person, there is nothing to access or erase. For questions, [open an issue](https://github.com/graphql-markdown/graphql-markdown/issues).
@@ -4095,7 +4118,7 @@ The aggregated, anonymous usage statistics are published at [telemetry.graphql-m
 
 - Refreshed once a day (around 03:00 UTC). It shows the last 90 days of aggregated daily counts; that is only the display window, as the aggregate counts are kept longer than the raw events (see [Privacy and GDPR](#privacy-and-gdpr)).
 - Shows the All view (local and CI runs together); the CI vs local and CI provider panels split them.
-- Shows usage patterns: events, distinct configs and debounced activity, runs per day by package version, CI vs local runs, CI provider share, formatter share, GraphQL major version, loader kinds and the most-used settings. Generation statistics (pages, duration, errors) are not published on the page.
+- Shows usage patterns: events and debounced activity (each configuration counted at most once a day), runs per day by package version, CI vs local runs, CI provider share, formatter share, GraphQL major version, loader kinds and the most-used settings. Generation statistics (pages, duration, errors) are not published on the page.
 - Values with fewer than 5 events over the 90 days are hidden and counted as suppressed (`n<5` suppression). The rule applies to the total of each value, so daily figures of a shown value are not suppressed individually.
 - Only aggregated counts are published, never individual events.
 - The page is meant for people: it asks crawlers and AI agents not to index it (`robots.txt` and `noindex`, which are advisory).
@@ -5994,7 +6017,7 @@ Features:
 new CancellableEventEmitter(options?): CancellableEventEmitter;
 ```
 
-Defined in: node\_modules/.bun/@types+node@26.6.5/node\_modules/@types/node/events.d.ts:54
+Defined in: node\_modules/.bun/@types+node@26.6.6/node\_modules/@types/node/events.d.ts:54
 
 ###### Parameters
 
@@ -10565,10 +10588,10 @@ extension: Maybe<ConfigOptions>;
 
 Defined in: [packages/core/src/telemetry.ts:24](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/telemetry.ts#L24)
 
-#### id? \{#id\}
+#### id \{#id\}
 
 ```ts
-id?: Maybe<string>;
+id: Maybe<string>;
 ```
 
 Defined in: [packages/core/src/telemetry.ts:26](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/telemetry.ts#L26)
@@ -10656,7 +10679,7 @@ Resolves the telemetry opt-in and trigger from the configuration sources.
 ## VERSION \{#version\}
 
 ```ts
-const VERSION: string = "1.26.0";
+const VERSION: string = "1.26.1";
 ```
 
 Defined in: [packages/core/src/version.ts:5](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/core/src/version.ts#L5)
@@ -13881,7 +13904,7 @@ const formatMDXPermalink: typeof formatMDXEscapedPermalink =
   formatMDXEscapedPermalink;
 ```
 
-Defined in: [vocs/index.ts:40](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/vocs/index.ts#L40)
+Defined in: [vocs/index.ts:42](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/vocs/index.ts#L42)
 
 Formats a permalink for a section header, using the classic `{#id}` syntax
 escaped to remain valid MDX.
@@ -13912,7 +13935,7 @@ Formatted permalink string
 const mdxDeclaration: MDXString;
 ```
 
-Defined in: [vocs/index.ts:44](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/vocs/index.ts#L44)
+Defined in: [vocs/index.ts:46](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/vocs/index.ts#L46)
 
 MDX import statement and inline component definitions prepended to every generated file.
 
@@ -13924,7 +13947,7 @@ MDX import statement and inline component definitions prepended to every generat
 const mdxExtension: ".mdx";
 ```
 
-Defined in: [vocs/index.ts:49](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/vocs/index.ts#L49)
+Defined in: [vocs/index.ts:51](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/vocs/index.ts#L51)
 
 File extension used for generated pages.
 
@@ -13936,7 +13959,7 @@ File extension used for generated pages.
 function createMDXFormatter(_meta?): Formatter;
 ```
 
-Defined in: [vocs/index.ts:125](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/vocs/index.ts#L125)
+Defined in: [vocs/index.ts:148](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/vocs/index.ts#L148)
 
 Creates a Vocs formatter.
 
@@ -13962,7 +13985,7 @@ A complete Formatter implementation for Vocs MDX output
 function formatMDXAdmonition(admonition, _meta): MDXString;
 ```
 
-Defined in: [vocs/index.ts:69](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/vocs/index.ts#L69)
+Defined in: [vocs/index.ts:96](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/vocs/index.ts#L96)
 
 Formats an admonition using Vocs native callout syntax (`:::type[title]`).
 Maps `warning` type to `warning`; all other types use `info`.
@@ -13995,7 +14018,7 @@ Formatted Vocs callout string
 function formatMDXBadge(badge): MDXString;
 ```
 
-Defined in: [vocs/index.ts:57](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/vocs/index.ts#L57)
+Defined in: [vocs/index.ts:84](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/vocs/index.ts#L84)
 
 Formats a badge using Vocs native text directive (`:badge[...]`).
 Maps `DEPRECATED` classname to `warning` color; all others use default.
@@ -14022,7 +14045,7 @@ Formatted Vocs badge string
 function formatMDXBullet(text?): MDXString;
 ```
 
-Defined in: [vocs/index.ts:82](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/vocs/index.ts#L82)
+Defined in: [vocs/index.ts:109](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/vocs/index.ts#L109)
 
 Formats a bullet point using the inline `<Bullet/>` component defined in `mdxDeclaration`.
 
@@ -14042,13 +14065,53 @@ Formatted Bullet component string
 
 ---
 
+## formatMDXFrontmatter() \{#formatmdxfrontmatter\}
+
+```ts
+function formatMDXFrontmatter(props, formatted): MDXString;
+```
+
+Defined in: [vocs/index.ts:66](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/vocs/index.ts#L66)
+
+Formats YAML front matter followed by a visible `# Title` heading.
+
+Vocs only uses the front matter `title` for the document `<title>`; the
+page heading must be written in Markdown, so without it generated pages
+have no visible title.
+
+### Parameters
+
+#### props
+
+`Maybe`&lt;`FrontMatterOptions`&gt;
+
+Front matter options
+
+#### formatted
+
+`Maybe`&lt;`string`[]&gt;
+
+Pre-formatted front matter lines
+
+### Returns
+
+`MDXString`
+
+Front matter block and title heading, or empty string if no lines provided
+
+### See
+
+https://vocs.dev/docs/markdown
+
+---
+
 ## formatMDXLink() \{#formatmdxlink\}
 
 ```ts
 function formatMDXLink(link): TypeLink;
 ```
 
-Defined in: [vocs/index.ts:91](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/vocs/index.ts#L91)
+Defined in: [vocs/index.ts:118](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/vocs/index.ts#L118)
 
 Appends `.mdx` to internal link URLs.
 
@@ -14074,7 +14137,7 @@ Link with `.mdx` extension appended to the URL
 function formatMDXNameEntity(name, parentType?): MDXString;
 ```
 
-Defined in: [vocs/index.ts:104](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/vocs/index.ts#L104)
+Defined in: [vocs/index.ts:131](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/vocs/index.ts#L131)
 
 Formats a named entity as a JSX span with styled code elements.
 
@@ -21054,9 +21117,11 @@ Defined in: [loader.ts:1](https://github.com/graphql-markdown/graphql-markdown/b
 function classifyPointer(pointer): LoaderKind | LoaderKind[];
 ```
 
-Defined in: [loader.ts:70](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/loader.ts#L70)
+Defined in: [loader.ts:74](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/loader.ts#L74)
 
-Classifies a schema pointer; the pointer itself is never returned.
+Classifies a schema pointer; the pointer itself is never returned. Kinds are
+distinct, and a single kind is not wrapped in a list: the number of pointers
+could single out a user.
 
 ### Parameters
 
@@ -21076,7 +21141,7 @@ Classifies a schema pointer; the pointer itself is never returned.
 function maskPointer(pointer): string | string[];
 ```
 
-Defined in: [loader.ts:93](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/loader.ts#L93)
+Defined in: [loader.ts:98](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/loader.ts#L98)
 
 Classifies a schema pointer into mask token(s) for the config slot.
 
@@ -21228,7 +21293,7 @@ Defined in: [payload.ts:18](https://github.com/graphql-markdown/graphql-markdown
 function buildPayload(input): TelemetryPayload;
 ```
 
-Defined in: [payload.ts:101](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/payload.ts#L101)
+Defined in: [payload.ts:112](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/payload.ts#L112)
 
 ### Parameters
 
@@ -21248,7 +21313,7 @@ Defined in: [payload.ts:101](https://github.com/graphql-markdown/graphql-markdow
 function fingerprint(payload): string;
 ```
 
-Defined in: [payload.ts:179](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/payload.ts#L179)
+Defined in: [payload.ts:190](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/payload.ts#L190)
 
 SHA-256 of the canonical sorted-key JSON, excluding `firstRun`.
 
@@ -24139,7 +24204,7 @@ Library of helpers for formatting strings.
 const slugify: typeof kebabCase = kebabCase;
 ```
 
-Defined in: [string.ts:283](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/string.ts#L283)
+Defined in: [string.ts:284](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/string.ts#L284)
 
 ---
 
@@ -24149,7 +24214,7 @@ Defined in: [string.ts:283](https://github.com/graphql-markdown/graphql-markdown
 const toString: StringConstructor = String;
 ```
 
-Defined in: [string.ts:293](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/string.ts#L293)
+Defined in: [string.ts:294](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/string.ts#L294)
 
 Returns a stringified version of the variable.
 
@@ -24171,7 +24236,7 @@ a string
 function capitalize(str): string;
 ```
 
-Defined in: [string.ts:224](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/string.ts#L224)
+Defined in: [string.ts:225](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/string.ts#L225)
 
 Returns a string in lowercase excepted for the 1st character capitalized using [firstUppercase](#firstuppercase).
 
@@ -24206,7 +24271,7 @@ capitalize("the quick Brown Fox");
 function escapeMDX(str): string;
 ```
 
-Defined in: [string.ts:177](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/string.ts#L177)
+Defined in: [string.ts:178](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/string.ts#L178)
 
 **`Internal`**
 
@@ -24248,7 +24313,7 @@ escapeMDX("`{MDX}` `<special>` characters");
 function firstUppercase(str): string;
 ```
 
-Defined in: [string.ts:200](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/string.ts#L200)
+Defined in: [string.ts:201](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/string.ts#L201)
 
 Returns a string with the 1st character in uppercase.
 
@@ -24283,7 +24348,7 @@ firstUppercase("the quick Brown Fox");
 function kebabCase(str): string;
 ```
 
-Defined in: [string.ts:267](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/string.ts#L267)
+Defined in: [string.ts:268](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/string.ts#L268)
 
 Returns a lowercase string with `-` as replacement for non alphanum characters using [stringCaseBuilder](#stringcasebuilder).
 
@@ -24403,7 +24468,7 @@ replaceDiacritics("Âéêś"); // Expected result: "Aees"
 function startCase(str): string;
 ```
 
-Defined in: [string.ts:246](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/string.ts#L246)
+Defined in: [string.ts:247](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/string.ts#L247)
 
 Applies [firstUppercase](#firstuppercase) using [stringCaseBuilder](#stringcasebuilder) to every word of a string with `space` character as separator.
 
@@ -24499,7 +24564,7 @@ stringCaseBuilder(text, transformation, " ");
 function toHTMLUnicode(char): string;
 ```
 
-Defined in: [string.ts:146](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/string.ts#L146)
+Defined in: [string.ts:147](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/utils/src/string.ts#L147)
 
 **`Internal`**
 
