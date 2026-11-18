@@ -74,6 +74,7 @@ This index exposes the documentation set that powers graphql-markdown.dev so LLM
 - [defaults](https://graphql-markdown.dev/api/formatters/defaults): Default formatter implementations shared across multiple formatter packages.
 - [docfx](https://graphql-markdown.dev/api/formatters/docfx): DocFX formatter for GraphQL documentation output.
 - [docusaurus](https://graphql-markdown.dev/api/formatters/docusaurus): Docusaurus MDX formatter for GraphQL documentation output.
+- [escape](https://graphql-markdown.dev/api/formatters/escape): Escaping helpers for values interpolated into generated markup.
 - [fumadocs](https://graphql-markdown.dev/api/formatters/fumadocs): Fumadocs formatter for GraphQL documentation output.
 - [honkit](https://graphql-markdown.dev/api/formatters/honkit): HonKit formatter for GraphQL documentation output.
 - [hugo](https://graphql-markdown.dev/api/formatters/hugo): Hugo formatter for GraphQL documentation output.
