@@ -593,7 +593,7 @@ getCustomDirectives({ example: { invalid: true } }, []);
 
 ### See
 
-[DOCS\_URL](#docs_url)/advanced/custom-directive for custom directive format documentation
+[DOCS\_URL](#docs_url)/customize/custom-directive for custom directive format documentation
 
 ---
 
@@ -10172,7 +10172,7 @@ Library supporting `customDirective` for directive based customization.
 
 ## See
 
-[Option `customDirective`](https://graphql-markdown.dev/docs/advanced/custom-directive)
+[Option `customDirective`](https://graphql-markdown.dev/docs/customize/custom-directive)
 
 ## WILDCARD\_DIRECTIVE \{#wildcard_directive\}
 
@@ -10490,7 +10490,7 @@ Library supporting `groupByDirective` for grouping GraphQL schema entities.
 
 ## See
 
-[Option `groupByDirective`](https://graphql-markdown.dev/docs/advanced/group-by-directive)
+[Option `groupByDirective`](https://graphql-markdown.dev/docs/guides/group-by-directive)
 
 ## getGroupName() \{#getgroupname\}
 
@@ -11958,7 +11958,7 @@ Library for displaying relations between GraphQL schema entities.
 
 ## See
 
-[Settings `printTypeOptions`](https://graphql-markdown.dev/docs/settings#printtypeoptions)
+[Settings `printTypeOptions`](https://graphql-markdown.dev/docs/reference/settings#printtypeoptions)
 
 ## getRelationOfField \{#getrelationoffield\}
 
@@ -12186,7 +12186,7 @@ Custom directive `descriptor` helper.
 
 ## See
 
-[Option `customDirective.[directive].descriptor`](https://graphql-markdown.dev/docs/advanced/custom-directive#descriptor)
+[Option `customDirective.[directive].descriptor`](https://graphql-markdown.dev/docs/customize/custom-directive#descriptor)
 
 ## directiveDescriptor() \{#directivedescriptor\}
 
@@ -12302,7 +12302,7 @@ Custom directive `tag` helper.
 
 ## See
 
-[Option `customDirective.[directive].tag`](https://graphql-markdown.dev/docs/advanced/custom-directive#tag)
+[Option `customDirective.[directive].tag`](https://graphql-markdown.dev/docs/customize/custom-directive#tag)
 
 ## directiveTag() \{#directivetag\}
 
@@ -12382,7 +12382,7 @@ directiveTag(directive, type);
 
 ## See
 
-[Migrating from `customDirective`](https://graphql-markdown.dev/docs/advanced/decorators#migrating-from-customdirective)
+[Migrating from `customDirective`](https://graphql-markdown.dev/docs/customize/decorators#migrating-from-customdirective)
 
 ## withDirective() \{#withdirective\}
 
@@ -13969,7 +13969,7 @@ Defined in: [printer-legacy/src/decorator.ts:322](https://github.com/graphql-mar
 Builds the example section as a decorator definition.
 
 The example section is a specialized decorator: it is driven by a schema
-directive, named by [`printTypeOptions.exampleSection`](https://graphql-markdown.dev/docs/settings#printtypeoptions),
+directive, named by [`printTypeOptions.exampleSection`](https://graphql-markdown.dev/docs/reference/settings#printtypeoptions),
 and rendered as a code block.
 
 It resolves its own value rather than gating on a directive by name,
@@ -17562,7 +17562,7 @@ Request timeout in milliseconds.
 ## FULL\_NOTICE \{#full_notice\}
 
 ```ts
-const FULL_NOTICE: "ℹ GraphQL-Markdown collects anonymous usage data to help improve the tool.\n  Sent: package/Node versions, OS, schema loader type, the settings you use,\n  and the page count, duration and error type of each run.\n  Custom strings, URLs and paths are masked; schema content is never sent.\n  Details: https://graphql-markdown.dev/docs/telemetry\n  Opt out: `gqlmd telemetry disable` or DO_NOT_TRACK=1\n";
+const FULL_NOTICE: "ℹ GraphQL-Markdown collects anonymous usage data to help improve the tool.\n  Sent: package/Node versions, OS, schema loader type, the settings you use,\n  and the page count, duration and error type of each run.\n  Custom strings, URLs and paths are masked; schema content is never sent.\n  Details: https://graphql-markdown.dev/docs/reference/telemetry\n  Opt out: `gqlmd telemetry disable` or DO_NOT_TRACK=1\n";
 ```
 
 Defined in: [disclaimer.ts:5](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/telemetry/src/disclaimer.ts#L5)
