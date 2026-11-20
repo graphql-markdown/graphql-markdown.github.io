@@ -9,27 +9,27 @@ This index exposes the documentation set that powers graphql-markdown.dev so LLM
 - [Introduction](https://graphql-markdown.dev/docs/intro): Generate human-friendly Markdown and MDX documentation from GraphQL schemas for Docusaurus and supported formatter-based documentation ecosystems.
 - [Getting started](https://graphql-markdown.dev/docs/get-started): Create a GraphQL API documentation site with the create-graphql-markdown-docs scaffolder (Nuxt or Docusaurus), or add GraphQL-Markdown to an existi...
 - [Try it](https://graphql-markdown.dev/docs/try-it): Browse live demos and try GraphQL-Markdown instantly with our demo repositories for Docusaurus, Astro, Next.js, Nuxt, Docus, Vocs, HonKit, Hugo, Mk...
-- [How It Works](https://graphql-markdown.dev/docs/how-it-works): Understand how GraphQL-Markdown transforms your GraphQL schema into comprehensive Markdown documentation through parsing, rendering, and output.
-- [Configuration Cheat Sheet](https://graphql-markdown.dev/docs/configuration-cheatsheet): Quickly look up in the most frequently used CLI flag and renderer options for GraphQL-Markdown in one place without digging through the longer Sett...
-- [Configuration](https://graphql-markdown.dev/docs/configuration): Learn how to configure GraphQL-Markdown using GraphQL Config, Docusaurus plugin options, or CLI arguments. Supports multiple frameworks.
-- [Additional schemas](https://graphql-markdown.dev/docs/advanced/additional-schema): Configure multiple GraphQL schemas in a single project. Set up separate documentation instances for different APIs.
-- [Custom schema directives handling](https://graphql-markdown.dev/docs/advanced/custom-directive): Handle custom GraphQL schema directives in your documentation. Configure which directives to render and customize their display.
-- [Custom root types](https://graphql-markdown.dev/docs/advanced/custom-root-types): Configure custom root types for Query, Mutation, and Subscription operations in your GraphQL schema documentation.
-- [Decorators](https://graphql-markdown.dev/docs/advanced/decorators): Select any node in your schema with a predicate and render a custom section, badge, or description text for it — the successor to customDirective.
-- [Docusaurus recipes](https://graphql-markdown.dev/docs/advanced/docusaurus-recipes): Docusaurus-only recipes for GraphQL-Markdown — custom homepage sidebar placement, styling deprecated sections, regenerating docs, extending hooks, ...
-- [Examples](https://graphql-markdown.dev/docs/advanced/examples): Add usage examples to your GraphQL type documentation using the @example directive. Show real-world usage patterns.
-- [Documentation categories](https://graphql-markdown.dev/docs/advanced/group-by-directive): Organize GraphQL documentation into categories using directives. Group queries, mutations, and types for better navigation.
-- [Hooks Recipes](https://graphql-markdown.dev/docs/advanced/hook-recipes): Customize GraphQL-Markdown with lifecycle hooks. Examples for modifying output, adding custom processing, and integrating with build pipelines.
-- [Integration with Frameworks](https://graphql-markdown.dev/docs/advanced/integration-with-frameworks): Integrate GraphQL-Markdown with popular documentation frameworks using formatter presets or create custom formatters.
-- [JSR](https://graphql-markdown.dev/docs/advanced/jsr): Install the GraphQL-Markdown libraries from JSR for Deno, Node.js and Bun, and use them from your own code.
-- [Namespaced operations](https://graphql-markdown.dev/docs/advanced/namespaced-operations): Documents namespaced GraphQL operations for nested query, mutation, and subscription fields.
-- [Nuxt Theme](https://graphql-markdown.dev/docs/advanced/nuxt-theme): Scaffold or extend a Nuxt-based GraphQL API reference site with the @graphql-markdown/nuxt-theme layer and its create-graphql-markdown-docs CLI.
-- [Output Adapter](https://graphql-markdown.dev/docs/advanced/output-adapter): Send generated GraphQL documentation somewhere other than the local filesystem. Write a custom output adapter for an object store, a CMS, or an in-...
-- [Schema loading](https://graphql-markdown.dev/docs/advanced/schema-loading): Load GraphQL schemas from files, URLs, or introspection endpoints. Configure custom loaders for different schema sources.
-- [Settings](https://graphql-markdown.dev/docs/settings): Complete reference of all GraphQL-Markdown settings, CLI flags, and configuration options with default values and examples.
+- [How it works](https://graphql-markdown.dev/docs/how-it-works): Understand how GraphQL-Markdown transforms your GraphQL schema into comprehensive Markdown documentation through parsing, rendering, and output.
+- [Additional schemas](https://graphql-markdown.dev/docs/guides/additional-schema): Configure multiple GraphQL schemas in a single project. Set up separate documentation instances for different APIs.
+- [Custom root types](https://graphql-markdown.dev/docs/guides/custom-root-types): Configure custom root types for Query, Mutation, and Subscription operations in your GraphQL schema documentation.
+- [Docusaurus recipes](https://graphql-markdown.dev/docs/guides/docusaurus): Docusaurus-only recipes for GraphQL-Markdown — custom homepage sidebar placement, styling deprecated sections, regenerating docs, extending hooks, ...
+- [Examples](https://graphql-markdown.dev/docs/guides/examples): Add usage examples to your GraphQL type documentation using the @example directive. Show real-world usage patterns.
+- [Documentation categories](https://graphql-markdown.dev/docs/guides/group-by-directive): Organize GraphQL documentation into categories using directives. Group queries, mutations, and types for better navigation.
+- [Namespaced operations](https://graphql-markdown.dev/docs/guides/namespaced-operations): Documents namespaced GraphQL operations for nested query, mutation, and subscription fields.
+- [Nuxt theme](https://graphql-markdown.dev/docs/guides/nuxt): Scaffold or extend a Nuxt-based GraphQL API reference site with the @graphql-markdown/nuxt-theme layer and its create-graphql-markdown-docs CLI.
+- [Integration with frameworks](https://graphql-markdown.dev/docs/guides/other-frameworks): Integrate GraphQL-Markdown with popular documentation frameworks using formatter presets or create custom formatters.
+- [Schema loading](https://graphql-markdown.dev/docs/guides/schema-loading): Load GraphQL schemas from files, URLs, or introspection endpoints. Configure custom loaders for different schema sources.
+- [Custom schema directives handling](https://graphql-markdown.dev/docs/customize/custom-directive): Handle custom GraphQL schema directives in your documentation. Configure which directives to render and customize their display.
+- [Custom formatter](https://graphql-markdown.dev/docs/customize/custom-formatter): Write a custom MDX formatter module for any documentation framework, or extend a formatter preset. Covers the module contract, the formatMDXDetails...
+- [Decorators](https://graphql-markdown.dev/docs/customize/decorators): Select any node in your schema with a predicate and render a custom section, badge, or description text for it — the successor to customDirective.
+- [Hooks recipes](https://graphql-markdown.dev/docs/customize/hooks): Customize GraphQL-Markdown with lifecycle hooks. Examples for modifying output, adding custom processing, and integrating with build pipelines.
+- [Output adapter](https://graphql-markdown.dev/docs/customize/output-adapter): Send generated GraphQL documentation somewhere other than the local filesystem. Write a custom output adapter for an object store, a CMS, or an in-...
+- [Configuration](https://graphql-markdown.dev/docs/reference/configuration): Learn how to configure GraphQL-Markdown using GraphQL Config, Docusaurus plugin options, or CLI arguments. Supports multiple frameworks.
+- [JSR](https://graphql-markdown.dev/docs/reference/jsr): Install the GraphQL-Markdown libraries from JSR for Deno, Node.js and Bun, and use them from your own code.
+- [Settings](https://graphql-markdown.dev/docs/reference/settings): Complete reference of all GraphQL-Markdown settings, CLI flags, and configuration options with default values and examples.
+- [Telemetry](https://graphql-markdown.dev/docs/reference/telemetry): What anonymous usage data GraphQL-Markdown collects, how custom values are masked, and how to opt out.
 - [Troubleshooting](https://graphql-markdown.dev/docs/troubleshooting): Solutions for common GraphQL-Markdown issues including duplicate graphql modules, missing type definitions, and configuration problems.
 - [introspection](https://graphql-markdown.dev/api/graphql/introspection): Library for introspecting a GraphQL schema.
-- [Telemetry](https://graphql-markdown.dev/docs/telemetry): What anonymous usage data GraphQL-Markdown collects, how custom values are masked, and how to opt out.
 - [cli](https://graphql-markdown.dev/api/cli): This module provides the CLI functionality for generating documentation from GraphQL schemas.
 - [main](https://graphql-markdown.dev/api/cli/main): Entry point for the GraphQL Markdown CLI.
 - [telemetry-command](https://graphql-markdown.dev/api/cli/telemetry-command): `telemetry <enable|disable|status>` command.
