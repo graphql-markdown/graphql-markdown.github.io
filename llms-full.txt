@@ -66,38 +66,62 @@ The fastest way to start is the [`create-graphql-markdown-docs`](https://github.
 
 Node.js version [22.18](https://nodejs.org/en/download/) or above (which can be checked by running `node -v`) is required.
 
-You can use `npm`, `yarn`, `pnpm` or `bun` as your package manager. The examples use `npm`; substitute your own. To manage several Node.js versions on one machine, use [nvm](https://github.com/nvm-sh/nvm).
+You can use `npm`, `yarn`, `pnpm` or `bun` as your package manager. Command examples have a tab for each package manager; pick yours once and every page follows. To manage several Node.js versions on one machine, use [nvm](https://github.com/nvm-sh/nvm).
 
 ### Run the scaffolder
 
 You can type these commands into Command Prompt, Powershell, Terminal, or any other integrated terminal of your code editor.
 
-```shell title="npm"
+```shell
 npm create graphql-markdown-docs@latest
 ```
 
-```shell title="pnpm"
+```shell
 pnpm create graphql-markdown-docs
 ```
 
-```shell title="yarn"
+```shell
 yarn create graphql-markdown-docs
 ```
 
-```shell title="bun"
+```shell
 bun create graphql-markdown-docs
 ```
 
 Pass the project directory as an argument to skip that prompt:
 
-```shell title="shell"
+```shell
 npm create graphql-markdown-docs@latest my-docs
 ```
 
-With npm, flags must follow a `--` separator so that npm forwards them to the CLI:
+```shell
+pnpm create graphql-markdown-docs my-docs
+```
 
-```shell title="shell"
+```shell
+yarn create graphql-markdown-docs my-docs
+```
+
+```shell
+bun create graphql-markdown-docs my-docs
+```
+
+With npm, flags follow a `--` separator so that npm forwards them to the CLI; the other package managers pass them directly:
+
+```shell
 npm create graphql-markdown-docs@latest my-docs -- --framework docusaurus
+```
+
+```shell
+pnpm create graphql-markdown-docs my-docs --framework docusaurus
+```
+
+```shell
+yarn create graphql-markdown-docs my-docs --framework docusaurus
+```
+
+```shell
+bun create graphql-markdown-docs my-docs --framework docusaurus
 ```
 
 ### What the prompts ask
@@ -140,31 +164,76 @@ See [schema loading](/docs/guides/schema-loading) for other loaders and configur
 
 For a Nuxt site:
 
-```shell title="shell"
+```shell
 cd my-graphql-docs
 npm run dev
+```
+
+```shell
+cd my-graphql-docs
+pnpm dev
+```
+
+```shell
+cd my-graphql-docs
+yarn dev
+```
+
+```shell
+cd my-graphql-docs
+bun run dev
 ```
 
 The development server is available at [http://localhost:3000/](http://localhost:3000/).
 
 For a Docusaurus site:
 
-```shell title="shell"
+```shell
 cd my-graphql-docs
 npm run doc
 npm run start
 ```
 
-If you skipped the install step, run `npm install` first.
+```shell
+cd my-graphql-docs
+pnpm doc
+pnpm start
+```
 
-The `npm run doc` command is a shortcut in the scaffolded site for `npm run docusaurus graphql-to-doc`. The `npm run start` command builds your website locally and serves it through a development server, ready for you to view at [http://localhost:3000/](http://localhost:3000/).
+```shell
+cd my-graphql-docs
+yarn doc
+yarn start
+```
+
+```shell
+cd my-graphql-docs
+bun run doc
+bun run start
+```
+
+If you skipped the install step, install the dependencies first (`npm install`, `pnpm install`, `yarn` or `bun install`).
+
+The `doc` script is a shortcut in the scaffolded site for `docusaurus graphql-to-doc`. The `start` script builds your website locally and serves it through a development server, ready for you to view at [http://localhost:3000/](http://localhost:3000/).
 
 ### Non-interactive usage (CI)
 
 Use `--yes` to accept all defaults and skip every prompt:
 
-```shell title="shell"
+```shell
 npm create graphql-markdown-docs@latest -- --yes --dir ./my-docs --schema ./schema.graphql --no-install --no-git
+```
+
+```shell
+pnpm create graphql-markdown-docs --yes --dir ./my-docs --schema ./schema.graphql --no-install --no-git
+```
+
+```shell
+yarn create graphql-markdown-docs --yes --dir ./my-docs --schema ./schema.graphql --no-install --no-git
+```
+
+```shell
+bun create graphql-markdown-docs --yes --dir ./my-docs --schema ./schema.graphql --no-install --no-git
 ```
 
 | Flag                             | Description                                                                                                                                                                                                                                                                               |
@@ -190,15 +259,42 @@ Run the scaffolder inside your existing project. When the folder already holds a
 
 It detects your framework from `package.json` (or asks you), then asks for your schema (a path, glob or URL) and the output folder for the generated docs. It writes a `.graphqlrc` file and a `gqlmd` script, and prints the one step left for your framework, such as adding a sidebar or navigation entry.
 
-```shell title="shell"
+```shell
 cd my-starlight-site
 npm create graphql-markdown-docs@latest
 ```
 
+```shell
+cd my-starlight-site
+pnpm create graphql-markdown-docs
+```
+
+```shell
+cd my-starlight-site
+yarn create graphql-markdown-docs
+```
+
+```shell
+cd my-starlight-site
+bun create graphql-markdown-docs
+```
+
 To skip the prompts, for example in CI, pass the options explicitly:
 
-```shell title="shell"
+```shell
 npm create graphql-markdown-docs@latest . -- --yes --schema ./schema.graphql --output src/content/docs/api --install
+```
+
+```shell
+pnpm create graphql-markdown-docs . --yes --schema ./schema.graphql --output src/content/docs/api --install
+```
+
+```shell
+yarn create graphql-markdown-docs . --yes --schema ./schema.graphql --output src/content/docs/api --install
+```
+
+```shell
+bun create graphql-markdown-docs . --yes --schema ./schema.graphql --output src/content/docs/api --install
 ```
 
 The scaffolder never edits your framework configuration files and never overwrites existing files. It installs nothing unless you pass `--install`. Use `--dry-run` to preview the changes first.
@@ -209,16 +305,40 @@ Prefer to set it up by hand? Follow the steps for your framework.
 
 ### Docusaurus
 
-```shell title="shell"
+```shell
 npm install @graphql-markdown/docusaurus graphql
+```
+
+```shell
+pnpm add @graphql-markdown/docusaurus graphql
+```
+
+```shell
+yarn add @graphql-markdown/docusaurus graphql
+```
+
+```shell
+bun add @graphql-markdown/docusaurus graphql
 ```
 
 Then add a schema loader and configure the plugin. See the [Docusaurus guide](/docs/guides/docusaurus) for requirements and configuration.
 
 ### Nuxt
 
-```shell title="shell"
+```shell
 npm install @graphql-markdown/nuxt-theme
+```
+
+```shell
+pnpm add @graphql-markdown/nuxt-theme
+```
+
+```shell
+yarn add @graphql-markdown/nuxt-theme
+```
+
+```shell
+bun add @graphql-markdown/nuxt-theme
 ```
 
 Then create `content.config.ts` and `generate-docs.ts`. See the [Nuxt guide](/docs/guides/nuxt#extending-the-layer-directly).
@@ -231,8 +351,20 @@ For Hugo, MkDocs, DocFX, mdBook and other formatter-based setups, see [Other fra
 
 To generate the documentation from your own script instead of the CLI or a framework plugin, call `@graphql-markdown/core` directly. `buildConfig` takes the same [settings](/docs/reference/settings) as the configuration file and fills in the defaults; `generateDocFromSchema` loads the schema and writes the pages. The `loaders` option is required: it names the [schema loader](/docs/guides/schema-loading) used to read the schema.
 
-```shell title="shell"
+```shell
 npm install @graphql-markdown/core graphql @graphql-tools/graphql-file-loader
+```
+
+```shell
+pnpm add @graphql-markdown/core graphql @graphql-tools/graphql-file-loader
+```
+
+```shell
+yarn add @graphql-markdown/core graphql @graphql-tools/graphql-file-loader
+```
+
+```shell
+bun add @graphql-markdown/core graphql @graphql-tools/graphql-file-loader
 ```
 
 ```ts title="generate-docs.ts"
@@ -650,14 +782,38 @@ The above CSS will render the deprecated sections as the following
 
 In a Docusaurus site, build your website:
 
-```shell title="shell"
+```shell
 npm run docusaurus build
+```
+
+```shell
+pnpm docusaurus build
+```
+
+```shell
+yarn docusaurus build
+```
+
+```shell
+bun run docusaurus build
 ```
 
 Or run the documentation generator directly:
 
-```shell title="shell"
+```shell
 npm run docusaurus graphql-to-doc
+```
+
+```shell
+pnpm docusaurus graphql-to-doc
+```
+
+```shell
+yarn docusaurus graphql-to-doc
+```
+
+```shell
+bun run docusaurus graphql-to-doc
 ```
 
 The `npm run docusaurus graphql-to-doc` command generates MDX files locally from your GraphQL schema. The possible command flags are documented in [settings](/docs/reference/settings).
@@ -743,6 +899,18 @@ Instance with an `id` will have their command line:
 
 ```shell
 npm run docusaurus graphql-to-doc:admin
+```
+
+```shell
+pnpm docusaurus graphql-to-doc:admin
+```
+
+```shell
+yarn docusaurus graphql-to-doc:admin
+```
+
+```shell
+bun run docusaurus graphql-to-doc:admin
 ```
 
 If you also use [GraphQL Config](/docs/reference/configuration#graphql-config), you need to define `projects` with the same `id` (including `default`):
@@ -917,6 +1085,18 @@ It can be set either with the command line flag `--groupByDirective`:
 npx gqlmd graphql-to-doc --groupByDirective "@doc(category|=Common)"
 ```
 
+```shell
+pnpm exec gqlmd graphql-to-doc --groupByDirective "@doc(category|=Common)"
+```
+
+```shell
+yarn gqlmd graphql-to-doc --groupByDirective "@doc(category|=Common)"
+```
+
+```shell
+bunx gqlmd graphql-to-doc --groupByDirective "@doc(category|=Common)"
+```
+
 or the configuration option `groupByDirective`:
 
 ```yaml title=".graphqlrc"
@@ -1015,16 +1195,40 @@ Extend it from your own Nuxt project instead of building on the CLI's raw Markdo
 
 ## Fastest path: the scaffolding CLI
 
-```bash
+```shell
 npm create graphql-markdown-docs@latest
+```
+
+```shell
+pnpm create graphql-markdown-docs
+```
+
+```shell
+yarn create graphql-markdown-docs
+```
+
+```shell
+bun create graphql-markdown-docs
 ```
 
 It asks a few questions (project directory, schema source, package manager, optional title and color) and produces a ready-to-run project. See [Getting started](/docs/get-started#create-a-new-site) for the full prompt and flag reference, including non-interactive usage, or the [`create-graphql-markdown-docs` README](https://github.com/graphql-markdown/graphql-markdown/tree/main/packages/create-graphql-markdown-docs).
 
 ## Extending the layer directly
 
-```bash
+```shell
 npm install @graphql-markdown/nuxt-theme
+```
+
+```shell
+pnpm add @graphql-markdown/nuxt-theme
+```
+
+```shell
+yarn add @graphql-markdown/nuxt-theme
+```
+
+```shell
+bun add @graphql-markdown/nuxt-theme
 ```
 
 ```ts
@@ -1114,8 +1318,20 @@ For new configurations, use the `formatter` setting. The legacy `mdxParser` sett
 
 Install the CLI and formatter presets:
 
-```bash
+```shell
 npm install @graphql-markdown/cli @graphql-markdown/formatters graphql
+```
+
+```shell
+pnpm add @graphql-markdown/cli @graphql-markdown/formatters graphql
+```
+
+```shell
+yarn add @graphql-markdown/cli @graphql-markdown/formatters graphql
+```
+
+```shell
+bun add @graphql-markdown/cli @graphql-markdown/formatters graphql
 ```
 
 Then configure the formatter that matches your framework:
@@ -1133,8 +1349,20 @@ extensions:
 
 Install the formatters package:
 
-```bash
+```shell
 npm install @graphql-markdown/formatters
+```
+
+```shell
+pnpm add @graphql-markdown/formatters
+```
+
+```shell
+yarn add @graphql-markdown/formatters
+```
+
+```shell
+bun add @graphql-markdown/formatters
 ```
 
 Then select your framework:
@@ -1164,8 +1392,20 @@ extensions:
     formatter: "@graphql-markdown/formatters/docusaurus" # or your framework
 ```
 
-```bash
+```shell
 npx gqlmd graphql-to-doc
+```
+
+```shell
+pnpm exec gqlmd graphql-to-doc
+```
+
+```shell
+yarn gqlmd graphql-to-doc
+```
+
+```shell
+bunx gqlmd graphql-to-doc
 ```
 
 The command name is `graphql-to-doc` for the default project, and `graphql-to-doc:<id>` for each additional [GraphQL Config project](/docs/guides/additional-schema#graphql-config).
@@ -1232,8 +1472,20 @@ type PackageOptionsConfig = BaseLoaderOptions & RootTypes;
 
 Use `@graphql-tools/graphql-file-loader` if you want to load a local schema:
 
-```shell title="shell"
+```shell
 npm install @graphql-tools/graphql-file-loader
+```
+
+```shell
+pnpm add @graphql-tools/graphql-file-loader
+```
+
+```shell
+yarn add @graphql-tools/graphql-file-loader
+```
+
+```shell
+bun add @graphql-tools/graphql-file-loader
 ```
 
 Once done, you can declare the loader in the GraphQL-Markdown configuration:
@@ -1250,8 +1502,20 @@ extensions:
 
 Use `@graphql-tools/url-loader`, if you want to load a schema from a URL:
 
-```shell title="shell"
+```shell
 npm install @graphql-tools/url-loader
+```
+
+```shell
+pnpm add @graphql-tools/url-loader
+```
+
+```shell
+yarn add @graphql-tools/url-loader
+```
+
+```shell
+bun add @graphql-tools/url-loader
 ```
 
 Once done, you can declare the loader in the GraphQL-Markdown configuration:
@@ -1278,8 +1542,20 @@ See our [Troubleshooting section](/docs/troubleshooting) in case of error ['UrlL
 
 For teams using a code-first approach, use `@graphql-tools/code-file-loader` to load a schema exported directly from a TypeScript or JavaScript file:
 
-```shell title="shell"
+```shell
 npm install @graphql-tools/code-file-loader
+```
+
+```shell
+pnpm add @graphql-tools/code-file-loader
+```
+
+```shell
+yarn add @graphql-tools/code-file-loader
+```
+
+```shell
+bun add @graphql-tools/code-file-loader
 ```
 
 Once done, you can declare the loader in the GraphQL-Markdown configuration:
@@ -1441,8 +1717,20 @@ The packages `@graphql-markdown/helpers` and `@graphql-markdown/graphql` provide
 
 `@graphql-markdown/helpers` is an optional peer dependency, and it needs to be installed before using it.
 
-```shell title="shell"
+```shell
 npm i @graphql-markdown/helpers
+```
+
+```shell
+pnpm add @graphql-markdown/helpers
+```
+
+```shell
+yarn add @graphql-markdown/helpers
+```
+
+```shell
+bun add @graphql-markdown/helpers
 ```
 
 ### `@graphql-markdown/helpers`
@@ -1897,8 +2185,20 @@ The packages `@graphql-markdown/helpers` and `@graphql-markdown/graphql` provide
 
 `@graphql-markdown/helpers` is an optional peer dependency, and it needs to be installed before using it.
 
-```shell title="shell"
+```shell
 npm i @graphql-markdown/helpers
+```
+
+```shell
+pnpm add @graphql-markdown/helpers
+```
+
+```shell
+yarn add @graphql-markdown/helpers
+```
+
+```shell
+bun add @graphql-markdown/helpers
 ```
 
 ### `@graphql-markdown/helpers`
@@ -2474,15 +2774,15 @@ The CLI (`gqlmd`), the Docusaurus plugin, the scaffolder and the Nuxt theme are 
 
 ## Install
 
-```shell title="Deno"
+```shell
 deno add jsr:@graphql-markdown/core
 ```
 
-```shell title="Node.js"
+```shell
 npx jsr add @graphql-markdown/core
 ```
 
-```shell title="Bun"
+```shell
 bunx jsr add @graphql-markdown/core
 ```
 
@@ -3063,6 +3363,18 @@ The package `@graphql-markdown/diff` is required for using `diffMethod`. If the 
 npm install @graphql-markdown/diff
 ```
 
+```shell
+pnpm add @graphql-markdown/diff
+```
+
+```shell
+yarn add @graphql-markdown/diff
+```
+
+```shell
+bun add @graphql-markdown/diff
+```
+
 ### `tmpDir`
 
 The folder used for storing schema copy and signature is used by [`diffMethod`](#diffmethod) setting.
@@ -3089,8 +3401,20 @@ Print the resolved configuration used for generating documentation. This CLI fla
 
 Example:
 
-```bash
+```shell
 npx docusaurus graphql-to-doc --config
+```
+
+```shell
+pnpm exec docusaurus graphql-to-doc --config
+```
+
+```shell
+yarn docusaurus graphql-to-doc --config
+```
+
+```shell
+bunx docusaurus graphql-to-doc --config
 ```
 
 ---
@@ -3356,6 +3680,18 @@ Try these solutions:
 
 ```shell
 npm install @graphql-tools/url-loader @graphql-tools/json-file-loader
+```
+
+```shell
+pnpm add @graphql-tools/url-loader @graphql-tools/json-file-loader
+```
+
+```shell
+yarn add @graphql-tools/url-loader @graphql-tools/json-file-loader
+```
+
+```shell
+bun add @graphql-tools/url-loader @graphql-tools/json-file-loader
 ```
 
 1. Verify loader configuration:
