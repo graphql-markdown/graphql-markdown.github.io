@@ -517,6 +517,10 @@ See the generated docs in the [live demo](https://graphql-markdown.dev/demo-peli
 
 Fork our [demo repo](https://github.com/graphql-markdown/demo-pelican) to try with your own GraphQL schema. It shows how to target a framework without a preset, using a custom formatter.
 
+## Your stack?
+
+Use the generic `mdx` preset from [`@graphql-markdown/formatters`](/docs/guides/other-frameworks#supported-formatters), or fork one of the demos above and try it with your own schema.
+
 ---
 
 ## How it works
