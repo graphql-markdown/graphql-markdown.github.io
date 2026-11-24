@@ -15,6 +15,7 @@ This index exposes the documentation set that powers graphql-markdown.dev so LLM
 - [Docusaurus recipes](https://graphql-markdown.dev/docs/guides/docusaurus): Docusaurus-only recipes for GraphQL-Markdown — custom homepage sidebar placement, styling deprecated sections, regenerating docs, extending hooks, ...
 - [Examples](https://graphql-markdown.dev/docs/guides/examples): Add usage examples to your GraphQL type documentation using the @example directive. Show real-world usage patterns.
 - [Documentation categories](https://graphql-markdown.dev/docs/guides/group-by-directive): Organize GraphQL documentation into categories using directives. Group queries, mutations, and types for better navigation.
+- [Markdown copies](https://graphql-markdown.dev/docs/guides/markdown-copies): Publish a plain Markdown copy of every generated GraphQL page at `<page-url>.md`, for readers who want the source and for LLM agents, with a second...
 - [Namespaced operations](https://graphql-markdown.dev/docs/guides/namespaced-operations): Documents namespaced GraphQL operations for nested query, mutation, and subscription fields.
 - [Nuxt theme](https://graphql-markdown.dev/docs/guides/nuxt): Scaffold or extend a Nuxt-based GraphQL API reference site with the @graphql-markdown/nuxt-theme layer and its create-graphql-markdown-docs CLI.
 - [Integration with frameworks](https://graphql-markdown.dev/docs/guides/other-frameworks): Integrate GraphQL-Markdown with popular documentation frameworks using formatter presets or create custom formatters.
