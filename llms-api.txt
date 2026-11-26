@@ -8507,7 +8507,7 @@ Internal links are converted to .html paths.
 const __default: object;
 ```
 
-Defined in: [honkit/index.ts:32](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/honkit/index.ts#L32)
+Defined in: [honkit/index.ts:33](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/honkit/index.ts#L33)
 
 ### Type Declaration
 
@@ -8531,7 +8531,7 @@ formatMDXPermalink: typeof formatMDXPermalink;
 const mdxExtension: ".md";
 ```
 
-Defined in: [honkit/index.ts:38](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/honkit/index.ts#L38)
+Defined in: [honkit/index.ts:39](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/honkit/index.ts#L39)
 
 File extension used for generated pages — HonKit renders plain Markdown to HTML.
 
@@ -8543,7 +8543,7 @@ File extension used for generated pages — HonKit renders plain Markdown to HTM
 function createMDXFormatter(_meta?): Formatter;
 ```
 
-Defined in: [honkit/index.ts:183](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/honkit/index.ts#L183)
+Defined in: [honkit/index.ts:184](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/honkit/index.ts#L184)
 
 Creates a HonKit formatter.
 
@@ -8569,7 +8569,7 @@ A complete Formatter implementation for HonKit output
 function formatMDXAdmonition(admonition, _meta): MDXString;
 ```
 
-Defined in: [honkit/index.ts:67](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/honkit/index.ts#L67)
+Defined in: [honkit/index.ts:68](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/honkit/index.ts#L68)
 
 Formats an admonition as a Markdown blockquote with a bold prefix label.
 Maps `warning` type to `WARNING`; all other types use `INFO`.
@@ -8602,7 +8602,7 @@ Formatted blockquote string
 function formatMDXBadge(badge): MDXString;
 ```
 
-Defined in: [honkit/index.ts:53](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/honkit/index.ts#L53)
+Defined in: [honkit/index.ts:54](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/honkit/index.ts#L54)
 
 Formats a badge as an inline HTML `<span>` with a shared default style.
 Users can customize badge colors by providing their own `formatMDXBadge` implementation.
@@ -8629,7 +8629,7 @@ Formatted inline HTML span string
 function formatMDXDetails(option): MDXString;
 ```
 
-Defined in: [honkit/index.ts:80](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/honkit/index.ts#L80)
+Defined in: [honkit/index.ts:81](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/honkit/index.ts#L81)
 
 Formats a collapsible block as an HTML `<details>` element.
 
@@ -8655,7 +8655,7 @@ Formatted details element string
 function formatMDXFrontmatter(props, formatted): MDXString;
 ```
 
-Defined in: [honkit/index.ts:96](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/honkit/index.ts#L96)
+Defined in: [honkit/index.ts:97](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/honkit/index.ts#L97)
 
 Formats YAML front matter.
 Merges `props` entries with `formatted` lines (formatted lines take precedence).
@@ -8690,7 +8690,7 @@ Formatted front matter block, or empty string
 function formatMDXLink(link): TypeLink;
 ```
 
-Defined in: [honkit/index.ts:132](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/honkit/index.ts#L132)
+Defined in: [honkit/index.ts:133](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/honkit/index.ts#L133)
 
 Converts internal link URLs to `.html` paths for HonKit static output.
 Absolute paths without an `.html` extension are suffixed with `.html`.
@@ -8718,7 +8718,7 @@ Link with `.html` extension applied to absolute internal paths
 function formatMDXNameEntity(name, parentType?): MDXString;
 ```
 
-Defined in: [honkit/index.ts:161](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/honkit/index.ts#L161)
+Defined in: [honkit/index.ts:162](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/honkit/index.ts#L162)
 
 Formats a named entity as plain text (no markup).
 HonKit renders plain Markdown — no JSX or code spans needed.
@@ -8751,7 +8751,7 @@ Formatted entity reference string
 function formatMDXSpecifiedByLink(url): MDXString;
 ```
 
-Defined in: [honkit/index.ts:174](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/honkit/index.ts#L174)
+Defined in: [honkit/index.ts:175](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/honkit/index.ts#L175)
 
 Formats a "specified by" link as plain text with the URL percent-encoded.
 HonKit does not render custom JSX components.
@@ -8778,7 +8778,7 @@ Formatted specification text string
 function formatMDXTitle(title): MDXString;
 ```
 
-Defined in: [honkit/index.ts:120](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/honkit/index.ts#L120)
+Defined in: [honkit/index.ts:121](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/formatters/src/honkit/index.ts#L121)
 
 Formats the page title as a visible H1 heading.
 Line breaks are collapsed to spaces and surrounding whitespace is trimmed,
@@ -16849,7 +16849,7 @@ Optional event emitter for print events interception
 readonly static printBadge(badge, options): MDXString;
 ```
 
-Defined in: [printer-legacy/src/printer.ts:398](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/printer.ts#L398)
+Defined in: [printer-legacy/src/printer.ts:396](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/printer.ts#L396)
 
 Formats a single badge into MDX string format
 
@@ -16881,7 +16881,7 @@ otherwise
 readonly static printCode(type, options): string;
 ```
 
-Defined in: [printer-legacy/src/printer.ts:351](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/printer.ts#L351)
+Defined in: [printer-legacy/src/printer.ts:349](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/printer.ts#L349)
 
 Prints the GraphQL type definition as code block
 
@@ -16915,7 +16915,7 @@ readonly static printCodeAsync(
 ): Promise<string>;
 ```
 
-Defined in: [printer-legacy/src/printer.ts:423](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/printer.ts#L423)
+Defined in: [printer-legacy/src/printer.ts:421](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/printer.ts#L421)
 
 Prints the GraphQL type definition as code block with event emission support.
 
@@ -16964,7 +16964,7 @@ Event handlers can:
 readonly static printExample(type, options): Maybe<PageSection>;
 ```
 
-Defined in: [printer-legacy/src/printer.ts:468](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/printer.ts#L468)
+Defined in: [printer-legacy/src/printer.ts:466](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/printer.ts#L466)
 
 Prints example usage of the type if available
 
@@ -16998,7 +16998,7 @@ readonly static printHeader(
 ): string;
 ```
 
-Defined in: [printer-legacy/src/printer.ts:312](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/printer.ts#L312)
+Defined in: [printer-legacy/src/printer.ts:310](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/printer.ts#L310)
 
 Prints the header section of a type documentation
 
@@ -17034,7 +17034,7 @@ Formatted header string with optional frontmatter
 readonly static printMetaTags(_type, options): string | MDXString;
 ```
 
-Defined in: [printer-legacy/src/printer.ts:529](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/printer.ts#L529)
+Defined in: [printer-legacy/src/printer.ts:527](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/printer.ts#L527)
 
 Prints HTML meta tags for the documentation
 
@@ -17064,7 +17064,7 @@ Formatted HTML meta tags string
 readonly static printRelations(type, options): string | MDXString;
 ```
 
-Defined in: [printer-legacy/src/printer.ts:515](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/printer.ts#L515)
+Defined in: [printer-legacy/src/printer.ts:513](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/printer.ts#L513)
 
 Prints related type information
 
@@ -17094,7 +17094,7 @@ Formatted relations section as MDX or plain string
 readonly static printTitle(title, options): string;
 ```
 
-Defined in: [printer-legacy/src/printer.ts:337](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/printer.ts#L337)
+Defined in: [printer-legacy/src/printer.ts:335](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/printer.ts#L335)
 
 Prints the visible page title, using the formatter `formatMDXTitle`.
 
@@ -17131,7 +17131,7 @@ readonly static printType(
 ): Promise<Maybe<MDXString>>;
 ```
 
-Defined in: [printer-legacy/src/printer.ts:579](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/printer.ts#L579)
+Defined in: [printer-legacy/src/printer.ts:577](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/printer.ts#L577)
 
 Main method to print complete documentation for a GraphQL type
 
@@ -17196,7 +17196,7 @@ readonly static printTypeMetadata(type, options): Maybe<
   | PageSection[]>;
 ```
 
-Defined in: [printer-legacy/src/printer.ts:482](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/printer.ts#L482)
+Defined in: [printer-legacy/src/printer.ts:480](https://github.com/graphql-markdown/graphql-markdown/blob/main/packages/printer-legacy/src/printer.ts#L480)
 
 Prints metadata information for a GraphQL type
 
